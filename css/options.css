@@ -1,0 +1,238 @@
+/* Fluent UI styles */
+@font-face
+{
+	font-family: "Segoe UI";
+	src: local("Segoe UI"),
+		url("fonts/segoeui.ttf") format("truetype"),
+}
+
+@font-face
+{
+	font-family: "Segoe MDL2 Assets";
+	src: local("Segoe MDL2 Assets"),
+		url("fonts/segoemdl2.ttf") format("truetype"),
+}
+
+body
+{
+	font-family: "Segoe UI";
+	user-select: none;
+	white-space: nowrap;
+	font-size: 14px;
+	line-height: 20px;
+	color: rgb(50, 49, 48);
+
+	border-radius: 2px;
+}
+
+h1, h2, h3
+{
+	font-weight: 400;
+	margin: 0px;
+}
+h1
+{
+	font-size: 28px;
+	font-weight: 400;
+	line-height: 36px;
+}
+
+h2
+{
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 28px;
+}
+
+.group
+{
+	margin-bottom: 10px;
+}
+
+	.group > *
+	{
+		display: block;
+	}
+
+button.accent, a.button
+{
+	font-weight: 600;
+	background-color: #0078d4;
+	cursor: pointer;
+	color: white !important;
+	border: 1px solid #0078d4;
+	border-radius: 2px;
+	padding: 0px 16px;
+
+	height: 32px;
+	min-width: 80px;
+	text-align: center;
+	outline: none !important;
+	text-decoration: none !important;
+}
+
+	button.accent:hover, a.button:hover
+	{
+		background-color: rgb(16, 110, 190);
+		border: 1px solid rgb(16, 110, 190);
+	}
+
+	button.accent:active, a.button:active
+	{
+		background-color: rgb(0, 90, 158);
+		border: 1px solid rgb(0, 90, 158);
+	}
+
+a.button
+{
+	display: inline-block;
+	line-height: 28px;
+	vertical-align: bottom;
+	box-sizing: border-box;
+}
+
+button.link, a, a:visited
+{
+	color: rgb(0, 120, 212);
+	background: none;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+	button.link:hover, a:hover, a:visited:hover
+	{
+		color: rgb(0, 69, 120);
+		text-decoration: underline;
+	}
+
+	button.link:hover
+	{
+		text-decoration: none;
+	}
+
+	button.link:hover span
+	{
+		text-decoration: underline;
+	}
+
+	button.link i
+	{
+		font-family: "Segoe MDL2 Assets";
+		font-style: normal;
+		font-size: 16px;
+		margin-left: 4px;
+		vertical-align: bottom;
+	}
+
+input[type=number]
+{
+	padding-left: 9px;
+	padding-right: 9px;
+	height: 32px;
+	width: 100%;
+
+	border: 1px solid rgb(96, 94, 92);
+	box-sizing: border-box;
+	outline: none;
+	cursor: text;
+}
+
+	input[type=number]:active, input[type=number]:focus
+	{
+		border: 2px solid rgb(0, 120, 212);
+	}
+
+p
+{
+	margin: 0px;
+}
+
+.control.checkbox
+{
+	position: relative;
+	padding-left: 32px;
+	cursor: pointer;
+	margin-bottom: 5px;
+}
+	.control.checkbox input
+	{
+		position: absolute;
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+	.control.checkbox input + span
+	{
+		position: absolute;
+		left: 0;
+		height: 20px;
+		width: 20px;
+		border: 1px solid rgb(50, 49, 48);
+		border-radius: 2px;
+
+		transition-property: background, border, border-color;
+		transition-duration: 200ms;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.23, 1);
+	}
+		.control.checkbox input + span::after
+		{
+			position: absolute;
+			color: rgb(96, 94, 92);
+
+			font-family: "Segoe MDL2 Assets";
+			content: "\E001";
+
+			width: 20px;
+			height: 20px;
+			text-align: center;
+
+			display: none;
+		}
+			.control.checkbox input:checked + span::after
+			{
+				display: block;
+				color: white;
+			}
+			.control.checkbox:hover input + span::after
+			{
+				display: block;
+			}
+		.control.checkbox input:checked + span
+		{
+			background-color: rgb(0, 120, 212);
+			border-color: rgb(0, 120, 212);
+		}
+		.control.checkbox:hover input:checked + span
+		{
+			background-color: rgb(0, 90, 158);
+			border-color: rgb(0, 90, 158);
+		}
+
+/* Custom CSS */
+.bmc
+{
+	display: inline-grid !important;
+	grid-template-columns: auto 1fr;
+	grid-column-gap: 10px;
+	align-items: center;
+
+	background-color: #FF813F !important;
+	border-color: #FF813F !important;
+	color: white !important;
+
+	text-decoration: none;
+
+	height: 32px;
+}
+
+	.bmc svg
+	{
+		height: 20px;
+	}
+
+	.bmc span
+	{
+		margin-bottom: 2px;
+	}

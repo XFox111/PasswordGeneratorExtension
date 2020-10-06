@@ -1,0 +1,135 @@
+{
+	"name":
+	{
+		"message": "Генератор паролей",
+		"description": "Extension name. Displayed in the manifest and pane header"
+	},
+	"description":
+	{
+		"message": "Расширение, позволяющее вам легко генерировать сложные и надежные пароли в один клик",
+		"description": "Extension description"
+	},
+	"author":
+	{
+		"message": "Михаил \"XFox\" Гордеев",
+		"description": "Author's name"
+	},
+	"generate":
+	{
+		"message": "Сгенерировать пароль",
+		"description": "Main action label"
+	},
+	"success":
+	{
+		"message": "Пароль сгенерирован и скопирован в ваш буфер обмена",
+		"description": "Message which is shown after successful creation of a password"
+	},
+	"fail":
+	{
+		"message": "Установлены неправильные настройки генератора. Ничего не было сгенерировано",
+		"description": "Message which is shown after a creation of password failed"
+	},
+
+	"generatorOptions":
+	{
+		"message": "Настройки генератора",
+		"description": "Generator options group header"
+	},
+	"length":
+	{
+		"message": "Длина пароля",
+		"description": "Input field header"
+	},
+	"hint":
+	{
+		"message": "Рекомендованная длина пароля",
+		"description": "Password length field hint"
+	},
+	"includeSymbols":
+	{
+		"message": "Включить символы (например:",
+		"description": "Option checkbox label"
+	},
+	"includeNumbers":
+	{
+		"message": "Включить цифры (например:",
+		"description": "Option checkbox label"
+	},
+	"includeLowercase":
+	{
+		"message": "Включить буквы нижнего регистра (например:",
+		"description": "Option checkbox label"
+	},
+	"includeUppercase":
+	{
+		"message": "Включить буквы верхнего регистра (например:",
+		"description": "Option checkbox label"
+	},
+	"excludeSimilar":
+	{
+		"message": "Исключить похожие символы (например:",
+		"description": "Option checkbox label"
+	},
+	"excludeSpecial":
+	{
+		"message": "Исключить специальные символы (например:",
+		"description": "Option checkbox label"
+	},
+
+	"extOptions":
+	{
+		"message": "Настройки расширения",
+		"description": "Extension options group header"
+	},
+	"showButton":
+	{
+		"message": "Добавлять кнопку \"Сгенерировать пароль\" рядом с каждым полем ввода пароля",
+		"description": "Option checkbox label"
+	},
+	"showContext":
+	{
+		"message": "Добавить действие \"Сгенерировать пароль\" в контекстное меню браузера",
+		"description": "Option checkbox label"
+	},
+	"more":
+	{
+		"message": "Больше",
+		"description": "About section toggle button caption"
+	},
+
+	"about":
+	{
+		"message": "О расширении",
+		"description": "About info header"
+	},
+	"developed":
+	{
+		"message": "Разработал:",
+		"description": ""
+	},
+	"website":
+	{
+		"message": "Мой веб-сайт",
+		"description": "My website link caption"
+	},
+	"github":
+	{
+		"message": "Исходный код",
+		"description": "GitHub repo link caption"
+	},
+	"changelog":
+	{
+		"message": "Список изменений",
+		"description": "Changelog link caption"
+	},
+	"feedback":
+	{
+		"message": "Оставить отзыв",
+		"description": "Feedback CTA button"
+	},
+	"bmc":
+	{
+		"message": "Поддержать автора",
+		"description": "BMC CTA button cation"
+	}
+}

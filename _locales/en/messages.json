@@ -1,0 +1,135 @@
+{
+	"name":
+	{
+		"message": "Password generator",
+		"description": "Extension name. Displayed in the manifest and pane header"
+	},
+	"description":
+	{
+		"message": "Password generator extension allows you to easily generate long and secure password in one click",
+		"description": "Extension description"
+	},
+	"author":
+	{
+		"message": "Michael \"XFox\" Gordeev",
+		"description": "Author's name"
+	},
+	"generate":
+	{
+		"message": "Generate password",
+		"description": "Main action label"
+	},
+	"success":
+	{
+		"message": "Password has been generated and copied to your clipboard",
+		"description": "Message which is shown after successful creation of a password"
+	},
+	"fail":
+	{
+		"message": "Invalid generator settings. No password was generated",
+		"description": "Message which is shown after a creation of password failed"
+	},
+
+	"generatorOptions":
+	{
+		"message": "Generator options",
+		"description": "Generator options group header"
+	},
+	"length":
+	{
+		"message": "Password length",
+		"description": "Input field header"
+	},
+	"hint":
+	{
+		"message": "Reccommended password length",
+		"description": "Password length field hint"
+	},
+	"includeSymbols":
+	{
+		"message": "Include symbols (e.g.",
+		"description": "Option checkbox label"
+	},
+	"includeNumbers":
+	{
+		"message": "Include numbers (e.g.",
+		"description": "Option checkbox label"
+	},
+	"includeLowercase":
+	{
+		"message": "Include lowercase characters (e.g.",
+		"description": "Option checkbox label"
+	},
+	"includeUppercase":
+	{
+		"message": "Include uppercase characters (e.g.",
+		"description": "Option checkbox label"
+	},
+	"excludeSimilar":
+	{
+		"message": "Exclude similar characters (e.g.",
+		"description": "Option checkbox label"
+	},
+	"excludeSpecial":
+	{
+		"message": "Exclude ambiguous characters (e.g.",
+		"description": "Option checkbox label"
+	},
+
+	"extOptions":
+	{
+		"message": "Extension options",
+		"description": "Extension options group header"
+	},
+	"showButton":
+	{
+		"message": "Insert \"Generate password\" button below password fields",
+		"description": "Option checkbox label"
+	},
+	"showContext":
+	{
+		"message": "Add \"Generate password\" action to context menu",
+		"description": "Option checkbox label"
+	},
+	"more":
+	{
+		"message": "More",
+		"description": "About section toggle button caption"
+	},
+
+	"about":
+	{
+		"message": "About",
+		"description": "About info header"
+	},
+	"developed":
+	{
+		"message": "Developed by",
+		"description": ""
+	},
+	"website":
+	{
+		"message": "My website",
+		"description": "My website link caption"
+	},
+	"github":
+	{
+		"message": "Source code",
+		"description": "GitHub repo link caption"
+	},
+	"changelog":
+	{
+		"message": "Changelog",
+		"description": "Changelog link caption"
+	},
+	"feedback":
+	{
+		"message": "Leave feedback",
+		"description": "Feedback CTA button"
+	},
+	"bmc":
+	{
+		"message": "Buy me a coffee",
+		"description": "BMC CTA button cation"
+	}
+}
