@@ -1,13 +1,10 @@
 # Password generator
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/xfox111/PasswordGeneratorExtension)](https://github.com/xfox111/PasswordGeneratorExtension/releases/latest)
 ![CI](https://github.com/XFox111/PasswordGeneratorExtension/workflows/CI/badge.svg)
+[![Mozilla Add-on](https://img.shields.io/amo/rating/easy-password-generator?label=Firefox%20rating)](https://addons.mozilla.org/firefox/addon/easy-password-generator/)
 
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/jnjobgjobffgmgfnkpkjfjkkfhfikmfl?label=Chrome%20Webstore%20downloads)](https://chrome.google.com/webstore/detail/jnjobgjobffgmgfnkpkjfjkkfhfikmfl)
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/jnjobgjobffgmgfnkpkjfjkkfhfikmfl)](https://chrome.google.com/webstore/detail/jnjobgjobffgmgfnkpkjfjkkfhfikmfl)
-
 [![Mozilla Add-on](https://img.shields.io/amo/users/easy-password-generator?label=Firefox%20Webstore%20downloads)](https://addons.mozilla.org/firefox/addon/easy-password-generator/)
-[![Mozilla Add-on](https://img.shields.io/amo/rating/easy-password-generator)](https://addons.mozilla.org/firefox/addon/easy-password-generator/)
-[![Mozilla Add-on](https://img.shields.io/amo/dw/easy-password-generator)](https://addons.mozilla.org/firefox/addon/easy-password-generator/)
 
 [![GitHub issues](https://img.shields.io/github/issues/xfox111/PasswordGeneratorExtension)](https://github.com/xfox111/PasswordGeneratorExtension/issues)
 [![GitHub last commit](https://img.shields.io/github/last-commit/xfox111/PasswordGeneratorExtension)](https://github.com/xfox111/PasswordGeneratorExtension/commits/master)
@@ -18,7 +15,7 @@
 [![GitHub followers](https://img.shields.io/github/followers/xfox111?label=Follow%20@xfox111&style=social)](https://github.com/xfox111)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-%40xfox111-orange)](https://buymeacoffee.com/xfox111)
 
-![Password generator](https://xfox111.net/1cj439)
+![Password generator](https://xfox111.net/ma4rop)
 
 Extension for web browsers which helps you to easily generate strong passwords in one click
 
@@ -27,6 +24,8 @@ Extension for web browsers which helps you to easily generate strong passwords i
 - Customizable generator
 - Clean and simple UI
 - Dark mode
+
+![Password generator demo](https://xfox111.net/1cj439)
 
 ## Download
 - [Google Chrome Webstore](https://chrome.google.com/webstore/detail/jnjobgjobffgmgfnkpkjfjkkfhfikmfl)
