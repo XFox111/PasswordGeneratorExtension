@@ -29,6 +29,11 @@
 		"message": "Invalid generator settings. No password was generated",
 		"description": "Message which is shown after a creation of password failed"
 	},
+	"lengthPrompt":
+	{
+		"message": "Set password length. Press OK to use default password length (%LEN% characters)",
+		"description": "A prompt message when user generates a password"
+	},
 
 	"generatorOptions":
 	{
@@ -89,6 +94,16 @@
 	"showContext":
 	{
 		"message": "Add \"Generate password\" action to context menu",
+		"description": "Option checkbox label"
+	},
+	"hideAlert":
+	{
+		"message": "Hide successful password generation message",
+		"description": "Option checkbox label"
+	},
+	"promptForLength":
+	{
+		"message": "Prompt for password length every time before generating",
 		"description": "Option checkbox label"
 	},
 	"more":
