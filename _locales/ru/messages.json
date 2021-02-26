@@ -29,6 +29,11 @@
 		"message": "Установлены неправильные настройки генератора. Ничего не было сгенерировано",
 		"description": "Message which is shown after a creation of password failed"
 	},
+	"lengthPrompt":
+	{
+		"message": "Укажите длину пароля. Нажмите ОК чтобы использовать длину по умолчанию (%LEN% символов)",
+		"description": "A prompt message when user generates a password"
+	},
 
 	"generatorOptions":
 	{
@@ -89,6 +94,16 @@
 	"showContext":
 	{
 		"message": "Добавить действие \"Сгенерировать пароль\" в контекстное меню браузера",
+		"description": "Option checkbox label"
+	},
+	"hideAlert":
+	{
+		"message": "Не показывать сообщение при генерации пароля",
+		"description": "Option checkbox label"
+	},
+	"promptForLength":
+	{
+		"message": "Спрашивать длину пароля перед генерацией",
 		"description": "Option checkbox label"
 	},
 	"more":

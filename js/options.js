@@ -13,7 +13,9 @@ chrome.storage.sync.get(
 
 		// Extension settings
 		showButton: true,
-		showContext: true
+		showContext: true,
+		hideAlert: false,
+		promptForLength: false
 	},
 	(settings) =>
 	{
@@ -32,7 +34,9 @@ chrome.storage.sync.get(
 			"excludeSpecial",
 
 			"showButton",
-			"showContext"
+			"showContext",
+			"hideAlert",
+			"promptForLength"
 		].forEach(i => document.querySelector("#" + i).checked = settings[i]);
 
 		SetupEventHandlers();
@@ -46,7 +50,7 @@ function SetupEventHandlers()
 		i.addEventListener("input",
 			() => chrome.storage.sync.set(JSON.parse("{ \"" + i.id + "\": " + (i.type == "checkbox" ? i.checked : i.value) + " }"))));
 
-	document.querySelector("#generate").addEventListener("click", () => GeneratePassword(null));
+	document.querySelector("#generate").addEventListener("click", () => GeneratePassword(null, true));
 	document.querySelector("#more").addEventListener("click", (s) =>
 	{
 		let group = document.querySelector("#about");

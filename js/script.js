@@ -34,7 +34,7 @@ function InsertButtons()
 		});
 }
 
-function GeneratePassword(e)
+function GeneratePassword(e, useDefaultLength = false)
 {
 	// Generating password
 	let availableCharacters = "";	// Set of available characters to generate a password from
@@ -47,7 +47,9 @@ function GeneratePassword(e)
 			includeLowercase: true,
 			includeUppercase: true,
 			excludeSimilar: true,
-			excludeSpecial: true
+			excludeSpecial: true,
+			hideAlert: false,
+			promptForLength: false
 		},
 		(settings) =>
 		{
@@ -72,7 +74,24 @@ function GeneratePassword(e)
 			}
 
 			let password = "";
-			for (k = 0; k < settings.length; k++)
+			var pwdLength = settings.length;
+			if (settings.promptForLength && !useDefaultLength)
+				while(true)
+				{
+					var response = prompt(chrome.i18n.getMessage("lengthPrompt").replace("%LEN%", settings.length));
+					if (response === null)	// If user clicked 'Cancel'
+						return;
+
+					if (parseInt(response))
+					{
+						pwdLength = response;
+						break;
+					}
+					else if (!response)	// Continue with default length if no response is provided. Try again if input is invalid
+						break;
+				}
+
+			for (k = 0; k < pwdLength; k++)
 				password += availableCharacters[GetRandomInt(0, availableCharacters.length)];	// Picking random characters
 
 			let field = e?.target.previousElementSibling;
@@ -97,7 +116,8 @@ function GeneratePassword(e)
 			if (!e)
 				field.remove();
 
-			alert(chrome.i18n.getMessage("success"));
+			if (settings.hideAlert === false)
+				alert(chrome.i18n.getMessage("success"));
 		});
 }
 
