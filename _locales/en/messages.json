@@ -29,6 +29,11 @@
 		"message": "Invalid generator settings. No password was generated",
 		"description": "Message which is shown after a creation of password failed"
 	},
+	"notEnoughChars":
+	{
+		"message": "With your current settings, your password length should not exceed %MIN_CHARS% characters",
+		"description": "Message which is shown if there's no enough characters to create a password"
+	},
 	"lengthPrompt":
 	{
 		"message": "Set password length. Press OK to use default password length (%LEN% characters)",
@@ -78,6 +83,11 @@
 	"excludeSpecial":
 	{
 		"message": "Exclude ambiguous characters (e.g.",
+		"description": "Option checkbox label"
+	},
+	"dontRepeatChars":
+	{
+		"message": "Do not repeat characters",
 		"description": "Option checkbox label"
 	},
 

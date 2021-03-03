@@ -20,7 +20,7 @@
 	<h2 loc="generatorOptions">Generator options</h2>
 	<div class="group">
 		<label for="length" style="margin: 5px 0px;"><b loc="length">Password length</b></label>
-		<input id="length" type="number" />
+		<input id="length" type="number" min="2"/>
 		<label><span loc="hint">Reccommended password length:</span> <b>16-32</b></label>
 	</div>
 	<div class="group">
@@ -53,6 +53,11 @@
 			<input id="excludeSpecial" type="checkbox" />
 			<span class="mark"></span>
 			<span><span loc="excludeSpecial">Exclude ambiguous characters (e.g.</span> { } [ ] ( ) / \ ' " ` ~ , ; : . &lt; &gt;)</span>
+		</label>
+		<label class="checkbox control">
+			<input id="dontRepeatChars" type="checkbox" />
+			<span class="mark"></span>
+			<span><span loc="dontRepeatChars">Do not repeat characters</span>
 		</label>
 	</div>
 
