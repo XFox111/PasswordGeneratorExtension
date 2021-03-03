@@ -2,29 +2,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: DownloadGitHubRelease@0
-  name: downloadRelease
-  inputs:
-    connection: 'GitHub connection'
-    userRepository: 'XFox111/PasswordGeneratorExtension'
-    defaultVersionType: 'latest'
-    itemPattern: '**.zip'
-    downloadPath: '$(System.ArtifactsDirectory)'
-
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: '$(System.ArtifactsDirectory)/**.zip'
-    destinationFolder: '$(Build.ArtifactStagingDirectory)/Source'
-    cleanDestinationFolder: true
-    overwriteExistingFiles: false
-
 - task: ArchiveFiles@2
   displayName: 'Create package'
   inputs:
     rootFolderOrFile: '$(Build.Repository.LocalPath)'
     includeRootFolder: false
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/PasswordGenerator-$(Build.BuildId).zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/PasswordGenerator-$(Build.BuildNumber).zip'
     replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
@@ -36,10 +20,9 @@ steps:
 
 - task: store-publish@0
   displayName: 'Deploy package'
-  enabled: false
   inputs:
     serviceEndpoint: 'Microsoft Partner Center Connection'
     appId: '0RDCKDGH3MWT'
-    packagePath: '$(Build.ArtifactStagingDirectory)/PasswordGenerator-$(Build.BuildId).zip'
-    force: false
-    skipPolling: false
+    packagePath: '$(Build.ArtifactStagingDirectory)/PasswordGenerator-$(Build.BuildNumber).zip'
+    force: true
+    skipPolling: true
