@@ -2,11 +2,8 @@ name: CI
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ master ]
-    paths:
-      # Trigger deploy on manifest change
-      - 'manifest.json'
+  release:
+    types: [published]
 
 jobs:
   Firefox:
@@ -35,7 +32,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: 'Firefox Artefacts'
-        path: ${{ steps.web-ext-sign.outputs.target }}
+        path: ${{ steps.web-ext-build.outputs.target }}
 
   Chrome:
     runs-on: ubuntu-latest
@@ -63,3 +60,13 @@ jobs:
       with:
         name: 'Chrome Artifacts'
         path: ./PasswordGenerator.zip
+
+  MicrosoftEdge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: Azure/pipelines@v1
+        with:
+          azure-devops-project-url: 'https://dev.azure.com/xfox111/GitHub%20CI'
+          azure-pipeline-name: 'XFox111.PasswordGeneratorExtension'
+          azure-devops-token: '${{ secrets.AZURE_DEVOPS_TOKEN }}'

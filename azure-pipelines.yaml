@@ -1,0 +1,37 @@
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: DownloadGitHubRelease@0
+  name: downloadRelease
+  inputs:
+    connection: 'GitHub connection'
+    userRepository: 'XFox111/PasswordGeneratorExtension'
+    defaultVersionType: 'latest'
+    itemPattern: '**.zip'
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+- task: ExtractFiles@1
+  inputs:
+    archiveFilePatterns: '$(System.ArtifactsDirectory)/**.zip'
+    destinationFolder: '$(Build.ArtifactStagingDirectory)/Source'
+    cleanDestinationFolder: true
+    overwriteExistingFiles: false
+
+- task: ArchiveFiles@2
+  displayName: 'Create package'
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/Source/*'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: 'PasswordGenerator.zip'
+    replaceExistingArchive: true
+
+- task: store-publish@0
+  displayName: 'Deploy package'
+  inputs:
+    serviceEndpoint: 'Microsoft Partner Center Connection'
+    appId: '0RDCKDGH3MWT'
+    packagePath: '$(Build.ArtifactStagingDirectory)/PasswordGenerator.zip'
+    force: false
+    skipPolling: false
