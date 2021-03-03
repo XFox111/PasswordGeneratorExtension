@@ -54,6 +54,15 @@ jobs:
         client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
         refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
+    - name: Upload artifact
+      uses: xresloader/upload-to-github-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        file: ./PasswordGenerator.zip
+        tags: true
+        draft: true
+
     - name: Drop artifacts
       uses: actions/upload-artifact@v2
       with:
