@@ -21,17 +21,25 @@ steps:
 - task: ArchiveFiles@2
   displayName: 'Create package'
   inputs:
-    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/Source/*'
+    rootFolderOrFile: '$(Build.Repository.LocalPath)'
     includeRootFolder: false
     archiveType: 'zip'
-    archiveFile: 'PasswordGenerator.zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/PasswordGenerator-$(Build.BuildId).zip'
     replaceExistingArchive: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Drop artifacts'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
 
 - task: store-publish@0
   displayName: 'Deploy package'
+  enabled: false
   inputs:
     serviceEndpoint: 'Microsoft Partner Center Connection'
     appId: '0RDCKDGH3MWT'
-    packagePath: '$(Build.ArtifactStagingDirectory)/PasswordGenerator.zip'
+    packagePath: '$(Build.ArtifactStagingDirectory)/PasswordGenerator-$(Build.BuildId).zip'
     force: false
     skipPolling: false
