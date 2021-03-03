@@ -61,7 +61,7 @@ jobs:
       with:
         file: ./PasswordGenerator.zip
         tags: true
-        draft: true
+        draft: false
 
     - name: Drop artifacts
       uses: actions/upload-artifact@v2
