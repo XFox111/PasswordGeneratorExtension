@@ -10,6 +10,7 @@ chrome.storage.sync.get(
 		includeUppercase: true,
 		excludeSimilar: true,
 		excludeSpecial: true,
+		dontRepeatChars: false,
 
 		// Extension settings
 		showButton: true,
@@ -32,6 +33,7 @@ chrome.storage.sync.get(
 			"includeUppercase",
 			"excludeSimilar",
 			"excludeSpecial",
+			"dontRepeatChars",
 
 			"showButton",
 			"showContext",
@@ -47,8 +49,11 @@ chrome.storage.sync.get(
 function SetupEventHandlers()
 {
 	document.querySelectorAll("input").forEach(i =>
-		i.addEventListener("input",
-			() => chrome.storage.sync.set(JSON.parse("{ \"" + i.id + "\": " + (i.type == "checkbox" ? i.checked : i.value) + " }"))));
+		i.addEventListener(
+			"input",
+			() => chrome.storage.sync.set(JSON.parse("{ \"" + i.id + "\": " + (i.type == "checkbox" ? i.checked : i.value) + " }"))
+		)
+	);
 
 	document.querySelector("#generate").addEventListener("click", () => GeneratePassword(null, true));
 	document.querySelector("#more").addEventListener("click", (s) =>
@@ -57,12 +62,12 @@ function SetupEventHandlers()
 		if (group.hasAttribute("hidden"))
 		{
 			group.removeAttribute("hidden");
-			s.currentTarget.querySelector("i").textContent = "";
+			s.currentTarget.querySelector("i").textContent = "\uE010";
 		}
 		else
 		{
 			group.setAttribute("hidden", "");
-			s.currentTarget.querySelector("i").textContent = "";
+			s.currentTarget.querySelector("i").textContent = "\uE011";
 		}
 	});
 }

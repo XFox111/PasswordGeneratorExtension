@@ -49,7 +49,8 @@ function GeneratePassword(e, useDefaultLength = false)
 			excludeSimilar: true,
 			excludeSpecial: true,
 			hideAlert: false,
-			promptForLength: false
+			promptForLength: false,
+			dontRepeatChars: false,
 		},
 		(settings) =>
 		{
@@ -82,7 +83,7 @@ function GeneratePassword(e, useDefaultLength = false)
 					if (response === null)	// If user clicked 'Cancel'
 						return;
 
-					if (parseInt(response))
+					if (parseInt(response) && response > 1)
 					{
 						pwdLength = response;
 						break;
@@ -90,6 +91,12 @@ function GeneratePassword(e, useDefaultLength = false)
 					else if (!response)	// Continue with default length if no response is provided. Try again if input is invalid
 						break;
 				}
+
+			if (settings.dontRepeatChars && availableCharacters.length < pwdLength)
+			{
+				alert(chrome.i18n.getMessage("notEnoughChars").replace("%MIN_CHARS%", availableCharacters.length));
+				return;
+			}
 
 			for (k = 0; k < pwdLength; k++)
 				password += availableCharacters[GetRandomInt(0, availableCharacters.length)];	// Picking random characters
