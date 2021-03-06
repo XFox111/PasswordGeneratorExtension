@@ -2,7 +2,7 @@
 const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowerCase = upperCase.toLowerCase();
 const numbers = "1234567890";
-const specialCharacters = "@#$%";
+const specialCharacters = "!#$%&*+-=?@^_";
 const ambiguousCharacters = "{}[]()/\\'\"`~,;:.<>";
 const similarCharacters = "il1Lo0O";
 
@@ -74,7 +74,6 @@ function GeneratePassword(e, useDefaultLength = false)
 				return;
 			}
 
-			let password = "";
 			var pwdLength = settings.length;
 			if (settings.promptForLength && !useDefaultLength)
 				while(true)
@@ -83,7 +82,7 @@ function GeneratePassword(e, useDefaultLength = false)
 					if (response === null)	// If user clicked 'Cancel'
 						return;
 
-					if (parseInt(response) && response > 1)
+					if (parseInt(response) && response >= 6)
 					{
 						pwdLength = response;
 						break;
@@ -98,8 +97,21 @@ function GeneratePassword(e, useDefaultLength = false)
 				return;
 			}
 
-			for (k = 0; k < pwdLength; k++)
-				password += availableCharacters[GetRandomInt(0, availableCharacters.length)];	// Picking random characters
+			do
+			{
+				var password = "";
+				var leftCharacters = availableCharacters;
+				for (k = 0; k < pwdLength; k++)
+				{
+					password += leftCharacters[GetRandomInt(0, leftCharacters.length)];	// Picking random characters
+					if (settings.dontRepeatChars)
+						leftCharacters = leftCharacters.replace(password[k], "");
+				}
+			}
+			while (!((!settings.includeSymbols || ContainsAny(password, specialCharacters)) &&
+					(!settings.includeNumbers || ContainsAny(password, numbers)) &&
+					(!settings.includeLowercase || ContainsAny(password, lowerCase)) &&
+					(!settings.includeUppercase || ContainsAny(password, upperCase))));
 
 			let field = e?.target.previousElementSibling;
 			// Creating a hidden field if called as standalone
@@ -132,4 +144,13 @@ function GeneratePassword(e, useDefaultLength = false)
 function GetRandomInt(min, max)
 {
 	return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function ContainsAny(array1, array2)
+{
+	for(var k = 0; k < array2.length; k++)
+		if (array1.includes(array2[k]))
+			return true;
+
+	return false;
 }
