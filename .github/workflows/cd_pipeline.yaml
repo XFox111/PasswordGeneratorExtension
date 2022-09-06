@@ -49,6 +49,7 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: 'Build'
+        path: Build
 
     - name: Build Extension for Firefox
       id: web-ext-build
@@ -92,6 +93,7 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: 'Build'
+        path: Build
 
     - name: Pack extension
       uses: TheDoctor0/zip-release@0.6.2
@@ -133,6 +135,7 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: 'Build'
+        path: Build
 
     - name: Pack extension
       uses: TheDoctor0/zip-release@0.6.2
