@@ -4,6 +4,13 @@ on:
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+      - 'PRIVACY'
+      - '**/cd_pipeline.yaml'
+      - '**/dependabot.yml'
+      - '**/codeql-analysis.yml'
   workflow_dispatch:
 
 jobs:

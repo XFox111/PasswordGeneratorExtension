@@ -14,9 +14,23 @@ name: "CodeQL"
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+      - 'PRIVACY'
+      - '**/cd_pipeline.yaml'
+      - '**/dependabot.yml'
+      - '**/pr_pipeline.yaml'
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "main" ]
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+      - 'PRIVACY'
+      - '**/cd_pipeline.yaml'
+      - '**/dependabot.yml'
+      - '**/pr_pipeline.yaml'
   schedule:
     - cron: '24 7 * * 3'
 
