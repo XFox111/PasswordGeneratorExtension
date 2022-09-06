@@ -68,9 +68,9 @@ Please include the following with each issue:
 
 ### Final Checklist
 Please remember to do the following:
-- [ ] Search the issue repository to ensure your report is a new issue
-- [ ] Separate issues reports
-- [ ] Include as much information as you can to your report
+- [*] Search the issue repository to ensure your report is a new issue
+- [*] Separate issues reports
+- [*] Include as much information as you can to your report
 
 Don't feel bad if the developers can't reproduce the issue right away. They will simply ask for more information!
 
@@ -85,23 +85,34 @@ If you are interested in writing code to fix issues or implement new awesome fea
     ```
     git clone https://github.com/xfox111/PasswordGeneratorExtension.git
     ```
+2. Install [Node.js](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/)
+3. Open terminal in project directory and run
+	```bash
+	yarn install
+	```
+4. Build project
+	```bash
+	yarn build
+	```
 2. Enable Developers mode on your browser extensions page
-3. Click "Load unpacked" button and navigate to the extension root folder (contains `manifest.json`)
+3. Click "Load unpacked" button and navigate to the `build` folder of the repo (contains `manifest.json`)
 4. Done!
 
-Next time you make any changes to the codebase, reload extension by toggling it off and on or by pressing "Reload" button on extensions list page
+To run extension as standalone web application you can use `yarn start` command
+
+Next time you make any changes to the codebase, rebuild extension with `yarn build` and reload extension by toggling it off and on or by pressing "Reload" button on extensions list page
 
 ### Development workflow
 This section represents how contributors should interact with codebase implementing features and fixing bugs
 1. Getting assigned to the issue
 2. Creating a repository fork
 3. Making changes to codebase
-5. Creating a pull request to `master`
+5. Creating a pull request to `main`
 6. Reviewing & completing PR
 7. Done
 
 #### Release
-Next stage is release. Release performs on every push to master (which makes functional changes to the source code). Release performs manually by @XFox111 into: Chrome webstore, Edge webstore and GitHub releases
+Next stage is release. Release performs on every push to main (which makes functional changes to the source code). Release performs manually by @XFox111 into: Chrome webstore, Edge webstore and GitHub releases
 
 ### Coding guidelines
 #### Indentation
