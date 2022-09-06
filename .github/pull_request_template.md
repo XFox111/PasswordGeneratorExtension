@@ -8,5 +8,7 @@ fixes: #issue_number
 - Item 2
 - Item 3
 
-## PR Checklist
+## PR Checklist (main branch)
 - [ ] Update extension version in `package.json`
+- [ ] [Post-merge] Create a release to publish the new version
+- [ ] [Post-deploy] Update changelog for Firefox webstore
