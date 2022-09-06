@@ -71,7 +71,7 @@ jobs:
     - name: Drop artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: 'Firefox build'
+        name: 'Firefox'
         path: ${{ steps.web-ext-sign.outputs.target }}
 
     - name: Upload artifact
@@ -99,13 +99,13 @@ jobs:
       uses: TheDoctor0/zip-release@0.6.2
       with:
         directory: Build
-        filename: ./PasswordGenerator.zip
+        filename: chrome.zip
 
     - name: Publish to Chrome Webstore
       uses: SebastienGllmt/chrome-addon@v3
       with:
         extension: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
-        zip: ./PasswordGenerator.zip
+        zip: chrome.zip
         client-id: ${{ secrets.CHROME_CLIENT_ID }}
         client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
         refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
@@ -113,15 +113,15 @@ jobs:
     - name: Drop artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: 'Chrome Artifacts'
-        path: ./PasswordGenerator.zip
+        name: 'Chrome'
+        path: chrome.zip
 
     - name: Upload artifact
       uses: xresloader/upload-to-github-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        file: ./PasswordGenerator.zip
+        file: chrome.zip
         tags: true
         draft: false
 
@@ -141,13 +141,13 @@ jobs:
       uses: TheDoctor0/zip-release@0.6.2
       with:
         directory: Build
-        filename: ./PasswordGenerator.zip
+        filename: edge.zip
 
     - name: Publish to Edge Addons
       uses: wdzeng/edge-addon@v1
       with:
         product-id: 0RDCKDGH3MWT
-        zip-path: ./PasswordGenerator.zip
+        zip-path: edge.zip
         client-id: ${{ secrets.EDGE_CLIENT_ID }}
         client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
         access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
