@@ -3,8 +3,7 @@ name: Bug report
 about: Create a report to help us improve the extension
 title: ''
 labels: bug
-assignees: ''
-
+assignees: @XFox111
 ---
 
 ### Description
@@ -31,3 +30,5 @@ Please provide the following information:
 
 ### Additional context
 Add any other context about the problem here.
+
+- [ ] Are you willing to submit a pull request to implement this feature yourself?
