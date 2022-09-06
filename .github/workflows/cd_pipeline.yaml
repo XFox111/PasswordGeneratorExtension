@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Update manifest version
       uses: Amadevus/pwsh-script@v2
@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - uses: actions/download-artifact@v3
       with:
@@ -67,7 +67,7 @@ jobs:
         apiSecret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
 
     - name: Drop artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: 'Firefox build'
         path: ${{ steps.web-ext-sign.outputs.target }}
@@ -85,14 +85,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - uses: actions/download-artifact@v3
       with:
         name: 'Build'
 
     - name: Pack extension
-      uses: TheDoctor0/zip-release@0.4.1
+      uses: TheDoctor0/zip-release@0.6.2
       with:
         directory: Build
         filename: ./PasswordGenerator.zip
@@ -107,7 +107,7 @@ jobs:
         refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
     - name: Drop artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: 'Chrome Artifacts'
         path: ./PasswordGenerator.zip
@@ -125,14 +125,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - uses: actions/download-artifact@v3
       with:
         name: 'Build'
 
     - name: Pack extension
-      uses: TheDoctor0/zip-release@0.4.1
+      uses: TheDoctor0/zip-release@0.6.2
       with:
         directory: Build
         filename: ./PasswordGenerator.zip
