@@ -34,7 +34,7 @@ jobs:
     - run: yarn build
 
     - name: 'Drop artifacts'
-      uses: actions/upload-artifacts@v3.0.0
+      uses: actions/upload-artifact@v3.1.0
       with:
         name: 'Build'
         path: 'build'
