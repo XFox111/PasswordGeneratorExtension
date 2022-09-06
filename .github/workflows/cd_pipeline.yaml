@@ -67,7 +67,7 @@ jobs:
         apiSecret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
 
     - name: Drop artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: 'Firefox build'
         path: ${{ steps.web-ext-sign.outputs.target }}
@@ -107,7 +107,7 @@ jobs:
         refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
     - name: Drop artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: 'Chrome Artifacts'
         path: ./PasswordGenerator.zip
