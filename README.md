@@ -16,7 +16,7 @@ Extension for web browsers which helps you to easily generate strong passwords i
 - Clean and simple UI
 - Dark mode
 
-![Password generator v2.0](https://img4.teletype.in/files/75/26/752695cc-d757-431a-86e9-189af9c2adb4.png)
+<img width="1136" alt="Password generator v2.0" src="https://user-images.githubusercontent.com/28831743/188680034-a673b1b4-3153-4054-bb0d-949568de1748.png">
 
 ## Download
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/jnjobgjobffgmgfnkpkjfjkkfhfikmfl?label=Chrome%20Webstore%20downloads)](https://chrome.google.com/webstore/detail/jnjobgjobffgmgfnkpkjfjkkfhfikmfl)
