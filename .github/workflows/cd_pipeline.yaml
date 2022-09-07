@@ -43,69 +43,50 @@ jobs:
       uses: TheDoctor0/zip-release@0.6.2
       with:
         directory: build
-        filename: ../PasswordGenerator-chromium.zip
+        filename: ../PasswordGenerator.zip
 
     - name: Drop artifacts (Chromium)
       uses: actions/upload-artifact@v3.1.0
       with:
         name: Chromium
-        path: PasswordGenerator-chromium.zip
+        path: PasswordGenerator.zip
 
     - name: Attach build to release
       uses: xresloader/upload-to-github-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        file: PasswordGenerator-chromium.zip
-        tags: true
+        file: PasswordGenerator.zip
         draft: false
         update_latest_release: true
 
-  # Firefox:
-  #   needs: Build
-  #   runs-on: ubuntu-latest
+  Firefox:
+    needs: Build
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #   - uses: actions/checkout@v3
+    steps:
+    - uses: actions/checkout@v3
 
-  #   - uses: actions/download-artifact@v3
-  #     with:
-  #       name: 'Build'
-  #       path: Build
+    - uses: actions/download-artifact@v3
+      with:
+        name: Build
+        path: Build
 
-  #   - name: Build Extension for Firefox
-  #     id: web-ext-build
-  #     uses: kewisch/action-web-ext@v1
-  #     with:
-  #       cmd: build
-  #       source: Build
+    - name: Build (Firefox)
+      id: web-ext-build
+      uses: kewisch/action-web-ext@v1
+      with:
+        cmd: build
+        source: Build
 
-  #   - name: 'Sign & publish'
-  #     id: web-ext-sign
-  #     uses: kewisch/action-web-ext@v1
-  #     timeout-minutes: 5
-  #     with:
-  #       cmd: sign
-  #       channel: listed
-  #       source: ${{ steps.web-ext-build.outputs.target }}
-  #       apiKey: ${{ secrets.FIREFOX_API_KEY }}
-  #       apiSecret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
-
-  #   - name: Drop artifacts
-  #     uses: actions/upload-artifact@v3
-  #     with:
-  #       name: 'Firefox-signed'
-  #       path: ${{ steps.web-ext-sign.outputs.target }}
-
-  #   - name: Upload artifact
-  #     uses: xresloader/upload-to-github-release@v1
-  #     env:
-  #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #     with:
-  #       file: ${{ steps.web-ext-sign.outputs.target }}
-  #       tags: true
-  #       draft: false
-  #       update_latest_release: true
+    - name: Publish
+      uses: thoughtsunificator/firefox-publish-action@master
+      with:
+        zip: ${{ steps.web-ext-build.outputs.target }}
+        firefox-jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
+        firefox-jwt-secret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
+        firefox-guid: ${{ secrets.FIREFOX_EXT_UUID }}
+        firefox-manifest: Build/manifest.json
 
   # Chrome:
   #   needs: Build
@@ -122,27 +103,27 @@ jobs:
   #     uses: SebastienGllmt/chrome-addon@v3
   #     with:
   #       extension: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
-  #       zip: PasswordGenerator-chromium.zip
+  #       zip: PasswordGenerator.zip
   #       client-id: ${{ secrets.CHROME_CLIENT_ID }}
   #       client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
   #       refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
-  # Edge:
-  #   needs: Build
-  #   runs-on: ubuntu-latest
+  Edge:
+    needs: Build
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #   - uses: actions/checkout@v3
+    steps:
+    - uses: actions/checkout@v3
 
-  #   - uses: actions/download-artifact@v3
-  #     with:
-  #       name: Chromium
+    - uses: actions/download-artifact@v3
+      with:
+        name: Chromium
 
-  #   - name: Publish to Edge Addons
-  #     uses: wdzeng/edge-addon@v1
-  #     with:
-  #       product-id: ${{ secrets.EDGE_PRODUCT_ID }}
-  #       zip-path: PasswordGenerator-chromium.zip
-  #       client-id: ${{ secrets.EDGE_CLIENT_ID }}
-  #       client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
-  #       access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
+    - name: Publish to Edge Addons
+      uses: wdzeng/edge-addon@v1
+      with:
+        product-id: ${{ secrets.EDGE_PRODUCT_ID }}
+        zip-path: PasswordGenerator.zip
+        client-id: ${{ secrets.EDGE_CLIENT_ID }}
+        client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
+        access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
