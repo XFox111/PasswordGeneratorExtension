@@ -1,0 +1,56 @@
+{
+	"$schema": "https://json.schemastore.org/chrome-manifest.json",
+	"manifest_version": 2,
+
+	"name": "__MSG_name__",
+	"description": "__MSG_description__",
+	"author": "__MSG_author__",
+
+	"version": "2.0.0",
+	"default_locale": "en",
+
+	"permissions":
+	[
+		"storage",
+		"contextMenus",
+		"clipboardWrite"
+	],
+
+	"background":
+	{
+		"scripts": [ "./static/js/background.js" ],
+		"persistent": true
+	},
+	"content_scripts":
+	[
+		{
+			"matches": [ "<all_urls>" ],
+			"js": [ "./static/js/contentScript.js" ],
+			"run_at": "document_idle",
+			"all_frames": true
+		}
+	],
+
+	"browser_action":
+	{
+		"default_popup": "index.html",
+		"default_title": "__MSG_name__"
+	},
+
+	"icons":
+	{
+		"128": "icons/icon-128.png",
+		"48": "icons/icon-48.png",
+		"32": "icons/icon-32.png",
+		"16": "icons/icon-16.png"
+	},
+
+	"browser_specific_settings":
+	{
+		"gecko":
+		{
+			"id": "passwordgenerator@xfox111.net",
+			"strict_min_version": "58.0"
+		}
+	}
+}

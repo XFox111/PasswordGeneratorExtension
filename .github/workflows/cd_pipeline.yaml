@@ -13,141 +13,157 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Update manifest version
+    - name: Configure manifest
       uses: Amadevus/pwsh-script@v2
       with:
         script: |
           [PSCustomObject] $package = Get-Content "package.json" | ConvertFrom-Json;
+
           [PSCustomObject] $manifest = Get-Content "public/manifest.json" | ConvertFrom-Json;
-
           $manifest.version = $package.version;
-
           $manifest | ConvertTo-Json -Depth 10 | Out-File "public/manifest.json"
+
+          $manifest = Get-Content "public/manifest.firefox.json" | ConvertFrom-Json;
+          $manifest.version = $package.version;
+          $manifest | ConvertTo-Json -Depth 10 | Out-File "public/manifest.firefox.json"
 
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '16.x'
-        cache: 'yarn'
+        cache: yarn
 
     - run: yarn install
     - run: yarn build
 
-    - name: 'Drop artifacts'
+    - name: Drop artifacts (build)
       uses: actions/upload-artifact@v3.1.0
       with:
-        name: 'Build'
-        path: 'build'
+        name: build
+        path: build
 
-  Firefox:
+  Pack-Chromium:
     needs: Build
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-
     - uses: actions/download-artifact@v3
       with:
-        name: 'Build'
-        path: Build
+        name: build
 
-    - name: Build Extension for Firefox
-      id: web-ext-build
-      uses: kewisch/action-web-ext@v1
+    - name: Configure manifest
+      uses: Amadevus/pwsh-script@v2
       with:
-        cmd: build
-        source: Build
-
-    - name: 'Sign & publish'
-      id: web-ext-sign
-      uses: kewisch/action-web-ext@v1
-      with:
-        cmd: sign
-        channel: listed
-        source: ${{ steps.web-ext-build.outputs.target }}
-        apiKey: ${{ secrets.FIREFOX_API_KEY }}
-        apiSecret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
-
-    - name: Drop artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: 'Firefox build'
-        path: ${{ steps.web-ext-sign.outputs.target }}
-
-    - name: Upload artifact
-      uses: xresloader/upload-to-github-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        file: ${{ steps.web-ext-sign.outputs.target }}
-        tags: true
-        draft: false
-
-  Chrome:
-    needs: Build
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-
-    - uses: actions/download-artifact@v3
-      with:
-        name: 'Build'
-        path: Build
+        script: Remove-Item "manifest.firefox.json"
 
     - name: Pack extension
       uses: TheDoctor0/zip-release@0.6.2
       with:
-        directory: Build
-        filename: ./PasswordGenerator.zip
+        filename: PasswordGenerator-Chromium.zip
 
-    - name: Publish to Chrome Webstore
-      uses: SebastienGllmt/chrome-addon@v3
+    - name: Drop artifacts (Chromium)
+      uses: actions/upload-artifact@v3.1.0
       with:
-        extension: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
-        zip: ./PasswordGenerator.zip
+        name: Chromium
+        path: PasswordGenerator-Chromium.zip
+
+    - name: Attach build to release
+      uses: xresloader/upload-to-github-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        file: PasswordGenerator-Chromium.zip
+        draft: false
+        update_latest_release: true
+
+  Pack-Firefox:
+    needs: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: build
+
+    - name: Configure manifest
+      uses: Amadevus/pwsh-script@v2
+      with:
+        script: |
+          Remove-Item "manifest.json"
+          Rename-Item "manifest.firefox.json" "manifest.json"
+
+    - name: Pack extension
+      uses: TheDoctor0/zip-release@0.6.2
+      with:
+        filename: PasswordGenerator-Firefox.zip
+
+    - name: Drop artifacts (Firefox)
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: Firefox
+        path: PasswordGenerator-Firefox.zip
+
+    - name: Attach build to release
+      uses: xresloader/upload-to-github-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        file: PasswordGenerator-Firefox.zip
+        draft: false
+        update_latest_release: true
+
+  Chrome:
+    needs: Pack-Chromium
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download artifacts (Chromium)
+      uses: actions/download-artifact@v3
+      with:
+        name: Chromium
+
+    - name: Publish to Chrome Web Store
+      uses: wdzeng/chrome-extension@v1
+      with:
+        extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
+        zip-path: PasswordGenerator-Chromium.zip
         client-id: ${{ secrets.CHROME_CLIENT_ID }}
         client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
         refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
-    - name: Drop artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: 'Chrome Artifacts'
-        path: ./PasswordGenerator.zip
-
-    - name: Upload artifact
-      uses: xresloader/upload-to-github-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        file: ./PasswordGenerator.zip
-        tags: true
-        draft: false
-
   Edge:
-    needs: Build
+    needs: Pack-Chromium
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-
-    - uses: actions/download-artifact@v3
+    - name: Download artifacts (Chromium)
+      uses: actions/download-artifact@v3
       with:
-        name: 'Build'
-        path: Build
-
-    - name: Pack extension
-      uses: TheDoctor0/zip-release@0.6.2
-      with:
-        directory: Build
-        filename: ./PasswordGenerator.zip
+        name: Chromium
 
     - name: Publish to Edge Addons
       uses: wdzeng/edge-addon@v1
       with:
-        product-id: 0RDCKDGH3MWT
-        zip-path: ./PasswordGenerator.zip
+        product-id: ${{ secrets.EDGE_PRODUCT_ID }}
+        zip-path: PasswordGenerator-Chromium.zip
         client-id: ${{ secrets.EDGE_CLIENT_ID }}
         client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
         access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
+
+  Firefox:
+    needs: Pack-Firefox
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download artifacts (Firefox)
+      uses: actions/download-artifact@v3
+      with:
+        name: Firefox
+
+    - name: Publish to Firefox
+      uses: wdzeng/firefox-addon@v1
+      with:
+        addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
+        xpi-path: PasswordGenerator-Firefox.zip
+        jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
+        jwt-secret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
