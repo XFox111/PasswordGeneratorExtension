@@ -45,10 +45,10 @@ jobs:
         directory: build
         filename: ../PasswordGenerator.zip
 
-    - name: Drop artifacts (Chromium)
+    - name: Drop artifacts (Bundle)
       uses: actions/upload-artifact@v3.1.0
       with:
-        name: Chromium
+        name: Bundle
         path: PasswordGenerator.zip
 
     - name: Attach build to release
@@ -65,65 +65,53 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-
-    - uses: actions/download-artifact@v3
+    - name: Download artifacts (Bundle)
+      uses: actions/download-artifact@v3
       with:
-        name: Build
-        path: Build
+        name: Bundle
 
-    - name: Build (Firefox)
-      id: web-ext-build
-      uses: kewisch/action-web-ext@v1
+    - name: Publish to Firefox
+      uses: wdzeng/firefox-addon@v1
       with:
-        cmd: build
-        source: Build
-
-    - name: Publish
-      uses: thoughtsunificator/firefox-publish-action@master
-      with:
-        zip: ${{ steps.web-ext-build.outputs.target }}
-        firefox-jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
-        firefox-jwt-secret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
-        firefox-guid: ${{ secrets.FIREFOX_EXT_UUID }}
-        firefox-manifest: Build/manifest.json
+        addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
+        xpi-path: PasswordGenerator.zip
+        jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
+        jwt-secret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
 
   # Chrome:
   #   needs: Build
   #   runs-on: ubuntu-latest
 
   #   steps:
-  #   - uses: actions/checkout@v3
-
-  #   - uses: actions/download-artifact@v3
+  #   - name: Download artifacts (Bundle)
+  #     uses: actions/download-artifact@v3
   #     with:
-  #       name: Chromium
+  #       name: Bundle
 
-  #   - name: Publish to Chrome Webstore
-  #     uses: SebastienGllmt/chrome-addon@v3
+  #   - name: Publish to Chrome Web Store
+  #     uses: wdzeng/chrome-extension@v1
   #     with:
-  #       extension: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
-  #       zip: PasswordGenerator.zip
+  #       extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
+  #       zip-path: PasswordGenerator.zip
   #       client-id: ${{ secrets.CHROME_CLIENT_ID }}
   #       client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
   #       refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
-  Edge:
-    needs: Build
-    runs-on: ubuntu-latest
+  # Edge:
+  #   needs: Build
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
+  #   steps:
+  #   - name: Download artifacts (Bundle)
+  #     uses: actions/download-artifact@v3
+  #     with:
+  #       name: Bundle
 
-    - uses: actions/download-artifact@v3
-      with:
-        name: Chromium
-
-    - name: Publish to Edge Addons
-      uses: wdzeng/edge-addon@v1
-      with:
-        product-id: ${{ secrets.EDGE_PRODUCT_ID }}
-        zip-path: PasswordGenerator.zip
-        client-id: ${{ secrets.EDGE_CLIENT_ID }}
-        client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
-        access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
+  #   - name: Publish to Edge Addons
+  #     uses: wdzeng/edge-addon@v1
+  #     with:
+  #       product-id: ${{ secrets.EDGE_PRODUCT_ID }}
+  #       zip-path: PasswordGenerator.zip
+  #       client-id: ${{ secrets.EDGE_CLIENT_ID }}
+  #       client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
+  #       access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
