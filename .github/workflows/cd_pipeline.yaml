@@ -122,16 +122,14 @@ jobs:
       with:
         name: Chromium
 
-    - run: ls .
-
-    # - name: Publish to Chrome Web Store
-    #   uses: wdzeng/chrome-extension@v1
-    #   with:
-    #     extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
-    #     zip-path: PasswordGenerator-Chromium.zip
-    #     client-id: ${{ secrets.CHROME_CLIENT_ID }}
-    #     client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
-    #     refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
+    - name: Publish to Chrome Web Store
+      uses: wdzeng/chrome-extension@v1
+      with:
+        extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
+        zip-path: PasswordGenerator-Chromium.zip
+        client-id: ${{ secrets.CHROME_CLIENT_ID }}
+        client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+        refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
   Edge:
     needs: Pack-Chromium
@@ -143,16 +141,14 @@ jobs:
       with:
         name: Chromium
 
-    - run: ls .
-
-    # - name: Publish to Edge Addons
-    #   uses: wdzeng/edge-addon@v1
-    #   with:
-    #     product-id: ${{ secrets.EDGE_PRODUCT_ID }}
-    #     zip-path: PasswordGenerator-Chromium.zip
-    #     client-id: ${{ secrets.EDGE_CLIENT_ID }}
-    #     client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
-    #     access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
+    - name: Publish to Edge Addons
+      uses: wdzeng/edge-addon@v1
+      with:
+        product-id: ${{ secrets.EDGE_PRODUCT_ID }}
+        zip-path: PasswordGenerator-Chromium.zip
+        client-id: ${{ secrets.EDGE_CLIENT_ID }}
+        client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
+        access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
 
   Firefox:
     needs: Pack-Firefox
@@ -164,12 +160,10 @@ jobs:
       with:
         name: Firefox
 
-    - run: ls .
-
-    # - name: Publish to Firefox
-    #   uses: wdzeng/firefox-addon@v1
-    #   with:
-    #     addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
-    #     xpi-path: PasswordGenerator-Firefox.zip
-    #     jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
-    #     jwt-secret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
+    - name: Publish to Firefox
+      uses: wdzeng/firefox-addon@v1
+      with:
+        addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
+        xpi-path: PasswordGenerator-Firefox.zip
+        jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
+        jwt-secret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
