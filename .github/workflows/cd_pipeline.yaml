@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repo
+      uses: actions/checkout@v3
 
     - name: Update manifest version
       uses: Amadevus/pwsh-script@v2
@@ -28,62 +29,39 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '16.x'
-        cache: 'yarn'
+        cache: yarn
 
     - run: yarn install
     - run: yarn build
 
-    - name: 'Drop artifacts'
+    - name: Drop artifacts (Build)
       uses: actions/upload-artifact@v3.1.0
       with:
-        name: 'Build'
-        path: 'build'
+        name: Build
+        path: build
 
-  # Firefox:
-  #   needs: Build
-  #   runs-on: ubuntu-latest
+    - name: Pack extension
+      uses: TheDoctor0/zip-release@0.6.2
+      with:
+        path: build
+        filename: PasswordGenerator-chromium.zip
 
-  #   steps:
-  #   - uses: actions/checkout@v3
+    - name: Drop artifacts (Chromium)
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: Chromium
+        path: PasswordGenerator-chromium.zip
 
-  #   - uses: actions/download-artifact@v3
-  #     with:
-  #       name: 'Build'
-  #       path: Build
+    - name: Attach build to release
+      uses: xresloader/upload-to-github-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        file: PasswordGenerator-chromium.zip
+        tags: true
+        draft: false
 
-  #   - name: Build Extension for Firefox
-  #     id: web-ext-build
-  #     uses: kewisch/action-web-ext@v1
-  #     with:
-  #       cmd: build
-  #       source: Build
-
-  #   - name: 'Sign & publish'
-  #     id: web-ext-sign
-  #     uses: kewisch/action-web-ext@v1
-  #     with:
-  #       cmd: sign
-  #       channel: listed
-  #       source: ${{ steps.web-ext-build.outputs.target }}
-  #       apiKey: ${{ secrets.FIREFOX_API_KEY }}
-  #       apiSecret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
-
-  #   - name: Drop artifacts
-  #     uses: actions/upload-artifact@v3
-  #     with:
-  #       name: 'Firefox'
-  #       path: ${{ steps.web-ext-sign.outputs.target }}
-
-  #   - name: Upload artifact
-  #     uses: xresloader/upload-to-github-release@v1
-  #     env:
-  #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #     with:
-  #       file: ${{ steps.web-ext-sign.outputs.target }}
-  #       tags: true
-  #       draft: false
-
-  Chrome:
+  Firefox:
     needs: Build
     runs-on: ubuntu-latest
 
@@ -95,32 +73,61 @@ jobs:
         name: 'Build'
         path: Build
 
-    - name: Pack extension
-      uses: TheDoctor0/zip-release@0.4.1
+    - name: Build Extension for Firefox
+      id: web-ext-build
+      uses: kewisch/action-web-ext@v1
       with:
-        directory: Build
-        filename: chrome.zip
+        cmd: build
+        source: Build
 
-    - name: Drop artifacts
+    - name: Drop artifacts (build)
       uses: actions/upload-artifact@v3
       with:
-        name: 'Chrome'
-        path: chrome.zip
+        name: 'Firefox'
+        path: ${{ steps.web-ext-build.outputs.target }}
+
+    - name: 'Sign & publish'
+      id: web-ext-sign
+      uses: kewisch/action-web-ext@v1
+      timeout-minutes: 10
+      with:
+        cmd: sign
+        channel: listed
+        source: ${{ steps.web-ext-build.outputs.target }}
+        apiKey: ${{ secrets.FIREFOX_API_KEY }}
+        apiSecret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
+
+    - name: Drop artifacts (signed)
+      uses: actions/upload-artifact@v3
+      with:
+        name: 'Firefox-signed'
+        path: ${{ steps.web-ext-sign.outputs.target }}
 
     - name: Upload artifact
       uses: xresloader/upload-to-github-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        file: chrome.zip
+        file: ${{ steps.web-ext-sign.outputs.target }}
         tags: true
         draft: false
+
+  Chrome:
+    needs: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/download-artifact@v3
+      with:
+        name: Chromium
 
     - name: Publish to Chrome Webstore
       uses: SebastienGllmt/chrome-addon@v3
       with:
         extension: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
-        zip: chrome.zip
+        zip: PasswordGenerator-chromium.zip
         client-id: ${{ secrets.CHROME_CLIENT_ID }}
         client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
         refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
@@ -134,26 +141,13 @@ jobs:
 
     - uses: actions/download-artifact@v3
       with:
-        name: 'Build'
-        path: Build
-
-    - name: Pack extension
-      uses: TheDoctor0/zip-release@0.4.1
-      with:
-        directory: Build
-        filename: edge.zip
-
-    - name: Drop artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: 'Edge'
-        path: edge.zip
+        name: Chromium
 
     - name: Publish to Edge Addons
       uses: wdzeng/edge-addon@v1
       with:
         product-id: 0RDCKDGH3MWT
-        zip-path: edge.zip
+        zip-path: PasswordGenerator-chromium.zip
         client-id: ${{ secrets.EDGE_CLIENT_ID }}
         client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
         access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
