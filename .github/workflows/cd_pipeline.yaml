@@ -61,76 +61,70 @@ jobs:
         tags: true
         draft: false
 
-  Firefox:
-    needs: Build
-    runs-on: ubuntu-latest
+  # Firefox:
+  #   needs: Build
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
+  #   steps:
+  #   - uses: actions/checkout@v3
 
-    - uses: actions/download-artifact@v3
-      with:
-        name: 'Build'
-        path: Build
+  #   - uses: actions/download-artifact@v3
+  #     with:
+  #       name: 'Build'
+  #       path: Build
 
-    - name: Build Extension for Firefox
-      id: web-ext-build
-      uses: kewisch/action-web-ext@v1
-      with:
-        cmd: build
-        source: Build
+  #   - name: Build Extension for Firefox
+  #     id: web-ext-build
+  #     uses: kewisch/action-web-ext@v1
+  #     with:
+  #       cmd: build
+  #       source: Build
 
-    - name: Drop artifacts (build)
-      uses: actions/upload-artifact@v3
-      with:
-        name: 'Firefox'
-        path: ${{ steps.web-ext-build.outputs.target }}
+  #   - name: 'Sign & publish'
+  #     id: web-ext-sign
+  #     uses: kewisch/action-web-ext@v1
+  #     timeout-minutes: 5
+  #     with:
+  #       cmd: sign
+  #       channel: listed
+  #       source: ${{ steps.web-ext-build.outputs.target }}
+  #       apiKey: ${{ secrets.FIREFOX_API_KEY }}
+  #       apiSecret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
 
-    - name: 'Sign & publish'
-      id: web-ext-sign
-      uses: kewisch/action-web-ext@v1
-      timeout-minutes: 10
-      with:
-        cmd: sign
-        channel: listed
-        source: ${{ steps.web-ext-build.outputs.target }}
-        apiKey: ${{ secrets.FIREFOX_API_KEY }}
-        apiSecret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
+  #   - name: Drop artifacts
+  #     uses: actions/upload-artifact@v3
+  #     with:
+  #       name: 'Firefox-signed'
+  #       path: ${{ steps.web-ext-sign.outputs.target }}
 
-    - name: Drop artifacts (signed)
-      uses: actions/upload-artifact@v3
-      with:
-        name: 'Firefox-signed'
-        path: ${{ steps.web-ext-sign.outputs.target }}
+  #   - name: Upload artifact
+  #     uses: xresloader/upload-to-github-release@v1
+  #     env:
+  #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     with:
+  #       file: ${{ steps.web-ext-sign.outputs.target }}
+  #       tags: true
+  #       draft: false
 
-    - name: Upload artifact
-      uses: xresloader/upload-to-github-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        file: ${{ steps.web-ext-sign.outputs.target }}
-        tags: true
-        draft: false
+  # Chrome:
+  #   needs: Build
+  #   runs-on: ubuntu-latest
 
-  Chrome:
-    needs: Build
-    runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v3
 
-    steps:
-    - uses: actions/checkout@v3
+  #   - uses: actions/download-artifact@v3
+  #     with:
+  #       name: Chromium
 
-    - uses: actions/download-artifact@v3
-      with:
-        name: Chromium
-
-    - name: Publish to Chrome Webstore
-      uses: SebastienGllmt/chrome-addon@v3
-      with:
-        extension: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
-        zip: PasswordGenerator-chromium.zip
-        client-id: ${{ secrets.CHROME_CLIENT_ID }}
-        client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
-        refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
+  #   - name: Publish to Chrome Webstore
+  #     uses: SebastienGllmt/chrome-addon@v3
+  #     with:
+  #       extension: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
+  #       zip: PasswordGenerator-chromium.zip
+  #       client-id: ${{ secrets.CHROME_CLIENT_ID }}
+  #       client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+  #       refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
   Edge:
     needs: Build
@@ -146,7 +140,7 @@ jobs:
     - name: Publish to Edge Addons
       uses: wdzeng/edge-addon@v1
       with:
-        product-id: 0RDCKDGH3MWT
+        product-id: ${{ secrets.EDGE_PRODUCT_ID }}
         zip-path: PasswordGenerator-chromium.zip
         client-id: ${{ secrets.EDGE_CLIENT_ID }}
         client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
