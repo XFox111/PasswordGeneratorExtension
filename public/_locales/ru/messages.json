@@ -161,7 +161,7 @@
 	},
 	"Changelog":
 	{
-		"message": "Что нового",
+		"message": "Список изменений",
 		"description": "AboutSection.tsx"
 	},
 	"Leave_feedback":
@@ -176,7 +176,7 @@
 	},
 	"Set_name":
 	{
-		"message": "Название набора",
+		"message": "Название",
 		"description": "CharacterHelpDialog.tsx"
 	},
 	"Characters":

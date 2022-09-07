@@ -1,192 +1,192 @@
 {
 	"name":
 	{
-		"message": "Password Generator",
+		"message": "Генератор паролів",
 		"description": "manifest.json"
 	},
 	"description":
 	{
-		"message": "Password generator extension allows you to easily generate long and secure password in one click",
+		"message": "Розширення, яке дозволяє легко генерувати складні та надійні паролі в один клік",
 		"description": "manifest.json"
 	},
 	"author":
 	{
-		"message": "Eugene Fox",
+		"message": "Євген Лис",
 		"description": "manifest.json"
 	},
 	"Password_generator":
 	{
-		"message": "Password generator",
+		"message": "Генератор паролів",
 		"description": "App.tsx"
 	},
 	"Copy":
 	{
-		"message": "Copy",
+		"message": "Копіювати",
 		"description": "PasswordView.tsx"
 	},
 	"Generate_new":
 	{
-		"message": "Generate new",
+		"message": "Генерувати новий",
 		"description": "PasswordView.tsx"
 	},
 	"Exclude_special_symbols_one_time":
 	{
-		"message": "Generate password without special symbols",
+		"message": "Генерувати пароль без спеціальних символів",
 		"description": "PasswordView.tsx"
 	},
 	"Include_special_symbols_one_time":
 	{
-		"message": "Generate password with special symbols",
+		"message": "Генерувати пароль з спеціальними символами",
 		"description": "PasswordView.tsx"
 	},
 	"Settings":
 	{
-		"message": "Settings",
+		"message": "Налаштування",
 		"description": "SettingsSection.tsx"
 	},
 	"Password_length":
 	{
-		"message": "Password length",
+		"message": "Довжина паролю",
 		"description": "SettingsSection.tsx"
 	},
 	"Recommended_password_length":
 	{
-		"message": "Recommended password length",
+		"message": "Рекомендована довжина паролю",
 		"description": "SettingsSection.tsx"
 	},
 	"Character_options":
 	{
-		"message": "Character options",
+		"message": "Параметри символів",
 		"description": "SettingsSection.tsx"
 	},
 	"Include":
 	{
-		"message": "Include",
+		"message": "Включити",
 		"description": "SettingsSection.tsx"
 	},
 	"Special_symbols":
 	{
-		"message": "Special symbols",
+		"message": "Спеціальні символи",
 		"description": "SettingsSection.tsx"
 	},
 	"Numeric":
 	{
-		"message": "Numeric",
+		"message": "Цифри",
 		"description": "SettingsSection.tsx"
 	},
 	"Uppercase":
 	{
-		"message": "Uppercase",
+		"message": "Великі літери",
 		"description": "SettingsSection.tsx"
 	},
 	"Lowercase":
 	{
-		"message": "Lowercase",
+		"message": "Малі літери",
 		"description": "SettingsSection.tsx"
 	},
 	"Exclude":
 	{
-		"message": "Exclude",
+		"message": "Виключити",
 		"description": "SettingsSection.tsx"
 	},
 	"Similar":
 	{
-		"message": "Similar",
+		"message": "Схожі",
 		"description": "SettingsSection.tsx"
 	},
 	"Ambiguous":
 	{
-		"message": "Ambiguous",
+		"message": "Особливі",
 		"description": "SettingsSection.tsx"
 	},
 	"Repeating":
 	{
-		"message": "Repeating",
+		"message": "Повторювані",
 		"description": "SettingsSection.tsx"
 	},
 	"Add_shortcut_to_context_menu":
 	{
-		"message": "Add shortcut to context menu",
+		"message": "Додати розширення до контекстного меню",
 		"description": "SettingsSection.tsx"
 	},
 	"Right_click_password_field_to_quickly_generate_password":
 	{
-		"message": "Right-click password field to quickly generate password",
+		"message": "Правий клік на поле вводу паролю для швидкого генерування паролю",
 		"description": "SettingsSection.tsx"
 	},
 	"Automatically_copy_to_clipboard":
 	{
-		"message": "Automatically copy to clipboard",
+		"message": "Автоматично копіювати в буфер обміну",
 		"description": "SettingsSection.tsx"
 	},
 	"About":
 	{
-		"message": "About",
+		"message": "Про розширення",
 		"description": "AboutSection.tsx"
 	},
 	"Developed_by_Eugene_Fox":
 	{
-		"message": "Developed by Eugene Fox",
+		"message": "Розроблено Євгеном Лисом",
 		"description": "AboutSection.tsx"
 	},
 	"Licensed_under":
 	{
-		"message": "Licensed under",
+		"message": "Ліцензовано під",
 		"description": "AboutSection.tsx"
 	},
 	"MIT_license":
 	{
-		"message": "MIT license",
+		"message": "MIT",
 		"description": "AboutSection.tsx"
 	},
 	"Want_to_contribute_translation_for_your_language_":
 	{
-		"message": "Want to contribute translation for your language?",
+		"message": "Хочете допомогти перекласти розширення на свою мову?",
 		"description": "AboutSection.tsx"
 	},
 	"Read_this_to_get_started":
 	{
-		"message": "Read this to get started",
+		"message": "Прочитайте цю статтю",
 		"description": "AboutSection.tsx"
 	},
 	"My_website":
 	{
-		"message": "My website",
+		"message": "Моя веб-сторінка",
 		"description": "AboutSection.tsx"
 	},
 	"Source_code":
 	{
-		"message": "Source code",
+		"message": "Вихідний код",
 		"description": "AboutSection.tsx"
 	},
 	"Changelog":
 	{
-		"message": "Changelog",
+		"message": "Список змін",
 		"description": "AboutSection.tsx"
 	},
 	"Leave_feedback":
 	{
-		"message": "Leave feedback",
+		"message": "Залишити відгук",
 		"description": "AboutSection.tsx"
 	},
 	"Buy_me_a_coffee":
 	{
-		"message": "Buy me a coffee",
+		"message": "Підтримати",
 		"description": "AboutSection.tsx"
 	},
 	"Set_name":
 	{
-		"message": "Name",
+		"message": "Назва",
 		"description": "CharacterHelpDialog.tsx"
 	},
 	"Characters":
 	{
-		"message": "Characters",
+		"message": "Символи",
 		"description": "CharacterHelpDialog.tsx"
 	},
 	"__etc_":
 	{
-		"message": ", etc.",
+		"message": " і т.д.",
 		"description": "CharacterHelpDialog.tsx"
 	},
 	"OK":
@@ -196,22 +196,22 @@
 	},
 	"Either_lowercase_or_uppercase_characters_must_be_included":
 	{
-		"message": "Either lowercase or uppercase characters must be included",
+		"message": "Повинні бути включені малі або великі літери",
 		"description": "Generator.tsx"
 	},
 	"Selected_length_is_too_long_to_exclude_repeating_characters":
 	{
-		"message": "Selected length is too long to exclude repeating characters",
+		"message": "Вибрана довжина занадто велика для виключення повторюваних символів",
 		"description": "Generator.tsx"
 	},
 	"Quick_generator_is_only_available_on_password_fields":
 	{
-		"message": "Quick generator is only available on password fields",
+		"message": "Швидкий генератор доступний тільки для полів вводу паролів",
 		"description": "ContentService.tsx"
 	},
 	"Quick_generate_password":
 	{
-		"message": "Quick generate password",
+		"message": "Згенерувати пароль",
 		"description": "BackgroundService.tsx"
 	}
 }
