@@ -11,8 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
     - name: Update manifest version
       uses: Amadevus/pwsh-script@v2
@@ -43,7 +42,7 @@ jobs:
     - name: Pack extension
       uses: TheDoctor0/zip-release@0.6.2
       with:
-        path: build
+        path: build/*
         filename: PasswordGenerator-chromium.zip
 
     - name: Drop artifacts (Chromium)
@@ -60,6 +59,7 @@ jobs:
         file: PasswordGenerator-chromium.zip
         tags: true
         draft: false
+        update_latest_release: true
 
   # Firefox:
   #   needs: Build
@@ -105,6 +105,7 @@ jobs:
   #       file: ${{ steps.web-ext-sign.outputs.target }}
   #       tags: true
   #       draft: false
+  #       update_latest_release: true
 
   # Chrome:
   #   needs: Build
@@ -126,22 +127,22 @@ jobs:
   #       client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
   #       refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
-  Edge:
-    needs: Build
-    runs-on: ubuntu-latest
+  # Edge:
+  #   needs: Build
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
+  #   steps:
+  #   - uses: actions/checkout@v3
 
-    - uses: actions/download-artifact@v3
-      with:
-        name: Chromium
+  #   - uses: actions/download-artifact@v3
+  #     with:
+  #       name: Chromium
 
-    - name: Publish to Edge Addons
-      uses: wdzeng/edge-addon@v1
-      with:
-        product-id: ${{ secrets.EDGE_PRODUCT_ID }}
-        zip-path: PasswordGenerator-chromium.zip
-        client-id: ${{ secrets.EDGE_CLIENT_ID }}
-        client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
-        access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
+  #   - name: Publish to Edge Addons
+  #     uses: wdzeng/edge-addon@v1
+  #     with:
+  #       product-id: ${{ secrets.EDGE_PRODUCT_ID }}
+  #       zip-path: PasswordGenerator-chromium.zip
+  #       client-id: ${{ secrets.EDGE_CLIENT_ID }}
+  #       client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
+  #       access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
