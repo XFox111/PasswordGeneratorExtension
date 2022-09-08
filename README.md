@@ -21,7 +21,6 @@ Extension for web browsers which helps you to easily generate strong passwords i
 ## Download
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/jnjobgjobffgmgfnkpkjfjkkfhfikmfl?label=Chrome%20Webstore%20downloads)](https://chrome.google.com/webstore/detail/jnjobgjobffgmgfnkpkjfjkkfhfikmfl)
 [![Mozilla Add-on](https://img.shields.io/amo/users/easy-password-generator?label=Firefox%20Webstore%20downloads)](https://addons.mozilla.org/firefox/addon/easy-password-generator/)
-[![Mozilla Add-on](https://img.shields.io/amo/rating/easy-password-generator?label=Firefox%20rating)](https://addons.mozilla.org/firefox/addon/easy-password-generator/)
 
 - [Google Chrome Webstore](https://chrome.google.com/webstore/detail/jnjobgjobffgmgfnkpkjfjkkfhfikmfl)
 - [Microsoft Edge Add-ons Webstore](https://microsoftedge.microsoft.com/addons/detail/manimdhobjbkfpeeehlhhneookiokpbj)
@@ -30,7 +29,7 @@ Extension for web browsers which helps you to easily generate strong passwords i
 
 ## Contributing
 [![GitHub issues](https://img.shields.io/github/issues/xfox111/PasswordGeneratorExtension)](https://github.com/xfox111/PasswordGeneratorExtension/issues)
-![CI](https://github.com/XFox111/PasswordGeneratorExtension/workflows/CI/badge.svg)
+[![CI](https://github.com/XFox111/PasswordGeneratorExtension/actions/workflows/cd_pipeline.yaml/badge.svg)](https://github.com/XFox111/PasswordGeneratorExtension/actions/workflows/cd_pipeline.yaml)
 [![GitHub repo size](https://img.shields.io/github/repo-size/xfox111/PasswordGeneratorExtension?label=repo%20size)](https://github.com/xfox111/PasswordGeneratorExtension)
 
 There are many ways in which you can participate in the project, for example:
