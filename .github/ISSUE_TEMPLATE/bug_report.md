@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help us improve the extension
 title: ''
 labels: bug
-assignees: @XFox111
+assignees: xfox111
 ---
 
 ### Description
