@@ -18,4 +18,4 @@ If you are willing to continue using 1.x version, you can sideload it from the [
 
 ## Reporting a Vulnerability
 
-In case you find a security issue, please report it to us by [creating an issue](https://github.com/XFox111/PasswordGeneratorExtension/issues/new?assignees=xfox111&labels=bug&template=bug_report.md&title=)
+In case you find a security issue, please report it to us by [creating an issue](https://github.com/XFox111/PasswordGeneratorExtension/issues/new?assignees=xfox111&labels=security+vulnerability&template=bug_report.md&title=)
