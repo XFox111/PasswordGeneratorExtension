@@ -1,0 +1,77 @@
+name: 'kewisch action-web-ext test'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Configure manifest
+      uses: Amadevus/pwsh-script@v2
+      with:
+        script: |
+          [PSCustomObject] $package = Get-Content "package.json" | ConvertFrom-Json;
+
+          [PSCustomObject] $manifest = Get-Content "public/manifest.json" | ConvertFrom-Json;
+          $manifest.version = $package.version;
+          $manifest | ConvertTo-Json -Depth 10 | Out-File "public/manifest.json"
+
+          Remove-Item "manifest.firefox.json"
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+        cache: yarn
+
+    - run: yarn install
+    - run: yarn build
+
+    - name: Drop artifacts (build)
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: build
+        path: build
+
+  Firefox:
+    needs: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: build
+
+    - name: Test lint
+      continue-on-error: true
+      uses: kewisch/action-web-ext@progressbar
+      with:
+        cmd: lint
+        source: .
+        channel: listed
+
+    - name: Test build
+      id: web-ext-build
+      continue-on-error: true
+      uses: kewisch/action-web-ext@progressbar
+      with:
+        cmd: build
+        source: .
+        filename: "PasswordGenerator-Firefox.xpi"
+
+    - name: Test Sign
+      id: test-sign
+      continue-on-error: true
+      uses: kewisch/action-web-ext@progressbar
+      with:
+        cmd: sign
+        source: ${{ steps.web-ext-build.outputs.target }}
+        channel: listed
+        apiKey: ${{ secrets.FIREFOX_API_KEY }}
+        apiSecret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
+        timeout: 900000
+
