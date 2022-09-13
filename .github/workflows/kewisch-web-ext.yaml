@@ -21,7 +21,9 @@ jobs:
           $manifest.version = $package.version;
           $manifest | ConvertTo-Json -Depth 10 | Out-File "public/manifest.json"
 
-          Remove-Item "public/manifest.firefox.json"
+          $manifest = Get-Content "public/manifest.firefox.json" | ConvertFrom-Json;
+          $manifest.version = $package.version;
+          $manifest | ConvertTo-Json -Depth 10 | Out-File "public/manifest.firefox.json"
 
     - name: Setup Node.js
       uses: actions/setup-node@v3
@@ -47,8 +49,14 @@ jobs:
       with:
         name: build
 
+    - name: Configure manifest
+      uses: Amadevus/pwsh-script@v2
+      with:
+        script: |
+          Remove-Item "manifest.json"
+          Rename-Item "manifest.firefox.json" "manifest.json"
+
     - name: Test lint
-      continue-on-error: true
       uses: kewisch/action-web-ext@progressbar
       with:
         cmd: lint
@@ -57,7 +65,6 @@ jobs:
 
     - name: Test build
       id: web-ext-build
-      continue-on-error: true
       uses: kewisch/action-web-ext@progressbar
       with:
         cmd: build
@@ -66,7 +73,6 @@ jobs:
 
     - name: Test Sign
       id: test-sign
-      continue-on-error: true
       uses: kewisch/action-web-ext@progressbar
       with:
         cmd: sign
