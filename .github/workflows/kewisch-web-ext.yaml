@@ -1,6 +1,7 @@
 name: 'kewisch action-web-ext test'
 
 on:
+  pull_request:
   workflow_dispatch:
 
 jobs:
