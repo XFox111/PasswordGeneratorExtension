@@ -31,6 +31,7 @@ jobs:
           $manifest = Get-Content "public/manifest.firefox.json" | ConvertFrom-Json;
           $manifest.version = $package.version;
           $manifest | ConvertTo-Json -Depth 10 | Out-File "public/manifest.firefox.json"
+
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
@@ -63,7 +64,7 @@ jobs:
           Rename-Item "manifest.firefox.json" "manifest.json"
           
     - name: "web-ext lint"
-      uses: kewisch/action-web-ext@v1
+      uses: kewisch/action-web-ext@v1.2
       with:
         cmd: lint
         source: .
