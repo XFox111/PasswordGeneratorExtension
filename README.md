@@ -16,6 +16,12 @@ Extension for web browsers which helps you to easily generate strong passwords i
 - Clean and simple UI
 - Dark mode
 
+## Languages
+- English
+- Ukrainian
+- Polish
+- Russian
+
 <img width="1136" alt="Password generator v2.0" src="https://user-images.githubusercontent.com/28831743/188680034-a673b1b4-3153-4054-bb0d-949568de1748.png">
 
 ## Download
