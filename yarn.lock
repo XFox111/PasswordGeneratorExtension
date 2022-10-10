@@ -1476,28 +1476,6 @@
     "@griffel/react" "^1.3.0"
     tslib "^2.1.0"
 
-"@fluentui/react-field@9.0.0-alpha.1":
-  version "9.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-field/-/react-field-9.0.0-alpha.1.tgz#93fea0769d68eb9e3e93472577bfa9e201e46f7f"
-  integrity sha512-aZGfkAyc2E4bGbRWl4ztvw1IAYmH5QjlnjpWom6v/r5NGNPNxqevaEx+b69gJvkMIcEv1Kk/bYR88Fr0h4LYJA==
-  dependencies:
-    "@fluentui/react-checkbox" "^9.0.5"
-    "@fluentui/react-combobox" "^9.0.0-beta.9"
-    "@fluentui/react-context-selector" "^9.0.3"
-    "@fluentui/react-icons" "^2.0.175"
-    "@fluentui/react-input" "^9.1.0"
-    "@fluentui/react-label" "^9.0.5"
-    "@fluentui/react-radio" "^9.0.5"
-    "@fluentui/react-select" "9.0.0-beta.9"
-    "@fluentui/react-slider" "^9.0.4"
-    "@fluentui/react-spinbutton" "^9.0.1"
-    "@fluentui/react-switch" "^9.0.5"
-    "@fluentui/react-textarea" "^9.0.5"
-    "@fluentui/react-theme" "^9.1.0"
-    "@fluentui/react-utilities" "^9.1.0"
-    "@griffel/react" "^1.3.0"
-    tslib "^2.1.0"
-
 "@fluentui/react-icons@^2.0.175", "@fluentui/react-icons@^2.0.183":
   version "2.0.183"
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.183.tgz#6b534f6d55e7e4b8d285df533e09b73a7ac153e0"
@@ -2630,10 +2608,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@*", "@types/jest@^29.1.1":
-  version "29.1.1"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.1.1.tgz#cf21a0835a1ba9a30ea1966019f1261c6a114c92"
-  integrity sha512-U9Ey07dGWl6fUFaIaUQUKWG5NoKi/zizeVQCGV8s4nSU0jPgqphVZvS64+8BtWYvrc3ZGw6wo943NSYPxkrp/g==
+"@types/jest@*", "@types/jest@^29.1.2":
+  version "29.1.2"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.1.2.tgz#7ad8077043ab5f6c108c8111bcc1d224e5600a87"
+  integrity sha512-y+nlX0h87U0R+wsGn6EBuoRWYyv3KFtwRNP3QWp9+k2tJ2/bqcGS3UxD7jgT+tiwJWWq3UsyV4Y+T6rsMT4XMg==
   dependencies:
     expect "^29.0.0"
     pretty-format "^29.0.0"
