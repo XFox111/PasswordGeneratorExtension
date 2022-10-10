@@ -64,7 +64,7 @@ jobs:
           Rename-Item "manifest.firefox.json" "manifest.json"
           
     - name: "web-ext lint"
-      uses: kewisch/action-web-ext@e0ea88d527a8a90bc10d600f80ac667d219e6bf1
+      uses: kewisch/action-web-ext@2c96cb8d05464c1dd52b96229a9f33388ba1bfad
       with:
         cmd: lint
         source: .
