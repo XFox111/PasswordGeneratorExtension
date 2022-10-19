@@ -1,3 +1,5 @@
+import browser, { Storage } from 'webextension-polyfill'
+
 export default class Settings
 {
 	public AddContext : boolean = true;
@@ -9,25 +11,25 @@ export default class Settings
 	{
 		let fallbackOptions = new Settings();
 
-		if (!chrome?.storage?.sync)
+		if (!browser?.storage?.sync)
 			return fallbackOptions;
 
-		let props : { [key: string]: any } = await chrome.storage.sync.get(fallbackOptions) || fallbackOptions;
+		let props : { [key: string]: any } = await browser.storage.sync.get(fallbackOptions);
 
-		chrome.storage.sync.onChanged.addListener(Settings.OnStorageChanged);
+		browser.storage.sync.onChanged.addListener(Settings.OnStorageChanged);
 
 		return props as Settings;
 	}
 
 	public static async Update(changes : Partial<Settings>) : Promise<void>
 	{
-		if (chrome?.storage?.sync)
-			await chrome?.storage?.sync?.set(changes);
+		if (browser?.storage?.sync)
+			await browser?.storage?.sync?.set(changes);
 		else
 			Settings.OnChanged(changes);
 	}
 
-	private static OnStorageChanged(changes : { [key: string]: chrome.storage.StorageChange }) : void
+	private static OnStorageChanged(changes : { [key: string]: Storage.StorageChange }) : void
 	{
 		let propsList : string[] = Object.keys(new Settings());
 		let settings : { [key: string]: any } = { };

@@ -1,3 +1,5 @@
+import browser from 'webextension-polyfill'
+
 export default class Localization
 {
 	public static GetString(key : string) : string
@@ -10,7 +12,7 @@ export default class Localization
 			.replaceAll("?", "_")
 			.replaceAll("!", "_");
 
-		let str : string = chrome?.i18n?.getMessage(sanitizedKey);
+		let str : string = browser?.i18n?.getMessage(sanitizedKey);
 
 		return str ?? key;
 	}

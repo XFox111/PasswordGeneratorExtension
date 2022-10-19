@@ -1,13 +1,14 @@
 // ContentService.ts
 // Content script that handles quick password generation through context menu
 
+import browser from 'webextension-polyfill'
 import Generator from "../Utils/Generator";
 import GeneratorOptions from "../Utils/GeneratorOptions";
 import { loc } from "../Utils/Localization";
 
 async function OnMessage(message: any) : Promise<void>
 {
-	console.log("[ContentService] chrome.runtime.onMessage", message);
+	console.log("[ContentService] browser.runtime.onMessage", message);
 
 	if (message === "generatePassword")
 	{
@@ -19,7 +20,7 @@ async function OnMessage(message: any) : Promise<void>
 		if (![ "INPUT", "TEXTAREA" ].includes(input.tagName))
 			return;
 
-		console.log("[ContentService] chrome.runtime.onMessage", input);
+		console.log("[ContentService] browser.runtime.onMessage", input);
 
 		if (input.tagName !== "INPUT" || input.readOnly || ![ "text", "password" ].includes(input.type))
 		{
@@ -33,7 +34,7 @@ async function OnMessage(message: any) : Promise<void>
 	}
 }
 
-if (!chrome.runtime.onMessage.hasListener(OnMessage))
-	chrome.runtime.onMessage.addListener(OnMessage);
+if (!browser.runtime.onMessage.hasListener(OnMessage))
+	browser.runtime.onMessage.addListener(OnMessage);
 
 console.log("[ContentService] Loaded");
