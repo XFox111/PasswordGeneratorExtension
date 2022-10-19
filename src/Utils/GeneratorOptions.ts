@@ -20,7 +20,7 @@ export default class GeneratorOptions
 		if (!chrome?.storage?.sync)		// Extension is running as a standalone app
 			return fallbackOptions;
 
-		let props : { [key: string]: any } = await chrome.storage.sync.get(fallbackOptions);
+		let props : { [key: string]: any } = await chrome.storage.sync.get(fallbackOptions) || fallbackOptions;
 
 		chrome.storage.sync.onChanged.addListener(GeneratorOptions.OnStorageChanged);
 

@@ -20,32 +20,34 @@ async function OnContextClick(info : chrome.contextMenus.OnClickData) : Promise<
 	chrome.tabs.sendMessage<string>(tabInfo[0].id, info.menuItemId as string);
 }
 
-if (!chrome.runtime.onInstalled.hasListeners())
-	chrome.runtime.onInstalled.addListener(async () =>
-	{
-		console.log("[BackgroundService] chrome.runtime.onInstalled");
-		chrome.contextMenus.removeAll();
+async function OnInstalled() : Promise<void> {
+	console.log("[BackgroundService] chrome.runtime.onInstalled");
+	chrome.contextMenus.removeAll();
 
-		chrome.contextMenus.create(
-			{
-				title: loc("Quick generate password"),
-				contexts: [ "editable" ],
-				id: "generatePassword"
-			}
-		);
+	chrome.contextMenus.create(
+		{
+			title: loc("Quick generate password"),
+			contexts: [ "editable" ],
+			id: "generatePassword"
+		}
+	);
 
-		let settings : { [key : string]: any } = await chrome.storage.sync.get({ AddContext: true });
+	let settings : { [key : string]: any } = await chrome.storage.sync.get({ AddContext: true });
 
-		UpdateContextMenu(settings.AddContext);
-	});
+	UpdateContextMenu(settings.AddContext);
+}
 
-if (!chrome.contextMenus.onClicked.hasListeners())
+async function OnStorageChanged(changes: any) : Promise<void> {
+	console.log("[BackgroundService] chrome.storage.sync.onChanged", changes);
+	if (changes.AddContext?.newValue !== undefined)
+		UpdateContextMenu(changes.AddContext.newValue);
+}
+
+if (!chrome.runtime.onInstalled.hasListener(OnInstalled))
+	chrome.runtime.onInstalled.addListener(OnInstalled);
+
+if (!chrome.contextMenus.onClicked.hasListener(OnContextClick))
 	chrome.contextMenus.onClicked.addListener(OnContextClick);
 
-if (!chrome.storage.sync.onChanged.hasListeners())
-	chrome.storage.sync.onChanged.addListener(changes =>
-		{
-			console.log("[BackgroundService] chrome.storage.sync.onChanged", changes);
-			if (changes.AddContext?.newValue !== undefined)
-				UpdateContextMenu(changes.AddContext.newValue);
-		});
+if (!chrome.storage.sync.onChanged.hasListener(OnStorageChanged))
+	chrome.storage.sync.onChanged.addListener(OnStorageChanged);
