@@ -112,7 +112,7 @@ This section represents how contributors should interact with codebase implement
 7. Done
 
 #### Release
-Next stage is release. Release performs on every push to main (which makes functional changes to the source code). Release performs manually by @XFox111 into: Chrome webstore, Edge webstore and GitHub releases
+Next stage is release. Release performs on every push to main (which makes functional changes to the source code). Release performs manually by @XFox111 into: Chrome, Firefox, Edge webstores as well as GitHub releases
 
 ### Coding guidelines
 #### Indentation
@@ -121,7 +121,8 @@ We use tabs, not spaces.
 #### Names
 The project naming rules inherit [.NET Naming Guidelines](https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines). Nevertheless there'is some distinction with the guidelines as well as additions to the one:
 - Use `camelCase` for variables instead of `CamelCase` stated in [Capitalization Conventions](https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/capitalization-conventions#capitalization-rules-for-identifiers)
-- Use `snake_case` for file names
+- Use `camelCase` for files in `public` directory
+- Use `PascalCase` for files in `src` directory
 
 #### Comments
 Leave as more comments as you can. Remember: the more detailed documentation your code has the less programmers will curse you in the future
@@ -131,43 +132,48 @@ Use "double quotes" wherever it's possible
 
 #### Style
 - Prefer to use lambda functions
-- Put curly braces on new lines
+- Always put curly braces on new lines
     - Wrong:
-        ```
+        ```js
         if (condition) {
             ...
         }
         ```
     - Correct:
-        ```
+        ```js
         if (condition)
         {
             ...
         }
         ```
-- Put spaces between operators and before braces in methods declarations, conditionals and loops
+	> **Note:** For JSON files put opening brace on the same line as the key
+- Put spaces between operators, conditionals and loops
     - Wrong:
-        - `y=k*x+b`
-        - `function FunctionName()`
+		```js
+        y=k*x+b;
+        if(condition) { ... }
+		```
     - Correct:
-        - `y = k * x + b`
-        - `function FunctionName ()`
-- Use ternary conditionals wherever it's possible
+		```js
+        y = k * x + b;
+        if (condition) { ... }
+		```
+- Use ternary conditionals wherever it's possible, unless it's too long
     - Wrong:
-        ```
+        ```js
         var s;
         if (condition)
             s = "Life";
         else
-            s = "Death"
+            s = "Death";
         ```
     - Correct:
-        ```
+        ```js
 		var s = condition ? "Life" : "Death";
 		```
 - Do not surround loop and conditional bodies with curly braces if they can be avoided
     - Wrong:
-        ```
+        ```js
         if (condition)
         {
             console.log("Hello, World!");
@@ -178,12 +184,84 @@ Use "double quotes" wherever it's possible
         }
         ```
     - Correct
-        ```
+        ```js
         if (condition)
             console.log("Hello, World!");
         else
             return;
         ```
+- Prefer export modules as default
+	- Wrong:
+		```js
+		export class MyClass { ... }
+		```
+	- Correct:
+		```js
+		export default class MyClass { ... }
+		```
+- Prefer export modules as classes unless it is excessive
+	- Wrong:
+		```ts
+		export function MyFunction1() { ... }
+		export function MyFunction2() { ... }
+		export default class MyClass2()
+		{
+			public static GetDate(timestamp: number): Date
+			{
+				return new Date(timestamp);
+			}
+		}
+		```
+	- Correct:
+		```js
+		export default class MyClass1
+		{
+			public static MyFunction1() { ... }
+			public static MyFunction2() { ... }
+		}
+		export default GetDate(timestamp: number): Date
+		{
+			return new Date(timestamp);
+		}
+		```
+- When JSX attributes take too much space, put each attribute on a new line and put additional line before component's content
+	- Wrong:
+		```tsx
+		<HelloWorld attribute1="value" attribute2={ value } attribute3="value">My content here</HelloWorld>
+		<HelloWorld attribute1="value"
+			attribute2={ value }
+			attribute3="value">My content here</HelloWorld>
+		<HelloWorld attribute1="value"
+					attribute2={ value }
+					attribute3="value">
+			My content here
+		</HelloWorld>
+		<HelloWorld
+			attribute1="value"
+			attribute2={ value }
+			attribute3="value">
+			My content here
+		</HelloWorld>
+		```
+	- Correct:
+		```tsx
+		<HelloWorld
+			attribute1="value"
+			attribute2={ value }
+			attribute3="value">
+
+			My content here
+		</HelloWorld>
+		```
+- If JSX component doesn't have content, put space before closing tag
+	- Wrong:
+		```tsx
+		<HelloWorld attribute1="value" attribute2={ value } attribute3="value"/>
+		```
+	- Correct:
+		```tsx
+		<HelloWorld attribute1="value" attribute2={ value } attribute3="value" />
+		```
 
 ### Finding an issue to work on
 Check out the [full issues list](https://github.com/XFox111/PasswordGeneratorExtension/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue) for a list of all potential areas for contributions. **Note** that just because an issue exists in the repository does not mean we will accept a contribution. There are several reasons we may not accept a pull request like:
