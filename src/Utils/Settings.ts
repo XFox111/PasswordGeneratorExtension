@@ -1,5 +1,5 @@
-import browser from "../Utils/Browser";
 import { Storage } from "webextension-polyfill"
+import browser from "../Utils/Browser";
 
 export default class Settings
 {
