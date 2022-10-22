@@ -58,7 +58,7 @@ export default class AboutSection extends React.Component
 		let manifest: { [key: string]: string | any } = browser?.runtime?.getManifest();
 
 		if (!manifest)
-			window.open("mailto:feedback@xfox111.net");
+			return "mailto:feedback@xfox111.net";
 		else
 		{
 			if (manifest.update_url)
