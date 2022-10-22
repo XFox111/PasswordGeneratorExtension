@@ -1,7 +1,7 @@
 // ContentService.ts
 // Content script that handles quick password generation through context menu
 
-import browser from 'webextension-polyfill'
+import browser from "../Utils/Browser";
 import Generator from "../Utils/Generator";
 import GeneratorOptions from "../Utils/GeneratorOptions";
 import { loc } from "../Utils/Localization";

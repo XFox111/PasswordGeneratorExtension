@@ -1,4 +1,5 @@
-import browser, { Storage } from 'webextension-polyfill'
+import browser from "../Utils/Browser";
+import { Storage } from "webextension-polyfill"
 
 export default class GeneratorOptions
 {

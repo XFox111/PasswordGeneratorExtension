@@ -1,4 +1,4 @@
-import browser from 'webextension-polyfill'
+import browser from "../Utils/Browser";
 
 export default class Localization
 {
