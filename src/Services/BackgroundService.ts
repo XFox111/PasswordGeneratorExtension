@@ -1,26 +1,26 @@
 // BackgroundService.ts
 // Background script that handles the context menu visibility
 
-import { Tabs, Menus } from "webextension-polyfill"
+import { Tabs, Menus } from "webextension-polyfill";
 import browser from "../Utils/Browser";
 import { loc } from "../Utils/Localization";
 
-function UpdateContextMenu(isEnabled: boolean) : void
+function UpdateContextMenu(isEnabled: boolean): void
 {
 	console.log("BackgroundService.UpdateContextMenu", isEnabled);
 	browser.contextMenus.update("generatePassword", { visible: isEnabled });
 }
 
-async function OnContextClick(info : Menus.OnClickData) : Promise<void>
+async function OnContextClick(info: Menus.OnClickData): Promise<void>
 {
 	console.log("BackgroundService.OnContextClick", info);
-	let tabInfo : Tabs.Tab[] = await browser.tabs.query({ active: true, currentWindow: true });
+	let tabInfo: Tabs.Tab[] = await browser.tabs.query({ active: true, currentWindow: true });
 	console.log("BackgroundService.OnContextClick", tabInfo);
 
 	browser.tabs.sendMessage(tabInfo[0].id, info.menuItemId as string);
 }
 
-async function OnInstalled() : Promise<void>
+async function OnInstalled(): Promise<void>
 {
 	console.log("[BackgroundService] browser.runtime.onInstalled");
 	browser.contextMenus.removeAll();
@@ -28,17 +28,17 @@ async function OnInstalled() : Promise<void>
 	browser.contextMenus.create(
 		{
 			title: loc("Quick generate password"),
-			contexts: [ "editable" ],
+			contexts: ["editable"],
 			id: "generatePassword"
 		}
 	);
 
-	let settings : { [key : string]: any } = await browser.storage.sync.get({ AddContext: true });
+	let settings: { [key: string]: any; } = await browser.storage.sync.get({ AddContext: true });
 
 	UpdateContextMenu(settings.AddContext);
 }
 
-async function OnStorageChanged(changes: any) : Promise<void>
+async function OnStorageChanged(changes: any): Promise<void>
 {
 	console.log("[BackgroundService] browser.storage.sync.onChanged", changes);
 	if (changes.AddContext?.newValue !== undefined)

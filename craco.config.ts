@@ -4,15 +4,15 @@ import { Configuration } from "webpack";
 
 // Craco config file
 // Craco is used to separate content and background scripts from the main JS bundle
-const cracoConfig : CracoConfig =
+const cracoConfig: CracoConfig =
 {
 	webpack:
 	{
-		configure: (webpackConfig : Configuration, { env, paths } : CracoContext) : Configuration =>
+		configure: (webpackConfig: Configuration, { env, paths }: CracoContext): Configuration =>
 		{
-			const isProduction : boolean = env === "production";
+			const isProduction: boolean = env === "production";
 
-			const config : Configuration =
+			const config: Configuration =
 			{
 				...webpackConfig,
 				entry:
@@ -34,7 +34,7 @@ const cracoConfig : CracoConfig =
 				}
 			};
 
-			const minifyOptions : MinifyOptions =
+			const minifyOptions: MinifyOptions =
 			{
 				removeComments: true,
 				collapseWhitespace: true,
@@ -48,11 +48,11 @@ const cracoConfig : CracoConfig =
 				minifyURLs: true
 			};
 
-			config.plugins = config.plugins?.filter((plugin : any) => plugin.constructor.name !== "HtmlWebpackPlugin") ?? [];
+			config.plugins = config.plugins?.filter((plugin: any) => plugin.constructor.name !== "HtmlWebpackPlugin") ?? [];
 
 			config.plugins.push(new HtmlWebapckPlugin({
 				inject: true,
-				chunks: [ "main" ],
+				chunks: ["main"],
 				template: paths.appHtml,
 				filename: "index.html",
 				minify: isProduction && minifyOptions

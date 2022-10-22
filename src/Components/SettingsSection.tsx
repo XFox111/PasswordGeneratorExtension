@@ -16,8 +16,8 @@ export default class SettingsSection extends React.Component<IProps>
 {
 	public render(): JSX.Element
 	{
-		let options : GeneratorOptions = this.props.generatorOptions;
-		let settings : Settings = this.props.settings;
+		let options: GeneratorOptions = this.props.generatorOptions;
+		let settings: Settings = this.props.settings;
 
 		return (
 			<AccordionItem value="settings">
@@ -66,7 +66,7 @@ export default class SettingsSection extends React.Component<IProps>
 						<div className="stack">
 							<div>
 								<Tooltip content={ loc("Right-click password field to quickly generate password") } relationship="description">
-									<Checkbox label={ <Text>{loc("Add shortcut to context menu")} <QuestionCircleRegular /></Text> }
+									<Checkbox label={ <Text>{ loc("Add shortcut to context menu") } <QuestionCircleRegular /></Text> }
 										checked={ settings.AddContext } onChange={ (_, e) => Settings.Update({ AddContext: e.checked as boolean }) } />
 								</Tooltip>
 							</div>

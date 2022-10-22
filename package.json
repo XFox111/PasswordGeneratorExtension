@@ -2,8 +2,7 @@
 	"name": "password-generator",
 	"version": "2.0.1",
 	"private": true,
-	"dependencies":
-	{
+	"dependencies": {
 		"@craco/craco": "^6.4.5",
 		"@fluentui/react-components": "^9.5.1",
 		"@fluentui/react-icons": "^2.0.185",
@@ -13,8 +12,7 @@
 		"typescript": "^4.8.4",
 		"webextension-polyfill": "^0.10.0"
 	},
-	"devDependencies":
-	{
+	"devDependencies": {
 		"@testing-library/jest-dom": "^5.14.1",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^14.4.3",
@@ -26,31 +24,25 @@
 		"@types/webextension-polyfill": "^0.9.1",
 		"react-scripts": "5.0.1"
 	},
-	"scripts":
-	{
+	"scripts": {
 		"start": "craco start",
 		"build": "craco build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
-	"eslintConfig":
-	{
-		"extends":
-		[
+	"eslintConfig": {
+		"extends": [
 			"react-app",
 			"react-app/jest"
 		]
 	},
-	"browserslist":
-	{
-		"production":
-		[
+	"browserslist": {
+		"production": [
 			">0.2%",
 			"not dead",
 			"not op_mini all"
 		],
-		"development":
-		[
+		"development": [
 			"last 1 chrome version",
 			"last 1 firefox version",
 			"last 1 safari version"

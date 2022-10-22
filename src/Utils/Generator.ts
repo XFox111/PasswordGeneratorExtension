@@ -10,7 +10,7 @@ export default class Generator
 	public static AmbiguousCharacters = "{}[]()/\\'\"`~,;:.<>";
 	public static SimilarCharacters = "il1Lo0O";
 
-	public static GeneratePassword(props : GeneratorOptions) : string
+	public static GeneratePassword(props: GeneratorOptions): string
 	{
 		if (!props.Length || isNaN(props.Length) || props.Length < 4)
 			props.Length = 4;
@@ -20,14 +20,14 @@ export default class Generator
 			return "";
 
 		// Generating password
-		let availableCharacters : string = this.GetAvailableCharacters(props);
-		let requiredCharacters : string = this.GetRequiredCharacters(props);
+		let availableCharacters: string = this.GetAvailableCharacters(props);
+		let requiredCharacters: string = this.GetRequiredCharacters(props);
 
-		let password : string = "";
+		let password: string = "";
 
 		for (let i = 0; i < props.Length; i++)
 		{
-			let char : string = this.PickRandomFromArray(availableCharacters);
+			let char: string = this.PickRandomFromArray(availableCharacters);
 
 			if (props.ExcludeRepeating && password.includes(char))
 				i--;
@@ -46,7 +46,7 @@ export default class Generator
 		return password;
 	}
 
-	public static ValidateProps(props : GeneratorOptions): string
+	public static ValidateProps(props: GeneratorOptions): string
 	{
 		if (!props.Length || isNaN(props.Length) || props.Length < 4)
 			props.Length = 4;
@@ -54,7 +54,7 @@ export default class Generator
 		if (!props.Lowercase && !props.Uppercase)
 			return loc("Either lowercase or uppercase characters must be included");
 
-		let availableCharacters : string = this.GetAvailableCharacters(props);
+		let availableCharacters: string = this.GetAvailableCharacters(props);
 
 		if (props.ExcludeRepeating && availableCharacters.length < props.Length)
 			return loc("Selected length is too long to exclude repeating characters");
@@ -62,9 +62,9 @@ export default class Generator
 		return "";
 	}
 
-	private static GetAvailableCharacters(props : GeneratorOptions) : string
+	private static GetAvailableCharacters(props: GeneratorOptions): string
 	{
-		let availableCharacters : string = "";
+		let availableCharacters: string = "";
 
 		if (props.Special)
 			availableCharacters += this.SpecialCharacters;
@@ -83,9 +83,9 @@ export default class Generator
 		return availableCharacters;
 	}
 
-	private static GetRequiredCharacters(props : GeneratorOptions) : string
+	private static GetRequiredCharacters(props: GeneratorOptions): string
 	{
-		let requiredCharacters : string = "";
+		let requiredCharacters: string = "";
 
 		if (props.Special)
 			requiredCharacters += this.PickRandomFromArray(this.SpecialCharacters);
@@ -106,12 +106,12 @@ export default class Generator
 
 	// See https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 	// min is inclusive, max is exclusive
-	private static GetRandomInt(min : number, max : number) : number
+	private static GetRandomInt(min: number, max: number): number
 	{
 		return Math.floor(Math.random() * (max - min)) + min;
 	}
 
-	private static PickRandomFromArray(array : string) : string
+	private static PickRandomFromArray(array: string): string
 	{
 		return array[this.GetRandomInt(0, array.length)];
 	}

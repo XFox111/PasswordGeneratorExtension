@@ -33,7 +33,7 @@ export default class PasswordView extends React.Component<IProps, IStates>
 		};
 	}
 
-	private OnCopyPassword(password : string): void
+	private OnCopyPassword(password: string): void
 	{
 		console.log("PasswordView.OnCopyPassword");
 
@@ -50,7 +50,7 @@ export default class PasswordView extends React.Component<IProps, IStates>
 	{
 		console.log("PasswordView.OnRefreshPassword");
 
-		let password : string = Generator.GeneratePassword(this.props.generatorOptions);
+		let password: string = Generator.GeneratePassword(this.props.generatorOptions);
 
 		this.setState({ password });
 
@@ -69,7 +69,7 @@ export default class PasswordView extends React.Component<IProps, IStates>
 		if (JSON.stringify(prevProps.generatorOptions) === JSON.stringify(this.props.generatorOptions))
 			return;
 
-		let error : string = Generator.ValidateProps(this.props.generatorOptions);
+		let error: string = Generator.ValidateProps(this.props.generatorOptions);
 		let password = Generator.GeneratePassword(this.props.generatorOptions);
 
 		this.setState({ password, error });
@@ -78,14 +78,14 @@ export default class PasswordView extends React.Component<IProps, IStates>
 			this.OnCopyPassword(password);
 	}
 
-	private AlterSpecialsOnce(useSpecials : boolean) : void
+	private AlterSpecialsOnce(useSpecials: boolean): void
 	{
 		console.log("PasswordView.AlterSpecialsOnce", `useSpecials: ${useSpecials}`);
 
-		let options : GeneratorOptions = { ...this.props.generatorOptions, Special: useSpecials, ExcludeAmbiguous: true };
+		let options: GeneratorOptions = { ...this.props.generatorOptions, Special: useSpecials, ExcludeAmbiguous: true };
 
-		let error : string = Generator.ValidateProps(options);
-		let password : string = Generator.GeneratePassword(options);
+		let error: string = Generator.ValidateProps(options);
+		let password: string = Generator.GeneratePassword(options);
 
 		this.setState({ password, error });
 

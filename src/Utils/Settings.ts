@@ -1,28 +1,28 @@
-import { Storage } from "webextension-polyfill"
+import { Storage } from "webextension-polyfill";
 import browser from "../Utils/Browser";
 
 export default class Settings
 {
-	public AddContext : boolean = true;
-	public Autocopy : boolean = true;
+	public AddContext: boolean = true;
+	public Autocopy: boolean = true;
 
-	public static OnChanged : (changes : Partial<Settings>) => void;
+	public static OnChanged: (changes: Partial<Settings>) => void;
 
-	public static async Init() : Promise<Settings>
+	public static async Init(): Promise<Settings>
 	{
 		let fallbackOptions = new Settings();
 
 		if (!browser?.storage?.sync)
 			return fallbackOptions;
 
-		let props : { [key: string]: any } = await browser.storage.sync.get(fallbackOptions);
+		let props: { [key: string]: any; } = await browser.storage.sync.get(fallbackOptions);
 
 		browser.storage.sync.onChanged.addListener(Settings.OnStorageChanged);
 
 		return props as Settings;
 	}
 
-	public static async Update(changes : Partial<Settings>) : Promise<void>
+	public static async Update(changes: Partial<Settings>): Promise<void>
 	{
 		if (browser?.storage?.sync)
 			await browser?.storage?.sync?.set(changes);
@@ -30,10 +30,10 @@ export default class Settings
 			Settings.OnChanged(changes);
 	}
 
-	private static OnStorageChanged(changes : { [key: string]: Storage.StorageChange }) : void
+	private static OnStorageChanged(changes: { [key: string]: Storage.StorageChange; }): void
 	{
-		let propsList : string[] = Object.keys(new Settings());
-		let settings : { [key: string]: any } = { };
+		let propsList: string[] = Object.keys(new Settings());
+		let settings: { [key: string]: any; } = {};
 
 		Object.entries(changes)
 			.filter(i => propsList.includes(i[0]))
