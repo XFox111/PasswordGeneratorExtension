@@ -3,6 +3,7 @@ import { InfoRegular, PersonFeedbackRegular } from "@fluentui/react-icons";
 import { ReactComponent as BuyMeACoffee } from "../Assets/BuyMeACoffee.svg";
 import React from "react";
 import { loc } from "../Utils/Localization";
+import browser from "../Utils/Browser";
 
 export default class AboutSection extends React.Component
 {
@@ -32,7 +33,7 @@ export default class AboutSection extends React.Component
 						<div className="stack horizontal gap">
 							<Button
 								as="a" target="_blank"
-								href="mailto:feedback@xfox111.net"
+								onClick={ this.OpenFeedback }
 								appearance="primary" icon={ <PersonFeedbackRegular /> }>
 
 								{ loc("Leave feedback") }
@@ -50,5 +51,30 @@ export default class AboutSection extends React.Component
 				</AccordionPanel>
 			</AccordionItem>
 		);
+	}
+
+	private async OpenFeedback(): Promise<void>
+	{
+		let manifest: { [key: string]: string | any } = browser?.runtime?.getManifest();
+
+		if (!manifest)
+			window.open("mailto:feedback@xfox111.net");
+		else
+		{
+			if (manifest.update_url)
+			{
+				let host: string = new URL(manifest.update_url).host;
+
+				if (host.includes("edge.microsoft.com"))
+					window.open("https://microsoftedge.microsoft.com/addons/detail/password-generator/manimdhobjbkfpeeehlhhneookiokpbj");
+				else if (host.includes("google.com"))
+					window.open("https://chrome.google.com/webstore/detail/password-generator/jnjobgjobffgmgfnkpkjfjkkfhfikmfl");
+				else
+					window.open("mailto:feedback@xfox111.net");
+			}
+			else if ((await browser.runtime.getBrowserInfo())?.name === "Firefox")
+				window.open("https://addons.mozilla.org/firefox/addon/easy-password-generator");
+			else
+		}
 	}
 }
