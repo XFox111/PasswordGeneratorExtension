@@ -75,6 +75,7 @@ export default class AboutSection extends React.Component
 			else if ((await browser.runtime.getBrowserInfo())?.name === "Firefox")
 				window.open("https://addons.mozilla.org/firefox/addon/easy-password-generator");
 			else
+				window.open("mailto:feedback@xfox111.net");
 		}
 	}
 }
