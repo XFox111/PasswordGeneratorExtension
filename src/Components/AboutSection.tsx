@@ -65,9 +65,9 @@ export default class AboutSection extends React.Component
 			{
 				let host: string = new URL(manifest.update_url).host;
 
-				if (host.includes("edge.microsoft.com"))
+				if (host.endsWith("edge.microsoft.com"))
 					window.open("https://microsoftedge.microsoft.com/addons/detail/password-generator/manimdhobjbkfpeeehlhhneookiokpbj");
-				else if (host.includes("google.com"))
+				else if (host.endsWith("google.com"))
 					window.open("https://chrome.google.com/webstore/detail/password-generator/jnjobgjobffgmgfnkpkjfjkkfhfikmfl");
 				else
 					window.open("mailto:feedback@xfox111.net");
