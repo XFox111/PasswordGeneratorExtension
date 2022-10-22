@@ -1,54 +1,48 @@
 {
 	"name": "password-generator",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"private": true,
-	"dependencies":
-	{
+	"dependencies": {
 		"@craco/craco": "^6.4.5",
-		"@fluentui/react-components": "^9.3.2",
-		"@fluentui/react-icons": "^2.0.183",
+		"@fluentui/react-components": "^9.5.1",
+		"@fluentui/react-icons": "^2.0.185",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"sass": "^1.55.0",
-		"typescript": "^4.8.3"
+		"typescript": "^4.8.4",
+		"webextension-polyfill": "^0.10.0"
 	},
-	"devDependencies":
-	{
+	"devDependencies": {
 		"@testing-library/jest-dom": "^5.14.1",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^14.4.3",
-		"@types/chrome": "^0.0.197",
-		"@types/jest": "^29.1.1",
-		"@types/node": "^18.7.18",
+		"@types/craco__craco": "^6.4.0",
+		"@types/jest": "^29.1.2",
+		"@types/node": "^18.11.0",
 		"@types/react": "^18.0.21",
 		"@types/react-dom": "^18.0.0",
+		"@types/webextension-polyfill": "^0.9.1",
 		"react-scripts": "5.0.1"
 	},
-	"scripts":
-	{
-		"start": "react-scripts start",
-		"build": "INLINE_RUNTIME_CHUNK=false craco build",
+	"scripts": {
+		"start": "craco start",
+		"build": "craco build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
-	"eslintConfig":
-	{
-		"extends":
-		[
+	"eslintConfig": {
+		"extends": [
 			"react-app",
 			"react-app/jest"
 		]
 	},
-	"browserslist":
-	{
-		"production":
-		[
+	"browserslist": {
+		"production": [
 			">0.2%",
 			"not dead",
 			"not op_mini all"
 		],
-		"development":
-		[
+		"development": [
 			"last 1 chrome version",
 			"last 1 firefox version",
 			"last 1 safari version"

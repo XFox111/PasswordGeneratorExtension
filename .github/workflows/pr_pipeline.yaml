@@ -28,9 +28,9 @@ jobs:
           [PSCustomObject] $manifest = Get-Content "public/manifest.json" | ConvertFrom-Json;
           $manifest.version = $package.version;
           $manifest | ConvertTo-Json -Depth 10 | Out-File "public/manifest.json"
-          $manifest = Get-Content "public/manifest.firefox.json" | ConvertFrom-Json;
+          $manifest = Get-Content "public/manifest.v2.json" | ConvertFrom-Json;
           $manifest.version = $package.version;
-          $manifest | ConvertTo-Json -Depth 10 | Out-File "public/manifest.firefox.json"
+          $manifest | ConvertTo-Json -Depth 10 | Out-File "public/manifest.v2.json"
 
     - name: Setup Node.js
       uses: actions/setup-node@v3
@@ -61,8 +61,8 @@ jobs:
       with:
         script: |
           Remove-Item "manifest.json"
-          Rename-Item "manifest.firefox.json" "manifest.json"
-          
+          Rename-Item "manifest.v2.json" "manifest.json"
+
     - name: "web-ext lint"
       uses: kewisch/action-web-ext@e0ea88d527a8a90bc10d600f80ac667d219e6bf1
       with:

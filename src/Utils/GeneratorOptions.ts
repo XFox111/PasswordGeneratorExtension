@@ -1,3 +1,6 @@
+import { Storage } from "webextension-polyfill";
+import browser from "../Utils/Browser";
+
 export default class GeneratorOptions
 {
 	public Length: number = 16;
@@ -11,34 +14,34 @@ export default class GeneratorOptions
 	public ExcludeAmbiguous: boolean = true;
 	public ExcludeRepeating: boolean = false;
 
-	public static OnChanged : (changes : Partial<GeneratorOptions>) => void;
+	public static OnChanged: (changes: Partial<GeneratorOptions>) => void;
 
-	public static async Init() : Promise<GeneratorOptions>
+	public static async Init(): Promise<GeneratorOptions>
 	{
-		let fallbackOptions : GeneratorOptions = new GeneratorOptions();
+		let fallbackOptions: GeneratorOptions = new GeneratorOptions();
 
-		if (!chrome?.storage?.sync)		// Extension is running as a standalone app
+		if (!browser?.storage?.sync)		// Extension is running as a standalone app
 			return fallbackOptions;
 
-		let props : { [key: string]: any } = await chrome.storage.sync.get(fallbackOptions);
+		let props: { [key: string]: any; } = await browser.storage.sync.get(fallbackOptions);
 
-		chrome.storage.sync.onChanged.addListener(GeneratorOptions.OnStorageChanged);
+		browser.storage.sync.onChanged.addListener(GeneratorOptions.OnStorageChanged);
 
 		return props as GeneratorOptions;
 	}
 
-	public static async Update(changes : Partial<GeneratorOptions>) : Promise<void>
+	public static async Update(changes: Partial<GeneratorOptions>): Promise<void>
 	{
-		if (chrome?.storage?.sync)
-			await chrome?.storage?.sync?.set(changes);
+		if (browser?.storage?.sync)
+			await browser?.storage?.sync?.set(changes);
 		else
 			GeneratorOptions.OnChanged(changes);
 	}
 
-	private static OnStorageChanged(changes : { [key: string]: chrome.storage.StorageChange }) : void
+	private static OnStorageChanged(changes: { [key: string]: Storage.StorageChange; }): void
 	{
-		let propsList : string[] = Object.keys(new GeneratorOptions());
-		let options : { [key: string]: any } = { };
+		let propsList: string[] = Object.keys(new GeneratorOptions());
+		let options: { [key: string]: any; } = {};
 
 		Object.entries(changes)
 			.filter(i => propsList.includes(i[0]))

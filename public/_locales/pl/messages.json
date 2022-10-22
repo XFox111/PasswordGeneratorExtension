@@ -1,216 +1,173 @@
 {
-	"name":
-	{
+	"name": {
 		"message": "Generator haseł",
 		"description": "manifest.json"
 	},
-	"description":
-	{
+	"description": {
 		"message": "Rozszerzenie, które pozwala na łatwe generowanie trudnych i bezpiecznych haseł w jednym kliknięciu",
 		"description": "manifest.json"
 	},
-	"author":
-	{
+	"author": {
 		"message": "Jewgienij Lis",
 		"description": "manifest.json"
 	},
-	"Password_generator":
-	{
+	"Password_generator": {
 		"message": "Generator haseł",
 		"description": "App.tsx"
 	},
-	"Copy":
-	{
+	"Copy": {
 		"message": "Kopiuj",
 		"description": "PasswordView.tsx"
 	},
-	"Generate_new":
-	{
+	"Generate_new": {
 		"message": "Utwórz nowy",
 		"description": "PasswordView.tsx"
 	},
-	"Exclude_special_symbols_one_time":
-	{
+	"Exclude_special_symbols_one_time": {
 		"message": "Wygeneruj hasło bez znaków specjalnych",
 		"description": "PasswordView.tsx"
 	},
-	"Include_special_symbols_one_time":
-	{
+	"Include_special_symbols_one_time": {
 		"message": "Wygeneruj hasło z znakami specjalnymi",
 		"description": "PasswordView.tsx"
 	},
-	"Settings":
-	{
+	"Settings": {
 		"message": "Ustawienia",
 		"description": "SettingsSection.tsx"
 	},
-	"Password_length":
-	{
+	"Password_length": {
 		"message": "Długość hasła",
 		"description": "SettingsSection.tsx"
 	},
-	"Recommended_password_length":
-	{
+	"Recommended_password_length": {
 		"message": "Zalecana długość hasła",
 		"description": "SettingsSection.tsx"
 	},
-	"Character_options":
-	{
+	"Character_options": {
 		"message": "Ustawienia symboli",
 		"description": "SettingsSection.tsx"
 	},
-	"Include":
-	{
+	"Include": {
 		"message": "Włącz",
 		"description": "SettingsSection.tsx"
 	},
-	"Special_symbols":
-	{
+	"Special_symbols": {
 		"message": "Znaki specjalne",
 		"description": "SettingsSection.tsx"
 	},
-	"Numeric":
-	{
+	"Numeric": {
 		"message": "Liczby",
 		"description": "SettingsSection.tsx"
 	},
-	"Uppercase":
-	{
+	"Uppercase": {
 		"message": "Wielkie litery",
 		"description": "SettingsSection.tsx"
 	},
-	"Lowercase":
-	{
+	"Lowercase": {
 		"message": "Małe litery",
 		"description": "SettingsSection.tsx"
 	},
-	"Exclude":
-	{
+	"Exclude": {
 		"message": "Wyłącz",
 		"description": "SettingsSection.tsx"
 	},
-	"Similar":
-	{
+	"Similar": {
 		"message": "Podobne",
 		"description": "SettingsSection.tsx"
 	},
-	"Ambiguous":
-	{
+	"Ambiguous": {
 		"message": "Niebezpieczne",
 		"description": "SettingsSection.tsx"
 	},
-	"Repeating":
-	{
+	"Repeating": {
 		"message": "Powtarzające się",
 		"description": "SettingsSection.tsx"
 	},
-	"Add_shortcut_to_context_menu":
-	{
+	"Add_shortcut_to_context_menu": {
 		"message": "Dodaj rozszerzenie do menu kontekstowego",
 		"description": "SettingsSection.tsx"
 	},
-	"Right_click_password_field_to_quickly_generate_password":
-	{
+	"Right_click_password_field_to_quickly_generate_password": {
 		"message": "Kliknij prawym przyciskiem myszy w pole hasła, aby szybko wygenerować hasło",
 		"description": "SettingsSection.tsx"
 	},
-	"Automatically_copy_to_clipboard":
-	{
+	"Automatically_copy_to_clipboard": {
 		"message": "Automatycznie kopiuj do schowka",
 		"description": "SettingsSection.tsx"
 	},
-	"About":
-	{
+	"About": {
 		"message": "O rozszerzeniu",
 		"description": "AboutSection.tsx"
 	},
-	"Developed_by_Eugene_Fox":
-	{
+	"Developed_by_Eugene_Fox": {
 		"message": "Autor: Jewgienij Lis",
 		"description": "AboutSection.tsx"
 	},
-	"Licensed_under":
-	{
+	"Licensed_under": {
 		"message": "Licencja",
 		"description": "AboutSection.tsx"
 	},
-	"MIT_license":
-	{
+	"MIT_license": {
 		"message": "MIT",
 		"description": "AboutSection.tsx"
 	},
-	"Want_to_contribute_translation_for_your_language_":
-	{
+	"Want_to_contribute_translation_for_your_language_": {
 		"message": "Chcesz pomóc z tłumaczeniem na swój język?",
 		"description": "AboutSection.tsx"
 	},
-	"Read_this_to_get_started":
-	{
+	"Read_this_to_get_started": {
 		"message": "Przeczytaj ten artykuł",
 		"description": "AboutSection.tsx"
 	},
-	"My_website":
-	{
+	"My_website": {
 		"message": "Moja strona internetowa",
 		"description": "AboutSection.tsx"
 	},
-	"Source_code":
-	{
+	"Source_code": {
 		"message": "Kod źródłowy",
 		"description": "AboutSection.tsx"
 	},
-	"Changelog":
-	{
+	"Changelog": {
 		"message": "Lista zmian",
 		"description": "AboutSection.tsx"
 	},
-	"Leave_feedback":
-	{
+	"Leave_feedback": {
 		"message": "Zostaw opinię",
 		"description": "AboutSection.tsx"
 	},
-	"Buy_me_a_coffee":
-	{
+	"Buy_me_a_coffee": {
 		"message": "Wesprzyj",
 		"description": "AboutSection.tsx"
 	},
-	"Set_name":
-	{
+	"Set_name": {
 		"message": "Nazwa",
 		"description": "CharacterHelpDialog.tsx"
 	},
-	"Characters":
-	{
+	"Characters": {
 		"message": "Znaki",
 		"description": "CharacterHelpDialog.tsx"
 	},
-	"__etc_":
-	{
+	"__etc_": {
 		"message": " itp.",
 		"description": "CharacterHelpDialog.tsx"
 	},
-	"OK":
-	{
+	"OK": {
 		"message": "OK",
 		"description": "CharacterHelpDialog.tsx"
 	},
-	"Either_lowercase_or_uppercase_characters_must_be_included":
-	{
+	"Either_lowercase_or_uppercase_characters_must_be_included": {
 		"message": "Muszą być uwzględnione małe lub wielkie litery",
 		"description": "Generator.tsx"
 	},
-	"Selected_length_is_too_long_to_exclude_repeating_characters":
-	{
+	"Selected_length_is_too_long_to_exclude_repeating_characters": {
 		"message": "Wybrana długość jest zbyt długa, aby wykluczyć powtarzające się znaki",
 		"description": "Generator.tsx"
 	},
-	"Quick_generator_is_only_available_on_password_fields":
-	{
+	"Quick_generator_is_only_available_on_password_fields": {
 		"message": "Szybki generator jest dostępny tylko dla pól hasła",
 		"description": "ContentService.tsx"
 	},
-	"Quick_generate_password":
-	{
+	"Quick_generate_password": {
 		"message": "Wygeneruj hasło",
 		"description": "BackgroundService.tsx"
 	}

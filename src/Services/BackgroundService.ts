@@ -1,51 +1,55 @@
 // BackgroundService.ts
 // Background script that handles the context menu visibility
 
+import { Tabs, Menus } from "webextension-polyfill";
+import browser from "../Utils/Browser";
 import { loc } from "../Utils/Localization";
 
-function UpdateContextMenu(isEnabled: boolean) : void
+function UpdateContextMenu(isEnabled: boolean): void
 {
 	console.log("BackgroundService.UpdateContextMenu", isEnabled);
-	chrome.contextMenus.update("generatePassword", { visible: isEnabled });
+	browser.contextMenus.update("generatePassword", { visible: isEnabled });
 }
 
-async function OnContextClick(info : chrome.contextMenus.OnClickData) : Promise<void>
+async function OnContextClick(info: Menus.OnClickData): Promise<void>
 {
 	console.log("BackgroundService.OnContextClick", info);
-
-	let tabInfo : chrome.tabs.Tab[] = await chrome.tabs.query({ active: true, currentWindow: true });
-
+	let tabInfo: Tabs.Tab[] = await browser.tabs.query({ active: true, currentWindow: true });
 	console.log("BackgroundService.OnContextClick", tabInfo);
 
-	chrome.tabs.sendMessage<string>(tabInfo[0].id, info.menuItemId as string);
+	browser.tabs.sendMessage(tabInfo[0].id, info.menuItemId as string);
 }
 
-if (!chrome.runtime.onInstalled.hasListeners())
-	chrome.runtime.onInstalled.addListener(async () =>
-	{
-		console.log("[BackgroundService] chrome.runtime.onInstalled");
-		chrome.contextMenus.removeAll();
+async function OnInstalled(): Promise<void>
+{
+	console.log("[BackgroundService] browser.runtime.onInstalled");
+	browser.contextMenus.removeAll();
 
-		chrome.contextMenus.create(
-			{
-				title: loc("Quick generate password"),
-				contexts: [ "editable" ],
-				id: "generatePassword"
-			}
-		);
-
-		let settings : { [key : string]: any } = await chrome.storage.sync.get({ AddContext: true });
-
-		UpdateContextMenu(settings.AddContext);
-	});
-
-if (!chrome.contextMenus.onClicked.hasListeners())
-	chrome.contextMenus.onClicked.addListener(OnContextClick);
-
-if (!chrome.storage.sync.onChanged.hasListeners())
-	chrome.storage.sync.onChanged.addListener(changes =>
+	browser.contextMenus.create(
 		{
-			console.log("[BackgroundService] chrome.storage.sync.onChanged", changes);
-			if (changes.AddContext?.newValue !== undefined)
-				UpdateContextMenu(changes.AddContext.newValue);
-		});
+			title: loc("Quick generate password"),
+			contexts: ["editable"],
+			id: "generatePassword"
+		}
+	);
+
+	let settings: { [key: string]: any; } = await browser.storage.sync.get({ AddContext: true });
+
+	UpdateContextMenu(settings.AddContext);
+}
+
+async function OnStorageChanged(changes: any): Promise<void>
+{
+	console.log("[BackgroundService] browser.storage.sync.onChanged", changes);
+	if (changes.AddContext?.newValue !== undefined)
+		UpdateContextMenu(changes.AddContext.newValue);
+}
+
+if (!browser.runtime.onInstalled.hasListener(OnInstalled))
+	browser.runtime.onInstalled.addListener(OnInstalled);
+
+if (!browser.contextMenus.onClicked.hasListener(OnContextClick))
+	browser.contextMenus.onClicked.addListener(OnContextClick);
+
+if (!browser.storage.sync.onChanged.hasListener(OnStorageChanged))
+	browser.storage.sync.onChanged.addListener(OnStorageChanged);
