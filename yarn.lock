@@ -1476,10 +1476,10 @@
     "@griffel/react" "^1.3.0"
     tslib "^2.1.0"
 
-"@fluentui/react-icons@^2.0.175", "@fluentui/react-icons@^2.0.183":
-  version "2.0.183"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.183.tgz#6b534f6d55e7e4b8d285df533e09b73a7ac153e0"
-  integrity sha512-7zYIIaw1zi/Iqjx5vj9X9bh4cozoY4NuiGW0lsHvkHPhnKz4r+2P7pKrkj1WvU94oHlF6wr/cPthc2J9v1fsCg==
+"@fluentui/react-icons@^2.0.175", "@fluentui/react-icons@^2.0.185":
+  version "2.0.185"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.185.tgz#209e52c3f4e079a751baa4fc5f857f7bbc2d752a"
+  integrity sha512-IDqGAhijL1v7M22sNQRM7HnVe6+T4bX6cgcdOjybw1KP9Gc46iGTBhGKT8V2jQkR+qYJF1doiHwVFryYgZ4F9w==
   dependencies:
     "@griffel/react" "^1.0.0"
     tslib "^2.1.0"
@@ -2480,10 +2480,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/chrome@^0.0.197":
-  version "0.0.197"
-  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.197.tgz#c1b50cdb72ee40f9bc1411506031a9f8a925ab35"
-  integrity sha512-m1NfS5bOjaypyqQfaX6CxmJodZVcvj5+Mt/K94EBHkflYjPNmXHAzbxfifdLMa0YM3PDyOxohoTS5ug/e6p5jA==
+"@types/chrome@^0.0.199":
+  version "0.0.199"
+  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.199.tgz#fe4fdd2d90135fbaee24ef2490ea875ba502f818"
+  integrity sha512-BDuKiS8iZONsvTFSjbJlmHAwkYpkcWtG7Z7ESDJ/vf0QlcaXX6q4Xzi7euDNjIS4ZMA4kSODPGBHGVdC2lAHzw==
   dependencies:
     "@types/filesystem" "*"
     "@types/har-format" "*"
@@ -2573,9 +2573,9 @@
     "@types/node" "*"
 
 "@types/har-format@*":
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/@types/har-format/-/har-format-1.2.8.tgz#e6908b76d4c88be3db642846bb8b455f0bfb1c4e"
-  integrity sha512-OP6L9VuZNdskgNN3zFQQ54ceYD8OLq5IbqO4VK91ORLfOm7WdT/CiT/pHEBSQEqCInJ2y3O6iCm/zGtPElpgJQ==
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/@types/har-format/-/har-format-1.2.9.tgz#b9b3a9bfc33a078e7d898a00b09662910577f4a4"
+  integrity sha512-rffW6MhQ9yoa75bdNi+rjZBAvu2HhehWJXlhuWXnWdENeuKe82wUgAwxYOb7KRKKmxYN+D/iRKd2NDQMLqlUmg==
 
 "@types/html-minifier-terser@^6.0.0":
   version "6.1.0"
@@ -2631,10 +2631,10 @@
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-3.0.1.tgz#5f8f2bca0a5863cb69bc0b0acd88c96cb1d4ae10"
   integrity sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==
 
-"@types/node@*", "@types/node@^18.7.18":
-  version "18.7.18"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.18.tgz#633184f55c322e4fb08612307c274ee6d5ed3154"
-  integrity sha512-m+6nTEOadJZuTPkKR/SYK3A2d7FZrgElol9UP1Kae90VVU4a6mxnPuLiIW1m4Cq4gZ/nWb9GrdVXJCoCazDAbg==
+"@types/node@*", "@types/node@^18.11.0":
+  version "18.11.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.0.tgz#f38c7139247a1d619f6cc6f27b072606af7c289d"
+  integrity sha512-IOXCvVRToe7e0ny7HpT/X9Rb2RYtElG1a+VshjwT00HxrM2dWBApHQoqsI6WiY7Q03vdf2bCrIGzVrkF/5t10w==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -2737,6 +2737,11 @@
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@types/trusted-types/-/trusted-types-2.0.2.tgz#fc25ad9943bcac11cceb8168db4f275e0e72e756"
   integrity sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==
+
+"@types/webextension-polyfill@^0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@types/webextension-polyfill/-/webextension-polyfill-0.9.1.tgz#fcb5c352e2e461d0287774db89bc326b15b47844"
+  integrity sha512-6aNzPIhqKlAV9t06nwSH3/veAceYE2dS2RVFZI8V1+UXHqsFNB6cRwxNmheiBvEGRc45E/gyZNzH0xAYIC27KA==
 
 "@types/ws@^8.5.1":
   version "8.5.3"
@@ -9326,6 +9331,11 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
+
+webextension-polyfill@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/webextension-polyfill/-/webextension-polyfill-0.10.0.tgz#ccb28101c910ba8cf955f7e6a263e662d744dbb8"
+  integrity sha512-c5s35LgVa5tFaHhrZDnr3FpQpjj1BB+RXhLTYUxGqBVN460HkbM8TBtEqdXWbpTKfzwCcjAZVF7zXCYSKtcp9g==
 
 webidl-conversions@^4.0.2:
   version "4.0.2"
