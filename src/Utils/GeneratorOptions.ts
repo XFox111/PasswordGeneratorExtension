@@ -27,9 +27,6 @@ export default class GeneratorOptions
 
 		browser.storage.sync.onChanged.addListener(GeneratorOptions.OnStorageChanged);
 
-		// #51 - on firefox the field can sometimes be empty and generates an error on load
-		props.Length = props.Length || 16;
-
 		return props as GeneratorOptions;
 	}
 

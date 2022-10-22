@@ -12,6 +12,9 @@ export default class Generator
 
 	public static GeneratePassword(props : GeneratorOptions) : string
 	{
+		if (!props.Length || isNaN(props.Length) || props.Length < 4)
+			props.Length = 4;
+
 		// Validating parameters
 		if (this.ValidateProps(props))
 			return "";
@@ -45,6 +48,9 @@ export default class Generator
 
 	public static ValidateProps(props : GeneratorOptions): string
 	{
+		if (!props.Length || isNaN(props.Length) || props.Length < 4)
+			props.Length = 4;
+
 		if (!props.Lowercase && !props.Uppercase)
 			return loc("Either lowercase or uppercase characters must be included");
 

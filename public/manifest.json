@@ -1,5 +1,4 @@
 {
-	"$schema": "https://json.schemastore.org/chrome-manifest.json",
 	"manifest_version": 3,
 
 	"name": "__MSG_name__",
@@ -43,14 +42,5 @@
 		"48": "icons/icon-48.png",
 		"32": "icons/icon-32.png",
 		"16": "icons/icon-16.png"
-	},
-
-	"browser_specific_settings":
-	{
-		"gecko":
-		{
-			"id": "passwordgenerator@xfox111.net",
-			"strict_min_version": "58.0"
-		}
 	}
 }

@@ -18,7 +18,7 @@
 		"@testing-library/jest-dom": "^5.14.1",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^14.4.3",
-		"@types/chrome": "^0.0.199",
+		"@types/craco__craco": "^6.4.0",
 		"@types/jest": "^29.1.2",
 		"@types/node": "^18.11.0",
 		"@types/react": "^18.0.21",
@@ -28,8 +28,8 @@
 	},
 	"scripts":
 	{
-		"start": "react-scripts start",
-		"build": "INLINE_RUNTIME_CHUNK=false craco build",
+		"start": "craco start",
+		"build": "craco build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},

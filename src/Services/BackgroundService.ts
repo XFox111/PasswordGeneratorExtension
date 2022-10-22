@@ -11,10 +11,10 @@ function UpdateContextMenu(isEnabled: boolean) : void
 	browser.contextMenus.update("generatePassword", { visible: isEnabled });
 }
 
-async function OnContextClick(info : Menus.OnClickData | chrome.contextMenus.OnClickData) : Promise<void>
+async function OnContextClick(info : Menus.OnClickData) : Promise<void>
 {
 	console.log("BackgroundService.OnContextClick", info);
-	let tabInfo : Tabs.Tab[] | chrome.tabs.Tab[] = await browser.tabs.query({ active: true, currentWindow: true });
+	let tabInfo : Tabs.Tab[] = await browser.tabs.query({ active: true, currentWindow: true });
 	console.log("BackgroundService.OnContextClick", tabInfo);
 
 	browser.tabs.sendMessage(tabInfo[0].id, info.menuItemId as string);
