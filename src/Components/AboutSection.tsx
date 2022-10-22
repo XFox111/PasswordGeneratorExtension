@@ -33,7 +33,7 @@ export default class AboutSection extends React.Component
 						<div className="stack horizontal gap">
 							<Button
 								as="a" target="_blank"
-								onClick={ this.OpenFeedback }
+								href={ this.GetFeedbackLink() }
 								appearance="primary" icon={ <PersonFeedbackRegular /> }>
 
 								{ loc("Leave feedback") }
@@ -53,7 +53,7 @@ export default class AboutSection extends React.Component
 		);
 	}
 
-	private async OpenFeedback(): Promise<void>
+	private GetFeedbackLink(): string
 	{
 		let manifest: { [key: string]: string | any } = browser?.runtime?.getManifest();
 
@@ -66,16 +66,14 @@ export default class AboutSection extends React.Component
 				let host: string = new URL(manifest.update_url).host;
 
 				if (host.endsWith("edge.microsoft.com"))
-					window.open("https://microsoftedge.microsoft.com/addons/detail/password-generator/manimdhobjbkfpeeehlhhneookiokpbj");
+					return "https://microsoftedge.microsoft.com/addons/detail/password-generator/manimdhobjbkfpeeehlhhneookiokpbj";
 				else if (host.endsWith("google.com"))
-					window.open("https://chrome.google.com/webstore/detail/password-generator/jnjobgjobffgmgfnkpkjfjkkfhfikmfl");
+					return "https://chrome.google.com/webstore/detail/password-generator/jnjobgjobffgmgfnkpkjfjkkfhfikmfl";
 				else
-					window.open("mailto:feedback@xfox111.net");
+					return "mailto:feedback@xfox111.net";
 			}
-			else if ((await browser.runtime.getBrowserInfo())?.name === "Firefox")
-				window.open("https://addons.mozilla.org/firefox/addon/easy-password-generator");
 			else
-				window.open("mailto:feedback@xfox111.net");
+				return "mailto:feedback@xfox111.net";
 		}
 	}
 }
