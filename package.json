@@ -20,7 +20,7 @@
 		"@testing-library/user-event": "^14.4.3",
 		"@types/chrome": "^0.0.199",
 		"@types/jest": "^29.1.1",
-		"@types/node": "^18.7.18",
+		"@types/node": "^18.11.0",
 		"@types/react": "^18.0.21",
 		"@types/react-dom": "^18.0.0",
 		"@types/webextension-polyfill": "^0.9.1",
