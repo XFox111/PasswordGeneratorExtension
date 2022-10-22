@@ -30,7 +30,7 @@ export default class SettingsSection extends React.Component<IProps>
 								id="pwd-length"
 								value={ options.Length.toString() }
 								onChange={ (_, e) => GeneratorOptions.Update({ Length: parseInt(e.value) }) }
-								type="number" min={ 4 } />
+								type="number" min={ 4 } minLength={ 1 } />
 							<Text size={ 200 }>{ loc("Recommended password length") } <b>16-32</b></Text>
 						</div>
 						<Divider />
