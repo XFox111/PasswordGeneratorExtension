@@ -17,7 +17,7 @@
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^14.4.3",
 		"@types/craco__craco": "^6.4.0",
-		"@types/jest": "^29.1.2",
+		"@types/jest": "^29.2.0",
 		"@types/node": "^18.11.8",
 		"@types/react": "^18.0.24",
 		"@types/react-dom": "^18.0.0",
