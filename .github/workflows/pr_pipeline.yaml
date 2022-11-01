@@ -42,7 +42,7 @@ jobs:
     - run: yarn build
 
     - name: Drop artifacts (build)
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@v3.1.1
       with:
         name: build
         path: build
@@ -76,7 +76,7 @@ jobs:
         filename: PasswordGenerator-Firefox.zip
 
     - name: Drop artifacts (Firefox)
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@v3.1.1
       with:
         name: Firefox
         path: PasswordGenerator-Firefox.zip
