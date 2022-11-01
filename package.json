@@ -19,7 +19,7 @@
 		"@types/craco__craco": "^6.4.0",
 		"@types/jest": "^29.1.2",
 		"@types/node": "^18.11.8",
-		"@types/react": "^18.0.21",
+		"@types/react": "^18.0.24",
 		"@types/react-dom": "^18.0.0",
 		"@types/webextension-polyfill": "^0.9.1",
 		"react-scripts": "5.0.1"
