@@ -24,11 +24,11 @@
 		"description": "PasswordView.tsx"
 	},
 	"Exclude_special_symbols_one_time": {
-		"message": "Generate password without special symbols",
+		"message": "Gerar senha sem símbolos especiais",
 		"description": "PasswordView.tsx"
 	},
 	"Include_special_symbols_one_time": {
-		"message": "Gerar senha sem símbolos especiais",
+		"message": "Gerar senha com símbolos especiais",
 		"description": "PasswordView.tsx"
 	},
 	"Settings": {
