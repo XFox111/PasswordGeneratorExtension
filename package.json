@@ -4,11 +4,11 @@
 	"private": true,
 	"dependencies": {
 		"@craco/craco": "^6.4.5",
-		"@fluentui/react-components": "^9.6.1",
+		"@fluentui/react-components": "^9.7.1",
 		"@fluentui/react-icons": "^2.0.186",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"sass": "^1.55.0",
+		"sass": "^1.56.1",
 		"typescript": "^4.8.4",
 		"webextension-polyfill": "^0.10.0"
 	},
@@ -18,9 +18,9 @@
 		"@testing-library/user-event": "^14.4.3",
 		"@types/craco__craco": "^6.4.0",
 		"@types/jest": "^29.2.3",
-		"@types/node": "^18.11.8",
+		"@types/node": "^18.11.9",
 		"@types/react": "^18.0.24",
-		"@types/react-dom": "^18.0.0",
+		"@types/react-dom": "^18.0.9",
 		"@types/webextension-polyfill": "^0.9.1",
 		"react-scripts": "5.0.1"
 	},
