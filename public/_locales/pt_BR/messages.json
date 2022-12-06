@@ -1,0 +1,174 @@
+{
+	"name": {
+		"message": "Gerador de Senhas",
+		"description": "manifest.json"
+	},
+	"description": {
+		"message": "A extensão do gerador de senhas permite gerar facilmente uma senha longa e segura em um clique",
+		"description": "manifest.json"
+	},
+	"author": {
+		"message": "Eugene Fox",
+		"description": "manifest.json"
+	},
+	"Password_generator": {
+		"message": "Gerador de senhas",
+		"description": "App.tsx"
+	},
+	"Copy": {
+		"message": "Copiar",
+		"description": "PasswordView.tsx"
+	},
+	"Generate_new": {
+		"message": "Gerar nova",
+		"description": "PasswordView.tsx"
+	},
+	"Exclude_special_symbols_one_time": {
+		"message": "Gerar senha sem símbolos especiais",
+		"description": "PasswordView.tsx"
+	},
+	"Include_special_symbols_one_time": {
+		"message": "Gerar senha com símbolos especiais",
+		"description": "PasswordView.tsx"
+	},
+	"Settings": {
+		"message": "Configurações",
+		"description": "SettingsSection.tsx"
+	},
+	"Password_length": {
+		"message": "Comprimento da senha",
+		"description": "SettingsSection.tsx"
+	},
+	"Recommended_password_length": {
+		"message": "Comprimento recomendado da senha",
+		"description": "SettingsSection.tsx"
+	},
+	"Character_options": {
+		"message": "Opções de caracteres",
+		"description": "SettingsSection.tsx"
+	},
+	"Include": {
+		"message": "Incluir",
+		"description": "SettingsSection.tsx"
+	},
+	"Special_symbols": {
+		"message": "Símbolos especiais",
+		"description": "SettingsSection.tsx"
+	},
+	"Numeric": {
+		"message": "Numérico",
+		"description": "SettingsSection.tsx"
+	},
+	"Uppercase": {
+		"message": "Maiúsculas",
+		"description": "SettingsSection.tsx"
+	},
+	"Lowercase": {
+		"message": "Minúsculas",
+		"description": "SettingsSection.tsx"
+	},
+	"Exclude": {
+		"message": "Excluir",
+		"description": "SettingsSection.tsx"
+	},
+	"Similar": {
+		"message": "Semelhante",
+		"description": "SettingsSection.tsx"
+	},
+	"Ambiguous": {
+		"message": "Ambíguo",
+		"description": "SettingsSection.tsx"
+	},
+	"Repeating": {
+		"message": "Recorrente",
+		"description": "SettingsSection.tsx"
+	},
+	"Add_shortcut_to_context_menu": {
+		"message": "Adicionar atalho ao menu de contexto",
+		"description": "SettingsSection.tsx"
+	},
+	"Right_click_password_field_to_quickly_generate_password": {
+		"message": "Clique com o botão direito do mouse no campo de senha para gerar a senha rapidamente",
+		"description": "SettingsSection.tsx"
+	},
+	"Automatically_copy_to_clipboard": {
+		"message": "Copiar automaticamente para a área de transferência",
+		"description": "SettingsSection.tsx"
+	},
+	"About": {
+		"message": "Sobre",
+		"description": "AboutSection.tsx"
+	},
+	"Developed_by_Eugene_Fox": {
+		"message": "Desenvolvido por Eugene Fox",
+		"description": "AboutSection.tsx"
+	},
+	"Licensed_under": {
+		"message": "Licenciado sob",
+		"description": "AboutSection.tsx"
+	},
+	"MIT_license": {
+		"message": "MINHA licença",
+		"description": "AboutSection.tsx"
+	},
+	"Want_to_contribute_translation_for_your_language_": {
+		"message": "Quer contribuir com a tradução para o seu idioma?",
+		"description": "AboutSection.tsx"
+	},
+	"Read_this_to_get_started": {
+		"message": "Leia isto para começar",
+		"description": "AboutSection.tsx"
+	},
+	"My_website": {
+		"message": "Meu website",
+		"description": "AboutSection.tsx"
+	},
+	"Source_code": {
+		"message": "Código fonte",
+		"description": "AboutSection.tsx"
+	},
+	"Changelog": {
+		"message": "Registro de alterações",
+		"description": "AboutSection.tsx"
+	},
+	"Leave_feedback": {
+		"message": "Deixar feedback",
+		"description": "AboutSection.tsx"
+	},
+	"Buy_me_a_coffee": {
+		"message": "Compre-me um café",
+		"description": "AboutSection.tsx"
+	},
+	"Set_name": {
+		"message": "Nome",
+		"description": "CharacterHelpDialog.tsx"
+	},
+	"Characters": {
+		"message": "Caracteres",
+		"description": "CharacterHelpDialog.tsx"
+	},
+	"__etc_": {
+		"message": ", etc.",
+		"description": "CharacterHelpDialog.tsx"
+	},
+	"OK": {
+		"message": "OK",
+		"description": "CharacterHelpDialog.tsx"
+	},
+	"Either_lowercase_or_uppercase_characters_must_be_included": {
+		"message": "Caracteres minúsculos ou maiúsculos devem ser incluídos",
+		"description": "Generator.tsx"
+	},
+	"Selected_length_is_too_long_to_exclude_repeating_characters": {
+		"message": "O comprimento selecionado é muito longo para excluir caracteres repetidos",
+		"description": "Generator.tsx"
+	},
+	"Quick_generator_is_only_available_on_password_fields": {
+		"message": "O gerador rápido está disponível apenas em campos de senha",
+		"description": "ContentService.tsx"
+	},
+	"Quick_generate_password": {
+		"message": "Gerar senha rápida",
+		"description": "BackgroundService.tsx"
+	}
+}
