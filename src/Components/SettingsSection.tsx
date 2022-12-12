@@ -64,12 +64,14 @@ export default class SettingsSection extends React.Component<IProps>
 						</div>
 						<Divider />
 						<div className="stack">
-							<div>
-								<Tooltip content={ loc("Right-click password field to quickly generate password") } relationship="description">
-									<Checkbox label={ <Text>{ loc("Add shortcut to context menu") } <QuestionCircleRegular /></Text> }
-										checked={ settings.AddContext } onChange={ (_, e) => Settings.Update({ AddContext: e.checked as boolean }) } />
-								</Tooltip>
-							</div>
+							<Checkbox
+								checked={ settings.AddContext }
+								onChange={ (_, e) => Settings.Update({ AddContext: e.checked as boolean }) }
+								label={
+									<Tooltip content={ loc("Right-click password field to quickly generate password") } relationship="description">
+										<Text>{ loc("Add shortcut to context menu") } <QuestionCircleRegular /></Text>
+									</Tooltip>
+								} />
 							<Checkbox label={ loc("Automatically copy to clipboard") }
 								checked={ settings.Autocopy } onChange={ (_, e) => Settings.Update({ Autocopy: e.checked as boolean }) } />
 						</div>
