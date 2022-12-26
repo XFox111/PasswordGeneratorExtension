@@ -8,6 +8,7 @@ import PasswordView from "./Components/PasswordView";
 import Settings from "./Utils/Settings";
 import GeneratorOptions from "./Utils/GeneratorOptions";
 import { loc } from "./Utils/Localization";
+import Snow from "./Holidays/Snow";
 
 interface IStates
 {
@@ -63,6 +64,8 @@ export default class App extends React.Component<IProps, IStates>
 		return (
 			<FluentProvider theme={ this.state.theme }>
 				<main className="stack gap">
+					<Snow />
+
 					<header className="stack horizontal gap">
 						<Title2 as="h1">{ loc("Password generator") }</Title2>
 						<Text as="span">v{ Package.version }</Text>
