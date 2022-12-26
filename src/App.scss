@@ -1,6 +1,14 @@
+body
+{
+	margin: 0;
+}
+
 main
 {
 	width: 400px;
+	padding: 8px;
+	-webkit-user-select: none;
+	user-select: none;
 
 	h1, h2, h3, h4, h5, h6, p
 	{
@@ -41,6 +49,12 @@ main
 			transition-duration: .5s;
 			transition-timing-function: var(--curveDecelerateMax);
 		}
+	}
+
+	button.fui-Link
+	{
+		-webkit-user-select: none;
+		user-select: none;
 	}
 
 	.scaleUpIn
