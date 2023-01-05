@@ -1,6 +1,6 @@
 # Password generator
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/xfox111/PasswordGeneratorExtension)](https://github.com/xfox111/PasswordGeneratorExtension/releases/latest)
-[![GitHub last commit](https://img.shields.io/github/last-commit/xfox111/PasswordGeneratorExtension?label=Last+update)](https://github.com/xfox111/PasswordGeneratorExtension/commits/master)
+[![GitHub last commit](https://img.shields.io/github/last-commit/xfox111/PasswordGeneratorExtension?label=Last+update)](https://github.com/XFox111/PasswordGeneratorExtension/commits/main)
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/xfox111?style=social)](https://twitter.com/xfox111)
 [![GitHub followers](https://img.shields.io/github/followers/xfox111?label=Follow%20@xfox111&style=social)](https://github.com/xfox111)
