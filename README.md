@@ -56,6 +56,6 @@ If you are interested in fixing issues and contributing directly to the code bas
 This project has adopted the Contributor Covenant. For more information see the [Code of Conduct](https://github.com/XFox111/PasswordGeneratorExtension/blob/master/CODE_OF_CONDUCT.md)
 
 ## Copyrights
-> ©2022 Eugene Fox
+> ©2023 Eugene Fox
 
 [![MIT License](https://img.shields.io/github/license/xfox111/PasswordGeneratorExtension)](https://opensource.org/licenses/MIT)
