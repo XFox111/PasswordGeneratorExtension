@@ -4,7 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"@craco/craco": "^6.4.5",
-		"@fluentui/react-components": "^9.7.2",
+		"@fluentui/react-components": "^9.11.0",
 		"@fluentui/react-icons": "^2.0.186",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
