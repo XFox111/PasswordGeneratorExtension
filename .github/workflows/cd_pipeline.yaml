@@ -57,7 +57,7 @@ jobs:
         script: Remove-Item "manifest.v2.json"
 
     - name: Pack extension
-      uses: TheDoctor0/zip-release@0.6.2
+      uses: TheDoctor0/zip-release@0.7.1
       with:
         filename: PasswordGenerator-Chromium.zip
 
@@ -93,7 +93,7 @@ jobs:
           Rename-Item "manifest.v2.json" "manifest.json"
 
     - name: Pack extension
-      uses: TheDoctor0/zip-release@0.6.2
+      uses: TheDoctor0/zip-release@0.7.1
       with:
         filename: PasswordGenerator-Firefox.zip
 
