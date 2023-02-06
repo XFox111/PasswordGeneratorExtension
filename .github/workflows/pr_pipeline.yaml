@@ -2,8 +2,7 @@ name: PR check pipeline
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: [ "main", "next" ]
     paths-ignore:
       - '**.md'
       - 'LICENSE'
