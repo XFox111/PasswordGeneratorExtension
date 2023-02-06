@@ -5,7 +5,7 @@
 	"dependencies": {
 		"@craco/craco": "^6.4.5",
 		"@fluentui/react-components": "^9.13.0",
-		"@fluentui/react-icons": "^2.0.186",
+		"@fluentui/react-icons": "^2.0.193",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"sass": "^1.56.1",
