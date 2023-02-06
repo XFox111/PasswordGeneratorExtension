@@ -10,7 +10,7 @@ updates:
 
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
-    target-branch: "main"
+    target-branch: "next"
     assignees:
       - "xfox111"
     reviewers:
@@ -20,7 +20,7 @@ updates:
 
   - package-ecosystem: "github-actions"
     directory: "/"
-    target-branch: "main"
+    target-branch: "next"
     assignees:
       - "xfox111"
     reviewers:
