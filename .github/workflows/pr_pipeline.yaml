@@ -2,8 +2,7 @@ name: PR check pipeline
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: [ "main", "next" ]
     paths-ignore:
       - '**.md'
       - 'LICENSE'
@@ -42,7 +41,7 @@ jobs:
     - run: yarn build
 
     - name: Drop artifacts (build)
-      uses: actions/upload-artifact@v3.1.1
+      uses: actions/upload-artifact@v3.1.2
       with:
         name: build
         path: build
@@ -71,12 +70,12 @@ jobs:
         channel: listed
 
     - name: Pack extension
-      uses: TheDoctor0/zip-release@0.6.2
+      uses: TheDoctor0/zip-release@0.7.1
       with:
         filename: PasswordGenerator-Firefox.zip
 
     - name: Drop artifacts (Firefox)
-      uses: actions/upload-artifact@v3.1.1
+      uses: actions/upload-artifact@v3.1.2
       with:
         name: Firefox
         path: PasswordGenerator-Firefox.zip
