@@ -1,5 +1,4 @@
-import { Button, Text, Dialog, DialogTrigger, DialogSurface, DialogTitle, DialogBody, DialogActions, DialogContent } from "@fluentui/react-components";
-import { Table, TableHeader, TableRow, TableHeaderCell, TableBody, TableCell } from "@fluentui/react-components/unstable";
+import { Button, Text, Dialog, DialogTrigger, DialogSurface, DialogTitle, DialogBody, DialogActions, DialogContent, Table, TableHeader, TableRow, TableHeaderCell, TableBody, TableCell } from "@fluentui/react-components";
 import { QuestionCircleRegular } from "@fluentui/react-icons";
 import React from "react";
 import Generator from "../Utils/Generator";
