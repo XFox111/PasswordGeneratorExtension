@@ -52,6 +52,8 @@
 	},
 	"resolutions": {
 		"json5": "1.0.2",
-		"loader-utils": "2.0.4"
+		"loader-utils": "2.0.4",
+		"minimatch": "3.0.5",
+		"nth-check": "2.0.1"
 	}
 }
