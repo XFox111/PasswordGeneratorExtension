@@ -18,7 +18,7 @@
 		"@testing-library/user-event": "^14.4.3",
 		"@types/craco__craco": "^6.4.0",
 		"@types/jest": "^29.4.0",
-		"@types/node": "^18.14.6",
+		"@types/node": "^18.15.1",
 		"@types/react": "^18.0.28",
 		"@types/react-dom": "^18.0.11",
 		"@types/webextension-polyfill": "^0.10.0",
