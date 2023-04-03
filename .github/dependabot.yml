@@ -17,6 +17,7 @@ updates:
       - "xfox111"
     schedule:
       interval: "weekly"
+    rebase-strategy: disabled
 
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -27,3 +28,4 @@ updates:
       - "xfox111"
     schedule:
       interval: "weekly"
+    rebase-strategy: disabled
