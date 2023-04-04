@@ -108,7 +108,9 @@ export default class Generator
 	// min is inclusive, max is exclusive
 	private static GetRandomInt(min: number, max: number): number
 	{
-		return Math.floor(Math.random() * (max - min)) + min;
+		let arr = new Uint8Array(1);
+		crypto.getRandomValues(arr);
+		return Math.floor((arr[0] / 255) * (max - min)) + min;
 	}
 
 	private static PickRandomFromArray(array: string): string
