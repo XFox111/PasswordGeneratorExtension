@@ -3,7 +3,6 @@ import { InfoRegular, PersonFeedbackRegular } from "@fluentui/react-icons";
 import { ReactComponent as BuyMeACoffee } from "../Assets/BuyMeACoffee.svg";
 import React from "react";
 import { loc } from "../Utils/Localization";
-import browser from "../Utils/Browser";
 import * as Platform from "react-device-detect";
 
 export default class AboutSection extends React.Component
