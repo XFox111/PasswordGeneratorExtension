@@ -1,4 +1,5 @@
-import { CracoConfig, CracoContext } from "@craco/craco";
+import { CracoConfig, WebpackContext } from "@craco/types";
+import { Configuration as WebpackConfig } from "webpack";
 import HtmlWebapckPlugin, { MinifyOptions } from "html-webpack-plugin";
 import { Configuration } from "webpack";
 
@@ -8,16 +9,16 @@ const cracoConfig: CracoConfig =
 {
 	webpack:
 	{
-		configure: (webpackConfig: Configuration, { env, paths }: CracoContext): Configuration =>
+		configure: ((webpackConfig: WebpackConfig, { env, paths }: WebpackContext): WebpackConfig =>
 		{
 			const isProduction: boolean = env === "production";
 
-			const config: Configuration =
+			const config: WebpackConfig =
 			{
 				...webpackConfig,
 				entry:
 				{
-					main: paths.appIndexJs,
+					main: paths!.appIndexJs,
 					background: "./src/Services/BackgroundService.ts",
 					contentScript: "./src/Services/ContentService.ts",
 				},
@@ -53,13 +54,13 @@ const cracoConfig: CracoConfig =
 			config.plugins.push(new HtmlWebapckPlugin({
 				inject: true,
 				chunks: ["main"],
-				template: paths.appHtml,
+				template: paths!.appHtml,
 				filename: "index.html",
 				minify: isProduction && minifyOptions
 			}));
 
 			return config;
-		}
+		})
 	}
 };
 

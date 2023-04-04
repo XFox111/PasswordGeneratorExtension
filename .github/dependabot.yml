@@ -16,7 +16,8 @@ updates:
     reviewers:
       - "xfox111"
     schedule:
-      interval: "weekly"
+      interval: monthly
+    rebase-strategy: disabled
 
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -26,4 +27,5 @@ updates:
     reviewers:
       - "xfox111"
     schedule:
-      interval: "weekly"
+      interval: monthly
+    rebase-strategy: disabled
