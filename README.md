@@ -34,6 +34,45 @@ Extension for web browsers which helps you to easily generate strong passwords i
 - [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/easy-password-generator/)
 - [GitHub Releases](https://github.com/xfox111/PasswordGeneratorExtension/releases/latest)
 
+### Sideloading (for testing purposes only)
+
+<details>
+	<summary>Click to expand</summary>
+
+---
+
+<details>
+	<summary><b>Chromium-based browsers (Edge, Chrome, etc.)</b></summary>
+
+> 1. Go to [Releases](https://github.com/XFox111/PasswordGeneratorExtension/releases) and select a release to download
+> 2. Download attached archive for Chromium and unpack it
+> 3. Go to "chrome://extensions"
+> 4. Enable "Developer mode"
+> 5. Click the "Load unpacked" button and navigate to the extension's root folder (contains `manifest.json`)
+> 6. Done!
+
+</details>
+
+<details>
+	<summary><b>Firefox</b></summary>
+
+> 1. Go to [Releases](https://github.com/XFox111/PasswordGeneratorExtension/releases) and select a release to download
+> 2. Download attached archive for Firefox and unpack it
+> 3. Go to "about:debugging#/runtime/this-firefox"
+> 4. Click the "Load Temporary Add-on..." button and select `manifest.josn` file in the root folder
+> 5. Done!
+
+> **Important!**
+This will _replace_ officialy installed version if you have one.
+If you want to sideload it without replacing to run both versions at the same time - before loading add-on, open `manifest.json` in a text editor and change `id` key (it's `passwordgenerator@xfox111.net` by default) to something else
+
+</details>
+
+> **Note:** If you delete the extension folder it will disappear from your browser
+---
+
+</details>
+
 ## Contributing
 [![GitHub issues](https://img.shields.io/github/issues/xfox111/PasswordGeneratorExtension)](https://github.com/xfox111/PasswordGeneratorExtension/issues)
 [![CI](https://github.com/XFox111/PasswordGeneratorExtension/actions/workflows/cd_pipeline.yaml/badge.svg)](https://github.com/XFox111/PasswordGeneratorExtension/actions/workflows/cd_pipeline.yaml)
