@@ -25,7 +25,7 @@
 		"@types/webextension-polyfill": "^0.10.0",
 		"html-webpack-plugin": "^5.5.1",
 		"react-scripts": "5.0.1",
-		"webpack": "^5.85.0"
+		"webpack": "^5.88.1"
 	},
 	"scripts": {
 		"start": "craco start",
