@@ -22,7 +22,7 @@
 		"@types/node": "^20.4.5",
 		"@types/react": "^18.2.14",
 		"@types/react-dom": "^18.2.7",
-		"@types/webextension-polyfill": "^0.10.1",
+		"@types/webextension-polyfill": "^0.10.2",
 		"html-webpack-plugin": "^5.5.1",
 		"react-scripts": "5.0.1",
 		"webpack": "^5.88.2"
