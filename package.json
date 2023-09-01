@@ -1,6 +1,6 @@
 {
 	"name": "password-generator",
-	"version": "2.2.7",
+	"version": "2.2.8",
 	"private": true,
 	"dependencies": {
 		"@craco/craco": "^7.1.0",
