@@ -8,7 +8,7 @@ export default class Generator
 	public static Numeric = "23456789";
 	public static SpecialCharacters = "!#$%&*+-=?@^_";
 	public static AmbiguousCharacters = "{}[]()/\\'\"`~,;:.<>";
-	public static SimilarCharacters = "il1Lo0O";
+	public static SimilarCharacters = "iIl1Lo0O";
 
 	public static GeneratePassword(props: GeneratorOptions): string
 	{
@@ -23,25 +23,22 @@ export default class Generator
 		let availableCharacters: string = this.GetAvailableCharacters(props);
 		let requiredCharacters: string = this.GetRequiredCharacters(props);
 
-		let password: string = "";
+		let password: string = requiredCharacters;
 
-		for (let i = 0; i < props.Length; i++)
-		{
-			let char: string = this.PickRandomFromArray(availableCharacters);
+		// Adding random characters to meet the required length
+		if (password.length < props.Length)
+			for (let i = password.length; i < props.Length; i++)
+			{
+				let char: string = this.PickRandomFromArray(availableCharacters);
 
-			if (props.ExcludeRepeating && password.includes(char))
-				i--;
-			else
-				password += char;
-		}
+				if (props.ExcludeRepeating && password.includes(char))
+					i--;
+				else
+					password += char;
+			}
 
-		for (let i = 0; i < requiredCharacters.length; i++)
-		{
-			if (props.ExcludeRepeating && password.includes(requiredCharacters[i]))
-				continue;
-
-			password = password.replace(this.PickRandomFromArray(password), requiredCharacters[i]);
-		}
+		// Mixing the password
+		password = this.ShuffleString(password);
 
 		return password;
 	}
@@ -117,5 +114,22 @@ export default class Generator
 	{
 		return array[this.GetRandomInt(0, array.length)];
 	}
-}
 
+	/**
+	 * Shuffles a string using Fisher-Yates algorithm and CSPRNG
+	 * @see https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+	 * @param str string to shuffle
+	 */
+	private static ShuffleString(str: string): string
+	{
+		let arr = str.split("");
+
+		for (let i = arr.length - 1; i > 0; i--)
+		{
+			let j = this.GetRandomInt(0, i + 1);
+			[arr[i], arr[j]] = [arr[j], arr[i]];
+		}
+
+		return arr.join("");
+	}
+}
