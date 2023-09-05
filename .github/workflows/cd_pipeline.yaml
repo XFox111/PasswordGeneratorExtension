@@ -129,7 +129,7 @@ jobs:
         name: Chromium
 
     - name: Publish to Chrome Web Store
-      uses: wdzeng/chrome-extension@v1
+      uses: wdzeng/chrome-extension@v1.1.2
       with:
         extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
         zip-path: PasswordGenerator-Chromium.zip
@@ -148,7 +148,7 @@ jobs:
         name: Chromium
 
     - name: Publish to Edge Addons
-      uses: wdzeng/edge-addon@v1
+      uses: wdzeng/edge-addon@v1.1.0
       with:
         product-id: ${{ secrets.EDGE_PRODUCT_ID }}
         zip-path: PasswordGenerator-Chromium.zip
