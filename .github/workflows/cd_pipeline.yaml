@@ -145,7 +145,7 @@ jobs:
         name: Chromium
 
     - name: Publish to Chrome Web Store
-      uses: wdzeng/chrome-extension@v1.1.2
+      uses: wdzeng/chrome-extension@v1.1.1
       with:
         extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
         zip-path: PasswordGenerator-Chromium.zip
