@@ -70,7 +70,7 @@ jobs:
         channel: listed
 
     - name: Pack extension
-      uses: TheDoctor0/zip-release@0.7.1
+      uses: TheDoctor0/zip-release@0.7.6
       with:
         filename: PasswordGenerator-Firefox.zip
 
