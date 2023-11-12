@@ -10,7 +10,7 @@
 	},
 	"dependencies": {
 		"@fluentui/react-components": "^9.34.0",
-		"@fluentui/react-icons": "^2.0.218",
+		"@fluentui/react-icons": "^2.0.222",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
 	},
