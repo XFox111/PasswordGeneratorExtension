@@ -27,6 +27,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: node:20
     strategy:
       fail-fast: false
       matrix:
@@ -34,11 +35,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@main
-
-      - uses: actions/setup-node@main
-        with:
-          cache: yarn
-          node-version: 20
 
       - run: yarn install
       - run: yarn lint
