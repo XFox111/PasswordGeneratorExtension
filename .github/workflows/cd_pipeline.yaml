@@ -60,10 +60,10 @@ jobs:
           extension-root: dist
           self-hosted: false
 
-      - uses: TheDoctor0/zip-release@main
+      - uses: cardinalby/webext-buildtools-pack-extension-dir-action@1.0.8
         with:
-          filename: packed-${{ matrix.target }}.zip
-          path: dist
+          extensionDir: dist
+          zipFilePath: packed-${{ matrix.target }}.zip
 
       - name: Drop packed artifacts (${{ matrix.target }})
         uses: actions/upload-artifact@main
