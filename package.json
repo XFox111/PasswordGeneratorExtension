@@ -10,14 +10,14 @@
 	},
 	"dependencies": {
 		"@fluentui/react-components": "^9.34.0",
-		"@fluentui/react-icons": "^2.0.218",
+		"@fluentui/react-icons": "^2.0.222",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
 		"@types/react": "^18.0.26",
-		"@types/react-dom": "^18.0.9",
-		"@types/webextension-polyfill": "^0.10.0",
+		"@types/react-dom": "^18.2.15",
+		"@types/webextension-polyfill": "^0.10.6",
 		"@typescript-eslint/eslint-plugin": "^6.10.0",
 		"@typescript-eslint/parser": "^6.10.0",
 		"@vitejs/plugin-react-swc": "^3.2.0",
@@ -25,8 +25,8 @@
 		"eslint-plugin-react": "^7.33.2",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-react-refresh": "^0.4.4",
-		"sass": "^1.69.0",
-		"typescript": "^4.9.3",
+		"sass": "^1.69.5",
+		"typescript": "^5.2.2",
 		"vite": "^4.1.4",
 		"vite-plugin-static-copy": "^0.17.0",
 		"vite-plugin-svgr": "^4.1.0",

@@ -21,7 +21,7 @@ jobs:
           content=`cat ./package.json`
           echo "::set-output name=manifest::${content}"
 
-      - uses: dev-build-deploy/release-me@v0.14.0
+      - uses: dev-build-deploy/release-me@v0.15.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           prefix: v
