@@ -13,7 +13,7 @@ import { useStyles } from "./SettingsSection.styles";
 
 export default function SettingsSection(): JSX.Element
 {
-	const { extOptions, generatorOptions, updateStorage } = useStorage();
+	const { generatorOptions, updateStorage } = useStorage();
 	const cls = useStyles();
 
 	const infoLabel = (content: string, hint: string) => ({
@@ -79,13 +79,6 @@ export default function SettingsSection(): JSX.Element
 						checked={ generatorOptions.ExcludeRepeating }
 						onChange={ setOption("ExcludeRepeating") } />
 				</div>
-
-				<fui.Divider />
-
-				<fui.Checkbox
-					label={ loc("settings@autocopy") }
-					checked={ extOptions.Autocopy }
-					onChange={ setOption("Autocopy") } />
 
 			</fui.AccordionPanel>
 

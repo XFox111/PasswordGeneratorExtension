@@ -143,11 +143,6 @@
 		"message": "Each character in the password will be unique",
 		"description": "Repeating characters character set hint in settings section"
 	},
-	"settings@autocopy":
-	{
-		"message": "Automatically copy to clipboard",
-		"description": "Autocopy label in settings section"
-	},
 	"generator@copy":
 	{
 		"message": "Copy",

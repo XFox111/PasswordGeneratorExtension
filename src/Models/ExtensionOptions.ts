@@ -1,4 +1,1 @@
-export default class ExtensionOptions
-{
-	public Autocopy: boolean = true;
-}
+export default class ExtensionOptions { }

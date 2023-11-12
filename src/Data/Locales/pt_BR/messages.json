@@ -143,11 +143,6 @@
 		"message": "Cada caractere na senha será único",
 		"description": "Repeating characters character set hint in settings section"
 	},
-	"settings@autocopy":
-	{
-		"message": "Copiar automaticamente para a área de transferência",
-		"description": "Autocopy label in settings section"
-	},
 	"generator@copy":
 	{
 		"message": "Copiar",

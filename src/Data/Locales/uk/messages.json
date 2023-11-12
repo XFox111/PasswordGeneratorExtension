@@ -143,11 +143,6 @@
 		"message": "Кожен символ пароля буде унікальним",
 		"description": "Repeating characters character set hint in settings section"
 	},
-	"settings@autocopy":
-	{
-		"message": "Автоматично копіювати в буфер обміну",
-		"description": "Autocopy label in settings section"
-	},
 	"generator@copy":
 	{
 		"message": "Копіювати",

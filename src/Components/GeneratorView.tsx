@@ -13,7 +13,7 @@ type QuickOptions = Pick<GeneratorOptions, "Length" | "Special" | "ExcludeAmbigu
 
 export default function GeneratorView(): JSX.Element
 {
-	const { generatorOptions, extOptions } = useStorage();
+	const { generatorOptions } = useStorage();
 	const [password, setPassword] = useState<string>("");
 	const [quickOpts, _setOpts] = useState<QuickOptions>(generatorOptions);
 	const [error, setError] = useState<string | null>(null);
@@ -44,13 +44,7 @@ export default function GeneratorView(): JSX.Element
 
 	useEffect(resetOptions, [generatorOptions]);
 	useEffect(RefreshPassword, [generatorOptions, quickOpts]);
-	useEffect(() =>
-	{
-		if (extOptions.Autocopy && document.hasFocus())
-			CopyPassword();
-
-		refreshTimer.trigger();
-	}, [password]);
+	useEffect(refreshTimer.trigger, [password]);
 
 	const actionButtons: JSX.Element = <>
 		<Tooltip content={ loc("generator@copy") } relationship="label">

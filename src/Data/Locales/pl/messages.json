@@ -143,11 +143,6 @@
 		"message": "Każdy znak hasła będzie unikalny",
 		"description": "Repeating characters character set hint in settings section"
 	},
-	"settings@autocopy":
-	{
-		"message": "Automatycznie kopiuj do schowka",
-		"description": "Autocopy label in settings section"
-	},
 	"generator@copy":
 	{
 		"message": "Kopiuj",
