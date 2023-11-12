@@ -1,67 +1,66 @@
-import { AccordionItem, AccordionHeader, AccordionPanel, Link, Text, Button } from "@fluentui/react-components";
+import * as fui from "@fluentui/react-components";
 import { InfoRegular, PersonFeedbackRegular } from "@fluentui/react-icons";
-import { ReactComponent as BuyMeACoffee } from "../Assets/BuyMeACoffee.svg";
-import React from "react";
-import { loc } from "../Utils/Localization";
-import * as Platform from "react-device-detect";
+import Package from "../../package.json";
+import BuyMeACoffee from "../Assets/BuyMeACoffee.svg?react";
+import { bmcDarkTheme, bmcLightTheme } from "../Data/BmcTheme";
+import { GetFeedbackLink, GithubLink, PersonalLink } from "../Data/Links";
+import { GetLocaleString as loc } from "../Utils/Localization";
+import { useTheme } from "../Utils/Theme";
+import { useStyles } from "./AboutSection.styles";
 
-export default class AboutSection extends React.Component
+export default function AboutSection(): JSX.Element
 {
-	public render(): JSX.Element
-	{
-		return (
-			<AccordionItem value="about">
-				<AccordionHeader as="h2" icon={ <InfoRegular /> }>{ loc("About") }</AccordionHeader>
-				<AccordionPanel>
-					<section className="stack gap fadeIn">
-						<Text as="p">
-							{ loc("Developed by Eugene Fox") } (<Link href="https://twitter.com/xfox111" target="_blank">@xfox111</Link>)
-							<br />
-							{ loc("Licensed under") } <Link href="https://github.com/XFox111/PasswordGeneratorExtension/blob/master/LICENSE" target="_blank">{ loc("MIT license") }</Link>
-						</Text>
-						<Text as="p">
-							{ loc("Want to contribute translation for your language?") } <Link href="https://github.com/XFox111/PasswordGeneratorExtension/blob/master/CONTRIBUTING.md" target="_blank">{ loc("Read this to get started") }</Link>
-						</Text>
-						<Text as="p">
-							<Link href="https://xfox111.net/" target="_blank">{ loc("My website") }</Link>
-							<br />
-							<Link href="https://github.com/xfox111/PasswordGeneratorExtension" target="_blank">{ loc("Source code") }</Link>
-							<br />
-							<Link href="https://github.com/XFox111/PasswordGeneratorExtension/releases/latest" target="_blank">{ loc("Changelog") }</Link>
-						</Text>
+	const theme = useTheme(bmcLightTheme, bmcDarkTheme);
+	const cls = useStyles();
 
-						<div className="stack horizontal gap">
-							<Button
-								as="a" target="_blank"
-								href={ this.GetFeedbackLink() }
-								appearance="primary" icon={ <PersonFeedbackRegular /> }>
+	const link = (text: string, href: string): JSX.Element => (
+		<fui.Link target="_blank" href={ href }>{ text }</fui.Link>
+	);
 
-								{ loc("Leave feedback") }
-							</Button>
+	const buttonProps = (href: string, icon: JSX.Element): fui.ButtonProps => (
+		{
+			as: "a", target: "_blank", href,
+			appearance: "primary", icon
+		}
+	);
 
-							<Button
-								as="a" target="_blank"
-								href="https://buymeacoffee.com/xfox111"
-								className="bmc" appearance="primary" icon={ <BuyMeACoffee /> }>
+	return (
+		<fui.AccordionItem value="about">
+			<fui.AccordionHeader as="h2" icon={ <InfoRegular /> }>{ loc("about@title") }</fui.AccordionHeader>
+			<fui.AccordionPanel className={ cls.root }>
+				<header className={ cls.horizontalContainer }>
+					<fui.Subtitle1 as="h1">{ loc("name") }</fui.Subtitle1>
+					<fui.Caption1 as="span">v{ Package.version }</fui.Caption1>
+				</header>
 
-								{ loc("Buy me a coffee") }
-							</Button>
-						</div>
-					</section>
-				</AccordionPanel>
-			</AccordionItem>
-		);
-	}
+				<fui.Text as="p">
+					{ loc("about@developedBy") } ({ link("@xfox111", PersonalLink.Twitter) })
+					<br />
+					{ loc("about@licensedUnder") } { link(loc("about@mitLicense"), GithubLink.License) }
+				</fui.Text>
 
-	private GetFeedbackLink(): string
-	{
-		if (Platform.isEdgeChromium)
-			return "https://microsoftedge.microsoft.com/addons/detail/password-generator/manimdhobjbkfpeeehlhhneookiokpbj";
-		else if (Platform.isChrome)
-			return "https://chrome.google.com/webstore/detail/password-generator/jnjobgjobffgmgfnkpkjfjkkfhfikmfl";
-		else if (Platform.isFirefox)
-			return "https://addons.mozilla.org/en-US/firefox/addon/easy-password-generator";
-		else
-			return "mailto:feedback@xfox111.net";
-	}
+				<fui.Text as="p">
+					{ loc("about@translationCta") }<br />
+					{ link(loc("about@translationCtaButton"), GithubLink.TranslationGuide) }
+				</fui.Text>
+
+				<fui.Text as="p">
+					{ link(loc("about@website"), PersonalLink.Website) } <br />
+					{ link(loc("about@sourceCode"), GithubLink.Repository) } <br />
+					{ link(loc("about@changelog"), GithubLink.Changelog) }
+				</fui.Text>
+
+				<div className={ cls.horizontalContainer }>
+					<fui.Button { ...buttonProps(GetFeedbackLink(), <PersonFeedbackRegular />) }>
+						{ loc("about@feedback") }
+					</fui.Button>
+					<fui.FluentProvider theme={ theme }>
+						<fui.Button { ...buttonProps(PersonalLink.BuyMeACoffee, <BuyMeACoffee />) }>
+							{ loc("about@sponsor") }
+						</fui.Button>
+					</fui.FluentProvider>
+				</div>
+			</fui.AccordionPanel>
+		</fui.AccordionItem>
+	);
 }
