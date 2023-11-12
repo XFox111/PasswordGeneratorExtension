@@ -10,6 +10,7 @@ on:
       - '**/cd_pipeline.yaml'
       - '**/dependabot.yml'
       - '**/codeql-analysis.yml'
+      - '**/pr_next.yaml'
       - '.vscode/*'
       - '.devcontainer/*'
   workflow_dispatch:
@@ -47,6 +48,7 @@ jobs:
           path: dist
 
       - name: web-ext lint
+        if: ${{ matrix.target == 'firefox' }}
         uses: freaktechnik/web-ext-lint@main
         with:
           extension-root: dist

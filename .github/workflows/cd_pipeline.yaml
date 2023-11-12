@@ -53,13 +53,12 @@ jobs:
           name: ${{ matrix.target }}
           path: dist
 
-      - name: "web-ext lint"
+      - name: web-ext lint
         if: ${{ matrix.target == 'firefox' }}
-        uses: kewisch/action-web-ext@cb8a69420fea686e331e270b6581d4d289ecb2d2
+        uses: freaktechnik/web-ext-lint@main
         with:
-          cmd: lint
-          source: dist
-          channel: listed
+          extension-root: dist
+          self-hosted: false
 
       - uses: TheDoctor0/zip-release@main
         with:
@@ -79,7 +78,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: ${{ fromJSON(format('[%s]', github.event.inputs.targets || 'chrome,firefox')) }}
+        target: ${{ fromJSON(github.event.inputs.targets || '["chrome","firefox"]') }}
 
     steps:
       - uses: actions/download-artifact@main
@@ -98,7 +97,7 @@ jobs:
 
   publish-chrome:
     needs: build
-    if: ${{ github.event_name == 'release' || (github.event.inputs.chrome == 'true' && contains(fromJson(format('[%s]', github.event.inputs.targets)), 'chrome')) }}
+    if: ${{ github.event_name == 'release' || (github.event.inputs.chrome == 'true' && contains(github.event.inputs.targets, 'chrome')) }}
     runs-on: ubuntu-latest
 
     steps:
@@ -116,7 +115,7 @@ jobs:
 
   publish-edge:
     needs: build
-    if: ${{ github.event_name == 'release' || (github.event.inputs.edge == 'true' && contains(fromJson(format('[%s]', github.event.inputs.targets)), 'chrome')) }}
+    if: ${{ github.event_name == 'release' || (github.event.inputs.edge == 'true' && contains(github.event.inputs.targets, 'chrome')) }}
     runs-on: ubuntu-latest
 
     steps:
@@ -134,7 +133,7 @@ jobs:
 
   publish-firefox:
     needs: build
-    if: ${{ github.event_name == 'release' || (github.event.inputs.firefox == 'true' && contains(fromJson(format('[%s]', github.event.inputs.targets)), 'firefox')) }}
+    if: ${{ github.event_name == 'release' || (github.event.inputs.firefox == 'true' && contains(github.event.inputs.targets, 'firefox')) }}
     runs-on: ubuntu-latest
 
     steps:
