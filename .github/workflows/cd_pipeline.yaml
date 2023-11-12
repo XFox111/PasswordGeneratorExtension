@@ -8,8 +8,12 @@ on:
       targets:
         description: Targets
         required: true
-        default: "chrome,firefox"
-        type: string
+        default: '["chrome","firefox"]'
+        type: choice
+        options:
+          - '["chrome","firefox"]'
+          - '["chrome"]'
+          - '["firefox"]'
       firefox:
         description: Deploy Firefox
         type: boolean
@@ -34,7 +38,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: ${{ fromJSON(format('[%s]', github.event.inputs.targets || 'chrome,firefox')) }}
+        target: ${{ fromJSON(github.event.inputs.targets || '["chrome","firefox"]') }}
 
     steps:
       - uses: actions/checkout@main
