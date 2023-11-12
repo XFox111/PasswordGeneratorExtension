@@ -2,9 +2,10 @@ name: PR next workflow
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - 'package.json'
+  workflow_dispatch:
 
 permissions:
   contents: write
