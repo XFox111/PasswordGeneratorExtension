@@ -16,14 +16,14 @@ From now on we are starting to roll out updates on every first Tuesday of the mo
 Dependencies update and security fixes
 
 ## Changelog
-### Dependencies bump
+### Dependency bumps
 - #
 ### Fixed security vulnerabilities
-- 
+- [CWE-20](https://cwe.mitre.org/data/definitions/20.html) (#)
+- CVE-2022-25883 (#)
 
 ## PR Checklist
-- [ ] Update extension version in `package.json`
-- [ ] Create a release draft
-- [ ] [Post-merge] Create a release to publish the new version
+- [ ] Update version in `package.json`
+- [ ] [Post-merge] Review and publish GitHub release
 - [ ] [Post-deploy] Update changelog for Firefox webstore
 -->

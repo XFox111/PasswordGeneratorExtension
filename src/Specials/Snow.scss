@@ -1,0 +1,55 @@
+.snow
+{
+	position: absolute;
+	overflow: hidden;
+	pointer-events: none;
+
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.snowflake
+{
+	--size: 1px;
+	width: var(--size);
+	height: var(--size);
+	background: white;
+	border-radius: 50%;
+	position: absolute;
+	top: -5px;
+
+	@media (prefers-color-scheme: light)
+	{
+		background: var(--colorPalettePlatinumBorderActive);
+	}
+}
+
+@keyframes snowfall
+{
+	0%
+	{
+		transform: translate3d(var(--left-ini), 0, 0);
+		opacity: .6;
+	}
+
+	100%
+	{
+		transform: translate3d(var(--left-end), 610px, 0);
+		opacity: 0;
+	}
+}
+
+@for $i from 1 through 50
+{
+	.snowflake:nth-child(#{$i})
+	{
+		--size: #{random(5)}px;
+		--left-ini: #{random(20) - 10}vw;
+		--left-end: #{random(20) - 10}vw;
+		left: #{random(100)}vw;
+		animation: snowfall #{5 + random(10)}s linear infinite;
+		animation-delay: -#{random(10)}s;
+	}
+}

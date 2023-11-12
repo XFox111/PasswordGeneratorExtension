@@ -1,0 +1,30 @@
+name: PR next workflow
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'package.json'
+
+permissions:
+  contents: write
+
+jobs:
+  create-release-draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Get version from package.json
+        id: get_manifest
+        run: |
+          content=`cat ./package.json`
+          echo "::set-output name=manifest::${content}"
+
+      - uses: dev-build-deploy/release-me@v0.14.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          prefix: v
+          draft: true
+          version: ${{ fromJson(steps.get_manifest.outputs.manifest).version }}
+          release-notes: .github/release_description_template.md

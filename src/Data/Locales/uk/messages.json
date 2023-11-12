@@ -1,0 +1,176 @@
+{
+	"name": {
+		"message": "Генератор паролів",
+		"description": "Extension name"
+	},
+	"description": {
+		"message": "Розширення, яке дозволяє легко генерувати складні та надійні паролі в один клік",
+		"description": "Extension description"
+	},
+	"author": {
+		"message": "Євген Лис",
+		"description": "Extension author"
+	},
+	"error@moreCharacters": {
+		"message": "Мінімальна довжина пароля — 4 символи",
+		"description": "Error message when password length is less than 4 characters"
+	},
+	"error@noCharacters": {
+		"message": "Необхідно вибрати хоча б один вид символів",
+		"description": "Error message when no character set is selected"
+	},
+	"error@tooLong": {
+		"message": "Вибрана довжина занадто велика, для генерації унікальних символів",
+		"description": "Error message when password length is too long to generate password with unique characters"
+	},
+	"about@title":
+	{
+		"message": "Про розширення",
+		"description": "About section title"
+	},
+	"about@developedBy":
+	{
+		"message": "Розробник: Євген Лис",
+		"description": "Developer credits in about section"
+	},
+	"about@licensedUnder":
+	{
+		"message": "",
+		"description": "License info in about section"
+	},
+	"about@mitLicense":
+	{
+		"message": "Ліцензія MIT",
+		"description": "License name"
+	},
+	"about@translationCta":
+	{
+		"message": "Знайшли помилку або хочете переклад на вашу мову?",
+		"description": "Translation CTA in about section"
+	},
+	"about@translationCtaButton":
+	{
+		"message": "Почніть тут",
+		"description": "Translation CTA button in about section"
+	},
+	"about@website":
+	{
+		"message": "Мій веб-сайт",
+		"description": "Website link in about section"
+	},
+	"about@sourceCode":
+	{
+		"message": "Вихідний код",
+		"description": "Source code link in about section"
+	},
+	"about@changelog":
+	{
+		"message": "Список змін",
+		"description": "Changelog link in about section"
+	},
+	"about@feedback":
+	{
+		"message": "Залишити відгук",
+		"description": "Feedback link in about section"
+	},
+	"about@sponsor":
+	{
+		"message": "Підтримати",
+		"description": "Buy me a coffee donation link in about section"
+	},
+	"settings@title":
+	{
+		"message": "Налаштування",
+		"description": "Settings section title"
+	},
+	"settings@length":
+	{
+		"message": "Довжина пароля",
+		"description": "Password length label in settings section"
+	},
+	"settings@length__hint":
+	{
+		"message": "Рекомендована довжина: 8—16",
+		"description": "Password length recommendatin in settings section"
+	},
+	"settings@include":
+	{
+		"message": "Додати символи",
+		"description": "Include character sets section"
+	},
+	"settings@uppercase":
+	{
+		"message": "Великі",
+		"description": "Uppercase character set label in settings section"
+	},
+	"settings@lowercase":
+	{
+		"message": "Малі",
+		"description": "Lowercase character set label in settings section"
+	},
+	"settings@numeric":
+	{
+		"message": "Числові",
+		"description": "Numbers character set label in settings section"
+	},
+	"settings@special":
+	{
+		"message": "Спеціальні",
+		"description": "Special characters character set label in settings section"
+	},
+	"settings@exclude":
+	{
+		"message": "Виключити символи",
+		"description": "Exclude character sets section"
+	},
+	"settings@similar":
+	{
+		"message": "Схожі",
+		"description": "Similar characters character set label in settings section"
+	},
+	"settings@ambiguous":
+	{
+		"message": "Особливі",
+		"description": "Ambiguous characters character set label in settings section"
+	},
+	"settings@repeating":
+	{
+		"message": "Повторювані",
+		"description": "Repeating characters character set label in settings section"
+	},
+	"settings@repeating__hint":
+	{
+		"message": "Кожен символ пароля буде унікальним",
+		"description": "Repeating characters character set hint in settings section"
+	},
+	"settings@autocopy":
+	{
+		"message": "Автоматично копіювати в буфер обміну",
+		"description": "Autocopy label in settings section"
+	},
+	"generator@copy":
+	{
+		"message": "Копіювати",
+		"description": "Copy button label"
+	},
+	"generator@reset":
+	{
+		"message": "Скинути",
+		"description": "Reset button label"
+	},
+	"generator@refresh":
+	{
+		"message": "Згенерувати новий",
+		"description": "Generate new password button label"
+	},
+	"generator@quickOptions":
+	{
+		"message": "Швидкі налаштування",
+		"description": "Quick options section title"
+	},
+	"generator@quickOptions__hint":
+	{
+		"message": "Ці налаштування не будуть збережені",
+		"description": "Quick options hint"
+	}
+}
