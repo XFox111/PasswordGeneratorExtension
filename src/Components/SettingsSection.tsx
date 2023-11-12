@@ -1,83 +1,94 @@
-import { AccordionItem, AccordionHeader, AccordionPanel, Label, Text, Input, Divider, Checkbox, Tooltip } from "@fluentui/react-components";
-import { QuestionCircleRegular, SettingsRegular } from "@fluentui/react-icons";
-import React from "react";
-import GeneratorOptions from "../Utils/GeneratorOptions";
-import { loc } from "../Utils/Localization";
-import Settings from "../Utils/Settings";
-import CharacterHelpDialog from "./CharacterHelpDialog";
+import * as fui from "@fluentui/react-components";
+import { InfoLabel } from "@fluentui/react-components/unstable";
+import { SettingsRegular } from "@fluentui/react-icons";
+import ExtensionOptions from "../Models/ExtensionOptions";
+import GeneratorOptions from "../Models/GeneratorOptions";
+import { GetLocaleString as loc } from "../Utils/Localization";
+import { CharacterHints } from "../Utils/PasswordGenerator";
+import { useStorage } from "../Utils/Storage";
+import { useStyles } from "./SettingsSection.styles";
 
-interface IProps
+// FIXME: Remove ts-ignore comments once slots override fix is released
+// Tracker: https://github.com/microsoft/fluentui/issues/27090
+
+export default function SettingsSection(): JSX.Element
 {
-	generatorOptions: GeneratorOptions;
-	settings: Settings;
-}
+	const { extOptions, generatorOptions, updateStorage } = useStorage();
+	const cls = useStyles();
 
-export default class SettingsSection extends React.Component<IProps>
-{
-	public render(): JSX.Element
-	{
-		let options: GeneratorOptions = this.props.generatorOptions;
-		let settings: Settings = this.props.settings;
+	const infoLabel = (content: string, hint: string) => ({
+		children: (_: unknown, slotProps: fui.LabelProps) => (
+			<InfoLabel { ...slotProps } info={ hint }>{ content }</InfoLabel>
+		)
+	});
 
-		return (
-			<AccordionItem value="settings">
-				<AccordionHeader as="h2" icon={ <SettingsRegular /> }>{ loc("Settings") }</AccordionHeader>
-				<AccordionPanel>
-					<section className="stack gap fadeIn">
-						<Label weight="semibold" htmlFor="pwd-length">{ loc("Password length") }</Label>
-						<div className="stack">
-							<Input
-								id="pwd-length"
-								value={ options.Length?.toString() }
-								onChange={ (_, e) => GeneratorOptions.Update({ Length: parseInt(e.value) }) }
-								type="number" min={ 4 } minLength={ 1 } />
-							<Text size={ 200 }>{ loc("Recommended password length") } <b>16-32</b></Text>
-						</div>
-						<Divider />
-						<div className="stack">
-							<Text as="h3" weight="semibold">
-								{ loc("Character options") }
-								<CharacterHelpDialog />
-							</Text>
+	const setOption = (option: keyof (GeneratorOptions & ExtensionOptions)) =>
+		(_: unknown, args: fui.CheckboxOnChangeData) =>
+			updateStorage({ [option]: args.checked } );
 
-							<Text as="h4">{ loc("Include") }</Text>
-							<div className="stack horizontal">
-								<Checkbox label={ loc("Special symbols") }
-									checked={ options.Special } onChange={ (_, e) => GeneratorOptions.Update({ Special: e.checked as boolean }) } />
-								<Checkbox label={ loc("Numeric") }
-									checked={ options.Numeric } onChange={ (_, e) => GeneratorOptions.Update({ Numeric: e.checked as boolean }) } />
-								<Checkbox label={ loc("Uppercase") }
-									checked={ options.Uppercase } onChange={ (_, e) => GeneratorOptions.Update({ Uppercase: e.checked as boolean }) } />
-								<Checkbox label={ loc("Lowercase") }
-									checked={ options.Lowercase } onChange={ (_, e) => GeneratorOptions.Update({ Lowercase: e.checked as boolean }) } />
-							</div>
+	return (
+		<fui.AccordionItem value="settings">
+			<fui.AccordionHeader as="h2" icon={ <SettingsRegular /> }>{ loc("settings@title") }</fui.AccordionHeader>
 
-							<Text as="h4">{ loc("Exclude") }</Text>
-							<div className="stack horizontal">
-								<Checkbox label={ loc("Similar") }
-									checked={ options.ExcludeSimilar } onChange={ (_, e) => GeneratorOptions.Update({ ExcludeSimilar: e.checked as boolean }) } />
-								<Checkbox label={ loc("Ambiguous") }
-									checked={ options.ExcludeAmbiguous } onChange={ (_, e) => GeneratorOptions.Update({ ExcludeAmbiguous: e.checked as boolean }) } />
-								<Checkbox label={ loc("Repeating") }
-									checked={ options.ExcludeRepeating } onChange={ (_, e) => GeneratorOptions.Update({ ExcludeRepeating: e.checked as boolean }) } />
-							</div>
-						</div>
-						<Divider />
-						<div className="stack">
-							<Checkbox
-								checked={ settings.AddContext }
-								onChange={ (_, e) => Settings.Update({ AddContext: e.checked as boolean }) }
-								label={
-									<Tooltip content={ loc("Right-click password field to quickly generate password") } relationship="description">
-										<Text>{ loc("Add shortcut to context menu") } <QuestionCircleRegular /></Text>
-									</Tooltip>
-								} />
-							<Checkbox label={ loc("Automatically copy to clipboard") }
-								checked={ settings.Autocopy } onChange={ (_, e) => Settings.Update({ Autocopy: e.checked as boolean }) } />
-						</div>
-					</section>
-				</AccordionPanel>
-			</AccordionItem>
-		);
-	}
+			<fui.AccordionPanel className={ cls.root }>
+
+				<fui.Field label={ loc("settings@length") } hint={ loc("settings@length__hint") }>
+					<fui.Input
+						type="number" min={ 6 }
+						value={ generatorOptions.Length.toString() }
+						onChange={ (_, e) => updateStorage({ Length: parseInt(e.value) }) } />
+				</fui.Field>
+
+				<fui.Divider />
+
+				<fui.Text>{ loc("settings@include") }</fui.Text>
+				<div className={ cls.checkboxContainer }>
+					<fui.Checkbox label={ loc("settings@uppercase") }
+						checked={ generatorOptions.Uppercase }
+						onChange={ setOption("Uppercase") } />
+					<fui.Checkbox
+						label={ loc("settings@lowercase") }
+						checked={ generatorOptions.Lowercase }
+						onChange={ setOption("Lowercase") } />
+					<fui.Checkbox
+						label={ loc("settings@numeric") }
+						checked={ generatorOptions.Numeric }
+						onChange={ setOption("Numeric") } />
+					<fui.Checkbox
+						label={ loc("settings@special") }
+						checked={ generatorOptions.Special }
+						onChange={ setOption("Special") } />
+				</div>
+
+				<fui.Text>{ loc("settings@exclude") }</fui.Text>
+				<div className={ cls.checkboxContainer }>
+					<fui.Checkbox
+						// @ts-expect-error See line 11
+						label={ infoLabel(loc("settings@similar"), CharacterHints.Similar) }
+						checked={ generatorOptions.ExcludeSimilar }
+						onChange={ setOption("ExcludeSimilar") } />
+					<fui.Checkbox
+						// @ts-expect-error See line 11
+						label={ infoLabel(loc("settings@ambiguous"), CharacterHints.Ambiguous) }
+						disabled={ !generatorOptions.Special }
+						checked={ generatorOptions.ExcludeAmbiguous }
+						onChange={ setOption("ExcludeAmbiguous") } />
+					<fui.Checkbox
+						// @ts-expect-error See line 11
+						label={ infoLabel(loc("settings@repeating"), loc("settings@repeating__hint")) }
+						checked={ generatorOptions.ExcludeRepeating }
+						onChange={ setOption("ExcludeRepeating") } />
+				</div>
+
+				<fui.Divider />
+
+				<fui.Checkbox
+					label={ loc("settings@autocopy") }
+					checked={ extOptions.Autocopy }
+					onChange={ setOption("Autocopy") } />
+
+			</fui.AccordionPanel>
+
+		</fui.AccordionItem>
+	);
 }

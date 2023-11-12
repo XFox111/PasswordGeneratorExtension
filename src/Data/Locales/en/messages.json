@@ -1,0 +1,176 @@
+{
+	"name": {
+		"message": "Password Generator",
+		"description": "Extension name"
+	},
+	"description": {
+		"message": "Password generator extension allows you to easily generate long and secure password in one click",
+		"description": "Extension description"
+	},
+	"author": {
+		"message": "Eugene Fox",
+		"description": "Extension author"
+	},
+	"error@moreCharacters": {
+		"message": "Password length must be at least 4 characters",
+		"description": "Error message when password length is less than 4 characters"
+	},
+	"error@noCharacters": {
+		"message": "At least one set of characters must be selected",
+		"description": "Error message when no character set is selected"
+	},
+	"error@tooLong": {
+		"message": "Length is too long to generate password with unique characters",
+		"description": "Error message when password length is too long to generate password with unique characters"
+	},
+	"about@title":
+	{
+		"message": "About",
+		"description": "About section title"
+	},
+	"about@developedBy":
+	{
+		"message": "Developed by Eugene Fox",
+		"description": "Developer credits in about section"
+	},
+	"about@licensedUnder":
+	{
+		"message": "Licensed under",
+		"description": "License info in about section"
+	},
+	"about@mitLicense":
+	{
+		"message": "MIT License",
+		"description": "License name"
+	},
+	"about@translationCta":
+	{
+		"message": "Found a typo or want a translation for your language?",
+		"description": "Translation CTA in about section"
+	},
+	"about@translationCtaButton":
+	{
+		"message": "Get started here",
+		"description": "Translation CTA button in about section"
+	},
+	"about@website":
+	{
+		"message": "My website",
+		"description": "Website link in about section"
+	},
+	"about@sourceCode":
+	{
+		"message": "Source code",
+		"description": "Source code link in about section"
+	},
+	"about@changelog":
+	{
+		"message": "Changelog",
+		"description": "Changelog link in about section"
+	},
+	"about@feedback":
+	{
+		"message": "Leave feedback",
+		"description": "Feedback link in about section"
+	},
+	"about@sponsor":
+	{
+		"message": "Buy me a coffee",
+		"description": "Buy me a coffee donation link in about section"
+	},
+	"settings@title":
+	{
+		"message": "Settings",
+		"description": "Settings section title"
+	},
+	"settings@length":
+	{
+		"message": "Password length",
+		"description": "Password length label in settings section"
+	},
+	"settings@length__hint":
+	{
+		"message": "Recommended length: 8—16",
+		"description": "Password length recommendatin in settings section"
+	},
+	"settings@include":
+	{
+		"message": "Include symbols",
+		"description": "Include character sets section"
+	},
+	"settings@uppercase":
+	{
+		"message": "Uppercase",
+		"description": "Uppercase character set label in settings section"
+	},
+	"settings@lowercase":
+	{
+		"message": "Lowercase",
+		"description": "Lowercase character set label in settings section"
+	},
+	"settings@numeric":
+	{
+		"message": "Numeric",
+		"description": "Numbers character set label in settings section"
+	},
+	"settings@special":
+	{
+		"message": "Special",
+		"description": "Special characters character set label in settings section"
+	},
+	"settings@exclude":
+	{
+		"message": "Exclude symbols",
+		"description": "Exclude character sets section"
+	},
+	"settings@similar":
+	{
+		"message": "Similar",
+		"description": "Similar characters character set label in settings section"
+	},
+	"settings@ambiguous":
+	{
+		"message": "Ambiguous",
+		"description": "Ambiguous characters character set label in settings section"
+	},
+	"settings@repeating":
+	{
+		"message": "Repeating",
+		"description": "Repeating characters character set label in settings section"
+	},
+	"settings@repeating__hint":
+	{
+		"message": "Each character in the password will be unique",
+		"description": "Repeating characters character set hint in settings section"
+	},
+	"settings@autocopy":
+	{
+		"message": "Automatically copy to clipboard",
+		"description": "Autocopy label in settings section"
+	},
+	"generator@copy":
+	{
+		"message": "Copy",
+		"description": "Copy button label"
+	},
+	"generator@reset":
+	{
+		"message": "Reset",
+		"description": "Reset button label"
+	},
+	"generator@refresh":
+	{
+		"message": "Generate new",
+		"description": "Generate new password button label"
+	},
+	"generator@quickOptions":
+	{
+		"message": "Quick adjustments",
+		"description": "Quick options section title"
+	},
+	"generator@quickOptions__hint":
+	{
+		"message": "These adjustments will not be saved",
+		"description": "Quick options hint"
+	}
+}

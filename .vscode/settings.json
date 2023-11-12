@@ -1,0 +1,52 @@
+{
+	"json.schemas": [
+		{
+			"fileMatch": [
+				"/messages.json"
+			],
+			"url": "https://gist.github.com/XFox111/9528b76f9f02704d620d4edbf421e06b/raw/e77197276f0aa2994cceae4ddf4dcfcabdce9dcb/webext-locale-schema.json"
+		}
+	],
+	"editor.rulers": [
+		{
+			"column": 120
+		}
+	],
+	"editor.insertSpaces": false,
+	"files.insertFinalNewline": true,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": true
+	},
+	"files.eol": "\n",
+	"files.trimFinalNewlines": true,
+	"files.trimTrailingWhitespace": true,
+	"css.format.braceStyle": "expand",
+	"css.format.maxPreserveNewLines": 3,
+	"css.format.spaceAroundSelectorSeparator": true,
+	"css.format.newlineBetweenSelectors": false,
+	"css.lint.compatibleVendorPrefixes": "warning",
+	"css.lint.duplicateProperties": "warning",
+	"css.lint.float": "warning",
+	"css.lint.unknownVendorSpecificProperties": "warning",
+	"css.lint.zeroUnits": "warning",
+	"scss.format.braceStyle": "expand",
+	"scss.format.maxPreserveNewLines": 3,
+	"scss.format.spaceAroundSelectorSeparator": true,
+	"scss.lint.compatibleVendorPrefixes": "warning",
+	"scss.lint.duplicateProperties": "warning",
+	"scss.lint.float": "warning",
+	"scss.lint.unknownVendorSpecificProperties": "warning",
+	"scss.lint.zeroUnits": "warning",
+	"html.format.maxPreserveNewLines": 3,
+	"html.format.wrapAttributes": "preserve",
+	"javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+	"javascript.format.placeOpenBraceOnNewLineForFunctions": true,
+	"javascript.format.semicolons": "insert",
+	"javascript.preferences.quoteStyle": "double",
+	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+	"typescript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+	"typescript.format.placeOpenBraceOnNewLineForFunctions": true,
+	"typescript.format.semicolons": "insert",
+	"typescript.preferences.quoteStyle": "double",
+	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true
+}

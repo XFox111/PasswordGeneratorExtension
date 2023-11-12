@@ -17,20 +17,20 @@ on:
     paths-ignore:
       - '**.md'
       - 'LICENSE'
-      - 'PRIVACY'
       - '**/cd_pipeline.yaml'
       - '**/dependabot.yml'
       - '**/pr_pipeline.yaml'
+      - '.vscode/*'
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "main", "next" ]
     paths-ignore:
       - '**.md'
       - 'LICENSE'
-      - 'PRIVACY'
       - '**/cd_pipeline.yaml'
       - '**/dependabot.yml'
       - '**/pr_pipeline.yaml'
+      - '.vscode/*'
   schedule:
     - cron: '24 7 * * 3'
 
@@ -46,7 +46,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript', 'typescript' ]
+        language: [ 'typescript' ]
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
 

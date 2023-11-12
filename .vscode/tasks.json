@@ -1,0 +1,80 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"command": "yarn build",
+			"group":
+			{
+				"kind": "build",
+				"isDefault": true
+			},
+			"label": "Build: Chromium"
+		},
+		{
+			"type": "shell",
+			"command": "yarn build",
+			"group":
+			{
+				"kind": "build",
+				"isDefault": false
+			},
+			"label": "Build: Firefox",
+			"options": {
+				"env": {
+					"TARGET": "firefox"
+				}
+			}
+		},
+		{
+			"type": "shell",
+			"command": "yarn build",
+			"args": [
+				"--watch",
+				"--mode",
+				"development"
+			],
+			"group": "test",
+			"label": "Watch: Chromium"
+		},
+		{
+			"type": "shell",
+			"command": "yarn build",
+			"args": [
+				"--watch",
+				"--mode",
+				"development"
+			],
+			"group": "test",
+			"label": "Watch: Firefox",
+			"options": {
+				"env": {
+					"TARGET": "firefox"
+				}
+			}
+		},
+		{
+			"type": "shell",
+			"command": "yarn dev",
+			"group": "test",
+			"label": "Dev: Chromium"
+		},
+		{
+			"type": "shell",
+			"command": "yarn dev",
+			"group": "test",
+			"label": "Dev: Firefox",
+			"options": {
+				"env": {
+					"TARGET": "firefox"
+				}
+			}
+		},
+		{
+			"type": "shell",
+			"command": "yarn install",
+			"label": "Restore dependencies",
+			"group": "build"
+		}
+	]
+}
