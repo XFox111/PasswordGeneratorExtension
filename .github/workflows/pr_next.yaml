@@ -17,15 +17,15 @@ jobs:
       - uses: actions/checkout@main
 
       - name: Get version from package.json
-        id: get_manifest
+        id: get_version
         run: |
-          content=`cat ./package.json`
-          echo "::set-output name=manifest::${content}"
+          extver=`jq -r ".version" package.json`
+          echo "version=$extver" >> "$GITHUB_OUTPUT"
 
-      - uses: dev-build-deploy/release-me@v0.15.0
+      - uses: dev-build-deploy/release-me@v0.14.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           prefix: v
           draft: true
-          version: ${{ fromJson(steps.get_manifest.outputs.manifest).version }}
+          version: ${{ steps.get_version.outputs.version }}
           release-notes: .github/release_description_template.md
