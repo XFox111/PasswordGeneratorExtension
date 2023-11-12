@@ -46,10 +46,8 @@ jobs:
           name: ${{ matrix.target }}
           path: dist
 
-      - name: "web-ext lint"
-        if: ${{ matrix.target == 'firefox' }}
-        uses: kewisch/action-web-ext@cb8a69420fea686e331e270b6581d4d289ecb2d2
+      - name: web-ext lint
+        uses: freaktechnik/web-ext-lint@main
         with:
-          cmd: lint
-          source: dist
-          channel: listed
+          extension-root: dist
+          self-hosted: false
