@@ -63,13 +63,13 @@ jobs:
       - uses: cardinalby/webext-buildtools-pack-extension-dir-action@1.0.8
         with:
           extensionDir: dist
-          zipFilePath: packed-${{ matrix.target }}.zip
+          zipFilePath: PasswordGenerator-${{ matrix.target }}.zip
 
       - name: Drop packed artifacts (${{ matrix.target }})
         uses: actions/upload-artifact@main
         with:
           name: packed-${{ matrix.target }}
-          path: packed-${{ matrix.target }}.zip
+          path: PasswordGenerator-${{ matrix.target }}.zip
 
   publish-github:
     needs: build
@@ -105,10 +105,10 @@ jobs:
         with:
           name: packed-chrome
 
-      - uses: wdzeng/chrome-extension@main
+      - uses: wdzeng/chrome-extension@v1.2.1
         with:
           extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
-          zip-path: packed-chrome.zip
+          zip-path: PasswordGenerator-chrome.zip
           client-id: ${{ secrets.CHROME_CLIENT_ID }}
           client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
           refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
@@ -123,10 +123,10 @@ jobs:
         with:
           name: packed-chrome
 
-      - uses: wdzeng/edge-addon@main
+      - uses: wdzeng/edge-addon@v1.2.2
         with:
           product-id: ${{ secrets.EDGE_PRODUCT_ID }}
-          zip-path: packed-chrome.zip
+          zip-path: PasswordGenerator-chrome.zip
           client-id: ${{ secrets.EDGE_CLIENT_ID }}
           client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
           access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
@@ -141,9 +141,9 @@ jobs:
         with:
           name: packed-firefox
 
-      - uses: wdzeng/firefox-addon@main
+      - uses: wdzeng/firefox-addon@v1.0.3
         with:
           addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
-          xpi-path: packed-firefox.zip
+          xpi-path: PasswordGenerator-firefox.zip
           jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
           jwt-secret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
