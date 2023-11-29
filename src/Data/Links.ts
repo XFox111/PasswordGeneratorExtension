@@ -15,7 +15,7 @@ export const WebstoreLink =
 };
 
 const getGithub = (path?: string): string =>
-	`https://github.com/xfox111/PasswordGeneratorExtension${path}`;
+	`https://github.com/xfox111/PasswordGeneratorExtension${path ?? ""}`;
 
 export const GithubLink =
 {
