@@ -27,5 +27,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           prefix: v
           draft: true
-          version: ${{ steps.get_version.outputs.version }}
+          version: v${{ steps.get_version.outputs.version }}
           release-notes: .github/release_description_template.md
