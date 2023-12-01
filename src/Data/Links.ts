@@ -21,7 +21,7 @@ export const GithubLink =
 {
 	Repository: getGithub(),
 	Changelog: getGithub("/releases/latest"),
-	TranslationGuide: getGithub("/blob/main/CONTRIBUTING.md#contributing-to-translations"),
+	TranslationGuide: getGithub("/wiki/Contribution-Guidelines#contributing-to-translations"),
 	License: getGithub("/blob/main/LICENSE")
 };
 
