@@ -30,7 +30,7 @@
 		"vite": "^4.5.0",
 		"vite-plugin-static-copy": "^0.17.0",
 		"vite-plugin-svgr": "^4.1.0",
-		"vite-plugin-web-extension": "^3.0.1",
+		"vite-plugin-web-extension": "^4.0.0",
 		"webextension-polyfill": "^0.10.0"
 	},
 	"resolutions": {
