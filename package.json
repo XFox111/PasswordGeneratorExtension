@@ -15,10 +15,10 @@
 		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
-		"@types/react": "^18.2.37",
+		"@types/react": "^18.2.42",
 		"@types/react-dom": "^18.2.15",
 		"@types/webextension-polyfill": "^0.10.7",
-		"@typescript-eslint/eslint-plugin": "^6.13.1",
+		"@typescript-eslint/eslint-plugin": "^6.13.2",
 		"@typescript-eslint/parser": "^6.10.0",
 		"@vitejs/plugin-react-swc": "^3.5.0",
 		"eslint": "^8.55.0",
@@ -30,7 +30,7 @@
 		"vite": "^4.5.1",
 		"vite-plugin-static-copy": "^0.17.1",
 		"vite-plugin-svgr": "^4.2.0",
-		"vite-plugin-web-extension": "^4.0.0",
+		"vite-plugin-web-extension": "^4.0.1",
 		"webextension-polyfill": "^0.10.0"
 	},
 	"resolutions": {
