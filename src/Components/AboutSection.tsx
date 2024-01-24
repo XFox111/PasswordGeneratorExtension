@@ -10,7 +10,7 @@ import { useStyles } from "./AboutSection.styles";
 
 export default function AboutSection(): JSX.Element
 {
-	const theme = useTheme(bmcLightTheme, bmcDarkTheme);
+	const bmcTheme = useTheme(bmcLightTheme, bmcDarkTheme);
 	const cls = useStyles();
 
 	const link = (text: string, href: string): JSX.Element => (
@@ -54,7 +54,7 @@ export default function AboutSection(): JSX.Element
 					<fui.Button { ...buttonProps(GetFeedbackLink(), <PersonFeedbackRegular />) }>
 						{ loc("about@feedback") }
 					</fui.Button>
-					<fui.FluentProvider theme={ theme }>
+					<fui.FluentProvider theme={ bmcTheme }>
 						<fui.Button { ...buttonProps(PersonalLink.BuyMeACoffee, <BuyMeACoffee />) }>
 							{ loc("about@sponsor") }
 						</fui.Button>

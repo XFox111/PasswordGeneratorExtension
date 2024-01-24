@@ -1,5 +1,4 @@
 import * as fui from "@fluentui/react-components";
-import { InfoLabel } from "@fluentui/react-components/unstable";
 import { SettingsRegular } from "@fluentui/react-icons";
 import ExtensionOptions from "../Models/ExtensionOptions";
 import GeneratorOptions from "../Models/GeneratorOptions";
@@ -18,7 +17,7 @@ export default function SettingsSection(): JSX.Element
 
 	const infoLabel = (content: string, hint: string) => ({
 		children: (_: unknown, slotProps: fui.LabelProps) => (
-			<InfoLabel { ...slotProps } info={ hint }>{ content }</InfoLabel>
+			<fui.InfoLabel { ...slotProps } info={ hint }>{ content }</fui.InfoLabel>
 		)
 	});
 
