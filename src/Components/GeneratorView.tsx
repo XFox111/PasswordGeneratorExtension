@@ -1,5 +1,4 @@
-import { Button, Checkbox, Input, Slider, Text, Tooltip, mergeClasses } from "@fluentui/react-components";
-import { Alert, InfoLabel } from "@fluentui/react-components/unstable";
+import { Button, Checkbox, InfoLabel, Input, MessageBar, MessageBarBody, Slider, Text, Tooltip, mergeClasses } from "@fluentui/react-components";
 import { ArrowClockwiseRegular, ArrowUndoRegular, CheckmarkRegular, CopyRegular } from "@fluentui/react-icons";
 import { useEffect, useState } from "react";
 import GeneratorOptions from "../Models/GeneratorOptions";
@@ -69,12 +68,15 @@ export default function GeneratorView(): JSX.Element
 	return (
 		<section className={ cls.root }>
 			{ error ?
-				<Alert intent="warning">{ error }</Alert> :
+				<MessageBar intent="warning" className={ cls.msgBar }>
+					<MessageBarBody>{ error }</MessageBarBody>
+				</MessageBar>
+				:
 				<Input readOnly contentAfter={ actionButtons } value={ password } className={ cls.input } />
 			}
 
 			<div className={ mergeClasses(cls.root, cls.optionsSpacing) }>
-				<InfoLabel info={ loc("generator@quickOptions__hint") } className={ cls.optionsLabel }>
+				<InfoLabel info={ loc("generator@quickOptions__hint") }>
 					{ loc("generator@quickOptions") }
 				</InfoLabel>
 

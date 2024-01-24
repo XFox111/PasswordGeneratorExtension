@@ -21,13 +21,6 @@ export const useStyles = makeStyles({
 	{
 		...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
 	},
-	optionsLabel:
-	{
-		"> div[role=note].fui-InfoButton__info":
-		{
-			zIndex: 1,
-		},
-	},
 	copyIcon:
 	{
 		animationName: "scaleUpIn",
@@ -39,5 +32,9 @@ export const useStyles = makeStyles({
 		animationName: "spin",
 		animationDuration: tokens.durationSlow,
 		animationTimingFunction: tokens.curveEasyEaseMax,
-	}
+	},
+	msgBar:
+	{
+		paddingBottom: tokens.spacingVerticalMNudge,
+	},
 });
