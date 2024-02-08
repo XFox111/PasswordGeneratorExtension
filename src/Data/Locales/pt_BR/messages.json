@@ -16,11 +16,11 @@
 		"description": "Error message when password length is less than 4 characters"
 	},
 	"error@noCharacters": {
-		"message": "Pelo menos um conjunto de caracteres deve ser selecionado",
+		"message": "É necessário selecionar pelo menos um conjunto de caracteres",
 		"description": "Error message when no character set is selected"
 	},
 	"error@tooLong": {
-		"message": "O comprimento é muito longo para gerar uma senha com caracteres exclusivos",
+		"message": "O comprimento é muito longo para gerar uma senha com caracteres únicos",
 		"description": "Error message when password length is too long to generate password with unique characters"
 	},
 	"about@title":
@@ -55,7 +55,7 @@
 	},
 	"about@website":
 	{
-		"message": "Meu website",
+		"message": "Meu site",
 		"description": "Website link in about section"
 	},
 	"about@sourceCode":
@@ -75,7 +75,7 @@
 	},
 	"about@sponsor":
 	{
-		"message": "Doar",
+		"message": "Me pague um café",
 		"description": "Buy me a coffee donation link in about section"
 	},
 	"settings@title":
@@ -95,7 +95,7 @@
 	},
 	"settings@lengthRange":
 	{
-		"message": "Faixa de comprimento de ajuste rápido",
+		"message": "Intervalo de ajuste rápido do comprimento",
 		"description": "Quick adjustment length range label in settings section"
 	},
 	"settings@include":
