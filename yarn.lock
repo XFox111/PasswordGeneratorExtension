@@ -4899,10 +4899,10 @@ vite-plugin-svgr@^4.2.0:
     "@svgr/core" "^8.1.0"
     "@svgr/plugin-jsx" "^8.1.0"
 
-vite-plugin-web-extension@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/vite-plugin-web-extension/-/vite-plugin-web-extension-4.1.0.tgz#39b022e563612d668b568dbaedfa5253a83cf8f6"
-  integrity sha512-MF8mP0QGvvoB1vX+Xy9zfmDKQJs00rTg5mXDlFMakRmyCT2E4QRqkma54oba5nueTp9X+Wu3juPGgU28bXXL7A==
+vite-plugin-web-extension@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-web-extension/-/vite-plugin-web-extension-4.1.1.tgz#91ae69be90ce5549291b22996f6d1b521576fc09"
+  integrity sha512-YUObXUXilgYuNGLdn5v+VUCcIQY4Aodo/1tgv6DrNAeZTLnvfa0fKSXjq86FB+XTplbumVZ6UANLrOxZItWOvw==
   dependencies:
     ajv "^8.11.0"
     async-lock "^1.3.2"
