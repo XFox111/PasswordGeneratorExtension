@@ -70,12 +70,12 @@
 	},
 	"about@feedback":
 	{
-		"message": "Deixe um comentário",
+		"message": "Enviar comentários",
 		"description": "Feedback link in about section"
 	},
 	"about@sponsor":
 	{
-		"message": "Me pague um café",
+		"message": "Pague um café",
 		"description": "Buy me a coffee donation link in about section"
 	},
 	"settings@title":
