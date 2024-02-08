@@ -45,7 +45,7 @@
 	},
 	"about@translationCta":
 	{
-		"message": "Encontrou um erro de digitação ou deseja uma tradução para o seu idioma?",
+		"message": "Encontrou um erro ou quer uma tradução no seu idioma?",
 		"description": "Translation CTA in about section"
 	},
 	"about@translationCtaButton":
