@@ -16,11 +16,11 @@
 		"description": "Error message when password length is less than 4 characters"
 	},
 	"error@noCharacters": {
-		"message": "Pelo menos um conjunto de caracteres deve ser selecionado",
+		"message": "É necessário selecionar pelo menos um conjunto de caracteres",
 		"description": "Error message when no character set is selected"
 	},
 	"error@tooLong": {
-		"message": "O comprimento é muito longo para gerar uma senha com caracteres exclusivos",
+		"message": "O comprimento é muito longo para gerar uma senha com caracteres únicos",
 		"description": "Error message when password length is too long to generate password with unique characters"
 	},
 	"about@title":
@@ -45,7 +45,7 @@
 	},
 	"about@translationCta":
 	{
-		"message": "Encontrou um erro de digitação ou deseja uma tradução para o seu idioma?",
+		"message": "Encontrou um erro ou quer uma tradução no seu idioma?",
 		"description": "Translation CTA in about section"
 	},
 	"about@translationCtaButton":
@@ -55,7 +55,7 @@
 	},
 	"about@website":
 	{
-		"message": "Meu website",
+		"message": "Meu site",
 		"description": "Website link in about section"
 	},
 	"about@sourceCode":
@@ -70,12 +70,12 @@
 	},
 	"about@feedback":
 	{
-		"message": "Deixe um comentário",
+		"message": "Enviar comentários",
 		"description": "Feedback link in about section"
 	},
 	"about@sponsor":
 	{
-		"message": "Doar",
+		"message": "Pague um café",
 		"description": "Buy me a coffee donation link in about section"
 	},
 	"settings@title":
@@ -95,7 +95,7 @@
 	},
 	"settings@lengthRange":
 	{
-		"message": "Faixa de comprimento de ajuste rápido",
+		"message": "Intervalo do comprimento de ajuste rápido",
 		"description": "Quick adjustment length range label in settings section"
 	},
 	"settings@include":
