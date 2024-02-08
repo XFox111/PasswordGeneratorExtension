@@ -1,5 +1,5 @@
-import { Button, Checkbox, InfoLabel, Input, MessageBar, MessageBarBody, Slider, Text, Tooltip, mergeClasses } from "@fluentui/react-components";
-import { ArrowClockwiseRegular, ArrowUndoRegular, CheckmarkRegular, CopyRegular } from "@fluentui/react-icons";
+import * as fui from "@fluentui/react-components";
+import * as Icons from "@fluentui/react-icons";
 import { useEffect, useState } from "react";
 import GeneratorOptions from "../Models/GeneratorOptions";
 import { GetLocaleString as loc } from "../Utils/Localization";
@@ -8,22 +8,24 @@ import { useStorage } from "../Utils/Storage";
 import { useTimeout } from "../Utils/Timeout";
 import { useStyles } from "./GeneratorView.styles";
 
-type QuickOptions = Pick<GeneratorOptions, "Length" | "Special" | "ExcludeAmbiguous">;
-
-export default function GeneratorView(): JSX.Element
+export default function GeneratorView(props: { collapse: boolean; }): JSX.Element
 {
-	const { generatorOptions } = useStorage();
+	const { generatorOptions, extOptions } = useStorage();
 	const [password, setPassword] = useState<string>("");
-	const [quickOpts, _setOpts] = useState<QuickOptions>(generatorOptions);
+	const [quickOpts, _setOpts] = useState<GeneratorOptions>(generatorOptions);
 	const [error, setError] = useState<string | null>(null);
 
 	const [refreshTimer, copyTimer] = [useTimeout(310), useTimeout(1000)];
+	const checkedOptions = Object.keys(quickOpts).filter(k => quickOpts[k as keyof GeneratorOptions] as boolean);
 	const cls = useStyles();
+
+	const IncludeIcon: Icons.FluentIcon = Icons.bundleIcon(Icons.AddCircleFilled, Icons.AddCircleRegular);
+	const ExcludeIcon: Icons.FluentIcon = Icons.bundleIcon(Icons.SubtractCircleFilled, Icons.SubtractCircleRegular);
 
 	const resetOptions = (): void =>
 		_setOpts(generatorOptions);
 
-	const setOptions = (opts: Partial<QuickOptions>) =>
+	const setOptions = (opts: Partial<GeneratorOptions>) =>
 		_setOpts({ ...quickOpts, ...opts });
 
 	function RefreshPassword(): void
@@ -41,67 +43,129 @@ export default function GeneratorView(): JSX.Element
 		copyTimer.trigger();
 	}
 
+	function OnCheckedValueChange(_: unknown, e: fui.MenuCheckedValueChangeData): void
+	{
+		const opts: Partial<Omit<GeneratorOptions, "Length">> = {};
+
+		let keys = Object.keys(quickOpts).filter(i => i !== "Length") as (keyof Omit<GeneratorOptions, "Length">)[];
+
+		if (e.name === "include")
+			keys = keys.filter(i => !i.startsWith("Exclude"));
+		else
+			keys = keys.filter(i => i.startsWith("Exclude"));
+
+		for (const key of keys)
+			opts[key] = e.checkedItems.includes(key);
+
+		setOptions(opts);
+	}
+
 	useEffect(resetOptions, [generatorOptions]);
 	useEffect(RefreshPassword, [generatorOptions, quickOpts]);
 	useEffect(refreshTimer.trigger, [password]);
 
-	const actionButtons: JSX.Element = <>
-		<Tooltip content={ loc("generator@copy") } relationship="label">
-			<Button
-				appearance="subtle" onClick={ CopyPassword }
-				icon={
-					copyTimer.isActive ?
-						<CheckmarkRegular className={ cls.copyIcon } /> :
-						<CopyRegular className={ cls.copyIcon } />
-				} />
-		</Tooltip>
-
-		<Tooltip content={ loc("generator@refresh") } relationship="label">
-			<Button
-				appearance="subtle" onClick={ RefreshPassword }
-				icon={
-					<ArrowClockwiseRegular className={ mergeClasses(refreshTimer.isActive && cls.refreshIcon) } />
-				} />
-		</Tooltip>
-	</>;
-
 	return (
 		<section className={ cls.root }>
 			{ error ?
-				<MessageBar intent="warning" className={ cls.msgBar }>
-					<MessageBarBody>{ error }</MessageBarBody>
-				</MessageBar>
+				<fui.MessageBar intent="warning" className={ cls.msgBar }>
+					<fui.MessageBarBody>{ error }</fui.MessageBarBody>
+				</fui.MessageBar>
 				:
-				<Input readOnly contentAfter={ actionButtons } value={ password } className={ cls.input } />
+				<fui.Input
+					className={ cls.input }
+					readOnly value={ password }
+					contentAfter={ <>
+						<fui.Tooltip content={ loc("generator@copy") } relationship="label">
+							<fui.Button
+								appearance="subtle" onClick={ CopyPassword }
+								icon={
+									copyTimer.isActive ?
+										<Icons.CheckmarkRegular className={ cls.copyIcon } /> :
+										<Icons.CopyRegular className={ cls.copyIcon } />
+								} />
+						</fui.Tooltip>
+
+						<fui.Tooltip content={ loc("generator@refresh") } relationship="label">
+							<fui.Button
+								appearance="subtle" onClick={ RefreshPassword }
+								icon={
+									<Icons.ArrowClockwiseRegular className={ fui.mergeClasses(refreshTimer.isActive && cls.refreshIcon) } />
+								} />
+						</fui.Tooltip>
+					</> } />
 			}
 
-			<div className={ mergeClasses(cls.root, cls.optionsSpacing) }>
-				<InfoLabel info={ loc("generator@quickOptions__hint") }>
-					{ loc("generator@quickOptions") }
-				</InfoLabel>
+			{ !props.collapse &&
+				<div className={ cls.options }>
+					<fui.InfoLabel info={ loc("generator@quickOptions__hint") }>
+						{ loc("generator@quickOptions") }
+					</fui.InfoLabel>
 
-				<div className={ cls.lengthContainer }>
-					<Slider
-						min={ 6 } max={ Math.max(32, generatorOptions.Length) }
-						value={ quickOpts.Length } onChange={ (_, e) => setOptions({ Length: e.value }) } />
-					<Text>{ quickOpts.Length }</Text>
+					<div className={ cls.lengthContainer }>
+						<fui.Slider
+							min={ extOptions.MinLength } max={ Math.max(extOptions.MaxLength, generatorOptions.Length) }
+							value={ quickOpts.Length } onChange={ (_, e) => setOptions({ Length: e.value }) } />
+						<fui.Text>{ quickOpts.Length }</fui.Text>
+					</div>
+
+					<div className={ cls.characterOptionsContainer }>
+						<fui.Menu
+							positioning="after" hasCheckmarks
+							checkedValues={ { include: checkedOptions } }
+							onCheckedValueChange={ OnCheckedValueChange }>
+
+							<fui.MenuTrigger disableButtonEnhancement>
+								<fui.MenuButton appearance="subtle" icon={ <IncludeIcon /> }>{ loc("generator@include") }</fui.MenuButton>
+							</fui.MenuTrigger>
+
+							<fui.MenuPopover>
+								<fui.MenuList>
+									<fui.MenuItemCheckbox name="include" value="Uppercase" icon={ <Icons.TextCaseUppercaseRegular /> }>
+										{ loc("settings@uppercase") }
+									</fui.MenuItemCheckbox>
+									<fui.MenuItemCheckbox name="include" value="Lowercase" icon={ <Icons.TextCaseLowercaseRegular /> }>
+										{ loc("settings@lowercase") }
+									</fui.MenuItemCheckbox>
+									<fui.MenuItemCheckbox name="include" value="Numeric" icon={ <Icons.NumberSymbolRegular /> }>
+										{ loc("settings@numeric") }
+									</fui.MenuItemCheckbox>
+									<fui.MenuItemCheckbox name="include" value="Special" icon={ <Icons.MathSymbolsRegular /> }>
+										{ loc("settings@special") }
+									</fui.MenuItemCheckbox>
+								</fui.MenuList>
+							</fui.MenuPopover>
+						</fui.Menu>
+
+						<fui.Menu
+							positioning="before"
+							checkedValues={ { exclude: checkedOptions } }
+							onCheckedValueChange={ OnCheckedValueChange }>
+
+							<fui.MenuTrigger disableButtonEnhancement>
+								<fui.MenuButton appearance="subtle" icon={ <ExcludeIcon /> }>{ loc("generator@exclude") }</fui.MenuButton>
+							</fui.MenuTrigger>
+
+							<fui.MenuPopover>
+								<fui.MenuList>
+									<fui.MenuItemCheckbox name="exclude" value="ExcludeSimilar">
+										{ loc("settings@similar") }
+									</fui.MenuItemCheckbox>
+									<fui.MenuItemCheckbox name="exclude" value="ExcludeAmbiguous" disabled={ !quickOpts.Special }>
+										{ loc("settings@ambiguous") }
+									</fui.MenuItemCheckbox>
+									<fui.MenuItemCheckbox name="exclude" value="ExcludeRepeating">
+										{ loc("settings@repeating") }
+									</fui.MenuItemCheckbox>
+								</fui.MenuList>
+							</fui.MenuPopover>
+						</fui.Menu>
+
+						<fui.Tooltip content={ loc("generator@reset") } relationship="label">
+							<fui.Button appearance="subtle" icon={ <Icons.ArrowUndoRegular /> } onClick={ resetOptions } />
+						</fui.Tooltip>
+					</div>
 				</div>
-
-				<div>
-					<Checkbox
-						label={ loc("settings@special") }
-						checked={ quickOpts.Special }
-						onChange={ (_, e) => setOptions({ Special: e.checked as boolean }) } />
-					<Checkbox
-						label={ loc("settings@ambiguous") } disabled={ !quickOpts.Special }
-						checked={ !quickOpts.ExcludeAmbiguous }
-						onChange={ (_, e) => setOptions({ ExcludeAmbiguous: !e.checked }) } />
-
-					<Tooltip content={ loc("generator@reset") } relationship="label">
-						<Button appearance="subtle" icon={ <ArrowUndoRegular /> } onClick={ resetOptions } />
-					</Tooltip>
-				</div>
-			</div>
+			}
 		</section>
 	);
 }

@@ -17,10 +17,6 @@ export const useStyles = makeStyles({
 		alignItems: "center",
 		paddingRight: tokens.spacingHorizontalM,
 	},
-	optionsSpacing:
-	{
-		...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
-	},
 	copyIcon:
 	{
 		animationName: "scaleUpIn",
@@ -35,6 +31,17 @@ export const useStyles = makeStyles({
 	},
 	msgBar:
 	{
-		paddingBottom: tokens.spacingVerticalMNudge,
+		...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalM),
+	},
+	options:
+	{
+		display: "flex",
+		flexDirection: "column",
+		...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
+	},
+	characterOptionsContainer:
+	{
+		display: "flex",
+		...shorthands.gap(tokens.spacingHorizontalXS),
 	},
 });

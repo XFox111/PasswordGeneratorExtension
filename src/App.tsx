@@ -6,18 +6,24 @@ import SettingsSection from "./Components/SettingsSection";
 import Specials from "./Specials/Specials";
 import { StorageProvider } from "./Utils/Storage";
 import { useTheme } from "./Utils/Theme";
+import { useState } from "react";
 
 export default function App(): JSX.Element
 {
 	const theme = useTheme();
 	const cls = useStyles();
+	const [selection, setSelection] = useState<string[]>([]);
 
 	return (
 		<FluentProvider theme={ theme }>
 			<main className={ cls.root }>
 				<StorageProvider loader={ <Spinner size="large" className={ cls.spinner } /> }>
-					<GeneratorView />
-					<Accordion collapsible className={ cls.accordionAnimation }>
+					<GeneratorView collapse={ selection.includes("settings") } />
+					<Accordion
+						openItems={ selection }
+						onToggle={ (_, e) => setSelection(e.openItems as string[]) }
+						collapsible
+						className={ cls.accordionAnimation }>
 						<SettingsSection />
 						<AboutSection />
 					</Accordion>

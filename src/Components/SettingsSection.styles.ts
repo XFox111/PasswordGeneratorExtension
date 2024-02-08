@@ -12,4 +12,15 @@ export const useStyles = makeStyles({
 		display: "flex",
 		flexWrap: "wrap",
 	},
+	rangeContainer:
+	{
+		display: "grid",
+		gridTemplateColumns: "1fr auto 1fr auto",
+		alignItems: "center",
+		...shorthands.gap(tokens.spacingHorizontalS),
+	},
+	rangeInput:
+	{
+		width: "100%",
+	},
 });
