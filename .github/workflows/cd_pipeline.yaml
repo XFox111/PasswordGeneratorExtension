@@ -141,7 +141,7 @@ jobs:
         with:
           name: packed-firefox
 
-      - uses: wdzeng/firefox-addon@v1.0.3
+      - uses: wdzeng/firefox-addon@v1.0.4
         with:
           addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
           xpi-path: PasswordGenerator-firefox.zip
