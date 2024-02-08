@@ -90,7 +90,7 @@
 	},
 	"settings@length__hint":
 	{
-		"message": "Comprimento recomendado: 8 - 16",
+		"message": "Comprimento recomendado: 8–16",
 		"description": "Password length recommendatin in settings section"
 	},
 	"settings@lengthRange":
