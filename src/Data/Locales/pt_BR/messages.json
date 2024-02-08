@@ -95,7 +95,8 @@
 	},
 	"settings@lengthRange":
 	{
-		"message": "Intervalo de ajuste rápido do comprimento",
+		"message": "Intervalo do comprimento de ajuste rápido",
+
 		"description": "Quick adjustment length range label in settings section"
 	},
 	"settings@include":
