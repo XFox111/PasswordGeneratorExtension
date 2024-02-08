@@ -85,13 +85,18 @@
 	},
 	"settings@length":
 	{
-		"message": "Comprimento da senha",
+		"message": "Comprimento padrão da senha",
 		"description": "Password length label in settings section"
 	},
 	"settings@length__hint":
 	{
-		"message": "Comprimento recomendado: 8—16",
+		"message": "Comprimento recomendado: 8–16",
 		"description": "Password length recommendatin in settings section"
+	},
+	"settings@lengthRange":
+	{
+		"message": "Faixa de comprimento de ajuste rápido",
+		"description": "Quick adjustment length range label in settings section"
 	},
 	"settings@include":
 	{
@@ -167,5 +172,15 @@
 	{
 		"message": "Esses ajustes não serão salvos",
 		"description": "Quick options hint"
+	},
+	"generator@include":
+	{
+		"message": "Incluir",
+		"description": "Include characters button label"
+	},
+	"generator@exclude":
+	{
+		"message": "Excluir",
+		"description": "Exclude characters button label"
 	}
 }

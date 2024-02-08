@@ -85,13 +85,18 @@
 	},
 	"settings@length":
 	{
-		"message": "Password length",
+		"message": "Default password length",
 		"description": "Password length label in settings section"
 	},
 	"settings@length__hint":
 	{
-		"message": "Recommended length: 8—16",
+		"message": "Recommended length: 8–16",
 		"description": "Password length recommendatin in settings section"
+	},
+	"settings@lengthRange":
+	{
+		"message": "Quick adjustment length range",
+		"description": "Quick adjustment length range label in settings section"
 	},
 	"settings@include":
 	{
@@ -167,5 +172,15 @@
 	{
 		"message": "These adjustments will not be saved",
 		"description": "Quick options hint"
+	},
+	"generator@include":
+	{
+		"message": "Include",
+		"description": "Include characters button label"
+	},
+	"generator@exclude":
+	{
+		"message": "Exclude",
+		"description": "Exclude characters button label"
 	}
 }

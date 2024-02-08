@@ -85,13 +85,18 @@
 	},
 	"settings@length":
 	{
-		"message": "Длина пароля",
+		"message": "Длина пароля по умолчанию",
 		"description": "Password length label in settings section"
 	},
 	"settings@length__hint":
 	{
-		"message": "Рекомендованная длина: 8—16",
+		"message": "Рекомендованная длина: 8–16",
 		"description": "Password length recommendatin in settings section"
+	},
+	"settings@lengthRange":
+	{
+		"message": "Диапазон длины для быстрых настроек",
+		"description": "Quick adjustment length range label in settings section"
 	},
 	"settings@include":
 	{
@@ -167,5 +172,15 @@
 	{
 		"message": "Эти настройки не будут сохранены",
 		"description": "Quick options hint"
+	},
+	"generator@include":
+	{
+		"message": "Добавить",
+		"description": "Include characters button label"
+	},
+	"generator@exclude":
+	{
+		"message": "Исключить",
+		"description": "Exclude characters button label"
 	}
 }

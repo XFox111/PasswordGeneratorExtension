@@ -15,7 +15,7 @@
 	"editor.insertSpaces": false,
 	"files.insertFinalNewline": true,
 	"editor.codeActionsOnSave": {
-		"source.organizeImports": true
+		"source.organizeImports": "explicit"
 	},
 	"files.eol": "\n",
 	"files.trimFinalNewlines": true,
