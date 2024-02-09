@@ -85,13 +85,18 @@
 	},
 	"settings@length":
 	{
-		"message": "Długość hasła",
+		"message": "Domyślna długość hasła",
 		"description": "Password length label in settings section"
 	},
 	"settings@length__hint":
 	{
-		"message": "Zalecana długość: 8—16",
+		"message": "Zalecana długość: 8–16",
 		"description": "Password length recommendatin in settings section"
+	},
+	"settings@lengthRange":
+	{
+		"message": "Zakres długości dla szybkich ustawień",
+		"description": "Quick adjustment length range label in settings section"
 	},
 	"settings@include":
 	{
@@ -167,5 +172,15 @@
 	{
 		"message": "Te ustawienia nie zostaną zapisane",
 		"description": "Quick options hint"
+	},
+	"generator@include":
+	{
+		"message": "Dodaj",
+		"description": "Include characters button label"
+	},
+	"generator@exclude":
+	{
+		"message": "Wyklucz",
+		"description": "Exclude characters button label"
 	}
 }

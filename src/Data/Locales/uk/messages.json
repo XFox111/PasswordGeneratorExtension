@@ -85,13 +85,18 @@
 	},
 	"settings@length":
 	{
-		"message": "Довжина пароля",
+		"message": "Довжина пароля за замовчуванням",
 		"description": "Password length label in settings section"
 	},
 	"settings@length__hint":
 	{
-		"message": "Рекомендована довжина: 8—16",
+		"message": "Рекомендована довжина: 8–16",
 		"description": "Password length recommendatin in settings section"
+	},
+	"settings@lengthRange":
+	{
+		"message": "Діапазон довжини для швидких налаштувань",
+		"description": "Quick adjustment length range label in settings section"
 	},
 	"settings@include":
 	{
@@ -167,5 +172,15 @@
 	{
 		"message": "Ці налаштування не будуть збережені",
 		"description": "Quick options hint"
+	},
+	"generator@include":
+	{
+		"message": "Додати",
+		"description": "Include characters button label"
+	},
+	"generator@exclude":
+	{
+		"message": "Виключити",
+		"description": "Exclude characters button label"
 	}
 }

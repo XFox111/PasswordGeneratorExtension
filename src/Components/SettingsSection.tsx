@@ -1,6 +1,5 @@
 import * as fui from "@fluentui/react-components";
-import { InfoLabel } from "@fluentui/react-components/unstable";
-import { SettingsRegular } from "@fluentui/react-icons";
+import { ArrowUndoRegular, SettingsRegular } from "@fluentui/react-icons";
 import ExtensionOptions from "../Models/ExtensionOptions";
 import GeneratorOptions from "../Models/GeneratorOptions";
 import { GetLocaleString as loc } from "../Utils/Localization";
@@ -13,18 +12,33 @@ import { useStyles } from "./SettingsSection.styles";
 
 export default function SettingsSection(): JSX.Element
 {
-	const { generatorOptions, updateStorage } = useStorage();
+	const { extOptions, generatorOptions, updateStorage } = useStorage();
 	const cls = useStyles();
 
 	const infoLabel = (content: string, hint: string) => ({
 		children: (_: unknown, slotProps: fui.LabelProps) => (
-			<InfoLabel { ...slotProps } info={ hint }>{ content }</InfoLabel>
+			<fui.InfoLabel { ...slotProps } info={ hint }>{ content }</fui.InfoLabel>
 		)
 	});
 
 	const setOption = (option: keyof (GeneratorOptions & ExtensionOptions)) =>
 		(_: unknown, args: fui.CheckboxOnChangeData) =>
 			updateStorage({ [option]: args.checked } );
+
+	const updateNumberField = (key: keyof (ExtensionOptions & GeneratorOptions), defaultValue: number) =>
+		(_: unknown, e: fui.InputOnChangeData): void =>
+		{
+			if (e.value.length < 1)
+			{
+				updateStorage({ [key]: defaultValue });
+				return;
+			}
+
+			const value = parseInt(e.value);
+
+			if (!isNaN(value) && value >= 0)
+				updateStorage({ [key]: value });
+		};
 
 	return (
 		<fui.AccordionItem value="settings">
@@ -34,9 +48,30 @@ export default function SettingsSection(): JSX.Element
 
 				<fui.Field label={ loc("settings@length") } hint={ loc("settings@length__hint") }>
 					<fui.Input
-						type="number" min={ 6 }
 						value={ generatorOptions.Length.toString() }
-						onChange={ (_, e) => updateStorage({ Length: parseInt(e.value) }) } />
+						onChange={ updateNumberField("Length", 0) } />
+				</fui.Field>
+
+				<fui.Field label={ loc("settings@lengthRange") }>
+					<div className={ cls.rangeContainer }>
+						<fui.Input
+							input={ { className: cls.rangeInput } }
+							value={ extOptions.MinLength.toString() }
+							onChange={ updateNumberField("MinLength", 4) } />
+
+						<fui.Divider />
+
+						<fui.Input
+							input={ { className: cls.rangeInput } }
+							value={ extOptions.MaxLength.toString() }
+							onChange={ updateNumberField("MaxLength", 32) } />
+
+						<fui.Tooltip relationship="label" content={ loc("generator@reset") }>
+							<fui.Button
+								appearance="subtle" icon={ <ArrowUndoRegular /> }
+								onClick={ () => updateStorage({ MinLength: 6, MaxLength: 32 }) } />
+						</fui.Tooltip>
+					</div>
 				</fui.Field>
 
 				<fui.Divider />
