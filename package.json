@@ -9,7 +9,7 @@
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
 	},
 	"dependencies": {
-		"@fluentui/react-components": "^9.46.4",
+		"@fluentui/react-components": "^9.46.7",
 		"@fluentui/react-icons": "^2.0.230",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
@@ -26,7 +26,7 @@
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-react-refresh": "^0.4.5",
 		"typescript": "^5.3.3",
-		"vite": "^5.1.0",
+		"vite": "^5.1.5",
 		"vite-plugin-static-copy": "^1.0.1",
 		"vite-plugin-svgr": "^4.2.0",
 		"vite-plugin-web-extension": "^4.1.1",
