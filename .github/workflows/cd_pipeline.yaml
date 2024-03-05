@@ -60,7 +60,7 @@ jobs:
           extension-root: dist
           self-hosted: false
 
-      - uses: cardinalby/webext-buildtools-pack-extension-dir-action@1.0.8
+      - uses: cardinalby/webext-buildtools-pack-extension-dir-action@1.0.9
         with:
           extensionDir: dist
           zipFilePath: PasswordGenerator-${{ matrix.target }}.zip
