@@ -25,5 +25,7 @@ Dependencies update and security fixes
 ## PR Checklist
 - [ ] Update version in `package.json`
 - [ ] [Post-merge] Review and publish GitHub release
+- [ ] Update Discussions
 - [ ] [Post-deploy] Update changelog for Firefox webstore
+- [ ] Reset `next` branch to be in sync with `main`
 -->
