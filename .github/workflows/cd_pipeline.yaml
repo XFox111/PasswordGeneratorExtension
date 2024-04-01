@@ -105,7 +105,7 @@ jobs:
         with:
           name: packed-chrome
 
-      - uses: wdzeng/chrome-extension@v1.2.2
+      - uses: wdzeng/chrome-extension@v1.2.4
         with:
           extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
           zip-path: PasswordGenerator-chrome.zip
@@ -123,7 +123,7 @@ jobs:
         with:
           name: packed-chrome
 
-      - uses: wdzeng/edge-addon@v1.2.3
+      - uses: wdzeng/edge-addon@v1.2.4
         with:
           product-id: ${{ secrets.EDGE_PRODUCT_ID }}
           zip-path: PasswordGenerator-chrome.zip
@@ -141,7 +141,7 @@ jobs:
         with:
           name: packed-firefox
 
-      - uses: wdzeng/firefox-addon@v1.0.4
+      - uses: wdzeng/firefox-addon@v1.0.5
         with:
           addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
           xpi-path: PasswordGenerator-firefox.zip
