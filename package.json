@@ -16,7 +16,7 @@
 	},
 	"devDependencies": {
 		"@types/react": "^18.2.63",
-		"@types/react-dom": "^18.2.20",
+		"@types/react-dom": "^18.2.23",
 		"@types/webextension-polyfill": "^0.10.7",
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
 		"@typescript-eslint/parser": "^6.21.0",
