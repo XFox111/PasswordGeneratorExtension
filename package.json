@@ -9,7 +9,7 @@
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
 	},
 	"dependencies": {
-		"@fluentui/react-components": "^9.47.2",
+		"@fluentui/react-components": "^9.49.0",
 		"@fluentui/react-icons": "^2.0.233",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
