@@ -30,7 +30,7 @@
 		"vite-plugin-static-copy": "^1.0.3",
 		"vite-plugin-svgr": "^4.2.0",
 		"vite-plugin-web-extension": "^4.1.3",
-		"webextension-polyfill": "^0.10.0"
+		"webextension-polyfill": "^0.11.0"
 	},
 	"resolutions": {
 		"scheduler": "^0.20.0",
