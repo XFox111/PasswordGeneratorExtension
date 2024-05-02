@@ -11,11 +11,11 @@
 	"dependencies": {
 		"@fluentui/react-components": "^9.49.0",
 		"@fluentui/react-icons": "^2.0.233",
-		"react": "^18.2.0",
+		"react": "^18.3.1",
 		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
-		"@types/react": "^18.2.73",
+		"@types/react": "^18.3.1",
 		"@types/react-dom": "^18.2.23",
 		"@types/webextension-polyfill": "^0.10.7",
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
