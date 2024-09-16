@@ -31,3 +31,15 @@ updates:
       interval: monthly
     rebase-strategy: disabled
     open-pull-requests-limit: 20
+
+  - package-ecosystem: "devcontainers"
+    directory: "/"
+    target-branch: "next"
+    assignees:
+      - "xfox111"
+    reviewers:
+      - "xfox111"
+    schedule:
+      interval: monthly
+    rebase-strategy: disabled
+    open-pull-requests-limit: 20

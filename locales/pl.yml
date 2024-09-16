@@ -1,0 +1,59 @@
+manifest:
+  name: "Generator haseł"
+  description: "Rozszerzenie, które pozwala na łatwe generowanie trudnych i bezpiecznych haseł w jednym kliknięciu"
+  author: "Jewgienij Lis"
+
+common:
+  reset: "Resetuj"
+  copy: "Kopiuj"
+
+errors:
+  too_short: "Minimalna długość hasła to 4 znaki"
+  no_characters: "Musisz wybrać przynajmniej jeden rodzaj znaków"
+  too_long: "Wybrana długość jest zbyt duża, aby wygenerować unikalne znaki"
+
+about:
+  title: "O rozszerzeniu"
+  developed_by: "Autor: Jewgienij Lis"
+  licensed_under: ""
+  mit_license: "Licencja MIT"
+  translation_cta:
+    text: "Znalazłeś błąd lub potrzebujesz tłumaczenia na swój język?"
+    button: "Zacznij tutaj"
+  links:
+    website: "Moja strona internetowa"
+    source: "Kod źródłowy"
+    changelog: "Lista zmian"
+  cta:
+    feedback: "Zostaw opinię"
+    sponsor: "Wesprzyj"
+
+settings:
+  title: "Ustawienia"
+  length:
+    title: "Domyślna długość hasła"
+    hint: "Zalecana długość: 8–16"
+  quick_range: "Zakres długości dla szybkich ustawień"
+  include:
+    title: "Dodaj znaki"
+    uppercase: "Wielkie"
+    lowercase: "Małe"
+    numeric: "Cyfry"
+    special: "Specjalne"
+  exclude:
+    title: "Wyklucz znaki"
+    similar: "Podobne"
+    ambiguous: "Niebezpieczne"
+    repeating:
+      title: "Powtarzające się"
+      hint: "Każdy znak hasła będzie unikalny"
+  context_menu: "Pokaż menu kontekstowe"
+
+generator:
+  refresh: "Wygeneruj nowe"
+  insert: "Wstaw i kopiuj"
+  options:
+    title: "Szybkie ustawienia"
+    hint: "Te ustawienia nie zostaną zapisane"
+    include: "Dodaj"
+    exclude: "Wyklucz"

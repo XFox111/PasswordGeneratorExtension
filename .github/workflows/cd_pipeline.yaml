@@ -43,33 +43,21 @@ jobs:
     steps:
       - uses: actions/checkout@main
 
-      - run: yarn install
-      - run: yarn lint
-      - run: TARGET=${{ matrix.target }} yarn build
+      - run: npm run install
+      - run: npm run zip:${{ matrix.target }}
 
       - name: Drop build artifacts (${{ matrix.target }})
         uses: actions/upload-artifact@main
         with:
           name: ${{ matrix.target }}
-          path: dist
+          path: .output/*.zip
 
       - name: web-ext lint
         if: ${{ matrix.target == 'firefox' }}
         uses: freaktechnik/web-ext-lint@main
         with:
-          extension-root: dist
+          extension-root: .output/${{ matrix.target }}-mv3
           self-hosted: false
-
-      - uses: cardinalby/webext-buildtools-pack-extension-dir-action@1.0.9
-        with:
-          extensionDir: dist
-          zipFilePath: PasswordGenerator-${{ matrix.target }}.zip
-
-      - name: Drop packed artifacts (${{ matrix.target }})
-        uses: actions/upload-artifact@main
-        with:
-          name: packed-${{ matrix.target }}
-          path: PasswordGenerator-${{ matrix.target }}.zip
 
   publish-github:
     needs: build
@@ -83,14 +71,14 @@ jobs:
     steps:
       - uses: actions/download-artifact@main
         with:
-          name: packed-${{ matrix.target }}
+          name: ${{ matrix.target }}
 
       - name: Attach build to release
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: PasswordGenerator-${{ matrix.target }}.zip
+          file: password-generator-*.zip
           draft: false
           overwrite: true
           update_latest_release: true
@@ -103,12 +91,12 @@ jobs:
     steps:
       - uses: actions/download-artifact@main
         with:
-          name: packed-chrome
+          name: chrome
 
       - uses: wdzeng/chrome-extension@v1.2.4
         with:
           extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
-          zip-path: PasswordGenerator-chrome.zip
+          zip-path: password-generator-*-chrome.zip
           client-id: ${{ secrets.CHROME_CLIENT_ID }}
           client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
           refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
@@ -121,12 +109,12 @@ jobs:
     steps:
       - uses: actions/download-artifact@main
         with:
-          name: packed-chrome
+          name: chrome
 
       - uses: wdzeng/edge-addon@v1.2.4
         with:
           product-id: ${{ secrets.EDGE_PRODUCT_ID }}
-          zip-path: PasswordGenerator-chrome.zip
+          zip-path: password-generator-*-chrome.zip
           client-id: ${{ secrets.EDGE_CLIENT_ID }}
           client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
           access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
@@ -139,11 +127,11 @@ jobs:
     steps:
       - uses: actions/download-artifact@main
         with:
-          name: packed-firefox
+          name: firefox
 
       - uses: wdzeng/firefox-addon@v1.0.5
         with:
           addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
-          xpi-path: PasswordGenerator-firefox.zip
+          xpi-path: password-generator-*-firefox.zip
           jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
           jwt-secret: ${{ secrets.FIREFOX_CLIENT_SECRET }}

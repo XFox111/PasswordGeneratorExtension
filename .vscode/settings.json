@@ -1,12 +1,4 @@
 {
-	"json.schemas": [
-		{
-			"fileMatch": [
-				"/messages.json"
-			],
-			"url": "https://gist.github.com/XFox111/9528b76f9f02704d620d4edbf421e06b/raw/e77197276f0aa2994cceae4ddf4dcfcabdce9dcb/webext-locale-schema.json"
-		}
-	],
 	"editor.rulers": [
 		{
 			"column": 120
@@ -29,14 +21,6 @@
 	"css.lint.float": "warning",
 	"css.lint.unknownVendorSpecificProperties": "warning",
 	"css.lint.zeroUnits": "warning",
-	"scss.format.braceStyle": "expand",
-	"scss.format.maxPreserveNewLines": 3,
-	"scss.format.spaceAroundSelectorSeparator": true,
-	"scss.lint.compatibleVendorPrefixes": "warning",
-	"scss.lint.duplicateProperties": "warning",
-	"scss.lint.float": "warning",
-	"scss.lint.unknownVendorSpecificProperties": "warning",
-	"scss.lint.zeroUnits": "warning",
 	"html.format.maxPreserveNewLines": 3,
 	"html.format.wrapAttributes": "preserve",
 	"javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,

@@ -12,10 +12,12 @@
 Extension for web browsers which helps you to easily generate strong passwords in one click
 
 ## Features
-- Create strong passwords in one click
 - Customizable generator
 - Clean and simple UI
 - Dark mode
+- **NEW:** Insert and copy generated password in one click
+
+![Demo](https://cdn.xfox111.net/projects/pwdgen/demo.gif)
 
 ## Languages
 - English
@@ -45,7 +47,7 @@ Extension for web browsers which helps you to easily generate strong passwords i
 
 > 1. Go to [Releases](https://github.com/XFox111/PasswordGeneratorExtension/releases) and select a release to download
 > 2. Download attached archive for Chromium and unpack it
-> 3. Go to "chrome://extensions"
+> 3. Go to `chrome://extensions`
 > 4. Enable "Developer mode"
 > 5. Click the "Load unpacked" button and navigate to the extension's root folder (contains `manifest.json`)
 > 6. Done!
@@ -57,8 +59,8 @@ Extension for web browsers which helps you to easily generate strong passwords i
 
 > 1. Go to [Releases](https://github.com/XFox111/PasswordGeneratorExtension/releases) and select a release to download
 > 2. Download attached archive for Firefox and unpack it
-> 3. Go to "about:debugging#/runtime/this-firefox"
-> 4. Click the "Load Temporary Add-on..." button and select `manifest.josn` file in the root folder
+> 3. Go to `about:debugging#/runtime/this-firefox`
+> 4. Click the "Load Temporary Add-on..." button and select `manifest.json` file in the root folder
 > 5. Done!
 
 > **Important!**

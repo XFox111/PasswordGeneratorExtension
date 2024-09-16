@@ -2,8 +2,8 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "shell",
-			"command": "yarn build",
+			"type": "npm",
+			"script": "build",
 			"group":
 			{
 				"kind": "build",
@@ -12,67 +12,32 @@
 			"label": "Build: Chromium"
 		},
 		{
-			"type": "shell",
-			"command": "yarn build",
-			"group":
-			{
-				"kind": "build",
-				"isDefault": false
-			},
-			"label": "Build: Firefox",
-			"options": {
-				"env": {
-					"TARGET": "firefox"
-				}
-			}
+			"type": "npm",
+			"script": "build:firefox",
+			"group": "build",
+			"label": "Build: Firefox"
 		},
 		{
-			"type": "shell",
-			"command": "yarn build",
-			"args": [
-				"--watch",
-				"--mode",
-				"development"
-			],
+			"type": "npm",
+			"script": "dev",
 			"group": "test",
-			"label": "Watch: Chromium"
+			"label": "Dev: Google Chrome"
 		},
 		{
-			"type": "shell",
-			"command": "yarn build",
-			"args": [
-				"--watch",
-				"--mode",
-				"development"
-			],
+			"type": "npm",
+			"script": "dev:firefox",
 			"group": "test",
-			"label": "Watch: Firefox",
-			"options": {
-				"env": {
-					"TARGET": "firefox"
-				}
-			}
+			"label": "Dev: Firefox"
 		},
 		{
-			"type": "shell",
-			"command": "yarn dev",
+			"type": "npm",
+			"script": "dev:edge",
 			"group": "test",
-			"label": "Dev: Chromium"
+			"label": "Dev: Microsoft Edge"
 		},
 		{
-			"type": "shell",
-			"command": "yarn dev",
-			"group": "test",
-			"label": "Dev: Firefox",
-			"options": {
-				"env": {
-					"TARGET": "firefox"
-				}
-			}
-		},
-		{
-			"type": "shell",
-			"command": "yarn install",
+			"type": "npm",
+			"script": "install",
 			"label": "Restore dependencies",
 			"group": "build"
 		}

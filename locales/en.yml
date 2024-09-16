@@ -1,0 +1,59 @@
+manifest:
+  name: "Password generator"
+  description: "Password generator extension allows you to easily generate long and secure password in one click"
+  author: "Eugene Fox"
+
+common:
+  reset: "Reset"
+  copy: "Copy"
+
+errors:
+  too_short: "Password length must be at least 4 characters"
+  no_characters: "At least one set of characters must be selected"
+  too_long: "Length is too long to generate password with unique characters"
+
+about:
+  title: "About"
+  developed_by: "Developed by Eugene Fox"
+  lincensed_under: "Licensed under"
+  mit_license: "MIT License"
+  translation_cta:
+    text: "Found a typo or want a translation for your language?"
+    button: "Get started here"
+  links:
+    website: "My website"
+    source: "Source code"
+    changelog: "Changelog"
+  cta:
+    feedback: "Leave feedback"
+    sponsor: "Buy me a coffee"
+
+settings:
+  title: "Settings"
+  length:
+    title: "Default password length"
+    hint: "Recommended length: 8–16"
+  quick_range: "Quick adjustment length range"
+  include:
+    title: "Include symbols"
+    uppercase: "Uppercase"
+    lowercase: "Lowercase"
+    numeric: "Numeric"
+    special: "Special"
+  exclude:
+    title: "Exclude symbols"
+    similar: "Similar"
+    ambiguous: "Ambiguous"
+    repeating:
+      title: "Repeating"
+      hint: "Each character in the password will be unique"
+  context_menu: "Show context menu"
+
+generator:
+  refresh: "Refresh"
+  insert: "Insert and copy"
+  options:
+    title: "Quick adjustments"
+    hint: "These adjustments will not be saved"
+    include: "Include"
+    exclude: "Exclude"

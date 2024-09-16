@@ -1,0 +1,59 @@
+manifest:
+  name: "Gerador de Senhas"
+  description: "A extensão do gerador de senhas permite gerar facilmente uma senha longa e segura em um clique"
+  author: "Eugênio Fox"
+
+common:
+  reset: "Redefinir"
+  copy: "Copiar"
+
+errors:
+  too_short: "O comprimento da senha deve ter pelo menos 4 caracteres"
+  no_characters: "É necessário selecionar pelo menos um conjunto de caracteres"
+  too_long: "O comprimento é muito longo para gerar uma senha com caracteres únicos"
+
+about:
+  title: "Sobre"
+  developed_by: "Desenvolvido por Eugênio Fox"
+  licensed_under: "Licenciado sob"
+  mit_license: "Licença MIT"
+  translation_cta:
+    text: "Encontrou um erro ou quer uma tradução no seu idioma?"
+    button: "Comece aqui"
+  links:
+    website: "Meu site"
+    source: "Código fonte"
+    changelog: "Registro de alterações"
+  cta:
+    feedback: "Enviar comentários"
+    sponsor: "Pague um café"
+
+settings:
+  title: "Configurações"
+  length:
+    title: "Comprimento padrão da senha"
+    hint: "Comprimento recomendado: 8–16"
+  quick_range: "Intervalo do comprimento de ajuste rápido"
+  include:
+    title: "Incluir símbolos"
+    uppercase: "Maiúsculos"
+    lowercase: "Minúsculos"
+    numeric: "Numéricos"
+    special: "Especiais"
+  exclude:
+    title: "Excluir símbolos"
+    similar: "Semelhantes"
+    ambiguous: "Ambíguos"
+    repeating:
+      title: "Repetidos"
+      hint: "Cada caractere na senha será único"
+  context_menu: "Mostrar menu contextual"
+
+generator:
+  refresh: "Gerar nova"
+  insert: "Inserir e copiar"
+  options:
+    title: "Ajustes rápidos"
+    hint: "Esses ajustes não serão salvos"
+    include: "Incluir"
+    exclude: "Excluir"
