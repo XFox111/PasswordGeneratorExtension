@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@main
 
-      - run: npm run install
+      - run: npm install
       - run: npm run zip:${{ matrix.target }}
 
       - name: Drop build artifacts (${{ matrix.target }})
