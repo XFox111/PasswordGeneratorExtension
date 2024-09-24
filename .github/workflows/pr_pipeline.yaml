@@ -39,16 +39,17 @@ jobs:
 
       - run: npm install
       - run: npm run zip -- -b ${{ matrix.target }}
+      - run: ls -a .
 
       - name: Drop artifacts (${{ matrix.target }})
         uses: actions/upload-artifact@main
         with:
           name: ${{ matrix.target }}
-          path: .output/*.zip
+          path: ./.output/password-generator-*-${{ matrix.target }}.zip
 
       - name: web-ext lint
         if: ${{ matrix.target == 'firefox' }}
         uses: freaktechnik/web-ext-lint@main
         with:
-          extension-root: ./output/${{ matrix.target }}-mv3
+          extension-root: ./.output/firefox-mv3
           self-hosted: false
