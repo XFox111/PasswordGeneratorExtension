@@ -39,13 +39,14 @@ jobs:
 
       - run: npm install
       - run: npm run zip -- -b ${{ matrix.target }}
-      - run: ls -a .
+      - run: ls -a ./.output
 
       - name: Drop artifacts (${{ matrix.target }})
         uses: actions/upload-artifact@main
         with:
           name: ${{ matrix.target }}
           path: ./.output/password-generator-*-${{ matrix.target }}.zip
+          include-hidden-files: true
 
       - name: web-ext lint
         if: ${{ matrix.target == 'firefox' }}
