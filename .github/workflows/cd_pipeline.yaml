@@ -50,13 +50,14 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: ${{ matrix.target }}
-          path: .output/*.zip
+          path: ./.output/password-generator-*-${{ matrix.target }}.zip
+          include-hidden-files: true
 
       - name: web-ext lint
         if: ${{ matrix.target == 'firefox' }}
         uses: freaktechnik/web-ext-lint@main
         with:
-          extension-root: .output/${{ matrix.target }}-mv3
+          extension-root: ./.output/firefox-mv3
           self-hosted: false
 
   publish-github:
@@ -78,7 +79,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: password-generator-*.zip
+          file: password-generator-*-${{ matrix.target }}.zip
           draft: false
           overwrite: true
           update_latest_release: true
