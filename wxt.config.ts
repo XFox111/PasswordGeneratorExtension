@@ -14,8 +14,7 @@ export default defineConfig({
 			enabled: 9
 		},
 	},
-	manifest:
-	{
+	manifest: ({ browser }) => ({
 		name: "__MSG_manifest_name__",
 		description: "__MSG_manifest_description__",
 		author: "__MSG_manifest_author__",
@@ -33,12 +32,11 @@ export default defineConfig({
 			1024: "/icons/1024.png"
 		},
 
-		browser_specific_settings:
-		{
+		browser_specific_settings: browser !== "firefox" ? undefined : ({
 			gecko: {
 				id: "passwordgenerator@xfox111.net",
 				strict_min_version: "109.0"
 			}
-		}
-	}
+		})
+	})
 });
