@@ -1,15 +1,9 @@
-// @ts-expect-error vite-plugin-eslint doesn't have TS definition
-import eslintPlugin from "vite-plugin-eslint";
 import { defineConfig, WxtViteConfig } from "wxt";
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
 	modules: ["@wxt-dev/module-react", "@wxt-dev/i18n/module"],
 	vite: (): WxtViteConfig => ({
-		plugins:
-			[
-				eslintPlugin()
-			],
 		build:
 		{
 			chunkSizeWarningLimit: 1000
@@ -17,7 +11,7 @@ export default defineConfig({
 	}),
 	imports: {
 		eslintrc: {
-			enabled: true
+			enabled: 9
 		},
 	},
 	manifest:

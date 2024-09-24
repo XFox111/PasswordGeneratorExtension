@@ -1,13 +1,14 @@
-const pluginJs = require("@eslint/js");
-const typescriptEslintPlugin = require("@typescript-eslint/eslint-plugin");
-const typescriptEslintParser = require("@typescript-eslint/parser");
-const pluginReact = require("eslint-plugin-react");
-const globals = require("globals");
-const wxtImport = require("./.wxt/eslintrc-auto-import.json");
+import jsConfigs from "@eslint/js";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
+import reactPlugin from "eslint-plugin-react";
+import globals from "globals";
+import autoImports from "./.wxt/eslint-auto-imports.mjs";
 
-module.exports = [
-	pluginJs.configs.recommended,
-	pluginReact.configs.flat.recommended,
+export default [
+	autoImports,
+	jsConfigs.configs.recommended,
+	reactPlugin.configs.flat.recommended,
 	{
 		ignores: [".wxt/", ".output/"],
 	},
@@ -15,12 +16,11 @@ module.exports = [
 		files: ["**/*.{ts,tsx,js,mjs,jsx}"],
 		languageOptions:
 		{
-			parser: typescriptEslintParser,
+			parser: tsParser,
 			globals: {
 				React: true,
 				JSX: true,
-				...globals.browser,
-				...wxtImport.globals
+				...globals.browser
 			},
 			ecmaVersion: "latest",
 			sourceType: "module",
@@ -31,7 +31,7 @@ module.exports = [
 			}
 		},
 		plugins: {
-			"@typescript-eslint": typescriptEslintPlugin
+			"@typescript-eslint": tsPlugin
 		}
 	},
 	{

@@ -44,7 +44,7 @@ jobs:
       - uses: actions/checkout@main
 
       - run: npm install
-      - run: npm run zip:${{ matrix.target }}
+      - run: npm run zip -- -b ${{ matrix.target }}
 
       - name: Drop build artifacts (${{ matrix.target }})
         uses: actions/upload-artifact@main

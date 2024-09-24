@@ -3,7 +3,7 @@
 	"tasks": [
 		{
 			"type": "npm",
-			"script": "build",
+			"script": "build -- -b chrome",
 			"group":
 			{
 				"kind": "build",
@@ -13,25 +13,25 @@
 		},
 		{
 			"type": "npm",
-			"script": "build:firefox",
+			"script": "build -- -b firefox",
 			"group": "build",
 			"label": "Build: Firefox"
 		},
 		{
 			"type": "npm",
-			"script": "dev",
+			"script": "dev -- -b chrome",
 			"group": "test",
 			"label": "Dev: Google Chrome"
 		},
 		{
 			"type": "npm",
-			"script": "dev:firefox",
+			"script": "dev -- -b firefox",
 			"group": "test",
 			"label": "Dev: Firefox"
 		},
 		{
 			"type": "npm",
-			"script": "dev:edge",
+			"script": "dev -- -b edge",
 			"group": "test",
 			"label": "Dev: Microsoft Edge"
 		},
