@@ -39,6 +39,7 @@ jobs:
 
       - run: npm install
       - run: npm run zip -- -b ${{ matrix.target }}
+      - run: npm audit
 
       - name: Drop artifacts (${{ matrix.target }})
         uses: actions/upload-artifact@main
