@@ -37,19 +37,20 @@ jobs:
     steps:
       - uses: actions/checkout@main
 
-      - run: yarn install
-      - run: yarn lint
-      - run: TARGET=${{ matrix.target }} yarn build
+      - run: npm install
+      - run: npm run zip -- -b ${{ matrix.target }}
+      - run: npm audit
 
       - name: Drop artifacts (${{ matrix.target }})
         uses: actions/upload-artifact@main
         with:
           name: ${{ matrix.target }}
-          path: dist
+          path: ./.output/password-generator-*-${{ matrix.target }}.zip
+          include-hidden-files: true
 
       - name: web-ext lint
         if: ${{ matrix.target == 'firefox' }}
         uses: freaktechnik/web-ext-lint@main
         with:
-          extension-root: dist
+          extension-root: ./.output/firefox-mv3
           self-hosted: false
