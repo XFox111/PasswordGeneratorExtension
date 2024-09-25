@@ -95,10 +95,16 @@ jobs:
         with:
           name: chrome
 
+      - name: Get version from package.json
+        id: get_version
+        run: |
+          extname=`ls password-generator-*-chrome.zip`
+          echo "filename=$extname" >> "$GITHUB_OUTPUT"
+
       - uses: wdzeng/chrome-extension@v1.2.4
         with:
           extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
-          zip-path: password-generator-*-chrome.zip
+          zip-path: ${{ steps.get_version.outputs.filename }}
           client-id: ${{ secrets.CHROME_CLIENT_ID }}
           client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
           refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
@@ -113,10 +119,16 @@ jobs:
         with:
           name: chrome
 
+      - name: Get version from package.json
+        id: get_version
+        run: |
+          extname=`ls password-generator-*-chrome.zip`
+          echo "filename=$extname" >> "$GITHUB_OUTPUT"
+
       - uses: wdzeng/edge-addon@v1.2.5
         with:
           product-id: ${{ secrets.EDGE_PRODUCT_ID }}
-          zip-path: password-generator-*-chrome.zip
+          zip-path: ${{ steps.get_version.outputs.filename }}
           client-id: ${{ secrets.EDGE_CLIENT_ID }}
           client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
           access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
@@ -131,9 +143,15 @@ jobs:
         with:
           name: firefox
 
+      - name: Get version from package.json
+        id: get_version
+        run: |
+          extname=`ls password-generator-*-firefox.zip`
+          echo "filename=$extname" >> "$GITHUB_OUTPUT"
+
       - uses: wdzeng/firefox-addon@v1.0.5
         with:
           addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
-          xpi-path: password-generator-*-firefox.zip
+          xpi-path: ${{ steps.get_version.outputs.filename }}
           jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
           jwt-secret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
