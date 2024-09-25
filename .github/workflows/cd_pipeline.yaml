@@ -113,7 +113,7 @@ jobs:
         with:
           name: chrome
 
-      - uses: wdzeng/edge-addon@v1.2.4
+      - uses: wdzeng/edge-addon@v1.2.5
         with:
           product-id: ${{ secrets.EDGE_PRODUCT_ID }}
           zip-path: password-generator-*-chrome.zip
