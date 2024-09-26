@@ -143,7 +143,7 @@ jobs:
         with:
           name: firefox
 
-      - uses: xfox111/firefox-addon@main
+      - uses: xfox111/firefox-addon@v1.1.0-alpha.1
         with:
           addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
           xpi-path: password-generator-*-firefox.zip
