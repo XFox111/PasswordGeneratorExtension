@@ -141,11 +141,11 @@ jobs:
     steps:
       - uses: actions/download-artifact@main
         with:
-          name: firefox
+          merge-multiple: true
 
       - uses: xfox111/firefox-addon@v1.1.0-alpha.1
         with:
           addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
-          xpi-path: password-generator-*-firefox.zip
+          xpi-path: password-generator-*.zip
           jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
           jwt-secret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
