@@ -143,15 +143,9 @@ jobs:
         with:
           name: firefox
 
-      - name: Get version from package.json
-        id: get_version
-        run: |
-          extname=`ls password-generator-*-firefox.zip`
-          echo "filename=$extname" >> "$GITHUB_OUTPUT"
-
-      - uses: wdzeng/firefox-addon@v1.0.5
+      - uses: xfox111/firefox-addon@main
         with:
           addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
-          xpi-path: ${{ steps.get_version.outputs.filename }}
+          xpi-path: password-generator-*-firefox.zip
           jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
           jwt-secret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
