@@ -119,19 +119,12 @@ jobs:
         with:
           name: chrome
 
-      - name: Get version from package.json
-        id: get_version
-        run: |
-          extname=`ls password-generator-*-chrome.zip`
-          echo "filename=$extname" >> "$GITHUB_OUTPUT"
-
-      - uses: wdzeng/edge-addon@v1.2.5
+      - uses: wdzeng/edge-addon@v2
         with:
           product-id: ${{ secrets.EDGE_PRODUCT_ID }}
-          zip-path: ${{ steps.get_version.outputs.filename }}
-          client-id: ${{ secrets.EDGE_CLIENT_ID }}
-          client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
-          access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
+          zip-path: password-generator-*.zip
+          client-id: ${{ secrets.NEW_EDGE_CLIENT_ID }}
+          api-key: ${{ secrets.EDGE_API_KEY }}
 
   publish-firefox:
     needs: build
