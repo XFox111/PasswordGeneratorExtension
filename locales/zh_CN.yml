@@ -1,0 +1,59 @@
+manifest:
+  name: "密码生成器"
+  description: "密码生成器扩展可让您一键轻松生成长而安全的密码"
+  author: "Eugene Fox"
+
+common:
+  reset: "重置"
+  copy: "复制"
+
+errors:
+  too_short: "密码的长度必须至少为4个字符"
+  no_characters: "必须至少选择一组字符"
+  too_long: "长度太长，无法生成具有唯一字符的密码"
+
+about:
+  title: "关于"
+  developed_by: "由 Eugene Fox 开发"
+  lincensed_under: "协议："
+  mit_license: "MIT License"
+  translation_cta:
+    text: "发现错别字或需要翻译成您的语言？"
+    button: "从这里开始"
+  links:
+    website: "我的网站"
+    source: "源代码"
+    changelog: "更新日志"
+  cta:
+    feedback: "提供反馈"
+    sponsor: "赞助开发者"
+
+settings:
+  title: "设置"
+  length:
+    title: "默认密码长度"
+    hint: "建议长度：8-16"
+  quick_range: "快速调节长度范围"
+  include:
+    title: "包括字符"
+    uppercase: "大写字母"
+    lowercase: "小写字母"
+    numeric: "数字"
+    special: "特殊"
+  exclude:
+    title: "排除字符"
+    similar: "相似"
+    ambiguous: "易混淆"
+    repeating:
+      title: "重复"
+      hint: "密码中的每个字符都将是独一无二的"
+  context_menu: "显示右键菜单"
+
+generator:
+  refresh: "刷新"
+  insert: "插入并复制"
+  options:
+    title: "快速调整"
+    hint: "这些调整将不会保存"
+    include: "包括"
+    exclude: "排除"
