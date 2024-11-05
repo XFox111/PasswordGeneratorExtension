@@ -125,7 +125,7 @@ jobs:
           extname=`ls password-generator-*-chrome.zip`
           echo "filename=$extname" >> "$GITHUB_OUTPUT"
 
-      - uses: wdzeng/edge-addon@v1.2.5
+      - uses: wdzeng/edge-addon@v2.0.0
         with:
           product-id: ${{ secrets.EDGE_PRODUCT_ID }}
           zip-path: ${{ steps.get_version.outputs.filename }}
