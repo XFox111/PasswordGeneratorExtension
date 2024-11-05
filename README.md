@@ -20,11 +20,12 @@ Extension for web browsers which helps you to easily generate strong passwords i
 ![Demo](https://cdn.xfox111.net/projects/pwdgen/demo.gif)
 
 ## Languages
+- Chinese (Simplified)
 - English
-- Ukrainian
 - Polish
-- Russian
 - Portuguese (Brazil)
+- Russian
+- Ukrainian
 
 ## Download
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/jnjobgjobffgmgfnkpkjfjkkfhfikmfl?label=Chrome%20Webstore%20downloads)](https://chrome.google.com/webstore/detail/jnjobgjobffgmgfnkpkjfjkkfhfikmfl)
