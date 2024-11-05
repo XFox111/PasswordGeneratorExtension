@@ -30,7 +30,7 @@
 		"@wxt-dev/module-react": "^1.1.1",
 		"eslint": "^9.13.0",
 		"eslint-plugin-react": "^7.37.2",
-		"globals": "^15.9.0",
+		"globals": "^15.11.0",
 		"typescript": "^5.6.3",
 		"wxt": "^0.19.13"
 	}
