@@ -119,16 +119,10 @@ jobs:
         with:
           name: chrome
 
-      - name: Get version from package.json
-        id: get_version
-        run: |
-          extname=`ls password-generator-*-chrome.zip`
-          echo "filename=$extname" >> "$GITHUB_OUTPUT"
-
-      - uses: wdzeng/edge-addon@v1.2.5
+      - uses: wdzeng/edge-addon@v2.0.0
         with:
           product-id: ${{ secrets.EDGE_PRODUCT_ID }}
-          zip-path: ${{ steps.get_version.outputs.filename }}
+          zip-path: password-generator-*-chrome.zip
           client-id: ${{ secrets.EDGE_CLIENT_ID }}
           client-secret: ${{ secrets.EDGE_CLIENT_SECRET }}
           access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
@@ -143,15 +137,9 @@ jobs:
         with:
           name: firefox
 
-      - name: Get version from package.json
-        id: get_version
-        run: |
-          extname=`ls password-generator-*-firefox.zip`
-          echo "filename=$extname" >> "$GITHUB_OUTPUT"
-
-      - uses: wdzeng/firefox-addon@v1.0.5
+      - uses: wdzeng/firefox-addon@v1.1.1
         with:
           addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
-          xpi-path: ${{ steps.get_version.outputs.filename }}
+          xpi-path: password-generator-*-firefox.zip
           jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
           jwt-secret: ${{ secrets.FIREFOX_CLIENT_SECRET }}
