@@ -15,23 +15,23 @@
 		"postinstall": "wxt prepare"
 	},
 	"dependencies": {
-		"@fluentui/react-components": "^9.54.16",
+		"@fluentui/react-components": "^9.55.1",
 		"@fluentui/react-icons": "^2.0.258",
-		"@wxt-dev/i18n": "^0.1.0",
+		"@wxt-dev/i18n": "^0.2.3",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.10.0",
-		"@types/react": "^18.3.9",
-		"@types/react-dom": "^18.3.0",
+		"@eslint/js": "^9.13.0",
+		"@types/react": "^18.3.12",
+		"@types/react-dom": "^18.3.1",
 		"@typescript-eslint/eslint-plugin": "^8.7.0",
 		"@typescript-eslint/parser": "^8.7.0",
 		"@wxt-dev/module-react": "^1.1.1",
-		"eslint": "^9.11.1",
-		"eslint-plugin-react": "^7.36.1",
+		"eslint": "^9.13.0",
+		"eslint-plugin-react": "^7.37.2",
 		"globals": "^15.11.0",
-		"typescript": "^5.6.2",
-		"wxt": "^0.19.10"
+		"typescript": "^5.6.3",
+		"wxt": "^0.19.13"
 	}
 }
