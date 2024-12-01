@@ -32,6 +32,6 @@
 		"eslint-plugin-react": "^7.37.2",
 		"globals": "^15.11.0",
 		"typescript": "^5.6.3",
-		"wxt": "^0.19.13"
+		"wxt": "^0.19.17"
 	}
 }
