@@ -5,6 +5,10 @@ on:
     types: [ released ]
   workflow_dispatch:
     inputs:
+      bypass_audit:
+        description: Bypass npm audit
+        type: boolean
+        default: false
       targets:
         description: Targets
         required: true
@@ -45,7 +49,6 @@ jobs:
 
       - run: npm install
       - run: npm run zip -- -b ${{ matrix.target }}
-      - run: npm audit
 
       - name: Drop build artifacts (${{ matrix.target }})
         uses: actions/upload-artifact@main
@@ -60,6 +63,9 @@ jobs:
         with:
           extension-root: ./.output/firefox-mv3
           self-hosted: false
+
+      - run: npm audit
+        if: ${{ github.event_name == "release" || github.event.inputs.bypass_audit == 'false' }}
 
   publish-github:
     needs: build
