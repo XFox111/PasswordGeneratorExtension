@@ -65,7 +65,7 @@ jobs:
           self-hosted: false
 
       - run: npm audit
-        if: ${{ github.event_name == "release" || github.event.inputs.bypass_audit == 'false' }}
+        if: ${{ github.event_name == 'release' || github.event.inputs.bypass_audit == 'false' }}
 
   publish-github:
     needs: build
