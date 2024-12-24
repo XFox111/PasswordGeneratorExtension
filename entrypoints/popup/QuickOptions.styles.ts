@@ -10,6 +10,7 @@ export const useStyles = makeStyles({
 	{
 		display: "flex",
 		flexDirection: "column",
+		gap: tokens.spacingVerticalS,
 	},
 	lengthContainer:
 	{

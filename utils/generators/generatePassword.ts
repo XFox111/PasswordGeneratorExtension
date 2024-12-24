@@ -108,6 +108,9 @@ function getRequiredCharacters(options: PasswordProps): string
 		if (options[key as keyof PasswordProps])
 			for (let i = 0; i < (options[key as keyof PasswordProps] as number); i++)
 			{
+				if (value.length < 1)
+					continue;
+
 				const char = pickRandomFromArray(value);
 
 				if (options.excludeRepeating && result.includes(char))

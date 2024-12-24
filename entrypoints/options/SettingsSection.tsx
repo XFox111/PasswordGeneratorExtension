@@ -84,9 +84,17 @@ export default function SettingsSection(): ReactElement
 					checked={ generatorOptions.Numeric }
 					onChange={ setOption("Numeric") } />
 				<fui.Checkbox
-					label={ i18n.t("common.characters.special") }
+					label={ infoLabel(i18n.t("common.characters.special"), CharacterHints.special) }
 					checked={ generatorOptions.Special }
 					onChange={ setOption("Special") } />
+				<fui.Checkbox
+					label={
+						<fui.Input size="small" placeholder={ i18n.t("common.characters.custom") }
+							value={ generatorOptions.IncludeCustom }
+							onChange={ (_, e) => updateStorage({ IncludeCustom: e.value }) } />
+					}
+					checked={ generatorOptions.Custom }
+					onChange={ setOption("Custom") } />
 			</div>
 
 			<fui.Text>{ i18n.t("common.sections.exclude") }</fui.Text>
@@ -104,13 +112,13 @@ export default function SettingsSection(): ReactElement
 					label={ infoLabel(i18n.t("common.characters.repeating.label"), i18n.t("common.characters.repeating.hint")) }
 					checked={ generatorOptions.ExcludeRepeating }
 					onChange={ setOption("ExcludeRepeating") } />
-			</div>
-
-			<div className={ cls.excludeCustom }>
-				<fui.Label>{ i18n.t("settings.exclude_custom") }</fui.Label>
-				<fui.Input size="small"
-					value={ generatorOptions.ExcludeCustom }
-					onChange={ (_, e) => updateStorage({ ExcludeCustom: e.value }) } />
+				<fui.Checkbox
+					label={
+						<fui.Input size="small" placeholder={ i18n.t("common.characters.custom") }
+							value={ generatorOptions.ExcludeCustom }
+							onChange={ (_, e) => updateStorage({ ExcludeCustom: e.value }) } />
+					}
+					checked={ generatorOptions.ExcludeCustom.length > 0 } />
 			</div>
 		</section>
 	);

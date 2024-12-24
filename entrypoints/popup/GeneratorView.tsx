@@ -28,12 +28,12 @@ export default function GeneratorView({ options }: GeneratorViewProps): ReactEle
 				lowercase: options.Lowercase,
 				numeric: options.Numeric,
 				special: options.Special,
+				custom: options.Custom,
 				excludeSimilar: options.ExcludeSimilar,
 				excludeAmbiguous: options.ExcludeAmbiguous,
 				excludeRepeating: options.ExcludeRepeating,
 				excludeCustom: options.ExcludeCustom,
-				custom: false,
-				customSet: ""
+				customSet: options.IncludeCustom
 			}));
 		}
 		catch (e) { setError((e as Error).message); }

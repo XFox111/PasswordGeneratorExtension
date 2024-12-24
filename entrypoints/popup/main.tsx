@@ -51,7 +51,7 @@ const useStyles = makeStyles({
 		display: "flex",
 		flexDirection: "column",
 		padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
-		gap: tokens.spacingVerticalS,
+		gap: tokens.spacingVerticalMNudge,
 	},
 	actionsRoot:
 	{

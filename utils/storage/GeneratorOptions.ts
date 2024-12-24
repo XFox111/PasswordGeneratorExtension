@@ -6,6 +6,7 @@ export default class GeneratorOptions
 	public Numeric: boolean = true;
 	public Lowercase: boolean = true;
 	public Uppercase: boolean = true;
+	public Custom: boolean = false;
 
 	public ExcludeSimilar: boolean = true;
 	public ExcludeAmbiguous: boolean = true;
@@ -13,4 +14,5 @@ export default class GeneratorOptions
 	public ExcludeRepeating: boolean = false;
 
 	public ExcludeCustom: string = "";
+	public IncludeCustom: string = "";
 }
