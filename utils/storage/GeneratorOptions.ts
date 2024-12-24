@@ -11,4 +11,6 @@ export default class GeneratorOptions
 	public ExcludeAmbiguous: boolean = true;
 
 	public ExcludeRepeating: boolean = false;
+
+	public ExcludeCustom: string = "";
 }

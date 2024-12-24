@@ -1,11 +1,6 @@
-import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
+import { makeStyles, tokens } from "@fluentui/react-components";
 
 export const useStyles = makeStyles({
-	root:
-	{
-		display: "flex",
-		flexDirection: "column",
-	},
 	input:
 	{
 		fontFamily: tokens.fontFamilyMonospace,
@@ -24,6 +19,10 @@ export const useStyles = makeStyles({
 	},
 	msgBar:
 	{
-		...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalM),
+		padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
 	},
+	msgBarBody:
+	{
+		whiteSpace: "break-spaces",
+	}
 });

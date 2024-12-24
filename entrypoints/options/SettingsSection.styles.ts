@@ -5,7 +5,8 @@ export const useStyles = makeStyles({
 	{
 		display: "flex",
 		flexDirection: "column",
-		...shorthands.gap(tokens.spacingVerticalS),
+		gap: tokens.spacingVerticalS,
+		padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
 	},
 	checkboxContainer:
 	{
@@ -23,4 +24,11 @@ export const useStyles = makeStyles({
 	{
 		width: "100%",
 	},
+	excludeCustom:
+	{
+		display: "grid",
+		gridTemplateColumns: "auto 1fr",
+		gap: tokens.spacingHorizontalS,
+		alignItems: "center",
+	}
 });

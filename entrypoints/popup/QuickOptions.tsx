@@ -1,10 +1,10 @@
 import { GeneratorOptions, useStorage } from "@/utils/storage";
 import * as fui from "@fluentui/react-components";
 import * as ic from "@fluentui/react-icons";
-import React from "react";
+import { ReactElement } from "react";
 import { useStyles } from "./QuickOptions.styles";
 
-const QuickOptions: React.FC<IProps> = ({ onChange }) =>
+export default function QuickOptions({ onChange }: QuickOptionsProps): ReactElement
 {
 	const { extOptions, generatorOptions } = useStorage();
 	const [quickOpts, setOptions] = useState<GeneratorOptions>(generatorOptions);
@@ -17,14 +17,14 @@ const QuickOptions: React.FC<IProps> = ({ onChange }) =>
 	{
 		const opts: Partial<Omit<GeneratorOptions, "Length">> = {};
 
-		let keys = Object.keys(quickOpts).filter(i => i !== "Length") as (keyof Omit<GeneratorOptions, "Length">)[];
-
-		if (e.name === "include")
-			keys = keys.filter(i => !i.startsWith("Exclude"));
-		else
-			keys = keys.filter(i => i.startsWith("Exclude"));
+		const keys = Object.keys(quickOpts)
+			.filter(i =>
+				i !== "Length" &&
+				i.startsWith("Exclude") === (e.name === "exclude")
+			) as (keyof Omit<GeneratorOptions, "Length">)[];
 
 		for (const key of keys)
+			// @ts-ignore
 			opts[key] = e.checkedItems.includes(key);
 
 		setOptions({ ...generatorOptions, ...quickOpts, ...opts });
@@ -38,9 +38,6 @@ const QuickOptions: React.FC<IProps> = ({ onChange }) =>
 
 	return (
 		<div className={ cls.options }>
-			<fui.InfoLabel info={ i18n.t("generator.options.hint") }>
-				{ i18n.t("generator.options.title") }
-			</fui.InfoLabel>
 
 			<div className={ cls.lengthContainer }>
 				<fui.Slider
@@ -57,23 +54,23 @@ const QuickOptions: React.FC<IProps> = ({ onChange }) =>
 
 					<fui.MenuTrigger disableButtonEnhancement>
 						<fui.MenuButton appearance="subtle" icon={ <IncludeIcon /> }>
-							{ i18n.t("generator.options.include") }
+							{ i18n.t("popup.include") }
 						</fui.MenuButton>
 					</fui.MenuTrigger>
 
 					<fui.MenuPopover>
 						<fui.MenuList>
 							<fui.MenuItemCheckbox name="include" value="Uppercase" icon={ <ic.TextCaseUppercaseRegular /> }>
-								{ i18n.t("settings.include.uppercase") }
+								{ i18n.t("common.characters.uppercase") }
 							</fui.MenuItemCheckbox>
 							<fui.MenuItemCheckbox name="include" value="Lowercase" icon={ <ic.TextCaseLowercaseRegular /> }>
-								{ i18n.t("settings.include.lowercase") }
+								{ i18n.t("common.characters.lowercase") }
 							</fui.MenuItemCheckbox>
 							<fui.MenuItemCheckbox name="include" value="Numeric" icon={ <ic.NumberSymbolRegular /> }>
-								{ i18n.t("settings.include.numeric") }
+								{ i18n.t("common.characters.numeric") }
 							</fui.MenuItemCheckbox>
 							<fui.MenuItemCheckbox name="include" value="Special" icon={ <ic.MathSymbolsRegular /> }>
-								{ i18n.t("settings.include.special") }
+								{ i18n.t("common.characters.special") }
 							</fui.MenuItemCheckbox>
 						</fui.MenuList>
 					</fui.MenuPopover>
@@ -86,26 +83,26 @@ const QuickOptions: React.FC<IProps> = ({ onChange }) =>
 
 					<fui.MenuTrigger disableButtonEnhancement>
 						<fui.MenuButton appearance="subtle" icon={ <ExcludeIcon /> }>
-							{ i18n.t("generator.options.exclude") }
+							{ i18n.t("popup.exclude") }
 						</fui.MenuButton>
 					</fui.MenuTrigger>
 
 					<fui.MenuPopover>
 						<fui.MenuList>
 							<fui.MenuItemCheckbox name="exclude" value="ExcludeSimilar">
-								{ i18n.t("settings.exclude.similar") }
+								{ i18n.t("common.characters.similar") }
 							</fui.MenuItemCheckbox>
 							<fui.MenuItemCheckbox name="exclude" value="ExcludeAmbiguous" disabled={ !quickOpts.Special }>
-								{ i18n.t("settings.exclude.ambiguous") }
+								{ i18n.t("common.characters.ambiguous") }
 							</fui.MenuItemCheckbox>
 							<fui.MenuItemCheckbox name="exclude" value="ExcludeRepeating">
-								{ i18n.t("settings.exclude.repeating.title") }
+								{ i18n.t("common.characters.repeating.label") }
 							</fui.MenuItemCheckbox>
 						</fui.MenuList>
 					</fui.MenuPopover>
 				</fui.Menu>
 
-				<fui.Tooltip content={ i18n.t("common.reset") } relationship="label">
+				<fui.Tooltip content={ i18n.t("common.actions.reset") } relationship="label">
 					<fui.Button appearance="subtle" icon={ <ic.ArrowUndoRegular /> } onClick={ () => setOptions(generatorOptions) } />
 				</fui.Tooltip>
 			</div>
@@ -113,9 +110,7 @@ const QuickOptions: React.FC<IProps> = ({ onChange }) =>
 	);
 };
 
-export default QuickOptions;
-
-interface IProps
-{
-	onChange: (value: GeneratorOptions) => void;
-}
+export type QuickOptionsProps =
+	{
+		onChange: (value: GeneratorOptions) => void;
+	};

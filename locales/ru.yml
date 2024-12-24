@@ -4,8 +4,23 @@ manifest:
   author: "Евгений Лис"
 
 common:
-  reset: "Сбросить"
-  copy: "Копировать"
+  actions:
+    reset: "Сбросить"
+    copy: "Копировать"
+  characters:
+    uppercase: "Прописные"
+    lowercase: "Строчные"
+    numeric: "Числовые"
+    special: "Специальные"
+    similar: "Похожие"
+    ambiguous: "Особые"
+    repeating:
+      label: "Повторяющиеся"
+      hint: "Каждый символ пароля будет уникальным"
+    custom: "Пользовательские"
+  sections:
+    include: "Добавить символы"
+    exclude: "Исключить символы"
 
 errors:
   too_short: "Минимальная длина пароля — 4 символа"
@@ -14,7 +29,7 @@ errors:
 
 about:
   title: "О расширении"
-  developed_by: "Разработчк: Евгений Лис"
+  developed_by: "Разработчик: Евгений Лис"
   licensed_under: ""
   mit_license: "Лицензия MIT"
   translation_cta:
@@ -28,32 +43,38 @@ about:
     feedback: "Оставить отзыв"
     sponsor: "Поддержать"
 
+popup:
+  refresh: "Сгенерировать новый"
+  include: "Добавить"
+  exclude: "Исключить"
+  advanced: "Расширенный"
+
 settings:
   title: "Настройки"
   length:
     title: "Длина пароля по умолчанию"
     hint: "Рекомендованная длина: 8–16"
   quick_range: "Диапазон длины для быстрых настроек"
-  include:
-    title: "Добавить символы"
-    uppercase: "Прописные"
-    lowercase: "Строчные"
-    numeric: "Числовые"
-    special: "Специальные"
-  exclude:
-    title: "Исключить символы"
-    similar: "Похожие"
-    ambiguous: "Особые"
-    repeating:
-      title: "Повторяющиеся"
-      hint: "Каждый символ пароля будет уникальным"
-  context_menu: "Показать контекстное меню"
+  exclude_custom: "Не использовать эти символы:"
 
-generator:
-  refresh: "Сгенерировать новый"
-  insert: "Вставить и копировать"
-  options:
-    title: "Быстрые настройки"
-    hint: "Эти настройки не будут сохранены"
-    include: "Добавить"
-    exclude: "Исключить"
+advanced:
+  title: "Расширенный генератор паролей"
+  actions:
+    generate: "Сгенерировать"
+    save_config: "Сохранить конфигурацию"
+    copy_all: "Копировать все"
+  password:
+    title: "Генератор паролей"
+    length: "Длина пароля"
+    min_of_type: "Не менее"
+  passphrase:
+    title: "Парольных фраз"
+    length: "Количество слов"
+    replace: "Заменить случайные символы"
+    random_case: "Случайный регистр символов"
+    allow_repat:
+      label: "Разрешить повторение"
+      hint: "Если отключено, каждое слово в фразе будет уникальным"
+    separate_words:
+      label: "Разделить слова"
+      hint: "Если включено, указанная последовательность будет вставлена между каждым словом. Если поле пустое - будет использован пробел"
