@@ -1,59 +1,43 @@
-import { CharacterHints, generatePassword, PasswordProps } from "@/utils/generators/generatePassword";
-import { Checkbox, CheckboxProps, Field, Input, InputOnChangeData, InputProps, makeStyles, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow, Text, Tooltip } from "@fluentui/react-components";
+import { CharacterHints, generatePassword } from "@/utils/generators/generatePassword";
+import infoLabel from "@/utils/infoLabel";
+import * as fui from "@fluentui/react-components";
 import { ReactElement } from "react";
 import { GeneratorProps } from "../Page";
 import GeneratorForm from "../components/GeneratorForm";
-import infoLabel from "@/utils/infoLabel";
 
 // TODO: needs refactoring
 export default function PasswordSection(props: GeneratorProps): ReactElement
 {
-	const [length, private_setLength] = useState<number | null>(8);
-	const [enableUppercase, setEnableUppercase] = useState<boolean>(true);
-	const [uppercaseCount, setUppercaseCount] = useState<number | null>(1);
-	const [enableLowercase, setEnableLowercase] = useState<boolean>(true);
-	const [lowercaseCount, setLowercaseCount] = useState<number | null>(1);
-	const [enableNumeric, setEnableNumeric] = useState<boolean>(true);
-	const [numericCount, setNumericCount] = useState<number | null>(1);
-	const [enableSpecial, setEnableSpecial] = useState<boolean>(true);
-	const [specialCount, setSpecialCount] = useState<number | null>(1);
-	const [enableCustom, setEnableCustom] = useState<boolean>(false);
-	const [customCount, setCustomCount] = useState<number | null>(1);
+	const [state, private_setState] = useState<PasswordSectionState>({
+		length: 8,
+		enableUppercase: true, uppercaseCount: 1,
+		enableLowercase: true, lowercaseCount: 1,
+		enableNumeric: true, numericCount: 1,
+		enableSpecial: true, specialCount: 1,
+		enableCustom: false, customCount: 1, customSet: "",
 
-	const [excludeSimilar, setExcludeSimilar] = useState<boolean>(true);
-	const [excludeAmbiguous, setExcludeAmbiguous] = useState<boolean>(true);
-	const [excludeRepeating, setExcludeRepeating] = useState<boolean>(false);
-	const [excludeCustom, setExcludeCustom] = useState<boolean>(false);
-
-	const [excludeCustomSet, setExcludeCustomSet] = useState<string>("");
-	const [customSet, setCustomSet] = useState<string>("");
-
-	const config: PasswordProps =
-	{
-		length: length ?? 8,
-		custom: enableCustom ? customCount ?? 1 : 0,
-		customSet: customSet,
-		numeric: enableNumeric ? numericCount ?? 1 : 0,
-		special: enableSpecial ? specialCount ?? 1 : 0,
-		uppercase: enableUppercase ? uppercaseCount ?? 1 : 0,
-		lowercase: enableLowercase ? lowercaseCount ?? 1 : 0,
-		excludeAmbiguous,
-		excludeCustom: excludeCustom ? excludeCustomSet : "",
-		excludeRepeating,
-		excludeSimilar,
-	};
+		excludeSimilar: true,
+		excludeAmbiguous: true,
+		excludeRepeating: false,
+		excludeCustom: false, excludeCustomSet: ""
+	});
 
 	const cls = useStyles();
 
-	const setLength = useCallback((_: any, e: InputOnChangeData) =>
+	const setState = useCallback((newState: Partial<PasswordSectionState>) =>
+	{
+		private_setState({ ...state, ...newState });
+	}, [state]);
+
+	const setLength = useCallback((_: any, e: fui.InputOnChangeData) =>
 	{
 		const n = parseInt(e.value ?? "");
-		private_setLength(isNaN(n) || n < 1 ? null : n);
-	}, []);
+		setState({ length: isNaN(n) || n < 1 ? null : n });
+	}, [state]);
 
 	const saveConfiguration = useCallback(
-		async () => await browser.storage.sync.set({ AdvancedPasswordOptions: config }),
-		[config]
+		async () => await browser.storage.sync.set({ AdvancedPasswordOptions: state }),
+		[state]
 	);
 
 	const generate = useCallback((count: number) =>
@@ -61,109 +45,144 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 		const passwords: string[] = [];
 
 		for (let i = 0; i < count; i++)
-			passwords.push(generatePassword(config));
+			passwords.push(generatePassword({
+				length: state.length ?? 8,
+				custom: state.enableCustom ? state.customCount ?? 1 : 0,
+				customSet: state.customSet,
+				numeric: state.enableNumeric ? state.numericCount ?? 1 : 0,
+				special: state.enableSpecial ? state.specialCount ?? 1 : 0,
+				uppercase: state.enableUppercase ? state.uppercaseCount ?? 1 : 0,
+				lowercase: state.enableLowercase ? state.lowercaseCount ?? 1 : 0,
+				excludeAmbiguous: state.excludeAmbiguous,
+				excludeCustom: state.excludeCustom ? state.excludeCustomSet : "",
+				excludeRepeating: state.excludeRepeating,
+				excludeSimilar: state.excludeSimilar,
+			}));
 
 		props.onGenerated(passwords);
-	}, [config, props.onGenerated]);
+	}, [state, props.onGenerated]);
+
+	useEffect(() =>
+	{
+		browser.storage.sync.get("AdvancedPasswordOptions").then(({ AdvancedPasswordOptions }) =>
+			private_setState({ ...state, ...AdvancedPasswordOptions }));
+	}, []);
+
+	const checkboxControls = useCallback((key: keyof PasswordSectionState): Partial<fui.CheckboxProps> => ({
+		checked: state[key] as boolean,
+		onChange: (_, e) => setState({ [key]: e.checked as boolean })
+	}), [state]);
+
+	const minInputControls = useCallback((enabledKey: keyof PasswordSectionState, key: keyof PasswordSectionState): Partial<fui.InputProps> => ({
+		size: "small",
+		disabled: !state[enabledKey],
+		value: state[key]?.toString() ?? "",
+		onChange: (_, e) => setState({ [key]: parseCount(e.value) })
+	}), [state]);
 
 	return (
 		<GeneratorForm onGenerate={ generate } onSave={ saveConfiguration }>
-			<Field label={ i18n.t("advanced.password.length") }>
-				<Input value={ length?.toString() ?? "" } onChange={ setLength } />
-			</Field>
-			<Table size="small" as="div">
-				<TableHeader as="div">
-					<TableRow as="div">
-						<TableHeaderCell as="div">{ i18n.t("common.sections.include") }</TableHeaderCell>
-						<TableHeaderCell as="div">{ i18n.t("advanced.password.min_of_type") }</TableHeaderCell>
-					</TableRow>
-				</TableHeader>
-				<TableBody as="div">
+			<fui.Field label={ i18n.t("advanced.password.length") }>
+				<fui.Input value={ state.length?.toString() ?? "" } onChange={ setLength } />
+			</fui.Field>
+			<fui.Table size="small" as="div">
+				<fui.TableHeader as="div">
+					<fui.TableRow as="div">
+						<fui.TableHeaderCell as="div">{ i18n.t("common.sections.include") }</fui.TableHeaderCell>
+						<fui.TableHeaderCell as="div">{ i18n.t("advanced.password.min_of_type") }</fui.TableHeaderCell>
+					</fui.TableRow>
+				</fui.TableHeader>
+				<fui.TableBody as="div">
 					<Row>
-						<Checkbox label={ i18n.t("common.characters.uppercase") } { ...checkboxControls(enableUppercase, setEnableUppercase) } />
-						<Input { ...minInputControls(enableUppercase, uppercaseCount, setUppercaseCount) } />
+						<fui.Checkbox label={ i18n.t("common.characters.uppercase") } { ...checkboxControls("enableUppercase") } />
+						<fui.Input { ...minInputControls("enableUppercase", "uppercaseCount") } />
 					</Row>
 					<Row>
-						<Checkbox label={ i18n.t("common.characters.lowercase") } { ...checkboxControls(enableLowercase, setEnableLowercase) } />
-						<Input { ...minInputControls(enableLowercase, lowercaseCount, setLowercaseCount) } />
+						<fui.Checkbox label={ i18n.t("common.characters.lowercase") } { ...checkboxControls("enableLowercase") } />
+						<fui.Input { ...minInputControls("enableLowercase", "lowercaseCount") } />
 					</Row>
 					<Row>
-						<Checkbox label={ i18n.t("common.characters.numeric") } { ...checkboxControls(enableNumeric, setEnableNumeric) } />
-						<Input { ...minInputControls(enableNumeric, numericCount, setNumericCount) } />
+						<fui.Checkbox label={ i18n.t("common.characters.numeric") } { ...checkboxControls("enableNumeric") } />
+						<fui.Input { ...minInputControls("enableNumeric", "numericCount") } />
 					</Row>
 					<Row>
-						<Checkbox label={ infoLabel(i18n.t("common.characters.special"), CharacterHints.special) } { ...checkboxControls(enableSpecial, setEnableSpecial) } />
-						<Input { ...minInputControls(enableSpecial, specialCount, setSpecialCount) } />
+						<fui.Checkbox label={ infoLabel(i18n.t("common.characters.special"), CharacterHints.special) } { ...checkboxControls("enableSpecial") } />
+						<fui.Input { ...minInputControls("enableSpecial", "specialCount") } />
 					</Row>
 					<Row>
 						<>
-							<Checkbox { ...checkboxControls(enableCustom, setEnableCustom) } />
-							<Tooltip relationship="label" content={ i18n.t("common.characters.custom") }>
-								<Input size="small" disabled={ !enableCustom }
-									value={ customSet } onChange={ (_, e) => setCustomSet(e.value) } />
-							</Tooltip>
+							<fui.Checkbox { ...checkboxControls("enableCustom") } />
+							<fui.Tooltip relationship="label" content={ i18n.t("common.characters.custom") }>
+								<fui.Input size="small" disabled={ !state.enableCustom }
+									value={ state.customSet } onChange={ (_, e) => setState({ customSet: e.value }) } />
+							</fui.Tooltip>
 						</>
-						<Input { ...minInputControls(enableCustom, customCount, setCustomCount) } />
+						<fui.Input { ...minInputControls("enableCustom", "customCount") } />
 					</Row>
-				</TableBody>
-			</Table>
+				</fui.TableBody>
+			</fui.Table>
 
 			<section className={ cls.section }>
-				<Text>{ i18n.t("common.sections.exclude") }</Text>
-				<Checkbox label={ infoLabel(i18n.t("common.characters.similar"), CharacterHints.similar) } { ...checkboxControls(excludeSimilar, setExcludeSimilar) } />
-				<Checkbox label={ infoLabel(i18n.t("common.characters.ambiguous"), CharacterHints.ambiguous) } disabled={ !enableSpecial } { ...checkboxControls(excludeAmbiguous, setExcludeAmbiguous) } />
-				<Checkbox label={ infoLabel(i18n.t("common.characters.repeating.label"), i18n.t("common.characters.repeating.hint")) } { ...checkboxControls(excludeRepeating, setExcludeRepeating) } />
+				<fui.Text>{ i18n.t("common.sections.exclude") }</fui.Text>
+				<fui.Checkbox label={ infoLabel(i18n.t("common.characters.similar"), CharacterHints.similar) } { ...checkboxControls("excludeSimilar") } />
+				<fui.Checkbox label={ infoLabel(i18n.t("common.characters.ambiguous"), CharacterHints.ambiguous) } disabled={ !state.enableSpecial } { ...checkboxControls("excludeAmbiguous") } />
+				<fui.Checkbox label={ infoLabel(i18n.t("common.characters.repeating.label"), i18n.t("common.characters.repeating.hint")) } { ...checkboxControls("excludeRepeating") } />
 				<div>
-					<Checkbox label={ i18n.t("common.characters.custom") } { ...checkboxControls(excludeCustom, setExcludeCustom) } />
-					<Input size="small" disabled={ !excludeCustom }
-						value={ excludeCustomSet } onChange={ (_, e) => setExcludeCustomSet(e.value) } />
+					<fui.Checkbox label={ i18n.t("common.characters.custom") } { ...checkboxControls("excludeCustom") } />
+					<fui.Input size="small" disabled={ !state.excludeCustom }
+						value={ state.excludeCustomSet } onChange={ (_, e) => setState({ excludeCustomSet: e.value }) } />
 				</div>
 			</section>
 		</GeneratorForm>
 	);
 }
 
-function checkboxControls(checked: boolean, onChange: (checked: boolean) => void): Partial<CheckboxProps>
+function parseCount(value: string): number | null
 {
-	return ({
-		checked,
-		onChange: (_, e) => onChange(e.checked as boolean)
-	});
-}
-
-function minInputControls(enabled: boolean, value: number | null, onChange: (value: number | null) => void): Partial<InputProps>
-{
-	function parseCount(value: string): number | null
-	{
-		const n = parseInt(value);
-		return isNaN(n) || n < 1 ? null : Math.min(n, 100);
-	};
-
-	return ({
-		size: "small",
-		disabled: !enabled,
-		value: value?.toString() ?? "",
-		onChange: (_, e) => onChange(parseCount(e.value))
-	});
-}
+	const n = parseInt(value);
+	return isNaN(n) || n < 1 ? null : Math.min(n, 100);
+};
 
 function Row(props: { children: ReactElement[]; }): ReactElement
 {
 	return (
-		<TableRow as="div">
+		<fui.TableRow as="div">
 			{ props.children.map((i, index) =>
-				<TableCell key={ index } as="div">
+				<fui.TableCell key={ index } as="div">
 					{ i }
-				</TableCell>
+				</fui.TableCell>
 			) }
-		</TableRow>
+		</fui.TableRow>
 	);
 }
 
-const useStyles = makeStyles({
+const useStyles = fui.makeStyles({
 	section:
 	{
 		display: "flex",
 		flexDirection: "column",
 	},
 });
+
+type PasswordSectionState =
+	{
+		length: number | null;
+		enableUppercase: boolean;
+		uppercaseCount: number | null;
+		enableLowercase: boolean;
+		lowercaseCount: number | null;
+		enableNumeric: boolean;
+		numericCount: number | null;
+		enableSpecial: boolean;
+		specialCount: number | null;
+		enableCustom: boolean;
+		customCount: number | null;
+
+		excludeSimilar: boolean;
+		excludeAmbiguous: boolean;
+		excludeRepeating: boolean;
+		excludeCustom: boolean;
+
+		excludeCustomSet: string;
+		customSet: string;
+	};
