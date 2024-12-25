@@ -1,6 +1,6 @@
 manifest:
   name: "Generator haseł"
-  description: "Rozszerzenie, które pozwala na łatwe generowanie trudnych i bezpiecznych haseł w jednym kliknięciu"
+  description: "Rozszerzenie, które pomaga w łatwy sposób generować silne i dostosowane hasła w kilku kliknięciach"
   author: "Jewgienij Lis"
 
 common:

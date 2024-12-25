@@ -1,6 +1,6 @@
 manifest:
   name: "Password generator"
-  description: "Password generator extension allows you to easily generate long and secure password in one click"
+  description: "Extension which helps you to easily generate strong and customizable passwords in a few clicks"
   author: "Eugene Fox"
 
 common:

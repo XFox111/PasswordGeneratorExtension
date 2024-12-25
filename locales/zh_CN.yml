@@ -1,6 +1,6 @@
 manifest:
   name: "密码生成器"
-  description: "密码生成器扩展可让您一键轻松生成长而安全的密码"
+  description: "这个扩展可以帮助您轻松生成强大且可定制的密码"
   author: "Eugene Fox"
 
 common:

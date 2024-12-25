@@ -1,6 +1,6 @@
 manifest:
   name: "Gerador de Senhas"
-  description: "A extensão do gerador de senhas permite gerar facilmente uma senha longa e segura em um clique"
+  description: "Extensão que ajuda você a gerar senhas fortes e personalizadas facilmente em poucos cliques"
   author: "Eugênio Fox"
 
 common:
