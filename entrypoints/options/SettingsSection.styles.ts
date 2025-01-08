@@ -5,7 +5,7 @@ export const useStyles = makeStyles({
 	{
 		display: "flex",
 		flexDirection: "column",
-		gap: tokens.spacingVerticalS,
+		gap: tokens.spacingVerticalMNudge,
 		padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
 	},
 	checkboxContainer:
@@ -30,5 +30,9 @@ export const useStyles = makeStyles({
 		gridTemplateColumns: "auto 1fr",
 		gap: tokens.spacingHorizontalS,
 		alignItems: "center",
-	}
+	},
+	divider:
+	{
+		flexGrow: 0,
+	},
 });

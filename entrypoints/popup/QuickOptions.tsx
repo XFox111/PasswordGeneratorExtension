@@ -49,7 +49,7 @@ export default function QuickOptions({ onChange }: QuickOptionsProps): ReactElem
 
 			<div className={ cls.characterOptionsContainer }>
 				<fui.Menu
-					positioning="after"
+					positioning={ { position: "after", align: "center", offset: -48 } }
 					checkedValues={ { include: checkedOptions } }
 					onCheckedValueChange={ onCheckedValueChange }>
 
@@ -85,7 +85,7 @@ export default function QuickOptions({ onChange }: QuickOptionsProps): ReactElem
 				</fui.Menu>
 
 				<fui.Menu
-					positioning="before"
+					positioning={ { position: "after", align: "center", offset: -64 } }
 					checkedValues={ { exclude: checkedOptions } }
 					onCheckedValueChange={ onCheckedValueChange }>
 

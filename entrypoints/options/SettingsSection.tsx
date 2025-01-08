@@ -68,7 +68,7 @@ export default function SettingsSection(): ReactElement
 				</div>
 			</fui.Field>
 
-			<fui.Divider />
+			<fui.Divider className={ cls.divider } />
 
 			<fui.Text>{ i18n.t("common.sections.include") }</fui.Text>
 			<div className={ cls.checkboxContainer }>

@@ -21,9 +21,11 @@ export const useStyles = makeStyles({
 	hideScroll:
 	{
 		overflowY: "visible",
+		maxHeight: "unset",
 	},
 	configRoot:
 	{
+		maxHeight: "90vh",
 		display: "flex",
 		flexFlow: "column",
 		gap: tokens.spacingVerticalM,
