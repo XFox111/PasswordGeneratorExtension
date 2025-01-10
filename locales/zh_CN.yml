@@ -59,6 +59,8 @@ settings:
 
 advanced:
   title: "高级密码生成器"
+  saved_msg: "配置已保存"
+  copied_msg: "已复制到剪贴板"
   actions:
     generate: "生成"
     save_config: "保存配置"

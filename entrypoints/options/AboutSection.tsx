@@ -13,9 +13,8 @@ export default function AboutSection(): ReactElement
 
 	return (
 		<section className={ cls.root }>
-			<fui.Subtitle1 as="h1">{ i18n.t("about.title") }</fui.Subtitle1>
 			<header className={ cls.horizontalContainer }>
-				<fui.Subtitle2 as="h2">{ i18n.t("manifest.name") }</fui.Subtitle2>
+				<fui.Subtitle1 as="h1">{ i18n.t("manifest.name") }</fui.Subtitle1>
 				<fui.Caption1 as="span">v{ browser.runtime.getManifest().version }</fui.Caption1>
 			</header>
 

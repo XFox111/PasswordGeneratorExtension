@@ -59,6 +59,8 @@ settings:
 
 advanced:
   title: "Gerador de senha avançado"
+  saved_msg: "Configuração salva"
+  copied_msg: "Copiado para a área de transferência"
   actions:
     generate: "Gerar"
     save_config: "Salvar configuração"

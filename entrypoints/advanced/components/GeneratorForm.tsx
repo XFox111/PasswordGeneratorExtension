@@ -40,7 +40,7 @@ export default function GeneratorForm(props: GeneratorFormProps): ReactElement
 
 		toaster.dispatchToast(
 			<Toast>
-				<ToastTitle>Configuration saved</ToastTitle>
+				<ToastTitle>{ i18n.t("advanced.saved_msg") }</ToastTitle>
 			</Toast>,
 			{
 				intent: "success",
@@ -52,7 +52,7 @@ export default function GeneratorForm(props: GeneratorFormProps): ReactElement
 	useEffect(() =>
 	{
 		browser.storage.sync.get("AdvancedBulkCount").then(({ AdvancedBulkCount }) =>
-			private_setPasswordCount(AdvancedBulkCount ?? 5)
+			private_setPasswordCount(AdvancedBulkCount as number ?? 5)
 		);
 	}, []);
 

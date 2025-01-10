@@ -59,6 +59,8 @@ settings:
 
 advanced:
   title: "Расширенный генератор паролей"
+  saved_msg: "Конфигурация сохранена"
+  copied_msg: "Скопировано в буфер обмена"
   actions:
     generate: "Сгенерировать"
     save_config: "Сохранить конфигурацию"

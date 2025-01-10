@@ -5,12 +5,24 @@ import { useStyles } from "./PasswordList.styles";
 
 export default function PasswordList({ passwords, className }: PasswordListProps): ReactElement
 {
+	const toaster = fui.useToastController();
+
 	const CopyIcon = bundleIcon(CopyFilled, CopyRegular);
 	const cls = useStyles();
 
-	const copyAll = useCallback(() =>
-		navigator.clipboard.writeText(passwords.join("\n")),
-	[passwords]);
+	const copy = (password?: string) =>
+	{
+		navigator.clipboard.writeText(password ?? passwords.join("\n"));
+		toaster.dispatchToast(
+			<fui.Toast>
+				<fui.ToastTitle>{ i18n.t("advanced.copied_msg") }</fui.ToastTitle>
+			</fui.Toast>,
+			{
+				intent: "success",
+				timeout: 1000
+			}
+		);
+	};
 
 	return (
 		<div className={ fui.mergeClasses(cls.root, className) }>
@@ -18,7 +30,7 @@ export default function PasswordList({ passwords, className }: PasswordListProps
 				<>
 					<fui.Button className={ cls.copyAll }
 						appearance="subtle" icon={ <CopyIcon /> }
-						onClick={ copyAll }>
+						onClick={ () => copy() }>
 
 						{ i18n.t("advanced.actions.copy_all") }
 					</fui.Button>
@@ -28,7 +40,7 @@ export default function PasswordList({ passwords, className }: PasswordListProps
 
 							{ passwords.map((password, index) =>
 								<fui.TableRow key={ index } className={ cls.row }
-									onClick={ () => navigator.clipboard.writeText(password) }>
+									onClick={ () => copy(password) }>
 
 									<fui.TableCell className={ cls.cell }>
 

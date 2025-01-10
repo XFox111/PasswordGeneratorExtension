@@ -1,4 +1,4 @@
-import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
+import { makeStyles, tokens } from "@fluentui/react-components";
 
 export const useStyles = makeStyles({
 	root:
@@ -6,7 +6,7 @@ export const useStyles = makeStyles({
 		display: "flex",
 		flexDirection: "column",
 		gap: tokens.spacingVerticalMNudge,
-		padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+		padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalMNudge}`,
 	},
 	checkboxContainer:
 	{
@@ -18,7 +18,7 @@ export const useStyles = makeStyles({
 		display: "grid",
 		gridTemplateColumns: "1fr auto 1fr auto",
 		alignItems: "center",
-		...shorthands.gap(tokens.spacingHorizontalS),
+		gap: tokens.spacingHorizontalS,
 	},
 	rangeInput:
 	{

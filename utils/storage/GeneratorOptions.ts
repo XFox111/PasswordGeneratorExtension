@@ -10,9 +10,9 @@ export default class GeneratorOptions
 
 	public ExcludeSimilar: boolean = true;
 	public ExcludeAmbiguous: boolean = true;
-
 	public ExcludeRepeating: boolean = false;
+	public ExcludeCustom: boolean = false;
 
-	public ExcludeCustom: string = "";
-	public IncludeCustom: string = "";
+	public ExcludeCustomSet: string = "";
+	public IncludeCustomSet: string = "";
 }

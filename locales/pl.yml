@@ -59,6 +59,8 @@ settings:
 
 advanced:
   title: "Zaawansowany generator haseł"
+  saved_msg: "Konfiguracja zapisana"
+  copied_msg: "Skopiowano do schowka"
   actions:
     generate: "Wygeneruj"
     save_config: "Zapisz konfigurację"

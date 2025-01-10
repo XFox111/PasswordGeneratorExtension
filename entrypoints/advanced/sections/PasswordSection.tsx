@@ -65,7 +65,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 	useEffect(() =>
 	{
 		browser.storage.sync.get("AdvancedPasswordOptions").then(({ AdvancedPasswordOptions }) =>
-			private_setState({ ...state, ...AdvancedPasswordOptions }));
+			private_setState({ ...state, ...AdvancedPasswordOptions as PasswordSectionState }));
 	}, []);
 
 	const checkboxControls = useCallback((key: keyof PasswordSectionState): Partial<fui.CheckboxProps> => ({
@@ -112,10 +112,9 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 					<Row>
 						<>
 							<fui.Checkbox { ...checkboxControls("enableCustom") } />
-							<fui.Tooltip relationship="label" content={ i18n.t("common.characters.custom") }>
-								<fui.Input size="small" disabled={ !state.enableCustom }
-									value={ state.customSet } onChange={ (_, e) => setState({ customSet: e.value }) } />
-							</fui.Tooltip>
+							<fui.Input size="small" disabled={ !state.enableCustom }
+								placeholder={ i18n.t("common.characters.custom") }
+								value={ state.customSet } onChange={ (_, e) => setState({ customSet: e.value }) } />
 						</>
 						<fui.Input { ...minInputControls("enableCustom", "customCount") } />
 					</Row>
@@ -128,8 +127,9 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 				<fui.Checkbox label={ infoLabel(i18n.t("common.characters.ambiguous"), CharacterHints.ambiguous) } disabled={ !state.enableSpecial } { ...checkboxControls("excludeAmbiguous") } />
 				<fui.Checkbox label={ infoLabel(i18n.t("common.characters.repeating.label"), i18n.t("common.characters.repeating.hint")) } { ...checkboxControls("excludeRepeating") } />
 				<div>
-					<fui.Checkbox label={ i18n.t("common.characters.custom") } { ...checkboxControls("excludeCustom") } />
+					<fui.Checkbox { ...checkboxControls("excludeCustom") } />
 					<fui.Input size="small" disabled={ !state.excludeCustom }
+						placeholder={ i18n.t("common.characters.custom") }
 						value={ state.excludeCustomSet } onChange={ (_, e) => setState({ excludeCustomSet: e.value }) } />
 				</div>
 			</section>

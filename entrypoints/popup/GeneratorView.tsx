@@ -32,8 +32,8 @@ export default function GeneratorView({ options }: GeneratorViewProps): ReactEle
 				excludeSimilar: options.ExcludeSimilar,
 				excludeAmbiguous: options.ExcludeAmbiguous,
 				excludeRepeating: options.ExcludeRepeating,
-				excludeCustom: options.ExcludeCustom,
-				customSet: options.IncludeCustom
+				excludeCustom: options.ExcludeCustom ? options.ExcludeCustomSet : "",
+				customSet: options.IncludeCustomSet
 			}));
 		}
 		catch (e) { setError((e as Error).message); }

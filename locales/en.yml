@@ -59,6 +59,8 @@ settings:
 
 advanced:
   title: "Advanced password generator"
+  saved_msg: "Configuration saved"
+  copied_msg: "Copied to clipboard"
   actions:
     generate: "Generate"
     save_config: "Save configuration"

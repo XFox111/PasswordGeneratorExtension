@@ -15,20 +15,18 @@ export default function QuickOptions({ onChange }: QuickOptionsProps): ReactElem
 
 	const onCheckedValueChange = useCallback((_: unknown, e: fui.MenuCheckedValueChangeData): void =>
 	{
-		const opts: Partial<Omit<GeneratorOptions, "Length" | "IncludeCustom" | "ExcludeCustom">> = {};
+		const opts: Partial<Omit<GeneratorOptions, "Length" | "IncludeCustomSet" | "ExcludeCustomSet">> = {};
 
 		const keys = Object.keys(quickOpts)
 			.filter(i =>
-				i !== "Length" && i !== "IncludeCustom" && i !== "ExcludeCustom" &&
+				i !== "Length" && i !== "IncludeCustomSet" && i !== "ExcludeCustomSet" &&
 				i.startsWith("Exclude") === (e.name === "exclude")
-			) as (keyof Omit<GeneratorOptions, "Length" | "IncludeCustom" | "ExcludeCustom">)[];
+			) as (keyof Omit<GeneratorOptions, "Length" | "IncludeCustomSet" | "ExcludeCustomSet">)[];
 
 		for (const key of keys)
 			opts[key] = e.checkedItems.includes(key);
 
-		const excludeCustom: string = e.name === "exclude" ? (e.checkedItems.includes("ExcludeCustom") ? generatorOptions.ExcludeCustom : "") : quickOpts.ExcludeCustom;
-
-		setOptions({ ...generatorOptions, ...quickOpts, ...opts, ExcludeCustom: excludeCustom });
+		setOptions({ ...generatorOptions, ...quickOpts, ...opts });
 	}, [quickOpts]);
 
 	useEffect(() => onChange(quickOpts), [onChange, quickOpts]);
@@ -61,20 +59,22 @@ export default function QuickOptions({ onChange }: QuickOptionsProps): ReactElem
 
 					<fui.MenuPopover>
 						<fui.MenuList>
-							<fui.MenuItemCheckbox name="include" value="Uppercase" icon={ <ic.TextCaseUppercaseRegular /> }>
+							<fui.MenuItemCheckbox name="include" value="Uppercase">
 								{ i18n.t("common.characters.uppercase") }
 							</fui.MenuItemCheckbox>
-							<fui.MenuItemCheckbox name="include" value="Lowercase" icon={ <ic.TextCaseLowercaseRegular /> }>
+							<fui.MenuItemCheckbox name="include" value="Lowercase">
 								{ i18n.t("common.characters.lowercase") }
 							</fui.MenuItemCheckbox>
-							<fui.MenuItemCheckbox name="include" value="Numeric" icon={ <ic.NumberSymbolRegular /> }>
+							<fui.MenuItemCheckbox name="include" value="Numeric">
 								{ i18n.t("common.characters.numeric") }
 							</fui.MenuItemCheckbox>
-							<fui.MenuItemCheckbox name="include" value="Special" icon={ <ic.MathSymbolsRegular /> }>
+							<fui.MenuItemCheckbox name="include" value="Special">
 								{ i18n.t("common.characters.special") }
 							</fui.MenuItemCheckbox>
 							<fui.MenuSplitGroup>
-								<fui.MenuItemCheckbox name="include" value="Custom" icon={ <ic.SparkleRegular /> }>
+								<fui.MenuItemCheckbox name="include" value="Custom"
+									disabled={ generatorOptions.IncludeCustomSet.length < 1 }>
+
 									{ i18n.t("common.characters.custom") }
 								</fui.MenuItemCheckbox>
 								<fui.MenuItem icon={ <ic.EditRegular /> }
@@ -107,7 +107,9 @@ export default function QuickOptions({ onChange }: QuickOptionsProps): ReactElem
 								{ i18n.t("common.characters.repeating.label") }
 							</fui.MenuItemCheckbox>
 							<fui.MenuSplitGroup>
-								<fui.MenuItemCheckbox name="exclude" value="ExcludeCustom" disabled={ generatorOptions.ExcludeCustom.length < 1 }>
+								<fui.MenuItemCheckbox name="exclude" value="ExcludeCustom"
+									disabled={ generatorOptions.ExcludeCustomSet.length < 1 }>
+
 									{ i18n.t("common.characters.custom") }
 								</fui.MenuItemCheckbox>
 								<fui.MenuItem icon={ <ic.EditRegular /> }
