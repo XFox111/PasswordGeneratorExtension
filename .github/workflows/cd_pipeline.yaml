@@ -101,16 +101,10 @@ jobs:
         with:
           name: chrome
 
-      - name: Get version from package.json
-        id: get_version
-        run: |
-          extname=`ls password-generator-*-chrome.zip`
-          echo "filename=$extname" >> "$GITHUB_OUTPUT"
-
       - uses: wdzeng/chrome-extension@v1.3.0
         with:
           extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
-          zip-path: ${{ steps.get_version.outputs.filename }}
+          zip-path: password-generator-*-chrome.zip
           client-id: ${{ secrets.CHROME_CLIENT_ID }}
           client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
           refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
