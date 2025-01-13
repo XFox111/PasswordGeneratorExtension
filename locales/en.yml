@@ -1,11 +1,26 @@
 manifest:
   name: "Password generator"
-  description: "Password generator extension allows you to easily generate long and secure password in one click"
+  description: "Extension which helps you to easily generate strong and customizable passwords in a few clicks"
   author: "Eugene Fox"
 
 common:
-  reset: "Reset"
-  copy: "Copy"
+  actions:
+    reset: "Reset"
+    copy: "Copy"
+  characters:
+    uppercase: "Uppercase"
+    lowercase: "Lowercase"
+    numeric: "Numeric"
+    special: "Special"
+    similar: "Similar"
+    ambiguous: "Ambiguous"
+    repeating:
+      label: "Repeating"
+      hint: "Each character in the password will be unique"
+    custom: "Custom"
+  sections:
+    include: "Include symbols"
+    exclude: "Exclude symbols"
 
 errors:
   too_short: "Password length must be at least 4 characters"
@@ -15,7 +30,7 @@ errors:
 about:
   title: "About"
   developed_by: "Developed by Eugene Fox"
-  lincensed_under: "Licensed under"
+  licensed_under: "Licensed under"
   mit_license: "MIT License"
   translation_cta:
     text: "Found a typo or want a translation for your language?"
@@ -28,32 +43,40 @@ about:
     feedback: "Leave feedback"
     sponsor: "Buy me a coffee"
 
+popup:
+  refresh: "Generate new"
+  include: "Include"
+  exclude: "Exclude"
+  advanced: "Advanced"
+
 settings:
   title: "Settings"
   length:
     title: "Default password length"
     hint: "Recommended length: 8–16"
   quick_range: "Quick adjustment length range"
-  include:
-    title: "Include symbols"
-    uppercase: "Uppercase"
-    lowercase: "Lowercase"
-    numeric: "Numeric"
-    special: "Special"
-  exclude:
-    title: "Exclude symbols"
-    similar: "Similar"
-    ambiguous: "Ambiguous"
-    repeating:
-      title: "Repeating"
-      hint: "Each character in the password will be unique"
-  context_menu: "Show context menu"
+  exclude_custom: "Do not use these characters:"
 
-generator:
-  refresh: "Refresh"
-  insert: "Insert and copy"
-  options:
-    title: "Quick adjustments"
-    hint: "These adjustments will not be saved"
-    include: "Include"
-    exclude: "Exclude"
+advanced:
+  title: "Advanced password generator"
+  saved_msg: "Configuration saved"
+  copied_msg: "Copied to clipboard"
+  actions:
+    generate: "Generate"
+    save_config: "Save configuration"
+    copy_all: "Copy all"
+  password:
+    title: "Password generator"
+    length: "Password length"
+    min_of_type: "Minimum number of characters"
+  passphrase:
+    title: "Passphrase generator"
+    length: "Number of words"
+    replace: "Replace random characters"
+    random_case: "Randomize character case"
+    allow_repat:
+      label: "Allow repeating"
+      hint: "If disabled, each word in the passphrase will be unique"
+    separate_words:
+      label: "Separate words with"
+      hint: "If enabled, provided sequence will be placed between each word. If the field is empty - whitespace will be used"

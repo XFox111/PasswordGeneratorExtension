@@ -44,7 +44,7 @@ export default [
 			"indent": ["warn", "tab", { "SwitchCase": 1 }],
 			"no-empty": "off",
 			"react/prop-types": "off",
-			"@typescript-eslint/no-unused-vars": ["error", {
+			"@typescript-eslint/no-unused-vars": ["warn", {
 				"argsIgnorePattern": "^_",
 				"args": "none"
 			}],

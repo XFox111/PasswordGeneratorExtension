@@ -14,12 +14,6 @@ body
 	user-select: none;
 }
 
-h1, h2, h3, h4, h5, h6,
-p, ul, ol, li
-{
-	margin: 0;
-}
-
 @keyframes scaleUpIn
 {
 	from
@@ -58,20 +52,5 @@ p, ul, ol, li
 	to
 	{
 		filter: opacity(1);
-	}
-}
-
-@keyframes snowfall
-{
-	0%
-	{
-		transform: translate3d(var(--left-start), 0, 0);
-		filter: opacity(.6);
-	}
-
-	100%
-	{
-		transform: translate3d(var(--left-end), 610px, 0);
-		filter: opacity(0);
 	}
 }

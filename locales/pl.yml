@@ -1,11 +1,26 @@
 manifest:
   name: "Generator haseł"
-  description: "Rozszerzenie, które pozwala na łatwe generowanie trudnych i bezpiecznych haseł w jednym kliknięciu"
+  description: "Rozszerzenie, które pomaga w łatwy sposób generować silne i dostosowane hasła w kilku kliknięciach"
   author: "Jewgienij Lis"
 
 common:
-  reset: "Resetuj"
-  copy: "Kopiuj"
+  actions:
+    reset: "Resetuj"
+    copy: "Kopiuj"
+  characters:
+    uppercase: "Wielkie"
+    lowercase: "Małe"
+    numeric: "Cyfry"
+    special: "Specjalne"
+    similar: "Podobne"
+    ambiguous: "Niebezpieczne"
+    repeating:
+      label: "Powtarzające się"
+      hint: "Każdy znak hasła będzie unikalny"
+    custom: "Niestandardowe"
+  sections:
+    include: "Dodaj znaki"
+    exclude: "Wyklucz znaki"
 
 errors:
   too_short: "Minimalna długość hasła to 4 znaki"
@@ -28,32 +43,40 @@ about:
     feedback: "Zostaw opinię"
     sponsor: "Wesprzyj"
 
+popup:
+  refresh: "Wygeneruj nowe"
+  include: "Dodaj"
+  exclude: "Wyklucz"
+  advanced: "Zaawansowane"
+
 settings:
   title: "Ustawienia"
   length:
     title: "Domyślna długość hasła"
     hint: "Zalecana długość: 8–16"
   quick_range: "Zakres długości dla szybkich ustawień"
-  include:
-    title: "Dodaj znaki"
-    uppercase: "Wielkie"
-    lowercase: "Małe"
-    numeric: "Cyfry"
-    special: "Specjalne"
-  exclude:
-    title: "Wyklucz znaki"
-    similar: "Podobne"
-    ambiguous: "Niebezpieczne"
-    repeating:
-      title: "Powtarzające się"
-      hint: "Każdy znak hasła będzie unikalny"
-  context_menu: "Pokaż menu kontekstowe"
+  exclude_custom: "Nie używaj tych znaków:"
 
-generator:
-  refresh: "Wygeneruj nowe"
-  insert: "Wstaw i kopiuj"
-  options:
-    title: "Szybkie ustawienia"
-    hint: "Te ustawienia nie zostaną zapisane"
-    include: "Dodaj"
-    exclude: "Wyklucz"
+advanced:
+  title: "Zaawansowany generator haseł"
+  saved_msg: "Konfiguracja zapisana"
+  copied_msg: "Skopiowano do schowka"
+  actions:
+    generate: "Wygeneruj"
+    save_config: "Zapisz konfigurację"
+    copy_all: "Kopiuj wszystko"
+  password:
+    title: "Generator haseł"
+    length: "Długość hasła"
+    min_of_type: "Minimum"
+  passphrase:
+    title: "Frazy hasłowe"
+    length: "Liczba słów"
+    replace: "Zastąp losowe znaki"
+    random_case: "Losowa wielkość liter"
+    allow_repat:
+      label: "Zezwól na powtórzenia"
+      hint: "Jeśli wyłączone, każde słowo w frazie będzie unikalne"
+    separate_words:
+      label: "Oddziel słowa"
+      hint: "Jeśli włączone, podana sekwencja zostanie wstawiona między każde słowo. Jeśli pole jest puste, użyta zostanie spacja"

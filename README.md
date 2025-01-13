@@ -9,15 +9,14 @@
 	<img alt="Password generator">
 </picture>
 
-Extension for web browsers which helps you to easily generate strong passwords in one click
+Extension for web browsers which helps you to easily generate strong and customizable passwords in a few clicks
 
 ## Features
 - Customizable generator
 - Clean and simple UI
 - Dark mode
-- **NEW:** Insert and copy generated password in one click
-
-![Demo](https://cdn.xfox111.net/projects/pwdgen/demo.gif)
+- **NEW:** Advanced password generator
+- **NEW:** Passphrase generator
 
 ## Languages
 - Chinese (Simplified)
@@ -93,4 +92,4 @@ If you are interested in fixing issues and contributing directly to the code bas
 [![GitHub followers](https://img.shields.io/github/followers/xfox111?label=Follow%20@xfox111&style=social)](https://github.com/xfox111)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-%40xfox111-orange)](https://buymeacoffee.com/xfox111)
 
-> ©2024 Eugene Fox. Licensed under [MIT license](https://github.com/XFox111/PasswordGeneratorExtension/blob/main/LICENSE)
+> ©2025 Eugene Fox. Licensed under [MIT license](https://github.com/XFox111/PasswordGeneratorExtension/blob/main/LICENSE)

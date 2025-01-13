@@ -1,11 +1,26 @@
 manifest:
   name: "Gerador de Senhas"
-  description: "A extensão do gerador de senhas permite gerar facilmente uma senha longa e segura em um clique"
+  description: "Extensão que ajuda você a gerar senhas fortes e personalizadas facilmente em poucos cliques"
   author: "Eugênio Fox"
 
 common:
-  reset: "Redefinir"
-  copy: "Copiar"
+  actions:
+    reset: "Redefinir"
+    copy: "Copiar"
+  characters:
+    uppercase: "Maiúsculos"
+    lowercase: "Minúsculos"
+    numeric: "Numéricos"
+    special: "Especiais"
+    similar: "Semelhantes"
+    ambiguous: "Ambíguos"
+    repeating:
+      label: "Repetidos"
+      hint: "Cada caractere na senha será único"
+    custom: "Personalizado"
+  sections:
+    include: "Incluir símbolos"
+    exclude: "Excluir símbolos"
 
 errors:
   too_short: "O comprimento da senha deve ter pelo menos 4 caracteres"
@@ -28,32 +43,40 @@ about:
     feedback: "Enviar comentários"
     sponsor: "Pague um café"
 
+popup:
+  refresh: "Gerar nova"
+  include: "Incluir"
+  exclude: "Excluir"
+  advanced: "Avançado"
+
 settings:
   title: "Configurações"
   length:
     title: "Comprimento padrão da senha"
     hint: "Comprimento recomendado: 8–16"
   quick_range: "Intervalo do comprimento de ajuste rápido"
-  include:
-    title: "Incluir símbolos"
-    uppercase: "Maiúsculos"
-    lowercase: "Minúsculos"
-    numeric: "Numéricos"
-    special: "Especiais"
-  exclude:
-    title: "Excluir símbolos"
-    similar: "Semelhantes"
-    ambiguous: "Ambíguos"
-    repeating:
-      title: "Repetidos"
-      hint: "Cada caractere na senha será único"
-  context_menu: "Mostrar menu de contexto"
+  exclude_custom: "Não use esses caracteres:"
 
-generator:
-  refresh: "Gerar nova"
-  insert: "Inserir e copiar"
-  options:
-    title: "Ajustes rápidos"
-    hint: "Esses ajustes não serão salvos"
-    include: "Incluir"
-    exclude: "Excluir"
+advanced:
+  title: "Gerador de senha avançado"
+  saved_msg: "Configuração salva"
+  copied_msg: "Copiado para a área de transferência"
+  actions:
+    generate: "Gerar"
+    save_config: "Salvar configuração"
+    copy_all: "Copiar tudo"
+  password:
+    title: "Gerador de senhas"
+    length: "Comprimento da senha"
+    min_of_type: "Número mínimo de caracteres"
+  passphrase:
+    title: "Gerador de frases-senha"
+    length: "Número de palavras"
+    replace: "Substituir caracteres aleatórios"
+    random_case: "Aleatorizar maiúsculas e minúsculas"
+    allow_repat:
+      label: "Permitir repetição"
+      hint: "Se desativado, cada palavra na frase-senha será única"
+    separate_words:
+      label: "Separar palavras com"
+      hint: "Se ativado, a sequência fornecida será colocada entre cada palavra. Se o campo estiver vazio, será usado um espaço em branco"

@@ -1,5 +1,6 @@
 import { mergeClasses } from "@fluentui/react-components";
 import { SNOWFLAKES_NUM, useStyles } from "./Snow.styles";
+import "./Snow.css";
 
 const Snow: React.FC = () =>
 {
