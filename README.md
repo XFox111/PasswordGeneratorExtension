@@ -88,8 +88,8 @@ If you are interested in fixing issues and contributing directly to the code bas
 
 ---
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/xfox111?style=social)](https://twitter.com/xfox111)
-[![GitHub followers](https://img.shields.io/github/followers/xfox111?label=Follow%20@xfox111&style=social)](https://github.com/xfox111)
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-%40xfox111-orange)](https://buymeacoffee.com/xfox111)
+[![Bluesky](https://img.shields.io/badge/%40xfox111.net-BSky?logo=bluesky&logoColor=%230285FF&label=Bluesky&labelColor=white&color=%230285FF)](https://bsky.app/profile/xfox111.net)
+[![GitHub](https://img.shields.io/badge/%40xfox111-GitHub?logo=github&logoColor=%23181717&label=GitHub&labelColor=white&color=%23181717)](https://github.com/xfox111)
+[![Buy Me a Coffee](https://img.shields.io/badge/%40xfox111-BMC?logo=buymeacoffee&logoColor=black&label=Buy%20me%20a%20coffee&labelColor=white&color=%23FFDD00)](https://buymeacoffee.com/xfox111)
 
 > ©2025 Eugene Fox. Licensed under [MIT license](https://github.com/XFox111/PasswordGeneratorExtension/blob/main/LICENSE)
