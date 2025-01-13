@@ -1,0 +1,65 @@
+html,
+body,
+#root > .fui-FluentProvider
+{
+	padding: 0;
+	margin: 0;
+	height: 450px;
+
+	overflow: auto;
+
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+
+	color-scheme: light dark;
+}
+
+main
+{
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+	overflow: auto;
+}
+
+section
+{
+	flex-grow: 1;
+	overflow: auto;
+}
+
+p, h1, h2
+{
+	margin: 0;
+}
+
+/* width */
+::-webkit-scrollbar
+{
+	width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track
+{
+	background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb
+{
+	border-radius: 4px;
+	background: light-dark(#d1d1d1, #666666);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover
+{
+	background: light-dark(#c7c7c7, #757575);
+}
+
+::-webkit-scrollbar-thumb:hover:active
+{
+	background: light-dark(#b3b3b3, #6b6b6b);
+}

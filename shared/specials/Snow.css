@@ -1,0 +1,14 @@
+@keyframes snowfall
+{
+	0%
+	{
+		transform: translate3d(var(--left-start), 0, 0);
+		filter: opacity(.6);
+	}
+
+	100%
+	{
+		transform: translate3d(var(--left-end), 610px, 0);
+		filter: opacity(0);
+	}
+}

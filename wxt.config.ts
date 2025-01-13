@@ -21,7 +21,7 @@ export default defineConfig({
 		homepage_url: "https://github.com/xfox111/PasswordGeneratorExtension",
 
 		default_locale: "en",
-		permissions: ["storage", "contextMenus", "activeTab"],
+		permissions: ["storage"],
 
 		icons:
 		{

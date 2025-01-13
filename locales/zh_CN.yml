@@ -1,11 +1,26 @@
 manifest:
   name: "密码生成器"
-  description: "密码生成器扩展可让您一键轻松生成长而安全的密码"
+  description: "这个扩展可以帮助您轻松生成强大且可定制的密码"
   author: "Eugene Fox"
 
 common:
-  reset: "重置"
-  copy: "复制"
+  actions:
+    reset: "重置"
+    copy: "复制"
+  characters:
+    uppercase: "大写字母"
+    lowercase: "小写字母"
+    numeric: "数字"
+    special: "特殊"
+    similar: "相似"
+    ambiguous: "易混淆"
+    repeating:
+      label: "重复"
+      hint: "密码中的每个字符都将是独一无二的"
+    custom: "自定义"
+  sections:
+    include: "包括字符"
+    exclude: "排除字符"
 
 errors:
   too_short: "密码的长度必须至少为4个字符"
@@ -15,7 +30,7 @@ errors:
 about:
   title: "关于"
   developed_by: "由 Eugene Fox 开发"
-  lincensed_under: "协议："
+  licensed_under: "协议："
   mit_license: "MIT License"
   translation_cta:
     text: "发现错别字或需要翻译成您的语言？"
@@ -28,32 +43,40 @@ about:
     feedback: "提供反馈"
     sponsor: "赞助开发者"
 
+popup:
+  refresh: "刷新"
+  include: "包括"
+  exclude: "排除"
+  advanced: "高级"
+
 settings:
   title: "设置"
   length:
     title: "默认密码长度"
     hint: "建议长度：8-16"
   quick_range: "快速调节长度范围"
-  include:
-    title: "包括字符"
-    uppercase: "大写字母"
-    lowercase: "小写字母"
-    numeric: "数字"
-    special: "特殊"
-  exclude:
-    title: "排除字符"
-    similar: "相似"
-    ambiguous: "易混淆"
-    repeating:
-      title: "重复"
-      hint: "密码中的每个字符都将是独一无二的"
-  context_menu: "显示右键菜单"
+  exclude_custom: "不要使用这些字符："
 
-generator:
-  refresh: "刷新"
-  insert: "插入并复制"
-  options:
-    title: "快速调整"
-    hint: "这些调整将不会保存"
-    include: "包括"
-    exclude: "排除"
+advanced:
+  title: "高级密码生成器"
+  saved_msg: "配置已保存"
+  copied_msg: "已复制到剪贴板"
+  actions:
+    generate: "生成"
+    save_config: "保存配置"
+    copy_all: "复制全部"
+  password:
+    title: "密码生成器"
+    length: "密码长度"
+    min_of_type: "最少字符数"
+  passphrase:
+    title: "密码短语生成器"
+    length: "单词数量"
+    replace: "替换随机字符"
+    random_case: "随机大小写"
+    allow_repat:
+      label: "允许重复"
+      hint: "如果禁用，密码短语中的每个单词都是唯一的"
+    separate_words:
+      label: "用以下字符分隔单词"
+      hint: "如果启用，提供的序列将放置在每个单词之间。如果字段为空，将使用空格"

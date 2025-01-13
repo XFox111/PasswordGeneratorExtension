@@ -3,7 +3,7 @@ import { Manifest } from "webextension-polyfill";
 export const personalLinks =
 {
 	website: "https://xfox111.net",
-	twitter: "https://twitter.com/xfox111",
+	social: "https://bsky.app/profile/xfox111.net",
 	donation: "https://buymeacoffee.com/xfox111"
 };
 

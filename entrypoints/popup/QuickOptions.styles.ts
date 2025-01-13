@@ -1,16 +1,16 @@
-import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
+import { makeStyles, tokens } from "@fluentui/react-components";
 
 export const useStyles = makeStyles({
 	characterOptionsContainer:
 	{
 		display: "flex",
-		...shorthands.gap(tokens.spacingHorizontalXS),
+		gap: tokens.spacingHorizontalXS,
 	},
 	options:
 	{
 		display: "flex",
 		flexDirection: "column",
-		...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
+		gap: tokens.spacingVerticalS,
 	},
 	lengthContainer:
 	{
