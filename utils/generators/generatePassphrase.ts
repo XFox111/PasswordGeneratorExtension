@@ -51,8 +51,6 @@ export default function generatePassphrase(options: PassphraseProps): string
 	if (options.randomizeCase)
 		result = RandomUpperCase(result);
 
-	console.log(result);
-
 	return result;
 }
 
