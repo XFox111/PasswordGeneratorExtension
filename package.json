@@ -33,7 +33,7 @@
 		"eslint-plugin-react": "^7.37.4",
 		"globals": "^16.0.0",
 		"typescript": "^5.8.2",
-		"wxt": "^0.20.0"
+		"wxt": "^0.20.6"
 	},
 	"overrides": {
 		"@babel/runtime": "^7.26.10"
