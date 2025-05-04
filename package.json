@@ -32,7 +32,7 @@
 		"eslint": "^9.23.0",
 		"eslint-plugin-react": "^7.37.4",
 		"globals": "^16.0.0",
-		"typescript": "^5.8.2",
+		"typescript": "^5.8.3",
 		"wxt": "^0.20.6"
 	},
 	"overrides": {
