@@ -32,7 +32,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 	const setLength = useCallback((_: any, e: fui.InputOnChangeData) =>
 	{
 		const n = parseInt(e.value ?? "");
-		setState({ length: isNaN(n) || n < 1 ? null : n });
+		setState({ length: isNaN(n) || n < 1 ? null : Math.min(n, 512) });
 	}, [state]);
 
 	const saveConfiguration = useCallback(
