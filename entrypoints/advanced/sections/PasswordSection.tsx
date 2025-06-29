@@ -33,7 +33,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 	{
 		const n = parseInt(e.value ?? "", 10);
 		setState({ length: isNaN(n) || n < 1 ? null : Math.min(n, 512) });
-	}, [state]);
+	}, []);
 
 	const saveConfiguration = useCallback(
 		async () => await browser.storage.sync.set({ AdvancedPasswordOptions: state }),
