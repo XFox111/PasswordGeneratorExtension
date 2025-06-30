@@ -37,12 +37,38 @@ export default function SettingsSection(): ReactElement
 				updateStorage({ [key]: defaultValue });
 		};
 
+	const validateMinLimit = () =>
+	{
+		if (extOptions.MinLength < 4)
+			updateStorage({ MinLength: 4 });
+		else if (extOptions.MinLength > 511)
+			updateStorage({ MinLength: 511, MaxLength: 512 });
+		else if (extOptions.MinLength >= extOptions.MaxLength)
+			updateStorage({ MaxLength: extOptions.MinLength + 1 });
+	};
+
+	const validateMaxLimit = () =>
+	{
+		if (extOptions.MaxLength > 512)
+			updateStorage({ MaxLength: 512 });
+		else if (extOptions.MaxLength < 5)
+			updateStorage({ MinLength: 4, MaxLength: 5 });
+		else if (extOptions.MaxLength <= extOptions.MinLength)
+			updateStorage({ MinLength: extOptions.MaxLength - 1 });
+	};
+
+	const validateLength = () =>
+	{
+		updateStorage({ Length: Math.max(Math.min(generatorOptions.Length, extOptions.MaxLength), extOptions.MinLength) });
+	};
+
 	return (
 		<section className={ cls.root }>
 
 			<fui.Field label={ i18n.t("settings.length.title") } hint={ i18n.t("settings.length.hint") }>
 				<fui.Input
 					value={ generatorOptions.Length.toString() }
+					onBlur={ validateLength }
 					onChange={ updateNumberField("Length", 0) } />
 			</fui.Field>
 
@@ -51,6 +77,7 @@ export default function SettingsSection(): ReactElement
 					<fui.Input
 						input={ { className: cls.rangeInput } }
 						value={ extOptions.MinLength.toString() }
+						onBlur={ validateMinLimit }
 						onChange={ updateNumberField("MinLength", defaultOptions.extension.MinLength) } />
 
 					<fui.Divider />
@@ -58,6 +85,7 @@ export default function SettingsSection(): ReactElement
 					<fui.Input
 						input={ { className: cls.rangeInput } }
 						value={ extOptions.MaxLength.toString() }
+						onBlur={ validateMaxLimit }
 						onChange={ updateNumberField("MaxLength", defaultOptions.extension.MaxLength) } />
 
 					<fui.Tooltip relationship="label" content={ i18n.t("common.actions.reset") }>
