@@ -69,6 +69,9 @@ advanced:
     title: "Генератор паролів"
     length: "Довжина пароля"
     min_of_type: "Не менше"
+    separator1: "Додати розділювач"
+    separator2: "кожні"
+    separator3: "символів"
   passphrase:
     title: "Парольних фраз"
     length: "Кількість слів"

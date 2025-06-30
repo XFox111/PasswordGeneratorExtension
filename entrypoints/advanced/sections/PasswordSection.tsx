@@ -19,7 +19,11 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 		excludeSimilar: true,
 		excludeAmbiguous: true,
 		excludeRepeating: false,
-		excludeCustom: false, excludeCustomSet: ""
+		excludeCustom: false, excludeCustomSet: "",
+
+		enableSeparator: false,
+		separator: "-",
+		separatorInterval: 4
 	});
 
 	const cls = useStyles();
@@ -57,6 +61,8 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 				excludeCustom: state.excludeCustom ? state.excludeCustomSet : "",
 				excludeRepeating: state.excludeRepeating,
 				excludeSimilar: state.excludeSimilar,
+				separator: state.enableSeparator ? state.separator : undefined,
+				separatorInterval: state.separatorInterval ?? 4
 			}));
 
 		props.onGenerated(passwords);
@@ -79,6 +85,20 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 		value: state[key]?.toString() ?? "",
 		onChange: (_, e) => setState({ [key]: parseCount(e.value) })
 	}), [state]);
+
+	const setSeparatorInverval = (_: any, e: fui.InputOnChangeData) =>
+	{
+		if (!e.value)
+		{
+			setState({ separatorInterval: undefined });
+			return;
+		}
+
+		const n = parseInt(e.value);
+
+		if (!isNaN(n))
+			setState({ separatorInterval: n < 1 ? 1 : Math.min(n, state.length ?? 8) });
+	};
 
 	const updateLength = (): void =>
 	{
@@ -147,6 +167,27 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 						value={ state.excludeCustomSet } onChange={ (_, e) => setState({ excludeCustomSet: e.value }) } />
 				</div>
 			</section>
+
+			<div>
+				<fui.Checkbox
+					{ ...checkboxControls("enableSeparator") }
+					label={
+						<span className={ cls.separatorLabel }>
+							{ i18n.t("advanced.password.separator1") }
+							<fui.Input size="small" className={ cls.separatorInput }
+								disabled={ !state.enableSeparator }
+								value={ state.separator ?? "" }
+								onChange={ (_, e) => setState({ separator: e.value ? e.value[e.value.length - 1] : undefined }) } />
+							{ i18n.t("advanced.password.separator2") }
+							<fui.Input size="small" className={ cls.separatorInput }
+								disabled={ !state.enableSeparator }
+								value={ state.separatorInterval?.toString() ?? "" }
+								onBlur={ () => state.separatorInterval ? null : setState({ separatorInterval: 4 }) }
+								onChange={ setSeparatorInverval } />
+							{ i18n.t("advanced.password.separator3") }
+						</span>
+					} />
+			</div>
 		</GeneratorForm>
 	);
 }
@@ -176,6 +217,17 @@ const useStyles = fui.makeStyles({
 		display: "flex",
 		flexDirection: "column",
 	},
+	separatorLabel:
+	{
+		display: "inline-flex",
+		flexWrap: "wrap",
+		alignItems: "center",
+		gap: `${fui.tokens.spacingVerticalXXS} ${fui.tokens.spacingHorizontalS}`,
+	},
+	separatorInput:
+	{
+		width: "4em",
+	}
 });
 
 type PasswordSectionState =
@@ -199,4 +251,8 @@ type PasswordSectionState =
 
 		excludeCustomSet: string;
 		customSet: string;
+
+		enableSeparator: boolean;
+		separator?: string;
+		separatorInterval?: number;
 	};
