@@ -98,6 +98,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 
 		if (!isNaN(n))
 			setState({ separatorInterval: n < 1 ? 1 : Math.min(n, state.length ?? 8) });
+	};
 
 	const updateLength = (): void =>
 	{
