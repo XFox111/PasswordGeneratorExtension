@@ -106,7 +106,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 						<fui.Input { ...minInputControls("enableNumeric", "numericCount") } />
 					</Row>
 					<Row>
-						<fui.Checkbox label={ infoLabel(i18n.t("common.characters.special"), CharacterHints.special) } { ...checkboxControls("enableSpecial") } />
+						<fui.Checkbox label={ infoLabel(i18n.t("common.characters.special"), CharacterHints.special, true) } { ...checkboxControls("enableSpecial") } />
 						<fui.Input { ...minInputControls("enableSpecial", "specialCount") } />
 					</Row>
 					<Row>

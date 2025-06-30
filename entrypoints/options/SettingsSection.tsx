@@ -84,7 +84,7 @@ export default function SettingsSection(): ReactElement
 					checked={ generatorOptions.Numeric }
 					onChange={ setOption("Numeric") } />
 				<fui.Checkbox
-					label={ infoLabel(i18n.t("common.characters.special"), CharacterHints.special) }
+					label={ infoLabel(i18n.t("common.characters.special"), CharacterHints.special, true) }
 					checked={ generatorOptions.Special }
 					onChange={ setOption("Special") } />
 				<div>
