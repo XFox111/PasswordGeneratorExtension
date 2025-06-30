@@ -17,6 +17,6 @@ export const useStyles = makeStyles({
 	{
 		display: "grid",
 		alignItems: "center",
-		gridTemplateColumns: "24px 24px 56px",
+		gridTemplateColumns: "24px 24px 60px",
 	}
 });
