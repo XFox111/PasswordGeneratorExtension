@@ -38,8 +38,8 @@ export function generatePassword(options: PasswordProps): string
 
 	password = shuffleString(password);
 
-	if (options.separator && options.separatorInverval)
-		password = addSeparator(password, options.separator, options.separatorInverval);
+	if (options.separator && options.separatorInterval)
+		password = addSeparator(password, options.separator, options.separatorInterval);
 
 	return password;
 }
@@ -126,14 +126,14 @@ function getRequiredCharacters(options: PasswordProps): string
 	return result;
 }
 
-function addSeparator(password: string, separator: string, interval: number): string
+function addSeparator(password: string, separator: string, separatorInterval: number): string
 {
-	if (!separator || interval < 1)
+	if (!separator || separatorInterval < 1)
 		return password;
 
 	const parts: string[] = [];
-	for (let i = 0; i < password.length; i += interval)
-		parts.push(password.slice(i, i + interval));
+	for (let i = 0; i < password.length; i += separatorInterval)
+		parts.push(password.slice(i, i + separatorInterval));
 
 	return parts.join(separator);
 }
@@ -157,5 +157,5 @@ export type PasswordProps =
 		excludeCustom: string;
 
 		separator?: string;
-		separatorInverval?: number;
+		separatorInterval?: number;
 	};

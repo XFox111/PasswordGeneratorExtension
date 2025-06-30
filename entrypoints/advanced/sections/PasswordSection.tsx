@@ -21,9 +21,9 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 		excludeRepeating: false,
 		excludeCustom: false, excludeCustomSet: "",
 
-		enableSeprator: false,
+		enableSeparator: false,
 		separator: "-",
-		separatorInverval: 4
+		separatorInterval: 4
 	});
 
 	const cls = useStyles();
@@ -61,8 +61,8 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 				excludeCustom: state.excludeCustom ? state.excludeCustomSet : "",
 				excludeRepeating: state.excludeRepeating,
 				excludeSimilar: state.excludeSimilar,
-				separator: state.enableSeprator ? state.separator : undefined,
-				separatorInverval: state.separatorInverval ?? 4
+				separator: state.enableSeparator ? state.separator : undefined,
+				separatorInterval: state.separatorInterval ?? 4
 			}));
 
 		props.onGenerated(passwords);
@@ -90,14 +90,14 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 	{
 		if (!e.value)
 		{
-			setState({ separatorInverval: undefined });
+			setState({ separatorInterval: undefined });
 			return;
 		}
 
 		const n = parseInt(e.value);
 
 		if (!isNaN(n))
-			setState({ separatorInverval: n < 1 ? 1 : Math.min(n, state.length ?? 8) });
+			setState({ separatorInterval: n < 1 ? 1 : Math.min(n, state.length ?? 8) });
 	};
 
 	return (
@@ -156,19 +156,19 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 
 			<div>
 				<fui.Checkbox
-					{ ...checkboxControls("enableSeprator") }
+					{ ...checkboxControls("enableSeparator") }
 					label={
 						<span className={ cls.separatorLabel }>
 							{ i18n.t("advanced.password.separator1") }
 							<fui.Input size="small" className={ cls.separatorInput }
-								disabled={ !state.enableSeprator }
+								disabled={ !state.enableSeparator }
 								value={ state.separator ?? "" }
 								onChange={ (_, e) => setState({ separator: e.value ? e.value[e.value.length - 1] : undefined }) } />
 							{ i18n.t("advanced.password.separator2") }
 							<fui.Input size="small" className={ cls.separatorInput }
-								disabled={ !state.enableSeprator }
-								value={ state.separatorInverval?.toString() ?? "" }
-								onBlur={ () => state.separatorInverval ? null : setState({ separatorInverval: 4 }) }
+								disabled={ !state.enableSeparator }
+								value={ state.separatorInterval?.toString() ?? "" }
+								onBlur={ () => state.separatorInterval ? null : setState({ separatorInterval: 4 }) }
 								onChange={ setSeparatorInverval } />
 							{ i18n.t("advanced.password.separator3") }
 						</span>
@@ -238,7 +238,7 @@ type PasswordSectionState =
 		excludeCustomSet: string;
 		customSet: string;
 
-		enableSeprator: boolean;
+		enableSeparator: boolean;
 		separator?: string;
-		separatorInverval?: number;
+		separatorInterval?: number;
 	};
