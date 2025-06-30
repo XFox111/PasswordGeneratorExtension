@@ -33,7 +33,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 	{
 		const n = parseInt(e.value ?? "", 10);
 		setState({ length: isNaN(n) || n < 1 ? null : Math.min(n, 512) });
-	}, []);
+	}, [setState]);
 
 	const saveConfiguration = useCallback(
 		async () => await browser.storage.sync.set({ AdvancedPasswordOptions: state }),
@@ -80,10 +80,24 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 		onChange: (_, e) => setState({ [key]: parseCount(e.value) })
 	}), [state]);
 
+	const updateLength = (): void =>
+	{
+		const minLength = Math.max(4,
+			(state.enableCustom ? state.customCount ?? 1 : 0) +
+			(state.enableNumeric ? state.numericCount ?? 1 : 0) +
+			(state.enableSpecial ? state.specialCount ?? 1 : 0) +
+			(state.enableUppercase ? state.uppercaseCount ?? 1 : 0) +
+			(state.enableLowercase ? state.lowercaseCount ?? 1 : 0)
+		);
+
+		if (!state.length || state.length < minLength)
+			setState({ length: minLength });
+	};
+
 	return (
 		<GeneratorForm onGenerate={ generate } onSave={ saveConfiguration }>
 			<fui.Field label={ i18n.t("advanced.password.length") }>
-				<fui.Input value={ state.length?.toString() ?? "" } onChange={ setLength } />
+				<fui.Input value={ state.length?.toString() ?? "" } onChange={ setLength } onBlur={ updateLength } />
 			</fui.Field>
 			<fui.Table size="small" as="div">
 				<fui.TableHeader as="div">
@@ -95,19 +109,19 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 				<fui.TableBody as="div">
 					<Row>
 						<fui.Checkbox label={ i18n.t("common.characters.uppercase") } { ...checkboxControls("enableUppercase") } />
-						<fui.Input { ...minInputControls("enableUppercase", "uppercaseCount") } />
+						<fui.Input { ...minInputControls("enableUppercase", "uppercaseCount") } onBlur={ updateLength } />
 					</Row>
 					<Row>
 						<fui.Checkbox label={ i18n.t("common.characters.lowercase") } { ...checkboxControls("enableLowercase") } />
-						<fui.Input { ...minInputControls("enableLowercase", "lowercaseCount") } />
+						<fui.Input { ...minInputControls("enableLowercase", "lowercaseCount") } onBlur={ updateLength } />
 					</Row>
 					<Row>
 						<fui.Checkbox label={ i18n.t("common.characters.numeric") } { ...checkboxControls("enableNumeric") } />
-						<fui.Input { ...minInputControls("enableNumeric", "numericCount") } />
+						<fui.Input { ...minInputControls("enableNumeric", "numericCount") } onBlur={ updateLength } />
 					</Row>
 					<Row>
 						<fui.Checkbox label={ infoLabel(i18n.t("common.characters.special"), CharacterHints.special, true) } { ...checkboxControls("enableSpecial") } />
-						<fui.Input { ...minInputControls("enableSpecial", "specialCount") } />
+						<fui.Input { ...minInputControls("enableSpecial", "specialCount") } onBlur={ updateLength } />
 					</Row>
 					<Row>
 						<>
@@ -116,7 +130,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 								placeholder={ i18n.t("common.characters.custom") }
 								value={ state.customSet } onChange={ (_, e) => setState({ customSet: e.value }) } />
 						</>
-						<fui.Input { ...minInputControls("enableCustom", "customCount") } />
+						<fui.Input { ...minInputControls("enableCustom", "customCount") } onBlur={ updateLength } />
 					</Row>
 				</fui.TableBody>
 			</fui.Table>
