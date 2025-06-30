@@ -54,7 +54,7 @@ export default function SettingsSection(): ReactElement
 		else if (extOptions.MaxLength < 5)
 			updateStorage({ MinLength: 4, MaxLength: 5 });
 		else if (extOptions.MaxLength <= extOptions.MinLength)
-			updateStorage({ MinLength: extOptions.MinLength - 1 });
+			updateStorage({ MinLength: extOptions.MaxLength - 1 });
 	};
 
 	const validateLength = () =>
