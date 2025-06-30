@@ -31,9 +31,9 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 
 	const setLength = useCallback((_: any, e: fui.InputOnChangeData) =>
 	{
-		const n = parseInt(e.value ?? "");
-		setState({ length: isNaN(n) || n < 1 ? null : n });
-	}, [state]);
+		const n = parseInt(e.value ?? "", 10);
+		setState({ length: isNaN(n) || n < 1 ? null : Math.min(n, 512) });
+	}, []);
 
 	const saveConfiguration = useCallback(
 		async () => await browser.storage.sync.set({ AdvancedPasswordOptions: state }),
