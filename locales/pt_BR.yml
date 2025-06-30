@@ -69,6 +69,9 @@ advanced:
     title: "Gerador de senhas"
     length: "Comprimento da senha"
     min_of_type: "Número mínimo de caracteres"
+    separator1: "Adicionar separador"
+    separator2: "a cada"
+    separator3: "caractere(s)"
   passphrase:
     title: "Gerador de frases-senha"
     length: "Número de palavras"
