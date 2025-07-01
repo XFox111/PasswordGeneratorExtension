@@ -27,7 +27,7 @@ export default function PassphraseSection(props: GeneratorProps): ReactElement
 
 	const setWordCount = useCallback((_: any, e: InputOnChangeData) =>
 	{
-		const n = parseInt(e.value ?? "");
+		const n = parseInt(e.value ?? "", 10);
 		private_setWordCount(isNaN(n) || n < 1 ? null : Math.min(n, 100));
 	}, []);
 

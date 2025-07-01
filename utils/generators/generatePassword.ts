@@ -1,3 +1,4 @@
+import { MIN_PASSWORD_LENGTH } from "../constants";
 import { pickRandomFromArray, shuffleString } from "./randomUtils";
 
 const Characters =
@@ -37,6 +38,10 @@ export function generatePassword(options: PasswordProps): string
 	}
 
 	password = shuffleString(password);
+
+	if (options.separator && options.separatorInterval)
+		password = addSeparator(password, options.separator, options.separatorInterval);
+
 	return password;
 }
 
@@ -47,7 +52,7 @@ export function generatePassword(options: PasswordProps): string
  */
 export function validateOptions(options: PasswordProps): void
 {
-	if (options.length < 4)
+	if (options.length < MIN_PASSWORD_LENGTH)
 		throw new Error(i18n.t("errors.too_short"));
 
 	const availableCharacters: string = getAvailableCharacters(options);
@@ -122,6 +127,18 @@ function getRequiredCharacters(options: PasswordProps): string
 	return result;
 }
 
+function addSeparator(password: string, separator: string, separatorInterval: number): string
+{
+	if (!separator || separatorInterval < 1)
+		return password;
+
+	const parts: string[] = [];
+	for (let i = 0; i < password.length; i += separatorInterval)
+		parts.push(password.slice(i, i + separatorInterval));
+
+	return parts.join(separator);
+}
+
 export type PasswordProps =
 	{
 		length: number;
@@ -139,4 +156,7 @@ export type PasswordProps =
 
 		excludeRepeating: boolean;
 		excludeCustom: string;
+
+		separator?: string;
+		separatorInterval?: number;
 	};

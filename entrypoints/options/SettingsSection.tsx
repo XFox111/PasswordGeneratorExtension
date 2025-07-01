@@ -5,6 +5,7 @@ import { ArrowUndoRegular } from "@fluentui/react-icons";
 import { ReactElement } from "react";
 import infoLabel from "../../utils/infoLabel";
 import { useStyles } from "./SettingsSection.styles";
+import { MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "@/utils/constants";
 
 export default function SettingsSection(): ReactElement
 {
@@ -28,7 +29,7 @@ export default function SettingsSection(): ReactElement
 		{
 			if (e.value.length >= 1)
 			{
-				const value = parseInt(e.value);
+				const value = parseInt(e.value, 10);
 
 				if (!isNaN(value) && value >= 0)
 					updateStorage({ [key]: value });
@@ -37,12 +38,38 @@ export default function SettingsSection(): ReactElement
 				updateStorage({ [key]: defaultValue });
 		};
 
+	const validateMinLimit = () =>
+	{
+		if (extOptions.MinLength < MIN_PASSWORD_LENGTH)
+			updateStorage({ MinLength: MIN_PASSWORD_LENGTH });
+		else if (extOptions.MinLength > MAX_PASSWORD_LENGTH - 1)
+			updateStorage({ MinLength: MAX_PASSWORD_LENGTH - 1, MaxLength: MAX_PASSWORD_LENGTH });
+		else if (extOptions.MinLength >= extOptions.MaxLength)
+			updateStorage({ MaxLength: extOptions.MinLength + 1 });
+	};
+
+	const validateMaxLimit = () =>
+	{
+		if (extOptions.MaxLength > MAX_PASSWORD_LENGTH)
+			updateStorage({ MaxLength: MAX_PASSWORD_LENGTH });
+		else if (extOptions.MaxLength < MIN_PASSWORD_LENGTH + 1)
+			updateStorage({ MinLength: MIN_PASSWORD_LENGTH, MaxLength: MIN_PASSWORD_LENGTH + 1 });
+		else if (extOptions.MaxLength <= extOptions.MinLength)
+			updateStorage({ MinLength: extOptions.MaxLength - 1 });
+	};
+
+	const validateLength = () =>
+	{
+		updateStorage({ Length: Math.max(Math.min(generatorOptions.Length, extOptions.MaxLength), extOptions.MinLength) });
+	};
+
 	return (
 		<section className={ cls.root }>
 
 			<fui.Field label={ i18n.t("settings.length.title") } hint={ i18n.t("settings.length.hint") }>
 				<fui.Input
 					value={ generatorOptions.Length.toString() }
+					onBlur={ validateLength }
 					onChange={ updateNumberField("Length", 0) } />
 			</fui.Field>
 
@@ -51,6 +78,7 @@ export default function SettingsSection(): ReactElement
 					<fui.Input
 						input={ { className: cls.rangeInput } }
 						value={ extOptions.MinLength.toString() }
+						onBlur={ validateMinLimit }
 						onChange={ updateNumberField("MinLength", defaultOptions.extension.MinLength) } />
 
 					<fui.Divider />
@@ -58,6 +86,7 @@ export default function SettingsSection(): ReactElement
 					<fui.Input
 						input={ { className: cls.rangeInput } }
 						value={ extOptions.MaxLength.toString() }
+						onBlur={ validateMaxLimit }
 						onChange={ updateNumberField("MaxLength", defaultOptions.extension.MaxLength) } />
 
 					<fui.Tooltip relationship="label" content={ i18n.t("common.actions.reset") }>
@@ -84,7 +113,7 @@ export default function SettingsSection(): ReactElement
 					checked={ generatorOptions.Numeric }
 					onChange={ setOption("Numeric") } />
 				<fui.Checkbox
-					label={ infoLabel(i18n.t("common.characters.special"), CharacterHints.special) }
+					label={ infoLabel(i18n.t("common.characters.special"), CharacterHints.special, true) }
 					checked={ generatorOptions.Special }
 					onChange={ setOption("Special") } />
 				<div>

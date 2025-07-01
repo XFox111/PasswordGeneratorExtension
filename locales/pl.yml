@@ -69,6 +69,9 @@ advanced:
     title: "Generator haseł"
     length: "Długość hasła"
     min_of_type: "Minimum"
+    separator1: "Dodaj separator"
+    separator2: "co"
+    separator3: "znak(ów)"
   passphrase:
     title: "Frazy hasłowe"
     length: "Liczba słów"

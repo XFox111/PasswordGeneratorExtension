@@ -1,6 +1,8 @@
+import { DEFAULT_PASSWORD_LENGTH } from "../constants";
+
 export default class GeneratorOptions
 {
-	public Length: number = 8;
+	public Length: number = DEFAULT_PASSWORD_LENGTH;
 
 	public Special: boolean = true;
 	public Numeric: boolean = true;
