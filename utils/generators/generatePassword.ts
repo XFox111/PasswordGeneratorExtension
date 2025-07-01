@@ -1,3 +1,4 @@
+import { MIN_PASSWORD_LENGTH } from "../constants";
 import { pickRandomFromArray, shuffleString } from "./randomUtils";
 
 const Characters =
@@ -51,7 +52,7 @@ export function generatePassword(options: PasswordProps): string
  */
 export function validateOptions(options: PasswordProps): void
 {
-	if (options.length < 4)
+	if (options.length < MIN_PASSWORD_LENGTH)
 		throw new Error(i18n.t("errors.too_short"));
 
 	const availableCharacters: string = getAvailableCharacters(options);

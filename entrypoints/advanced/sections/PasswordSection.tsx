@@ -4,12 +4,13 @@ import * as fui from "@fluentui/react-components";
 import { ReactElement } from "react";
 import { GeneratorProps } from "../Page";
 import GeneratorForm from "../components/GeneratorForm";
+import { DEFAULT_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "@/utils/constants";
 
 // TODO: needs refactoring
 export default function PasswordSection(props: GeneratorProps): ReactElement
 {
 	const [state, private_setState] = useState<PasswordSectionState>({
-		length: 8,
+		length: DEFAULT_PASSWORD_LENGTH,
 		enableUppercase: true, uppercaseCount: 1,
 		enableLowercase: true, lowercaseCount: 1,
 		enableNumeric: true, numericCount: 1,
@@ -23,7 +24,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 
 		enableSeparator: false,
 		separator: "-",
-		separatorInterval: 4
+		separatorInterval: DEFAULT_PASSWORD_LENGTH / 2
 	});
 
 	const cls = useStyles();
@@ -36,7 +37,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 	const setLength = useCallback((_: any, e: fui.InputOnChangeData) =>
 	{
 		const n = parseInt(e.value ?? "", 10);
-		setState({ length: isNaN(n) || n < 1 ? null : Math.min(n, 512) });
+		setState({ length: isNaN(n) || n < 1 ? null : Math.min(n, MAX_PASSWORD_LENGTH) });
 	}, [setState]);
 
 	const saveConfiguration = useCallback(
@@ -50,7 +51,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 
 		for (let i = 0; i < count; i++)
 			passwords.push(generatePassword({
-				length: state.length ?? 8,
+				length: state.length ?? DEFAULT_PASSWORD_LENGTH,
 				custom: state.enableCustom ? state.customCount ?? 1 : 0,
 				customSet: state.customSet,
 				numeric: state.enableNumeric ? state.numericCount ?? 1 : 0,
@@ -62,7 +63,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 				excludeRepeating: state.excludeRepeating,
 				excludeSimilar: state.excludeSimilar,
 				separator: state.enableSeparator ? state.separator : undefined,
-				separatorInterval: state.separatorInterval ?? 4
+				separatorInterval: state.separatorInterval ?? (DEFAULT_PASSWORD_LENGTH / 2)
 			}));
 
 		props.onGenerated(passwords);
@@ -86,7 +87,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 		onChange: (_, e) => setState({ [key]: parseCount(e.value) })
 	}), [state]);
 
-	const setSeparatorInverval = (_: any, e: fui.InputOnChangeData) =>
+	const setSeparatorInterval = (_: any, e: fui.InputOnChangeData) =>
 	{
 		if (!e.value)
 		{
@@ -97,12 +98,12 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 		const n = parseInt(e.value);
 
 		if (!isNaN(n))
-			setState({ separatorInterval: n < 1 ? 1 : Math.min(n, state.length ?? 8) });
+			setState({ separatorInterval: n < 1 ? 1 : Math.min(n, state.length ?? DEFAULT_PASSWORD_LENGTH) });
 	};
 
 	const updateLength = (): void =>
 	{
-		const minLength = Math.max(4,
+		const minLength = Math.max(MIN_PASSWORD_LENGTH,
 			(state.enableCustom ? state.customCount ?? 1 : 0) +
 			(state.enableNumeric ? state.numericCount ?? 1 : 0) +
 			(state.enableSpecial ? state.specialCount ?? 1 : 0) +
@@ -182,8 +183,8 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 							<fui.Input size="small" className={ cls.separatorInput }
 								disabled={ !state.enableSeparator }
 								value={ state.separatorInterval?.toString() ?? "" }
-								onBlur={ () => state.separatorInterval ? null : setState({ separatorInterval: 4 }) }
-								onChange={ setSeparatorInverval } />
+								onBlur={ () => state.separatorInterval ? null : setState({ separatorInterval: DEFAULT_PASSWORD_LENGTH / 2 }) }
+								onChange={ setSeparatorInterval } />
 							{ i18n.t("advanced.password.separator3") }
 						</span>
 					} />

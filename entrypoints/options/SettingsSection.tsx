@@ -5,6 +5,7 @@ import { ArrowUndoRegular } from "@fluentui/react-icons";
 import { ReactElement } from "react";
 import infoLabel from "../../utils/infoLabel";
 import { useStyles } from "./SettingsSection.styles";
+import { MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "@/utils/constants";
 
 export default function SettingsSection(): ReactElement
 {
@@ -39,20 +40,20 @@ export default function SettingsSection(): ReactElement
 
 	const validateMinLimit = () =>
 	{
-		if (extOptions.MinLength < 4)
-			updateStorage({ MinLength: 4 });
-		else if (extOptions.MinLength > 511)
-			updateStorage({ MinLength: 511, MaxLength: 512 });
+		if (extOptions.MinLength < MIN_PASSWORD_LENGTH)
+			updateStorage({ MinLength: MIN_PASSWORD_LENGTH });
+		else if (extOptions.MinLength > MAX_PASSWORD_LENGTH - 1)
+			updateStorage({ MinLength: MAX_PASSWORD_LENGTH - 1, MaxLength: MAX_PASSWORD_LENGTH });
 		else if (extOptions.MinLength >= extOptions.MaxLength)
 			updateStorage({ MaxLength: extOptions.MinLength + 1 });
 	};
 
 	const validateMaxLimit = () =>
 	{
-		if (extOptions.MaxLength > 512)
-			updateStorage({ MaxLength: 512 });
-		else if (extOptions.MaxLength < 5)
-			updateStorage({ MinLength: 4, MaxLength: 5 });
+		if (extOptions.MaxLength > MAX_PASSWORD_LENGTH)
+			updateStorage({ MaxLength: MAX_PASSWORD_LENGTH });
+		else if (extOptions.MaxLength < MIN_PASSWORD_LENGTH + 1)
+			updateStorage({ MinLength: MIN_PASSWORD_LENGTH, MaxLength: MIN_PASSWORD_LENGTH + 1 });
 		else if (extOptions.MaxLength <= extOptions.MinLength)
 			updateStorage({ MinLength: extOptions.MaxLength - 1 });
 	};
