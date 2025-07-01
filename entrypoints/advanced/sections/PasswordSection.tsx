@@ -95,7 +95,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 			return;
 		}
 
-		const n = parseInt(e.value);
+		const n = parseInt(e.value, 10);
 
 		if (!isNaN(n))
 			setState({ separatorInterval: n < 1 ? 1 : Math.min(n, state.length ?? DEFAULT_PASSWORD_LENGTH) });
@@ -195,7 +195,7 @@ export default function PasswordSection(props: GeneratorProps): ReactElement
 
 function parseCount(value: string): number | null
 {
-	const n = parseInt(value);
+	const n = parseInt(value, 10);
 	return isNaN(n) || n < 1 ? null : Math.min(n, 100);
 };
 

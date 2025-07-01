@@ -14,7 +14,7 @@ export default function GeneratorForm(props: GeneratorFormProps): ReactElement
 
 	const setPasswordCount = useCallback((_: any, e: InputOnChangeData) =>
 	{
-		const n = parseInt(e.value ?? "1");
+		const n = parseInt(e.value ?? "1", 10);
 		private_setPasswordCount(isNaN(n) || n < 1 ? null : Math.min(n, 1000));
 	}, []);
 

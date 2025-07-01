@@ -29,7 +29,7 @@ export default function SettingsSection(): ReactElement
 		{
 			if (e.value.length >= 1)
 			{
-				const value = parseInt(e.value);
+				const value = parseInt(e.value, 10);
 
 				if (!isNaN(value) && value >= 0)
 					updateStorage({ [key]: value });
