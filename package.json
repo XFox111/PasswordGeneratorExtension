@@ -19,13 +19,13 @@
 		"@fluentui/react-icons": "^2.0.305",
 		"@wxt-dev/i18n": "^0.2.4",
 		"react": "^18.3.1",
-		"react-dom": "^18.3.1",
+		"react-dom": "^19.1.1",
 		"react-responsive": "^10.0.1"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.30.0",
 		"@types/react": "^18.3.12",
-		"@types/react-dom": "^18.3.1",
+		"@types/react-dom": "^19.1.7",
 		"@typescript-eslint/eslint-plugin": "^8.35.1",
 		"@typescript-eslint/parser": "^8.39.0",
 		"@wxt-dev/module-react": "^1.1.3",
