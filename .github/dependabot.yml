@@ -17,20 +17,14 @@ updates:
       interval: monthly
     rebase-strategy: disabled
     groups:
-      dev-deps:
-        patterns:
-          - "*"
-        dependency-type: development
-        exclude-patterns:
-          - "@types/react"
-          - "@types/react-dom"
       deps:
         patterns:
           - "*"
-        dependency-type: production
         exclude-patterns:
           - "react"
           - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
       react:
         patterns:
           - "react"
