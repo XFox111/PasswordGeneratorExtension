@@ -16,7 +16,38 @@ updates:
     schedule:
       interval: monthly
     rebase-strategy: disabled
-    open-pull-requests-limit: 20
+    groups:
+      dev-deps:
+        patterns:
+          - "*"
+        dependency-type: development
+        exclude-patterns:
+          - "@types/react"
+          - "@types/react-dom"
+      deps:
+        patterns:
+          - "*"
+        dependency-type: production
+        exclude-patterns:
+          - "react"
+          - "react-dom"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+        update-types:
+          - minor
+          - patch
+      react-next:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+        update-types:
+          - major
 
   - package-ecosystem: "github-actions"
     directory: "/"
