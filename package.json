@@ -15,8 +15,8 @@
 		"postinstall": "wxt prepare"
 	},
 	"dependencies": {
-		"@fluentui/react-components": "^9.72.0",
-		"@fluentui/react-icons": "^2.0.311",
+		"@fluentui/react-components": "^9.72.6",
+		"@fluentui/react-icons": "^2.0.313",
 		"@wxt-dev/i18n": "^0.2.4",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
