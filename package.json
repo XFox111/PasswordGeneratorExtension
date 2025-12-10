@@ -1,6 +1,6 @@
 {
 	"name": "password-generator",
-	"version": "5.1.4",
+	"version": "5.1.5",
 	"private": true,
 	"type": "module",
 	"scripts": {
@@ -15,8 +15,8 @@
 		"postinstall": "wxt prepare"
 	},
 	"dependencies": {
-		"@fluentui/react-components": "^9.72.6",
-		"@fluentui/react-icons": "^2.0.313",
+		"@fluentui/react-components": "^9.72.7",
+		"@fluentui/react-icons": "^2.0.315",
 		"@wxt-dev/i18n": "^0.2.4",
 		"react": "^19.2.0",
 		"react-dom": "^19.2.0",
@@ -26,7 +26,7 @@
 		"@eslint/js": "^9.39.1",
 		"@types/react": "^19.2.2",
 		"@types/react-dom": "^19.2.2",
-		"@typescript-eslint/eslint-plugin": "^8.46.4",
+		"@typescript-eslint/eslint-plugin": "^8.48.0",
 		"@typescript-eslint/parser": "^8.45.0",
 		"@wxt-dev/module-react": "^1.1.5",
 		"eslint": "^9.39.1",
