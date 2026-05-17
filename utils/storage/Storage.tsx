@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, ReactElement, useContext, useEffect, useState } from "react";
 import ExtensionOptions from "./ExtensionOptions";
 import GeneratorOptions from "./GeneratorOptions";
 
@@ -48,6 +48,6 @@ interface IStorage
 
 interface IStorageProviderProps extends React.PropsWithChildren
 {
-	loader?: JSX.Element;
+	loader?: ReactElement;
 }
 // #endregion
