@@ -18,11 +18,16 @@ export default function AboutSection(): ReactElement
 				<fui.Caption1 as="span">v{ browser.runtime.getManifest().version }</fui.Caption1>
 			</header>
 
-			<fui.Text as="p">
-				{ i18n.t("about.developed_by") } ({ link("@xfox111.net", personalLinks.social) })
-				<br />
-				{ i18n.t("about.licensed_under") } { link(i18n.t("about.mit_license"), githubLinks.license) }
-			</fui.Text>
+			<div className={ cls.horizontalContainer }>
+				<fui.Button { ...buttonProps(getFeedbackLink(), <PersonFeedbackRegular />) }>
+					{ i18n.t("about.cta.feedback") }
+				</fui.Button>
+				<fui.FluentProvider theme={ bmcTheme }>
+					<fui.Button { ...buttonProps(personalLinks.donation, <img style={ { height: 20 } } src="bmc.svg" />) }>
+						{ i18n.t("about.cta.sponsor") }
+					</fui.Button>
+				</fui.FluentProvider>
+			</div>
 
 			<fui.Text as="p">
 				{ i18n.t("about.translation_cta.text") }<br />
@@ -35,16 +40,13 @@ export default function AboutSection(): ReactElement
 				{ link(i18n.t("about.links.changelog"), githubLinks.changelog) }
 			</fui.Text>
 
-			<div className={ cls.horizontalContainer }>
-				<fui.Button { ...buttonProps(getFeedbackLink(), <PersonFeedbackRegular />) }>
-					{ i18n.t("about.cta.feedback") }
-				</fui.Button>
-				<fui.FluentProvider theme={ bmcTheme }>
-					<fui.Button { ...buttonProps(personalLinks.donation, <img style={ { height: 20 } } src="bmc.svg" />) }>
-						{ i18n.t("about.cta.sponsor") }
-					</fui.Button>
-				</fui.FluentProvider>
-			</div>
+			<fui.Text as="p">
+				{ i18n.t("about.developed_by") } ({ link("@xfox111.net", personalLinks.social) })
+				<br />
+				{ i18n.t("about.licensed_under") } { link(i18n.t("about.mit_license"), githubLinks.license) }
+			</fui.Text>
+
+			<fui.Image className={ cls.img } src="/fox.svg" />
 		</section>
 	);
 };
@@ -53,7 +55,7 @@ const link = (text: string, href: string): ReactNode => (
 	<fui.Link target="_blank" href={ href }>{ text }</fui.Link>
 );
 
-const buttonProps = (href: string, icon: JSX.Element): fui.ButtonProps => (
+const buttonProps = (href: string, icon: ReactElement): fui.ButtonProps => (
 	{
 		as: "a", target: "_blank", href,
 		appearance: "primary", icon

@@ -6,11 +6,17 @@ export const useStyles = makeStyles({
 		display: "flex",
 		flexDirection: "column",
 		gap: tokens.spacingVerticalM,
-		padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+		padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`
 	},
 	horizontalContainer:
 	{
 		display: "flex",
 		gap: tokens.spacingHorizontalSNudge,
 	},
+	img:
+	{
+		height: "100px",
+		alignSelf: "flex-end",
+		flexGrow: 1
+	}
 });
