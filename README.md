@@ -27,8 +27,10 @@ Extension for web browsers which helps you to easily generate strong and customi
 - Ukrainian
 
 ## Download
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/users/jnjobgjobffgmgfnkpkjfjkkfhfikmfl?label=Chrome%20Webstore%20downloads)](https://chrome.google.com/webstore/detail/jnjobgjobffgmgfnkpkjfjkkfhfikmfl)
-[![Mozilla Add-on](https://img.shields.io/amo/users/easy-password-generator?label=Firefox%20Webstore%20downloads)](https://addons.mozilla.org/firefox/addon/easy-password-generator/)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/users/jnjobgjobffgmgfnkpkjfjkkfhfikmfl?label=Chrome%20webstore%20users)](https://chrome.google.com/webstore/detail/jnjobgjobffgmgfnkpkjfjkkfhfikmfl)
+[![Firefox Browser Add-ons](https://img.shields.io/amo/users/easy-password-generator?label=Firefox%20Browser%20Add-ons%20users)](https://addons.mozilla.org/firefox/addon/easy-password-generator/)
+![Edge Add-ons](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fmanimdhobjbkfpeeehlhhneookiokpbj&query=%24.activeInstallCount&label=Edge%20Add-ons%20users&link=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fdetail%2Fmanimdhobjbkfpeeehlhhneookiokpbj)
+
 
 - [Google Chrome Webstore](https://chrome.google.com/webstore/detail/jnjobgjobffgmgfnkpkjfjkkfhfikmfl)
 - [Microsoft Edge Add-ons Webstore](https://microsoftedge.microsoft.com/addons/detail/manimdhobjbkfpeeehlhhneookiokpbj)
