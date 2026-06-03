@@ -36,6 +36,11 @@
 		"wxt": "^0.20.26"
 	},
 	"overrides": {
-		"@babel/runtime": "^7.26.10"
+		"node-notifier": {
+			"uuid": "^11.1.1"
+		},
+		"web-ext-run": {
+			"tmp": "^0.2.6"
+		}
 	}
 }
