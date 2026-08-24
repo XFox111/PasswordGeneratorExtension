@@ -101,7 +101,7 @@ jobs:
         with:
           name: chrome
 
-      - uses: wdzeng/chrome-extension@v2.0.1
+      - uses: wdzeng/chrome-extension@v1.3.2
         with:
           extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
           zip-path: password-generator-*-chrome.zip
