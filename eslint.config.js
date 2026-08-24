@@ -1,14 +1,12 @@
 import jsConfigs from "@eslint/js";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
-import reactPlugin from "eslint-plugin-react";
 import globals from "globals";
 import autoImports from "./.wxt/eslint-auto-imports.mjs";
 
 export default [
 	autoImports,
 	jsConfigs.configs.recommended,
-	reactPlugin.configs.flat.recommended,
 	{
 		ignores: [".wxt/", ".output/"],
 	},

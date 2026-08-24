@@ -1,13 +1,12 @@
+import { DEFAULT_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "@/utils/constants";
 import { CharacterHints, generatePassword } from "@/utils/generators/generatePassword";
 import infoLabel from "@/utils/infoLabel";
 import * as fui from "@fluentui/react-components";
-import { ReactElement } from "react";
-import { GeneratorProps } from "../Page";
+import { type GeneratorProps } from "../Page";
 import GeneratorForm from "../components/GeneratorForm";
-import { DEFAULT_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "@/utils/constants";
 
 // TODO: needs refactoring
-export default function PasswordSection(props: GeneratorProps): ReactElement
+export default function PasswordSection(props: GeneratorProps): React.ReactElement
 {
 	const [state, private_setState] = useState<PasswordSectionState>({
 		length: DEFAULT_PASSWORD_LENGTH,
@@ -199,7 +198,7 @@ function parseCount(value: string): number | null
 	return isNaN(n) || n < 1 ? null : Math.min(n, 100);
 };
 
-function Row(props: { children: ReactElement[]; }): ReactElement
+function Row(props: { children: React.ReactElement[]; }): React.ReactElement
 {
 	return (
 		<fui.TableRow as="div">

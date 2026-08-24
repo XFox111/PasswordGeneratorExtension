@@ -1,4 +1,4 @@
-import { BrandVariants, Theme, createDarkTheme, createLightTheme } from "@fluentui/react-components";
+import { type BrandVariants, type Theme, createDarkTheme, createLightTheme } from "@fluentui/react-components";
 
 const bmcBrandRamp: BrandVariants =
 {

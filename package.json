@@ -15,25 +15,24 @@
 		"postinstall": "wxt prepare"
 	},
 	"dependencies": {
-		"@fluentui/react-components": "^9.74.1",
-		"@fluentui/react-icons": "^2.0.328",
-		"@wxt-dev/i18n": "^0.2.5",
-		"react": "^19.2.6",
-		"react-dom": "^19.2.6",
+		"@fluentui/react-components": "^9.74.7",
+		"@fluentui/react-icons": "^2.0.338",
+		"@wxt-dev/i18n": "^0.2.7",
+		"react": "^19.2.8",
+		"react-dom": "^19.2.8",
 		"react-responsive": "^10.0.1"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.39.4",
-		"@types/react": "^19.2.14",
-		"@types/react-dom": "^19.2.3",
-		"@typescript-eslint/eslint-plugin": "^8.60.0",
-		"@typescript-eslint/parser": "^8.59.3",
+		"@eslint/js": "^10.0.1",
+		"@types/react": "^19.2.18",
+		"@types/react-dom": "^19.2.5",
+		"@typescript-eslint/eslint-plugin": "^8.67.0",
+		"@typescript-eslint/parser": "^8.67.0",
 		"@wxt-dev/module-react": "^1.2.2",
-		"eslint": "^9.39.4",
-		"eslint-plugin-react": "^7.37.5",
-		"globals": "^17.6.0",
+		"eslint": "^10.9.0",
+		"globals": "^17.11.0",
 		"typescript": "^6.0.3",
-		"wxt": "^0.20.26"
+		"wxt": "^0.21.4"
 	},
 	"overrides": {
 		"node-notifier": {
@@ -42,5 +41,8 @@
 		"web-ext-run": {
 			"tmp": "^0.2.6"
 		}
+	},
+	"allowScripts": {
+		"esbuild@0.27.2": true
 	}
 }

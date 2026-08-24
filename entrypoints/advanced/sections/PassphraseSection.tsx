@@ -1,12 +1,11 @@
-import generatePassphrase, { PassphraseProps } from "@/utils/generators/generatePassphrase";
+import generatePassphrase, { type PassphraseProps } from "@/utils/generators/generatePassphrase";
 import infoLabel from "@/utils/infoLabel";
-import { Checkbox, Field, Input, InputOnChangeData } from "@fluentui/react-components";
-import { ReactElement } from "react";
+import { Checkbox, Field, Input, type InputOnChangeData } from "@fluentui/react-components";
 import GeneratorForm from "../components/GeneratorForm";
-import { GeneratorProps } from "../Page";
+import { type GeneratorProps } from "../Page";
 import { useStyles } from "./PassphraseSection.styles";
 
-export default function PassphraseSection(props: GeneratorProps): ReactElement
+export default function PassphraseSection(props: GeneratorProps): React.ReactElement
 {
 	const [wordCount, private_setWordCount] = useState<number | null>(2);
 	const [swapCharacters, setSwapCharacters] = useState<boolean>(false);
@@ -53,12 +52,14 @@ export default function PassphraseSection(props: GeneratorProps): ReactElement
 			if (!AdvancedPassphraseOptions)
 				return;
 
-			private_setWordCount(AdvancedPassphraseOptions.wordCount ?? 2);
-			setAllowRepeating(AdvancedPassphraseOptions.allowRepeating);
-			setSwapCharacters(AdvancedPassphraseOptions.swapCharacters);
-			setRandomizeCase(AdvancedPassphraseOptions.randomizeCase);
-			setSeparate(!!AdvancedPassphraseOptions.separator);
-			setSeparator(AdvancedPassphraseOptions.separator ?? "");
+			const options: PassphraseProps = AdvancedPassphraseOptions as PassphraseProps;
+
+			private_setWordCount(options.wordCount ?? 2);
+			setAllowRepeating(options.allowRepeating);
+			setSwapCharacters(options.swapCharacters);
+			setRandomizeCase(options.randomizeCase);
+			setSeparate(!!options.separator);
+			setSeparator(options.separator ?? "");
 		});
 	}, []);
 

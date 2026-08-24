@@ -1,4 +1,4 @@
-import { GriffelStyle, makeStyles, tokens } from "@fluentui/react-components";
+import { type GriffelStyle, makeStyles, tokens } from "@fluentui/react-components";
 
 const random = (max: number): number => Math.floor(Math.random() * max);
 

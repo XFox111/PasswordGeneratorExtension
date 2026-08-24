@@ -101,7 +101,7 @@ jobs:
         with:
           name: chrome
 
-      - uses: wdzeng/chrome-extension@v1.3.0
+      - uses: wdzeng/chrome-extension@v2.0.1
         with:
           extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
           zip-path: password-generator-*-chrome.zip
@@ -119,7 +119,7 @@ jobs:
         with:
           name: chrome
 
-      - uses: wdzeng/edge-addon@v2.1.0
+      - uses: wdzeng/edge-addon@v2.1.1
         with:
           product-id: ${{ secrets.EDGE_PRODUCT_ID }}
           zip-path: password-generator-*-chrome.zip
@@ -136,7 +136,7 @@ jobs:
         with:
           name: firefox
 
-      - uses: wdzeng/firefox-addon@v1.2.0
+      - uses: wdzeng/firefox-addon@v1.2.1
         with:
           addon-guid: ${{ secrets.FIREFOX_EXT_UUID }}
           xpi-path: password-generator-*-firefox.zip
