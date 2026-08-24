@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Theme, webDarkTheme, webLightTheme } from "@fluentui/react-components";
+import { type Theme, webDarkTheme, webLightTheme } from "@fluentui/react-components";
 
 export function useTheme(lightTheme?: Theme, darkTheme?: Theme): Theme
 {

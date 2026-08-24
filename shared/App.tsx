@@ -1,6 +1,6 @@
 import { StorageProvider } from "@/utils/storage";
 import { useTheme } from "@/utils/useTheme";
-import { FluentProvider, makeStyles, Spinner, Theme } from "@fluentui/react-components";
+import { FluentProvider, makeStyles, Spinner, type Theme } from "@fluentui/react-components";
 import Snow from "./specials/Snow";
 
 const App: React.FC<React.PropsWithChildren> = props =>

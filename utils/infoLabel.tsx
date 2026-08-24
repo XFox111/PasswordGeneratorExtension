@@ -1,4 +1,4 @@
-import { InfoLabel, Label, LabelProps, makeStyles, Slot } from "@fluentui/react-components";
+import { InfoLabel, Label, type LabelProps, makeStyles, type Slot } from "@fluentui/react-components";
 
 export default function infoLabel(label: string, hint: string, noWrap?: boolean): Slot<typeof Label>
 {

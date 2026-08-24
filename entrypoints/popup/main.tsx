@@ -1,6 +1,6 @@
 import { GeneratorOptions } from "@/utils/storage";
 import { Button, Divider, makeStyles, tokens, Tooltip } from "@fluentui/react-components";
-import { bundleIcon, FluentIcon, Open20Filled, Open20Regular, Settings20Filled, Settings20Regular } from "@fluentui/react-icons";
+import { bundleIcon, type FluentIcon, Open20Filled, Open20Regular, Settings20Filled, Settings20Regular } from "@fluentui/react-icons";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "../../shared/App";

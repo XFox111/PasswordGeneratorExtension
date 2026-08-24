@@ -1,12 +1,11 @@
-import { Label, LabelProps, mergeClasses, Switch, SwitchOnChangeData, SwitchProps } from "@fluentui/react-components";
-import { ReactElement } from "react";
+import { Label, type LabelProps, mergeClasses, Switch, type SwitchOnChangeData, type SwitchProps } from "@fluentui/react-components";
 import { useStyles } from "./DoubleLabeledSwitch.styles";
 
-export default function DoubleLabledSwitch(props: DoubleLabledSwitchProps): ReactElement
+export default function DoubleLabledSwitch(props: DoubleLabledSwitchProps): React.ReactElement
 {
 	const [isOn, setOn] = useState<boolean>(props.checked ?? props.defaultChecked ?? false);
 	const cls = useStyles();
-	const switchRef = useRef<HTMLInputElement | null>();
+	const switchRef = useRef<HTMLInputElement | null>(null);
 
 	const setChecked = useCallback((checked: boolean) =>
 	{
@@ -38,7 +37,7 @@ export default function DoubleLabledSwitch(props: DoubleLabledSwitchProps): Reac
 				{ props.offLabel }
 			</Label>
 
-			<Switch { ...props } ref={ (input) => switchRef.current = input } onChange={ onChange } />
+			<Switch { ...props } ref={ switchRef } onChange={ onChange } />
 
 			<Label
 				onClick={ () => setChecked(true) }

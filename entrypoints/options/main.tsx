@@ -1,13 +1,13 @@
 import { Tab, TabList } from "@fluentui/react-components";
-import { bundleIcon, FluentIcon, Info20Filled, Info20Regular, Settings20Filled, Settings20Regular } from "@fluentui/react-icons";
-import { ReactElement, StrictMode } from "react";
+import { bundleIcon, type FluentIcon, Info20Filled, Info20Regular, Settings20Filled, Settings20Regular } from "@fluentui/react-icons";
+import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import App from "../../shared/App";
 import AboutSection from "./AboutSection";
 import "./main.css";
 import SettingsSection from "./SettingsSection";
 
-function Options(): ReactElement
+function Options(): React.ReactElement
 {
 	const [selection, setSelection] = useState<string>("settings");
 

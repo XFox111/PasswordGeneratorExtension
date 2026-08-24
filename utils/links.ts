@@ -1,5 +1,3 @@
-import { Manifest } from "webextension-polyfill";
-
 export const personalLinks =
 {
 	website: "https://xfox111.net",
@@ -30,8 +28,8 @@ export const getFeedbackLink = () =>
 	if (import.meta.env.FIREFOX)
 		return storeLinks.firefox;
 
-	const manifest: Manifest.WebExtensionManifest = browser.runtime.getManifest();
-	const updateUrl: URL = new URL((manifest as unknown as Record<string, unknown>).update_url as string ?? "about:blank");
+	const manifest: Browser.runtime.Manifest = browser.runtime.getManifest();
+	const updateUrl: URL = new URL(manifest.update_url ?? "about:blank");
 
 	if (updateUrl.host === "edge.microsoft.com")
 		return storeLinks.edge;

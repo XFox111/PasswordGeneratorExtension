@@ -1,9 +1,8 @@
-import { Button, Input, InputOnChangeData, MessageBar, MessageBarBody, MessageBarTitle, Text, Toast, ToastTitle, useToastController } from "@fluentui/react-components";
+import { Button, Input, type InputOnChangeData, MessageBar, MessageBarBody, MessageBarTitle, Text, Toast, ToastTitle, useToastController } from "@fluentui/react-components";
 import { bundleIcon, Key24Regular, Save20Filled, Save20Regular } from "@fluentui/react-icons";
-import { PropsWithChildren, ReactElement } from "react";
 import { useStyles } from "./GeneratorForm.styles";
 
-export default function GeneratorForm(props: GeneratorFormProps): ReactElement
+export default function GeneratorForm(props: GeneratorFormProps): React.ReactElement
 {
 	const [passwordCount, private_setPasswordCount] = useState<number | null>(5);
 	const [error, setError] = useState<string | null>(null);
@@ -84,7 +83,7 @@ export default function GeneratorForm(props: GeneratorFormProps): ReactElement
 	);
 }
 
-export type GeneratorFormProps = PropsWithChildren &
+export type GeneratorFormProps = React.PropsWithChildren &
 {
 	onSave: () => void;
 	onGenerate: (count: number) => void;
