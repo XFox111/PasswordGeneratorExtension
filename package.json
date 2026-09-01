@@ -16,7 +16,7 @@
 	},
 	"dependencies": {
 		"@fluentui/react-components": "^9.74.7",
-		"@fluentui/react-icons": "^2.0.338",
+		"@fluentui/react-icons": "^2.0.339",
 		"@wxt-dev/i18n": "^0.2.7",
 		"react": "^19.2.8",
 		"react-dom": "^19.2.8",
@@ -26,10 +26,10 @@
 		"@eslint/js": "^10.0.1",
 		"@types/react": "^19.2.18",
 		"@types/react-dom": "^19.2.5",
-		"@typescript-eslint/eslint-plugin": "^8.67.0",
+		"@typescript-eslint/eslint-plugin": "^8.68.0",
 		"@typescript-eslint/parser": "^8.67.0",
 		"@wxt-dev/module-react": "^1.2.2",
-		"eslint": "^10.9.0",
+		"eslint": "^10.9.1",
 		"globals": "^17.11.0",
 		"typescript": "^6.0.3",
 		"wxt": "^0.21.4"
