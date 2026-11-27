@@ -105,6 +105,7 @@ jobs:
         with:
           extension-id: jnjobgjobffgmgfnkpkjfjkkfhfikmfl
           zip-path: password-generator-*-chrome.zip
+          publisher-id: ${{ secrets.CHROME_PUBLISHER_ID }}
           client-id: ${{ secrets.CHROME_CLIENT_ID }}
           client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
           refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
